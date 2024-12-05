@@ -3,19 +3,162 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 65vh;
     flex-direction: column;
+    background-color: #87CEEB;
+}
+
+
+#menu {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    background: #3E5F8A;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+}
+
+#menu div {
+    text-align: center;
+    flex: 1;
+}
+
+#menu img {
+    width: 40px;
+    height: 40px;
+    display: block;
+    margin: 0 auto;
+}
+
+#menu span {
+    font-size: 14px;
+    color: white;
+}
+img {
+    transition: transform 0.8s ease; /* Плавный эффект */
+}
+img:active {
+    transform: translateX(-1%) scale(0.9); /* Уменьшение при нажатии */
 }
 
 #clickButton {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 18px;
+    position: absolute;
+    bottom: 110px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-#clickButton:hover {
-    background-color: #0056b3;
+#score {
+    position: fixed;
+    top: 70px;
+}
+
+.icon-container {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 40px;
+    height: 40px;
+    z-index: 1000;
+}
+
+
+.coin img {
+    position: fixed;
+    top: 70px;
+    left: 125px;
+    z-index: 1000;
+    width: 40px;
+    height: 40px;
+}
+
+.settings img {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+
+.figure img {
+    position: fixed;
+    top: 10px;
+    left: 100px;
+    z-index: 1000;
+}
+
+.figure_2 img {
+    position: fixed;
+    top: 10px;
+    left: 200px;
+    z-index: 1000;
+}
+
+#score_1 {
+    position: fixed;
+    top: 20px;
+    left: 85px;
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    z-index: 1000;
+}
+#score_2 {
+    position: fixed;
+    top: 20px;
+    left: 190px;
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    z-index: 1000;
+}
+
+
+progress {
+    position: fixed;
+    bottom: 87px;
+    left: 20px;
+    width: 90%;
+    height: 15px;
+    border: none;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: width 0.3s ease-in-out;
+}
+
+/* Стиль для фона полосы прогресса */
+progress::-webkit-progress-bar {
+    background-color: #e0e0e0;
+    border-radius: 10px;
+}
+
+/* Стиль для самого прогресса (заполненной части) */
+progress::-webkit-progress-value {
+    background-color: #4caf50;
+    border-radius: 10px;
+    transition: width 0.5s ease-in-out;
+}
+
+.navigation {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.nav-button {
+    padding: 20px 10px;
+    background-color: #ccc;
+    text-decoration: none;
+    color: black;
+    border-radius: 5px;
+}
+
+.nav-button.active {
+    background-color: #007bff;
+    color: white;
 }

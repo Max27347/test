@@ -18,3 +18,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     };
 });
+
+// Полоса прогресса
+let currentScore = 0;

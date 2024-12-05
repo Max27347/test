@@ -18,7 +18,7 @@ keyboard = InlineKeyboardMarkup(inline_keyboard=
 
 
 async def start(message: types.message):
-    await message.answer("click!", reply_markup=keyboard)
+    await message.answer("click\!", reply_markup=keyboard)
 
 
 async def main():

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Кликер Бравл Старс</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <p id="score"> <span id="currentScore">0</span></p>
+
+<img id="clickButton" src="/static/images/shelly_2.png" style="width: 350px;">
+
+<div class="icon-container">
+    <img src="/static/images/icon.png" alt="Иконка">
+</div>
+
+<div class="coin">
+    <img src="/static/images/coin.png" alt="Монеты">
+</div>
+
+<div class="settings">
+    <img src="/static/images/settings.png" alt="Настройки">
+</div>
+
+<div class="figure">
+    <img src="/static/images/figure.png" alt="овал">
+</div>
+
+<div class="figure_2">
+    <img src="/static/images/figure.png" alt="овал">
+</div>
+
+<p id="score_1">монет</p>
+<p id="score_2">в час</p>
+
+<progress id="progressBar" value="0" max="100"></progress>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+{% include '_nav.html' %}
+
+</body>
+</html>
