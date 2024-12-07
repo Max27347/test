@@ -6,12 +6,36 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Кликер Бравл Старс</h1>
-    <p id="score">Ваш текущий счет: <span id="currentScore">0</span></p>
-    <button id="clickButton"><img src="/static/images/shelly.png" width="300" height="500"></button>
-    <img id="icon" src="/static/images/гем.jpg" alt="Гем">
 
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
-    {% include '_nav.html' %}
+<div class="icon-container_2">
+    <img src="/static/images/icon.png" width="80">
+</div>
+
+<div class="friends">
+    <img src="/static/images/friends.png" width="150">
+</div>
+
+<div class="friends_2">
+    <img src="/static/images/friends_2.png" width="170">
+</div>
+
+<div class="gift">
+    <img src="/static/images/gift.png" width="50">
+</div>
+
+<div class="list_friends">
+    <img src="/static/images/list_friends.png" width="200">
+</div>
+
+<div class="header-text">
+    Приглашай друзей и зарабатывай монеты!
+</div>
+
+<div class="header-text_2">
+    Друг также получит подарок!
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+{% include '_nav.html' %}
 </body>
 </html>

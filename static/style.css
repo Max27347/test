@@ -1,83 +1,111 @@
 body {
     font-family: Arial, sans-serif;
     display: flex;
-    justify-content: center;
-    align-items: center;
     height: 65vh;
     flex-direction: column;
     background-color: #87CEEB;
 }
 
-
-#menu {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    background: #3E5F8A;
-    padding: 10px 0;
+.navigation {
     position: fixed;
-    bottom: 0;
+    bottom: 0; /* Прикрепляем меню к нижней части экрана */
+    left: 0;
+    width: 100%; /* На всю ширину экрана */
+    background-color: #3E5F8A; /* Темно-синий фон */
+    display: flex; /* Flexbox для размещения элементов */
+    justify-content: space-around; /* Равномерное распределение пунктов меню */
+    padding: 10px 0; /* Внутренние отступы сверху и снизу */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Тень над меню */
+    z-index: 1000; /* Поверх остальных элементов */
 }
 
-#menu div {
+/* Стили для кнопок меню */
+.nav-button {
+    flex: 1; /* Равное пространство для каждого пункта */
     text-align: center;
-    flex: 1;
+    text-decoration: none; /* Убираем подчеркивание ссылок */
+    color: white; /* Белый цвет текста */
+    transition: all 0.3s ease; /* Плавный переход для анимации */
 }
 
-#menu img {
-    width: 40px;
-    height: 40px;
-    display: block;
-    margin: 0 auto;
+/* Стили для активного пункта меню */
+.nav-button.active {
+    background-color: #ffd700; /* Золотистый фон для активного пункта */
+    color: #3E5F8A; /* Темно-синий текст */
+    border-radius: 10px; /* Скругление углов */
+    padding: 5px 0;
 }
 
-#menu span {
-    font-size: 14px;
-    color: white;
+/* Стили для фигур и изображений */
+.nav-button figure {
+    margin: 0; /* Убираем отступы */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрируем иконки и текст */
+    gap: 5px; /* Расстояние между иконкой и подписью */
 }
-img {
-    transition: transform 0.8s ease; /* Плавный эффект */
+
+.nav-button img {
+    width: 30px; /* Размер иконки */
+    height: 30px;
+    transition: transform 0.3s ease; /* Анимация увеличения при наведении */
 }
-img:active {
-    transform: translateX(-1%) scale(0.9); /* Уменьшение при нажатии */
+
+/* Подписи к пунктам меню */
+.nav-button figcaption {
+    font-size: 14px; /* Размер шрифта подписи */
+    font-weight: 500;
+}
+
+.nav-button:hover figcaption {
+    color: #ffd700; /* Золотистый цвет подписи */
 }
 
 #clickButton {
     position: absolute;
     bottom: 110px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 7%;
+}
+
+#clickButton {
+    transition: transform 0.5s ease; /* Плавный переход для трансформации */
+}
+
+#clickButton:active {
+    transform: scale(1.1); /* Увеличиваем размер картинки на 10% */
 }
 
 #score {
     position: fixed;
+    top: 80px;
+    left: 185px;
+    z-index: 1000;
+    width: 40px;
+    height: 40px;
     top: 70px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px; /* Размер шрифта */
+    color: white; /* Цвет текста */
+}
+
 }
 
 .icon-container {
     position: fixed;
     top: 10px;
     left: 10px;
-    width: 40px;
+    width: 400px;
     height: 40px;
     z-index: 1000;
 }
 
-
 .coin img {
     position: fixed;
-    top: 70px;
+    top: 80px;
     left: 125px;
     z-index: 1000;
     width: 40px;
     height: 40px;
-}
-
-.settings img {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    z-index: 1000;
 }
 
 .figure img {
@@ -96,8 +124,8 @@ img:active {
 
 #score_1 {
     position: fixed;
-    top: 20px;
-    left: 85px;
+    top: 30px;
+    left: 100px;
     font-size: 20px;
     color: #333;
     font-weight: bold;
@@ -106,8 +134,8 @@ img:active {
 }
 #score_2 {
     position: fixed;
-    top: 20px;
-    left: 190px;
+    top: 30px;
+    left: 200px;
     font-size: 20px;
     color: #333;
     font-weight: bold;
@@ -115,6 +143,64 @@ img:active {
     z-index: 1000;
 }
 
+#nick {
+    position: fixed;
+    top: 60px;
+    left: 10px;
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    z-index: 1000;
+}
+
+.dropdown {
+            position: fixed; /* Для абсолютного позиционирования меню */
+            top: 10px;
+            right: 10px;
+        }
+        /* Стили для изображения */
+        .dropdown img {
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+        }
+
+        /* Выпадающее меню (изначально скрыто) */
+        .dropdown-menu {
+            position: absolute;
+            top: 60px; /* Смещение вниз от картинки */
+            right: 10px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень для меню */
+            border-radius: 5px; /* Скругленные углы */
+            width: 150px; /* Ширина меню */
+            display: none; /* Скрываем меню */
+            flex-direction: column;
+            padding: 0;
+            z-index: 1000;
+        }
+
+        /* Стили для пунктов меню */
+        .dropdown-menu a {
+            text-decoration: none;
+            color: #333;
+            padding: 10px 15px;
+            display: block;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Ховер эффект для пунктов */
+        .dropdown-menu a:hover {
+            background-color: #3E5F8A;
+            color: white;
+        }
+
+        /* Показ меню при активном состоянии */
+        .dropdown-menu.active {
+            display: flex; /* Показываем меню */
+        }
 
 progress {
     position: fixed;
@@ -144,4 +230,87 @@ progress::-webkit-progress-value {
 }
 
 
+/* Страница Друзья */
+.icon-container_2 {
+    position: fixed;
+    top: 200px;
+    left: 30px;
+    z-index: 1000;
+}
+.friends {
+    position: fixed;
+    top: 300px;
+    left: 30px;
+    z-index: 1000;
+}
 
+.friends_2 {
+    position: fixed;
+    top: 190px;
+    left: 190px;
+    z-index: 1000;
+}
+
+.gift {
+    position: fixed;
+    top: 220px;
+    left: 120px;
+    z-index: 1000;
+}
+
+.list_friends {
+    position: fixed;
+    top: 220px;
+    left: 180px;
+    z-index: 1000;
+}
+
+.header-text {
+    font-family: 'Arial', sans-serif; /* Шрифт */
+    font-size: 32px; /* Размер текста */
+    color: #ffffff; /* Цвет текста */
+    text-align: center; /* Выравнивание по центру */
+    background: linear-gradient(to right, #ff7e5f, #feb47b); /* Градиентный фон */
+    padding: 20px; /* Внутренний отступ */
+    border-radius: 10px; /* Скругление углов */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25); /* Тень */
+    margin-top: 20px; /* Отступ сверху */
+}
+.header-text_2 {
+    font-family: 'Arial', sans-serif; /* Шрифт */
+    font-size: 16px; /* Размер текста */
+    color: #ffffff; /* Цвет текста */
+    text-align: center; /* Выравнивание по центру */
+    background: linear-gradient(to right, #ff7e5f, #feb47b); /* Градиентный фон */
+    padding: 20px; /* Внутренний отступ */
+    border-radius: 10px; /* Скругление углов */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25); /* Тень */
+    margin-top: 250px; /* Отступ сверху */
+}
+
+/* Страница Магазин */
+
+.box_1 {
+    position: fixed;
+    top: 100px;
+    left: 30px;
+    z-index: 1000;
+}
+.box_2 {
+    position: fixed;
+    top: 200px;
+    left: 30px;
+    z-index: 1000;
+}
+.box_3 {
+    position: fixed;
+    top: 200px;
+    left: 130px;
+    z-index: 1000;
+}
+.box_4 {
+    position: fixed;
+    top: 100px;
+    left: 130px;
+    z-index: 1000;
+}

@@ -2,39 +2,52 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Кликер Бравл Старс</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
     <p id="score"> <span id="currentScore">0</span></p>
 
-<img id="clickButton" src="/static/images/shelly_2.png" style="width: 350px;">
+<img id="clickButton" src="/static/images/shelly_2.png" style="width: 330px;">
+
+    <progress id="progress-bar" value="0" max="100"></progress>
 
 <div class="icon-container">
-    <img src="/static/images/icon.png" alt="Иконка">
+    <img src="/static/images/icon.png" alt="Иконка" width="80">
 </div>
 
 <div class="coin">
-    <img src="/static/images/coin.png" alt="Монеты">
+    <img src="/static/images/coin.png" alt="Монеты" width="80">
 </div>
 
-<div class="settings">
-    <img src="/static/images/settings.png" alt="Настройки">
-</div>
-
-<div class="figure">
-    <img src="/static/images/figure.png" alt="овал">
-</div>
-
-<div class="figure_2">
-    <img src="/static/images/figure.png" alt="овал">
-</div>
 
 <p id="score_1">монет</p>
 <p id="score_2">в час</p>
+<p id="nick">Максим</p>
 
-<progress id="progressBar" value="0" max="100"></progress>
+
+<div class="figure">
+    <img src="/static/images/figure.png" alt="овал" width="60">
+</div>
+
+<div class="figure_2">
+    <img src="/static/images/figure.png" alt="овал" width="60">
+</div>
+
+
+<div class="dropdown">
+    <img src="/static/images/menu.png" alt="Меню" id="menu-icon">
+
+    <!-- Выпадающее меню -->
+    <div class="dropdown-menu" id="dropdown-menu">
+        <a href="#item1">Пункт 1</a>
+        <a href="#item2">Пункт 2</a>
+        <a href="#item3">Пункт 3</a>
+        <a href="#item4">Пункт 4</a>
+    </div>
+</div>
+
 
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 
