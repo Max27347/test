@@ -3,13 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рулетка с замедлением</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
+<img id="open-wheel" src="/static/images/wheel.png" alt="Открыть рулетку" class="open-wheel-img">
+
+    <!-- Контейнер рулетки -->
+    <div class="wheel-container" id="wheel-container">
+        <!-- Кнопка-крестик для закрытия -->
+        <button class="close-btn" id="close-btn">×</button>
+        <div class="pointer"></div>
+        <div class="wheel" id="wheel"></div>
+        <button class="spin-btn" id="spin-btn">Крутить</button>
+        <div class="result" id="result"></div>
+    </div>
+
+
 <p id="score"><span id="currentScore">0</span></p>
 
-<img id="clickButton" src="/static/images/shelly_2.png" style="width: 330px;">
+<img id="clickButton" src="/static/images/shelly_3.png" style="width: 330px;">
 
 <progress id="progress-bar" value="0" max="100"></progress>
 
@@ -49,7 +63,7 @@
 </div>
 
 
-<script src="{{ url_for('static', filename='script.js') }}"></script>
+<script src="{{ url_for('static', filename='script_wheel.js') }}"></script>
 
 {% include '_nav.html' %}
 
