@@ -6,9 +6,26 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Кликер Бравл Старс</h1>
-    <h1>Кликер Бравл Старс</h1>
 
+<div class="container">
+        <ul class="task-list">
+            <li class="task-item">
+                <img class="task-icon" src="/static/images/coin.png">
+                <span class="task-name">Подпишись на ТГ</span>
+                <span class="task-value">200 000</span>
+            </li>
+            <li class="task-item">
+                <img class="task-icon" src="/static/images/coin.png">
+                <span class="task-name">Пригласи 5 друзей</span>
+                <span class="task-value">10 000</span>
+            </li>
+            <li class="task-item">
+                <img class="task-icon" src="/static/images/coin.png">
+                <span class="task-name">Выиграй 1 раз в мини игре</span>
+                <span class="task-value">10 000</span>
+            </li>
+        </ul>
+    </div>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
     {% include '_nav.html' %}

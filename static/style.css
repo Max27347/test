@@ -407,3 +407,42 @@ progress::-webkit-progress-value {
             font-size: 18px;
             color: #333;
         }
+/* Страница Квесты */
+.task-list {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .task-item {
+            background-color: #2c3e50;
+            color: white;
+            font-size: 16px;
+            line-height: 50px;
+            width: 300px;
+            height: 50px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .task-item:hover {
+            transform: scale(1.05);
+        }
+
+        .task-icon {
+            float: left;
+            margin-right: 10px;
+        }
+
+        .task-name {
+            font-weight: bold;
+        }
+
+        .task-value {
+            float: right;
+        }
