@@ -47,3 +47,4 @@ document.addEventListener('click', (event) => {
         dropdownMenu.classList.remove('active');
     }
 });
+
