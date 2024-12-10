@@ -7,12 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-
-<nav>
-        <a href="page6.html">О нас</a>
-    </nav>
-    <button onclick="window.location.href='page6.html'">Подробнее</button>
-
+<button onclick="window.location.href='/page6'">Подробнее</button>
 
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 {% include '_nav.html' %}
