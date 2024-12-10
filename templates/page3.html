@@ -2,13 +2,28 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Кликер Бравл Старс</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-<button onclick="window.location.href='/page6'">Подробнее</button>
+<button onclick="window.location.href='/page6'">улучшения</button>
 
+<button onclick="changeBackgroundImage()">Изменить фон на theme_2.png</button>
+<div class="box_1">
+    <img src="/static/images/box_1.png" width="80">
+</div>
+
+<div class="box_2">
+    <img src="/static/images/box_2.png" width="80">
+</div>
+<div class="box_3">
+    <img src="/static/images/box_3.png" width="80">
+</div>
+<div class="box_4">
+    <img src="/static/images/box_4.png" width="80">
+</div>
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 {% include '_nav.html' %}
 </body>

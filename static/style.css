@@ -3,11 +3,12 @@ body {
     display: flex;
     height: 90vh;
     flex-direction: column;
-    background-color: #87CEEB; /* Это запасной цвет, если фон не загрузится */
+    background-color: blue; /* Это запасной цвет, если фон не загрузится */
     background-image: url("/static/images/brawl_stars_lobby.png"); /* Укажите путь к вашему изображению */
     background-size: cover; /* Растянуть изображение на весь контейнер */
     background-position: center; /* Центровка изображения */
     background-repeat: no-repeat; /* Запрет на повторение изображения */
+
 }
 
 .navigation {
@@ -447,3 +448,10 @@ progress::-webkit-progress-value {
             float: right;
         }
 
+/* Страница топ */
+.rectangle {
+            width: 300px; /* Ширина прямоугольника */
+            height: 100px; /* Высота прямоугольника */
+            background-color: #808080; /* Серый цвет */
+            border-radius: 20px; /* Скругление углов */
+        }

@@ -48,3 +48,6 @@ document.addEventListener('click', (event) => {
     }
 });
 
+function changeBackgroundImage() {
+            document.body.style.backgroundImage = "url('/static/images/theme_2.png')"; // Устанавливаем новое изображение фона
+        }
