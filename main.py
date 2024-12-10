@@ -38,6 +38,9 @@ def page5():
 def page6():
     return render_template('page6.html')
 
+@app.route('/page7')
+def page7():
+    return render_template('page7.html')
 
 @app.route('/click', methods=['POST'])
 def click():

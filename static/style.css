@@ -360,54 +360,60 @@ progress::-webkit-progress-value {
             transition: transform 5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
         }
 
-        .spin-btn {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #4caf50;
+.spin-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.spin-btn:hover {
+    background-color: #45a049;
+}
+
+.open-wheel-btn:hover {
+    background-color: #0056b3;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 25px;
+    height: 25px;
+    background-color: #ff4d4d;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.close-btn:hover {
+    background-color: #e60000;
+}
+
+.result {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #333;
+}
+.text_2 {
+            font-family: Arial
+            font-size: 48px;
             color: white;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
         }
 
-        .spin-btn:hover {
-            background-color: #45a049;
-        }
-
-        .open-wheel-btn:hover {
-            background-color: #0056b3;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 25px;
-            height: 25px;
-            background-color: #ff4d4d;
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-            border: none;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .close-btn:hover {
-            background-color: #e60000;
-        }
-
-        .result {
-            margin-top: 10px;
-            font-size: 18px;
-            color: #333;
-        }
 /* Страница Квесты */
 .task-list {
             display: flex;
@@ -454,4 +460,5 @@ progress::-webkit-progress-value {
             height: 100px; /* Высота прямоугольника */
             background-color: #808080; /* Серый цвет */
             border-radius: 20px; /* Скругление углов */
+            margin: 20px; /* Промежуток вокруг каждого прямоугольника
         }
