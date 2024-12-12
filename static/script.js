@@ -1,13 +1,13 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const clickButton = document.getElementById("clickButton");
-    const currentScore = document.getElementById("currentScore");
-    const progressBar = document.getElementById('progress-bar');
+document.addEventListener('DOMContentLoaded', () => {
+    const clickButton = document.getElementById('clickButton');
+    const currentScore = document.getElementById('currentScore');
+    const progressBar = document.getElementById('progressBar');
 
     let score = parseInt(currentScore.innerText);
 
     clickButton.onclick = async () => {
         try {
-            const response = await fetch('/click', {method: 'POST'});
+            const response = await fetch('/click', { method: 'POST' });
             const data = await response.json();
 
             if (data.success) {
@@ -15,14 +15,14 @@ document.addEventListener("DOMContentLoaded", function() {
                 currentScore.innerText = score;
                 let currentValue = progressBar.value; // Текущее значение прогресса
 
-                // Увеличиваем значение полосы на 10% при каждом клике, но не больше 100%
-                if (currentValue < 100) {
-                    progressBar.value = currentValue + 10;
+                // Уменьшаем значение полосы на 10% при каждом клике, но не меньше 0%
+                if (currentValue > 0) {
+                    progressBar.value = currentValue - 10;
                 }
 
-                // Проверяем, достиг ли прогресс максимума
-                if (progressBar.value === 100) {
-                    alert('Прогресс завершён!');
+                // Проверяем, достиг ли прогресс минимума
+                if (progressBar.value === 0) {
+                    alert('Энергия закончилась');
                 }
             }
         } catch (error) {

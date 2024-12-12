@@ -6,18 +6,25 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Кликер Бравл Старс_2</h1>
-<button onclick="window.location.href='/page5'">топ игроков по монетам</button>
-<button onclick="window.location.href='/page7'">топ клубов</button>
+<button onclick="window.location.href='/page3'">ящики</button>
+<button onclick="window.location.href='/page6'">скины</button>
+<button onclick="window.location.href='/page7'">фоны</button>
 
-<div class="rectangle"></div>
-<div class="rectangle"></div>
-<div class="rectangle"></div>
-<div class="rectangle"></div>
+<button class="small-button" onclick="changeBackgroundImage()">Изменить фон на theme_2.png</button>
 
+<p class="page3_text_2">Сделай внешний вид <br>
+    красивее с помощью этих </br>
+    классных фонов!<br></p>
+
+<div class="colt_gide">
+    <img src="/static/images/colt_5.png" width="200">
+</div>
+<div class="dialog">
+    <img src="/static/images/dialog.png" width="120">
+</div>
 
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
-    {% include '_nav.html' %}
+{% include '_nav.html' %}
 </body>
 </html>
