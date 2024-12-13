@@ -54,7 +54,7 @@ class Bomb:
         self.image = load_image_from_url('https://avatars.mds.yandex.net/i?id=024f70cbc561737ed31b8a0e9eaa1fb8378543edadea12ea-11477006-images-thumbs&n=13', (30, 30))
         self.rect = self.image.get_rect()
         self.reset()
-        self.speed = 2  # Начальная скорость падения
+        self.speed = 3  # Начальная скорость падения
 
     def reset(self):
         self.rect.x = random.randint(0, WIDTH - self.rect.width)

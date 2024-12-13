@@ -438,29 +438,12 @@ text-align: center; /* Центрирование изображения */
 /* Страница Магазин */
 
 .box_1 {
-    position: fixed;
-    top: 200px;
-    left: 30px;
-    z-index: 1000;
+    position: fixed; /* Фиксированное позиционирование */
+    top: 200px; /* Расположение по вертикали */
+    left: 30px; /* Расположение по горизонтали */
+    z-index: 1000; /* Уровень наложения */
 }
-.box_2 {
-    position: fixed;
-    top: 300px;
-    left: 30px;
-    z-index: 1000;
-}
-.box_3 {
-    position: fixed;
-    top: 200px;
-    left: 130px;
-    z-index: 1000;
-}
-.box_4 {
-    position: fixed;
-    top: 300px;
-    left: 130px;
-    z-index: 1000;
-}
+
 
 .page3_text_2 {
     position: fixed;
@@ -484,6 +467,21 @@ text-align: center; /* Центрирование изображения */
     font-family: 'Arial', sans-serif;
 
 }
+
+.container {
+    position: fixed; /* Фиксированное позиционирование */
+    bottom: 100px; /* Привязка к нижнему краю экрана */
+    left: 50%; /* Центрируем по горизонтали */
+    transform: translateX(-50%); /* Сдвигаем на половину ширины контейнера для центрирования */
+    display: flex; /* Используем flexbox для расположения изображений */
+    gap: 10px; /* Расстояние между картинками */
+}
+
+.image {
+    max-width: 300px; /* Максимальная ширина картинок */
+    height: auto; /* Автоматическая высота для сохранения пропорций */
+}
+
 /* Страница Квесты */
 
 /* Страница топ */
