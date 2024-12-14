@@ -51,3 +51,29 @@ document.addEventListener('click', (event) => {
 function changeBackgroundImage() {
             document.body.style.backgroundImage = "url('/static/images/theme_2.png')"; // Устанавливаем новое изображение фона
         }
+
+let autoClickInterval;
+
+        // Функция для показа кнопки автокликера
+        function showAutoClickerButton() {
+            document.getElementById("autoClickerButton").style.display = "block";
+        }
+
+        // Функция для автоматического нажатия на изображение
+        function autoClick() {
+            document.getElementById("clickButton").click();
+        }
+
+        // Запуск автокликера
+        document.getElementById("autoClickerButton").onclick = function() {
+            if (!autoClickInterval) {
+                autoClickInterval = setInterval(autoClick, 1000); // Нажимает каждую секунду
+
+                // Остановка автокликера через 30 секунд
+                setTimeout(function() {
+                    clearInterval(autoClickInterval);
+                    autoClickInterval = null;
+                    alert("Автокликер остановлен через 10 секунд.");
+                }, 10000); // 10000 миллисекунд = 10 секунд
+            }
+        };

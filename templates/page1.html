@@ -23,12 +23,18 @@
 
 <p id="score"><span id="currentScore">0</span></p>
 
-<img id="clickButton" src="/static/images/shelly_3.png" style="width: 330px;">
+<div class="center-container">
+        <img id="gift" src="/static/images/gift.png" onclick="showAutoClickerButton();">
+        <img id="clickButton" src="/static/images/shelly_3.png" style="width: 330px;" onclick="alert('Кнопка нажата!');">
+        <br>
+        <button id="autoClickerButton">Автокликер</button>
+    </div>
 
-<progress id="progressBar" value="100" max="100"></progress>
+
+<progress id="progressBar" value="1000" max="1000"></progress>
 
 <div class="icon-container">
-    <img src="/static/images/icon.png" alt="Иконка" width="500">
+    <img src="/static/images/icon.png" alt="Иконка" width="400">
 </div>
 
 <div class="coin">
@@ -36,13 +42,11 @@
 </div>
 
 
-<p id="score_1">монет</p>
-<p id="score_2">в час</p>
 <p id="nick">Максим</p>
 
 
 <div class="figure">
-    <img src="/static/images/money.png" alt="овал" width="450">
+    <img src="/static/images/money.png" alt="овал" width="340">
 </div>
 
 
@@ -51,10 +55,10 @@
 
     <!-- Выпадающее меню -->
     <div class="dropdown-menu" id="dropdown-menu">
-        <a href="#item1">Пункт 1</a>
-        <a href="#item2">Пункт 2</a>
-        <a href="#item3">Пункт 3</a>
-        <a href="#item4">Пункт 4</a>
+        <a href="#item1">Язык</a>
+        <a href="#item2">Как играть</a>
+        <a href="#item3">Аирдроп</a>
+        <a href="#item4">Тех поддержка</a>
     </div>
 </div>
 

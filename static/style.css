@@ -92,13 +92,12 @@ body {
     color: white; /* Цвет текста */
 }
 
-}
 
 .icon-container {
     position: fixed;
-    top: 10px;
-    left: 10px;
-    width: 400px;
+    top: -8px;
+    left: 5px;
+    width: 40px;
     height: 40px;
 
 }
@@ -107,50 +106,22 @@ body {
     position: fixed;
     top: 80px;
     left: 125px;
-
     width: 40px;
     height: 40px;
 }
 
 .figure img {
     position: fixed;
-    top: 10px;
-    left: 100px;
+    top: -20px;
+    left: 17px;
 
-}
-
-.figure_2 img {
-    position: fixed;
-    top: 10px;
-    left: 200px;
-
-}
-
-#score_1 {
-    position: fixed;
-    top: 30px;
-    left: 100px;
-    font-size: 20px;
-    color: white;
-    font-weight: bold;
-    font-family: 'Arial', sans-serif;
-
-}
-#score_2 {
-    position: fixed;
-    top: 30px;
-    left: 200px;
-    font-size: 20px;
-    color: white;
-    font-weight: bold;
-    font-family: 'Arial', sans-serif;
 
 }
 
 #nick {
     position: fixed;
-    top: 85px;
-    left: 20px;
+    top: 55px;
+    left: 10px;
     font-size: 20px;
     color: white;
     font-weight: bold;
@@ -161,12 +132,12 @@ body {
 .dropdown {
             position: fixed; /* Для абсолютного позиционирования меню */
             top: 10px;
-            right: 10px;
+            right: 3px;
         }
         /* Стили для изображения */
         .dropdown img {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             cursor: pointer;
         }
 
@@ -376,10 +347,6 @@ progress::-webkit-progress-value {
     transition: background-color 0.3s;
 }
 
-.spin-btn:hover {
-    background-color: #45a049;
-}
-
 .open-wheel-btn:hover {
     background-color: #0056b3;
 }
@@ -413,6 +380,38 @@ progress::-webkit-progress-value {
     color: #333;
 }
 
+.center-container {
+            display: flex;
+            flex-direction: column; /* Вертикальное расположение элементов */
+            justify-content: center; /* Центрирование по вертикали */
+            align-items: center; /* Центрирование по горизонтали */
+            height: 100vh; /* Высота вьюпорта для центрирования */
+            margin: 0; /* Убираем отступы */
+        }
+        #gift {
+            width: 50px; /* Уменьшаем размер значка */
+            cursor: pointer; /* Курсор при наведении */
+            position: relative; /* Относительное позиционирование */
+            right: 160px; /* Сдвиг изображения влево */
+        }
+        #autoClickerButton {
+            display: none; /* Скрываем кнопку по умолчанию */
+            padding: 10px 20px; /* Отступы внутри кнопки */
+            font-size: 14px; /* Размер шрифта */
+            color: white; /* Цвет текста */
+            background-color: #4CAF50; /* Цвет фона кнопки */
+            border: none; /* Убираем рамку */
+            border-radius: 5px; /* Закругленные углы */
+            cursor: pointer; /* Курсор при наведении */
+            transition: background-color 0.3s; /* Плавный переход цвета фона */
+            width: auto; /* Ширина кнопки автоматически подстраивается под содержимое */
+            min-width: 120px; /* Минимальная ширина кнопки для компактности */
+            margin-left: -250px;
+        }
+        #autoClickerButton:hover {
+            background-color: #45a049; /* Цвет фона при наведении */
+        }
+
 /* Страница Друзья */
 
 .friends_6 {
@@ -439,32 +438,9 @@ text-align: center; /* Центрирование изображения */
 
 .box_1 {
     position: fixed; /* Фиксированное позиционирование */
-    top: 200px; /* Расположение по вертикали */
-    left: 30px; /* Расположение по горизонтали */
+    top: 150px; /* Расположение по вертикали */
+    left: 100px; /* Расположение по горизонтали */
     z-index: 1000; /* Уровень наложения */
-}
-
-
-.page3_text_2 {
-    position: fixed;
-    top: 190px;
-    right: 40px;
-    font-size: 20px;
-    color: black;
-    font-weight: bold;
-    font-family: 'Arial', sans-serif;
-    z-index: 1000;
-
-}
-
-.dialog {
-    position: fixed;
-    top: 60px;
-    right: 10px;
-    font-size: 20px;
-    color: white;
-    font-weight: bold;
-    font-family: 'Arial', sans-serif;
 
 }
 
@@ -478,7 +454,7 @@ text-align: center; /* Центрирование изображения */
 }
 
 .image {
-    max-width: 300px; /* Максимальная ширина картинок */
+    max-width: 120px; /* Максимальная ширина картинок */
     height: auto; /* Автоматическая высота для сохранения пропорций */
 }
 
