@@ -3,12 +3,11 @@ body {
     display: flex;
     height: 90vh;
     flex-direction: column;
-    background-color: blue; /* Это запасной цвет, если фон не загрузится */
+
     background-image: url("/static/images/brawl_stars_lobby.png"); /* Укажите путь к вашему изображению */
     background-size: cover; /* Растянуть изображение на весь контейнер */
     background-position: center; /* Центровка изображения */
     background-repeat: no-repeat; /* Запрет на повторение изображения */
-
 }
 
 .navigation {
@@ -69,10 +68,8 @@ body {
 #clickButton {
     position: absolute;
     bottom: 110px;
-}
-
-#clickButton {
     transition: transform 0.5s ease; /* Плавный переход для трансформации */
+    margin-left: -20px; /* Сдвигаем изображение влево на 20 пикселей */
 }
 
 #clickButton:active {
@@ -462,29 +459,92 @@ text-align: center; /* Центрирование изображения */
 
 /* Страница топ */
 
-.rectangle {
-            width: 300px; /* Ширина прямоугольника */
-            height: 100px; /* Высота прямоугольника */
-            background-color: #808080; /* Серый цвет */
-            border-radius: 20px; /* Скругление углов */
-            margin: 20px; /* Промежуток вокруг каждого прямоугольника*/
+
+
+/* Босс1*/
+/* Стили для очков и таймера */
+        #score_b1, #timer_b1 {
+            font-family: 'Arial', sans-serif;
+            font-size: 24px;
+            color: #ffffff;
+            background-color: #4CAF50;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin: 10px auto;
+            width: fit-content;
+            text-align: center;
         }
 
+        /* Стили для изображения */
+        #clickable-image_b1 {
+            width: 1000px; /* Ширина изображения */
+            height: auto; /* Автоматическая высота */
+            display: block; /* Блочный элемент для центрирования */
+            margin: 20px auto; /* Центрирование по горизонтали */
+            cursor: pointer; /* Курсор при наведении */
+            animation: pulse 1.5s infinite; /* Анимация пульсации */
+            transition: transform 0.2s; /* Плавный переход для трансформации */
+        }
 
-.text_3 {
-            font-family: Arial
-            font-size: 48px;
-            color: white;
-            position: fixed;
-            top: 160px;
-            left: 100px;
+        /* Определение анимации пульсации */
+        @keyframes pulse {
+            0% {
+                transform: scale(1); /* Исходный размер */
+            }
+            50% {
+                transform: scale(1.03); /* Увеличение на 3% */
+            }
+            100% {
+                transform: scale(1); /* Возврат к исходному размеру */
+            }
+        }
 
-/* Фоны*/
+        /* Эффект при нажатии на изображение */
+        @keyframes clickEffect {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.2); /* Увеличение на 20% при клике */
+                opacity: 0.8; /* Уменьшение прозрачности */
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1; /* Возврат к исходному размеру и полной непрозрачности */
+            }
+        }
 
-.small-button" {
-    width: 50px; /* Ширина кнопки */
-    height: 30px; /* Высота кнопки */
-    position: absolute; /* Позволяет размещать элемент в любом месте экрана */
-    top: 300; /* Расположение от верхнего края */
-    left: 0; /* Расположение от левого края */
-}
+        /* Стили для бомбы */
+        .bomb {
+            width: 50px; /* Ширина бомбы */
+            height: 50px; /* Высота бомбы */
+            position: absolute; /* Абсолютное позиционирование */
+            background-image: url('/static/images/bomb.png'); /* Путь к изображению бомбы */
+            background-size: cover; /* Масштабирование изображения для заполнения элемента */
+            animation: fall linear forwards; /* Анимация падения */
+        }
+
+        @keyframes fall {
+            from {
+                top: -60px; /* Начальная позиция (выше экрана) */
+                opacity: 1; /* Полная непрозрачность */
+            }
+            to {
+                top: calc(100vh + 60px); /* Конечная позиция (ниже экрана) */
+                opacity: 0; /* Прозрачность в конце анимации */
+            }
+        }
+
+        /* Стили для кнопки "Старт" */
+        #start-button {
+            font-family: 'Arial', sans-serif; /* Шрифт */
+            font-size: 24px; /* Размер шрифта */
+            color: #ffffff; /* Цвет текста */
+            background-color: #4CAF50; /* Зеленый фон */
+            padding: 10px 20px; /* Отступы */
+            border-radius: 5px; /* Закругленные углы */
+            margin: 10px auto; /* Отступы сверху и снизу, центрирование по горизонтали */
+            width: fit-content; /* Автоматическая ширина в зависимости от содержимого */
+            text-align: center; /* Центрирование текста */
+        }

@@ -18,20 +18,14 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Избегай бомб!")
 
 # Функция для загрузки изображения из URL
-def load_image_from_url(url, size):
-    response = requests.get(url)
-    if response.status_code == 200:
-        image_data = BytesIO(response.content)
-        image = pygame.image.load(image_data).convert_alpha()  # Используем convert_alpha() для поддержки прозрачности
-        return pygame.transform.scale(image, size)  # Изменяем размер изображения
-    else:
-        print(f"Ошибка загрузки изображения: {response.status_code}")
-        sys.exit()
+def load_image_from_file(file_path, size):
+    image = pygame.image.load(file_path).convert_alpha()  # Загружаем изображение
+    return pygame.transform.scale(image, size)  # Изменяем размер изображения
 
 # Класс Игрока
 class Player:
     def __init__(self):
-        self.image = load_image_from_url('https://avatars.mds.yandex.net/i?id=42fa6c1105a61f3f21341e35f9544a89441fe060-5234009-images-thumbs&n=13', (50, 50))
+        self.image = load_image_from_file('D:/brawl_clicker-master/static/images/edgar.png', (50, 50))
         self.rect = self.image.get_rect()
         self.rect.centerx = WIDTH // 2
         self.rect.bottom = HEIGHT - 10
@@ -51,10 +45,10 @@ class Player:
 # Класс Бомбы
 class Bomb:
     def __init__(self):
-        self.image = load_image_from_url('https://avatars.mds.yandex.net/i?id=024f70cbc561737ed31b8a0e9eaa1fb8378543edadea12ea-11477006-images-thumbs&n=13', (30, 30))
+        self.image = load_image_from_file('D:/brawl_clicker-master/static/images/dyno.png', (30, 30))
         self.rect = self.image.get_rect()
         self.reset()
-        self.speed = 1  # Начальная скорость падения
+        self.speed = 3  # Начальная скорость падения
 
     def reset(self):
         self.rect.x = random.randint(0, WIDTH - self.rect.width)

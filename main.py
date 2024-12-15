@@ -46,6 +46,10 @@ def page7():
 def page8():
     return render_template('page8.html')
 
+@app.route('/boss1')
+def boss1():
+    return render_template('boss1.html')
+
 
 @app.route('/click', methods=['POST'])
 def click():

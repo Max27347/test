@@ -2,7 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Кликер Бравл Старс</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 7</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
@@ -18,21 +19,23 @@
     </a>
 </div>
 
-<button class="small-button" onclick="changeBackgroundImage()">Изменить фон на theme_2.png</button>
-
-<p class="page3_text_2">Сделай внешний вид <br>
-    красивее с помощью этих </br>
-    классных фонов!<br></p>
-
-<div class="colt_gide">
-    <img src="/static/images/colt_5.png" width="200">
-</div>
-<div class="dialog">
-    <img src="/static/images/dialog.png" width="120">
-</div>
 
 
+<button onclick="changeBackgroundImage('theme_2.png')">Сменить фон на theme_2.png</button>
+<button onclick="changeBackgroundImage('theme_3.png')">Сменить фон на theme_3.png</button>
+<button onclick="changeBackgroundImage('theme_4.png')">Сменить фон на theme_4.png</button>
+<button onclick="changeBackgroundImage('theme_5.png')">Сменить фон на theme_5.png</button>
+<button onclick="changeBackgroundImage('theme_6.png')">Сменить фон на theme_6.png</button>
+
+
+<button onclick="changeBackgroundImage('theme_10.png')">Сменить фон на theme_10.png</button>
+<button onclick="changeBackgroundImage('theme_11.png')">Сменить фон на theme_11.png</button>
+<button onclick="changeBackgroundImage('theme_12.png')">Сменить фон на theme_12.png</button>
+<button onclick="resetBackground()">Сбросить фон на стандартный</button>
+
+    <script src="{{ url_for('static', filename='script_theme.js') }}"></script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
+
 {% include '_nav.html' %}
 </body>
 </html>

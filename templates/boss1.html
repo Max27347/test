@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Босс1</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div id="score_b1">Очки: 0</div>
+    <div id="timer_b1">Время: 20</div>
+    <img id="clickable-image_b1" src="/static/images/boss.png" alt="Кликни на меня!" />
+    <button id="start-button">Старт</button>
+
+    <script src="{{ url_for('static', filename='boss.js') }}"></script>
+  <script src="{{ url_for('static', filename='script_theme.js') }}"></script>
+    {% include '_nav.html' %}
+</body>
+</html>
+
