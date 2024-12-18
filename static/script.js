@@ -74,4 +74,9 @@ let autoClickInterval;
             }
         };
 
+ function changeImage(imagePath) {
+            const mainImage = document.getElementById('mainImage');
+            mainImage.src = imagePath; // Изменяем путь к изображению на переданный
+}
+
 

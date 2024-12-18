@@ -7,31 +7,78 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-<div class="container">
+<div class="menu_p3">
     <a href="/page3" class="item">
-        <img src="/static/images/button_menu.png" alt="Image 1" class="image">
+        <img src="/static/images/button_menu.png" width="200" alt="Image 1" class="image">
     </a>
     <a href="/page6" class="item">
-        <img src="/static/images/button_menu_2.png" alt="Image 2" class="image">
+        <img src="/static/images/button_menu_2.png" width="200" alt="Image 2" class="image">
     </a>
     <a href="/page7" class="item">
-        <img src="/static/images/button_menu_3.png" alt="Image 3" class="image">
+        <img src="/static/images/button_menu_3.png" width="200" alt="Image 3" class="image">
     </a>
 </div>
 
 
+<!--<button onclick="changeBackgroundImage('theme_2.png')">Сменить фон на theme_2.png</button>-->
+<!--<button onclick="changeBackgroundImage('theme_3.png')">Сменить фон на theme_3.png</button>-->
+<!--<button onclick="changeBackgroundImage('theme_4.png')">Сменить фон на theme_4.png</button>-->
+<!--<button onclick="changeBackgroundImage('theme_5.png')">Сменить фон на theme_5.png</button>-->
+<!--<button onclick="changeBackgroundImage('theme_6.png')">Сменить фон на theme_6.png</button>-->
+<!--<button onclick="changeBackgroundImage('theme_7.png')">Сменить фон на theme_7.png</button>-->
+<!--<button onclick="changeBackgroundImage('theme_8.png')">Сменить фон на theme_8.png</button>-->
+<!--<button onclick="changeBackgroundImage('theme_9.png')">Сменить фон на theme_9.png</button>-->
+<!--<button onclick="changeBackgroundImage('theme_10.png')">Сменить фон на theme_10.png</button>-->
+<!--<button onclick="resetBackground()">Сбросить фон на стандартный</button>-->
 
-<button onclick="changeBackgroundImage('theme_2.png')">Сменить фон на theme_2.png</button>
-<button onclick="changeBackgroundImage('theme_3.png')">Сменить фон на theme_3.png</button>
-<button onclick="changeBackgroundImage('theme_4.png')">Сменить фон на theme_4.png</button>
-<button onclick="changeBackgroundImage('theme_5.png')">Сменить фон на theme_5.png</button>
-<button onclick="changeBackgroundImage('theme_6.png')">Сменить фон на theme_6.png</button>
+
+<div class="menu_3">
+        <div class="menu-item_3" onclick="changeBackgroundImage('brawl_stars_lobby.png')">
+            <img src="/static/images/brawl_stars_lobby.png" alt="Обычные" class="menu-icon_3">
+            Стандартный
+        </div>
+        <div class="menu-item_3" onclick="changeBackgroundImage('theme_2.png')">
+            <img src="/static/images/theme_2.png" alt="Редкие" class="menu-icon_3">
+            Редкий
+        </div>
+        <div class="menu-item_3" onclick="changeBackgroundImage('theme_3.png')">
+            <img src="/static/images/theme_3.png" alt="Премиум" class="menu-icon_3">
+            Премиум
+        </div>
+         <div class="menu-item_3" onclick="changeBackgroundImage('theme_4.png')">
+            <img src="/static/images/theme_4.png" alt="Премиум" class="menu-icon_3">
+            Премиум
+        </div>
+        <div class="menu-item_3" onclick="changeBackgroundImage('theme_5.png')">
+            <img src="/static/images/theme_5.png" alt="Премиум" class="menu-icon_3">
+            Премиум
+        </div>
+    </div>
+
+<div class="menu_4">
+        <div class="menu-item_4" onclick="changeBackgroundImage('theme_6.png')">
+            <img src="/static/images/theme_6.png" alt="Обычные" class="menu-icon_4">
+            Эксклюзив
+        </div>
+        <div class="menu-item_4" onclick="changeBackgroundImage('theme_7.png')">
+            <img src="/static/images/theme_7.png" alt="Редкие" class="menu-icon_4">
+            Эксклюзив
+        </div>
+        <div class="menu-item_4" onclick="changeBackgroundImage('theme_8.png')">
+            <img src="/static/images/theme_8.png" alt="Премиум" class="menu-icon_4">
+            Эксклюзив
+        </div>
+         <div class="menu-item_4" onclick="changeBackgroundImage('theme_9.png')">
+            <img src="/static/images/theme_9.png" alt="Премиум" class="menu-icon_4">
+            Эксклюзив
+        </div>
+        <div class="menu-item_4" onclick="changeBackgroundImage('theme_10.png')">
+            <img src="/static/images/theme_10.png" alt="Премиум" class="menu-icon_4">
+            Эксклюзив
+        </div>
+    </div>
 
 
-<button onclick="changeBackgroundImage('theme_10.png')">Сменить фон на theme_10.png</button>
-<button onclick="changeBackgroundImage('theme_11.png')">Сменить фон на theme_11.png</button>
-<button onclick="changeBackgroundImage('theme_12.png')">Сменить фон на theme_12.png</button>
-<button onclick="resetBackground()">Сбросить фон на стандартный</button>
 
     <script src="{{ url_for('static', filename='script_theme.js') }}"></script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>

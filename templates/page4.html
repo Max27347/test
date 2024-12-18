@@ -6,10 +6,31 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-<p class="text_2">Выполняй квесты, получай награды</p>
 
-
+<div class="content-container">
+    <div class="quests_text">
+        <h1>Игровые задачи</h1>
     </div>
+    <div class="image-container">
+        <img src="/static/images/brawl_stars_lobby.png" alt="Brawl Stars Lobby">
+        <div class="overlay-text">Выиграй Босса<br> Второе задание </div>
+        <!-- Текст поверх изображения -->
+    </div>
+
+<div class="content-container_2">
+    <div class="quests_text_2">
+        <h1>Общие задачи</h1>
+    </div>
+    <div class="image-container_2">
+        <img src="/static/images/brawl_stars_lobby.png" alt="Brawl Stars Lobby_2">
+        <div class="overlay-text_2">Подпишись на наш телеграмм<br> Подпишись на наш ютуб </div>
+        <!-- Текст поверх изображения -->
+    </div>
+
+<!--<div class="container_p4">-->
+<!--    <a href="/boss1" class="item">-->
+<!--        <img src="/static/images/button_menu.png" alt="Image 1" width="100" class="image">-->
+<!--    </a>-->
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
   <script src="{{ url_for('static', filename='script_theme.js') }}"></script>

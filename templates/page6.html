@@ -2,35 +2,46 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Кликер Бравл Старс</title>
+    <title>Скины</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<div class="container">
+<div class="menu_p3">
     <a href="/page3" class="item">
-        <img src="/static/images/button_menu.png" alt="Image 1" class="image">
+        <img src="/static/images/button_menu.png" width="100" alt="Image 1" class="image">
     </a>
     <a href="/page6" class="item">
-        <img src="/static/images/button_menu_2.png" alt="Image 2" class="image">
+        <img src="/static/images/button_menu_2.png" width="100" alt="Image 2" class="image">
     </a>
     <a href="/page7" class="item">
-        <img src="/static/images/button_menu_3.png" alt="Image 3" class="image">
+        <img src="/static/images/button_menu_3.png" width="100" alt="Image 3" class="image">
     </a>
 </div>
 
 
-<p class="page3_text_2">Здесь ты можешь купить себе <br>
-    новый скин который даст </br>
-    тебе дополнительный бонус!<br></p>
 
-<div class="colt_gide">
-    <img src="/static/images/colt_5.png" width="200">
-</div>
-<div class="dialog">
-    <img src="/static/images/dialog.png" width="120">
+<div class="menu_2">
+        <div class="menu_2-item">Обычные</div>
+        <div class="menu_2-item">Редкие</div>
+        <div class="menu_2-item">Премиум</div>
+    </div>
+
+<div class="image-container">
+<img id="mainImage" src="/static/images/shelly_3.png" alt="Main Image">
 </div>
 
+    <div class="fixed-window">
+        <img src="/static/images/shelly_av.png" alt="Icon Left" class="icon_nita left-icon" onclick="changeImage('/static/images/shelly_3.png')">
+        <img src="/static/images/colt_av.png" alt="Icon Left" class="icon_nita left-icon" onclick="changeImage('/static/images/colt.png')">
+        <img src="/static/images/dyno_av.png" alt="Icon Center" class="icon_nita center-icon" onclick="changeImage('/static/images/dyno.png')">
+        <img src="/static/images/piper_av.png" alt="Icon Right" class="icon_nita right-icon" onclick="changeImage('/static/images/piper.png')">
+        <img src="/static/images/edgar_av.png" alt="Icon Right" class="icon_nita right-icon" onclick="changeImage('/static/images/edgar.png')">
+        <img src="/static/images/crow_av.png" alt="Icon Right" class="icon_nita right-icon" onclick="changeImage('/static/images/crow.png')">
+        <img src="/static/images/spike_av.png" alt="Icon Right" class="icon_nita right-icon" onclick="changeImage('/static/images/spike.png')">
+        <img src="/static/images/leon_av.png" alt="Icon Right" class="icon_nita right-icon" onclick="changeImage('/static/images/leon.png')">
+        <img src="/static/images/kit_av.png" alt="Icon Right" class="icon_nita right-icon" onclick="changeImage('/static/images/kit.png')">
+    </div>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
   <script src="{{ url_for('static', filename='script_theme.js') }}"></script>

@@ -20,3 +20,4 @@
                 document.body.style.backgroundImage = `url('${savedImage}')`; // Устанавливаем сохраненное изображение
             }
         };
+
