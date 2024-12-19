@@ -46,6 +46,14 @@ def page7():
 def page8():
     return render_template('page8.html')
 
+@app.route('/page9')
+def page9():
+    return render_template('page9.html')
+
+@app.route('/page10')
+def page10():
+    return render_template('page10.html')
+
 @app.route('/boss1')
 def boss1():
     return render_template('boss1.html')

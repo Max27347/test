@@ -555,47 +555,53 @@ text-align: center; /* Центрирование изображения */
 }
 
 
-.fixed-window {
-    position: fixed;
-    bottom: 200px; /* Позиция внизу экрана, поднято на 20 пикселей */
-    left: 50%; /* Центрирование по горизонтали */
-    transform: translateX(-50%); /* Центрирование по горизонтали */
-    background-color: #3E5F8A; /* Темно-синий цвет */
-    color: white; /* Цвет текста */
-    padding: 20px; /* Отступы внутри окна */
-    border-radius: 10px; /* Закругленные углы */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Тень для эффекта поднятости */
-    width: 300px; /* Ширина окна */
-    height: 300px; /* Высота окна */
-}
-
-.left-icon {
-    align-self: flex-start; /* Выравнивание по левому краю */
-}
-
-.center-icon {
-    align-self: center; /* Центрирование по горизонтали */
-}
-
-.right-icon {
-    align-self: flex-end; /* Выравнивание по правому краю */
-}
-
-.icon_nita {
-    width: 85px; /* Ширина иконок (можете изменить) */
-    height: auto; /* Автоматическая высота для сохранения пропорций */
-    margin: 5px; /* Отступы между иконками */
-}весты */
-.header {
-    text-align: center; /* Центрирование текста */
-    margin-top: 20px; /* Отступ сверху */
-}
-
 /* Страница квесты */
 .content-container {
             position: relative; /* Для абсолютного позиционирования текста */
             text-align: center; /* Центрируем содержимое по горизонтали */
-            margin-top: 50px; /* Отступ сверху для смещения содержимого вниз */
+            margin-top: 70px; /* Отступ сверху для смещения содержимого вниз */
+        }
+
+        .quests_text {
+            margin-top: 20px; /* Отступ сверху для смещения текста вниз */
+        }
+
+        .quests_text h1 {
+            color: white; /* Устанавливаем цвет текста белым */
+            font-size: 2em; /* Размер шрифта (можете изменить по желанию) */
+        }
+.content-container_2 {
+            position: relative; /* Для абсолютного позиционирования текста */
+            text-align: center; /* Центрируем содержимое по горизонтали */
+            margin-top: 170px; /* Отступ сверху для смещения содержимого вниз */
+        }
+
+        .quests_text {
+            margin-top: 20px; /* Отступ сверху для смещения текста вниз */
+        }
+
+        .quests_text h1 {
+            color: white; /* Устанавливаем цвет текста белым */
+            font-size: 2em; /* Размер шрифта (можете изменить по желанию) */
+        }
+.content-container_3 {
+            position: relative; /* Для абсолютного позиционирования текста */
+            text-align: center; /* Центрируем содержимое по горизонтали */
+            margin-top: 150px; /* Отступ сверху для смещения содержимого вниз */
+        }
+
+        .quests_text {
+            margin-top: 20px; /* Отступ сверху для смещения текста вниз */
+        }
+
+        .quests_text h1 {
+            color: white; /* Устанавливаем цвет текста белым */
+            font-size: 2em; /* Размер шрифта (можете изменить по желанию) */
+        }
+.content-container_4 {
+            position: relative; /* Для абсолютного позиционирования текста */
+            text-align: center; /* Центрируем содержимое по горизонтали */
+            margin-top: 150px; /* Отступ сверху для смещения содержимого вниз */
         }
 
         .quests_text {
@@ -607,86 +613,379 @@ text-align: center; /* Центрирование изображения */
             font-size: 2em; /* Размер шрифта (можете изменить по желанию) */
         }
 
-        .image-container {
-            margin-top: 20px; /* Отступ сверху для изображения */
-        }
 
-        .image-container img {
-            width: 100%; /* Автоматическая ширина для адаптивности (можно изменить) */
-            max-width: 600px; /* Максимальная ширина изображения */
-            height: auto; /* Автоматическая высота для сохранения пропорций */
-        }
+.card {
+    display: flex; /* Горизонтальное расположение элементов */
+    align-items: center; /* Вертикальное выравнивание */
+    background-color: #2F3E64; /* Цвет фона */
+    border-radius: 10px; /* Скругленные углы */
+    padding: 10px 20px; /* Внутренние отступы */
+    width: 100%; /* Ширина блока */
+    max-width: 600px; /* Максимальная ширина */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Тень для блока */
+    color: white; /* Цвет текста */
+    font-family: Arial, sans-serif; /* Шрифт */
+    position: fixed; /* Фиксированное положение относительно окна */
+    top: 150px; /* Расположено сверху на 20px от края окна */
+    left: 50%; /* Расположено в центре по горизонтали */
+    transform: translateX(-50%); /* Сдвиг на 50% ширины элемента для центрирования */
+}
 
-        .overlay-text {
-            position: absolute; /* Абсолютное позиционирование текста */
-            top: 20%; /* Центрируем по вертикали */
-            left: 50%; /* Центрируем по горизонтали */
-            transform: translate(-50%, -50%); /* Сдвигаем текст на половину его ширины и высоты для центрирования */
-            color: white; /* Цвет текста белый */
-            font-size: 2em; /* Размер шрифта (можете изменить) */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Тень для улучшения читаемости текста на изображении */
-        }
-.content-container_2 {
-            position: relative; /* Для абсолютного позиционирования текста */
-            text-align: center; /* Центрируем содержимое по горизонтали */
-            margin-top: 150px; /* Отступ сверху для смещения содержимого вниз */
-        }
+.card-logo {
+    width: 50px; /* Размер логотипа */
+    height: 50px;
+    border-radius: 50%; /* Скругление для логотипа */
+    margin-right: 20px; /* Отступ справа */
+}
 
-        .quests_text_2 {
-            margin-top: 20px; /* Отступ сверху для смещения текста вниз */
-        }
+.card-content {
+    flex: 1; /* Заполнение оставшегося пространства */
+    display: flex;
+    flex-direction: column;
+}
 
-        .quests_text_2 h1 {
-            color: white; /* Устанавливаем цвет текста белым */
-            font-size: 2em; /* Размер шрифта (можете изменить по желанию) */
-        }
+.card-title {
+    font-size: 18px; /* Размер заголовка */
+    font-weight: bold;
+}
 
-        .image-container_2 {
-            margin-top: 20px; /* Отступ сверху для изображения */
-        }
+.card-amount {
+    display: flex; /* Горизонтальное расположение суммы и иконки */
+    align-items: center; /* Вертикальное выравнивание */
+    margin-top: 5px; /* Отступ сверху */
+    font-size: 16px; /* Размер текста суммы */
+    font-weight: bold;
+}
 
-        .image-container_2 img {
-            width: 100%; /* Автоматическая ширина для адаптивности (можно изменить) */
-            max-width: 600px; /* Максимальная ширина изображения */
-            height: auto; /* Автоматическая высота для сохранения пропорций */
-        }
+.coin-icon {
+    width: 20px; /* Размер иконки монеты */
+    height: 20px;
+    margin-right: 8px; /* Отступ справа от текста */
+}
 
-        .overlay-text_2 {
-            position: absolute; /* Абсолютное позиционирование текста */
-            top: 50%; /* Центрируем по вертикали */
-            left: 50%; /* Центрируем по горизонтали */
-            transform: translate(-50%, -50%); /* Сдвигаем текст на половину его ширины и высоты для центрирования */
-            color: white; /* Цвет текста белый */
-            font-size: 2em; /* Размер шрифта (можете изменить) */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Тень для улучшения читаемости текста на изображении */
-        }
+.card-arrow {
+    font-size: 24px; /* Размер стрелки */
+    font-weight: bold;
+    color: white; /* Цвет стрелки */
+    margin-left: 10px; /* Отступ слева */
+}
+
+.card_2 {
+    display: flex; /* Горизонтальное расположение элементов */
+    align-items: center; /* Вертикальное выравнивание */
+    background-color: #2F3E64; /* Цвет фона */
+    border-radius: 10px; /* Скругленные углы */
+    padding: 10px 20px; /* Внутренние отступы */
+    width: 100%; /* Ширина блока */
+    max-width: 600px; /* Максимальная ширина */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Тень для блока */
+    color: white; /* Цвет текста */
+    font-family: Arial, sans-serif; /* Шрифт */
+    position: fixed; /* Фиксированное положение относительно окна */
+    top: 350px; /* Расположено сверху на 20px от края окна */
+    left: 50%; /* Расположено в центре по горизонтали */
+    transform: translateX(-50%); /* Сдвиг на 50% ширины элемента для центрирования */
+}
+
+.card-logo {
+    width: 50px; /* Размер логотипа */
+    height: 50px;
+    border-radius: 50%; /* Скругление для логотипа */
+    margin-right: 20px; /* Отступ справа */
+}
+
+.card-content {
+    flex: 1; /* Заполнение оставшегося пространства */
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-size: 18px; /* Размер заголовка */
+    font-weight: bold;
+}
+
+.card-amount {
+    display: flex; /* Горизонтальное расположение суммы и иконки */
+    align-items: center; /* Вертикальное выравнивание */
+    margin-top: 5px; /* Отступ сверху */
+    font-size: 16px; /* Размер текста суммы */
+    font-weight: bold;
+}
+
+.coin-icon {
+    width: 20px; /* Размер иконки монеты */
+    height: 20px;
+    margin-right: 8px; /* Отступ справа от текста */
+}
+
+.card-arrow {
+    font-size: 24px; /* Размер стрелки */
+    font-weight: bold;
+    color: white; /* Цвет стрелки */
+    margin-left: 10px; /* Отступ слева */
+}
+
+.card_3 {
+    display: flex; /* Горизонтальное расположение элементов */
+    align-items: center; /* Вертикальное выравнивание */
+    background-color: #2F3E64; /* Цвет фона */
+    border-radius: 10px; /* Скругленные углы */
+    padding: 10px 20px; /* Внутренние отступы */
+    width: 100%; /* Ширина блока */
+    max-width: 600px; /* Максимальная ширина */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Тень для блока */
+    color: white; /* Цвет текста */
+    font-family: Arial, sans-serif; /* Шрифт */
+    position: fixed; /* Фиксированное положение относительно окна */
+    top: 550px; /* Расположено сверху на 20px от края окна */
+    left: 50%; /* Расположено в центре по горизонтали */
+    transform: translateX(-50%); /* Сдвиг на 50% ширины элемента для центрирования */
+}
+
+.card-logo {
+    width: 50px; /* Размер логотипа */
+    height: 50px;
+    border-radius: 50%; /* Скругление для логотипа */
+    margin-right: 20px; /* Отступ справа */
+}
+
+.card-content {
+    flex: 1; /* Заполнение оставшегося пространства */
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-size: 18px; /* Размер заголовка */
+    font-weight: bold;
+}
+
+.card-amount {
+    display: flex; /* Горизонтальное расположение суммы и иконки */
+    align-items: center; /* Вертикальное выравнивание */
+    margin-top: 5px; /* Отступ сверху */
+    font-size: 16px; /* Размер текста суммы */
+    font-weight: bold;
+}
+
+.coin-icon {
+    width: 20px; /* Размер иконки монеты */
+    height: 20px;
+    margin-right: 8px; /* Отступ справа от текста */
+}
+
+.card-arrow {
+    font-size: 24px; /* Размер стрелки */
+    font-weight: bold;
+    color: white; /* Цвет стрелки */
+    margin-left: 10px; /* Отступ слева */
+}
+
+.card_4 {
+    display: flex; /* Горизонтальное расположение элементов */
+    align-items: center; /* Вертикальное выравнивание */
+    background-color: #2F3E64; /* Цвет фона */
+    border-radius: 10px; /* Скругленные углы */
+    padding: 10px 20px; /* Внутренние отступы */
+    width: 100%; /* Ширина блока */
+    max-width: 600px; /* Максимальная ширина */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Тень для блока */
+    color: white; /* Цвет текста */
+    font-family: Arial, sans-serif; /* Шрифт */
+    position: fixed; /* Фиксированное положение относительно окна */
+    top: 750px; /* Расположено сверху на 20px от края окна */
+    left: 50%; /* Расположено в центре по горизонтали */
+    transform: translateX(-50%); /* Сдвиг на 50% ширины элемента для центрирования */
+}
+
+.card-logo {
+    width: 50px; /* Размер логотипа */
+    height: 50px;
+    border-radius: 50%; /* Скругление для логотипа */
+    margin-right: 20px; /* Отступ справа */
+}
+
+.card-content {
+    flex: 1; /* Заполнение оставшегося пространства */
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-size: 18px; /* Размер заголовка */
+    font-weight: bold;
+}
+
+.card-amount {
+    display: flex; /* Горизонтальное расположение суммы и иконки */
+    align-items: center; /* Вертикальное выравнивание */
+    margin-top: 5px; /* Отступ сверху */
+    font-size: 16px; /* Размер текста суммы */
+    font-weight: bold;
+}
+
+.coin-icon {
+    width: 20px; /* Размер иконки монеты */
+    height: 20px;
+    margin-right: 8px; /* Отступ справа от текста */
+}
+
+.card-arrow {
+    font-size: 24px; /* Размер стрелки */
+    font-weight: bold;
+    color: white; /* Цвет стрелки */
+    margin-left: 10px; /* Отступ слева */
+}
+
+.card_5 {
+    display: flex; /* Горизонтальное расположение элементов */
+    align-items: center; /* Вертикальное выравнивание */
+    background-color: #2F3E64; /* Цвет фона */
+    border-radius: 10px; /* Скругленные углы */
+    padding: 10px 20px; /* Внутренние отступы */
+    width: 100%; /* Ширина блока */
+    max-width: 600px; /* Максимальная ширина */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Тень для блока */
+    color: white; /* Цвет текста */
+    font-family: Arial, sans-serif; /* Шрифт */
+    position: fixed; /* Фиксированное положение относительно окна */
+    top: 230px; /* Расположено сверху на 20px от края окна */
+    left: 50%; /* Расположено в центре по горизонтали */
+    transform: translateX(-50%); /* Сдвиг на 50% ширины элемента для центрирования */
+}
+
+.card-logo {
+    width: 50px; /* Размер логотипа */
+    height: 50px;
+    border-radius: 50%; /* Скругление для логотипа */
+    margin-right: 20px; /* Отступ справа */
+}
+
+.card-content {
+    flex: 1; /* Заполнение оставшегося пространства */
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-size: 18px; /* Размер заголовка */
+    font-weight: bold;
+}
+
+.card-amount {
+    display: flex; /* Горизонтальное расположение суммы и иконки */
+    align-items: center; /* Вертикальное выравнивание */
+    margin-top: 5px; /* Отступ сверху */
+    font-size: 16px; /* Размер текста суммы */
+    font-weight: bold;
+}
+
+.coin-icon {
+    width: 20px; /* Размер иконки монеты */
+    height: 20px;
+    margin-right: 8px; /* Отступ справа от текста */
+}
+
+.card-arrow {
+    font-size: 24px; /* Размер стрелки */
+    font-weight: bold;
+    color: white; /* Цвет стрелки */
+    margin-left: 10px; /* Отступ слева */
+}
+
 /* Страница топ */
+
+/* Основной контейнер для таблицы лидеров */
+.leaderboard-container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+    background-color: #1f1f1f;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок страницы */
+.leaderboard-title {
+    color: white;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+/* Кнопки для переключения между табами */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    background-color: #3e3e3e;
+    color: white;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: background-color 0.3s ease;
+}
+
+.tab-button:hover {
+    background-color: #5e5e5e;
+}
+
+.tab-button.active {
+    background-color: #f39c12;
+}
+
+
 /* Страница скины */
+.shelly_p3 {
+    display: flex;
+    justify-content: center;  /* Центрирование по горизонтали */
+    align-items: center;      /* Центрирование по вертикали */
+    width: 100%;              /* Растягиваем контейнер на всю ширину */
+    height: 100%;             /* Растягиваем контейнер на всю высоту родительского элемента */
+    text-align: center;       /* Выравнивание текста по центру (если нужно) */
+}
+
+#mainImage {
+    max-width: 30%;    /* Уменьшаем изображение до 50% от ширины контейнера */
+    max-height: 30%;   /* Ограничиваем максимальную высоту изображения */
+    object-fit: contain;  /* Сохраняем пропорции изображения */
+    position: relative;
+    top: -250px;           /* Поднимаем картинку на 20px вверх */
+}
 
 
 .menu_2 {
     display: flex;
     justify-content: center; /* Центрирование по горизонтали */
-    position: absolute; /* Позволяет позиционировать меню */
-    bottom: 600px; /* Отступ от нижней части экрана */
-    width: 80%; /* Уменьшение ширины до 80% от ширины экрана */
-    max-width: 600px; /* Максимальная ширина меню */
-    height: 50px; /* Установка фиксированной высоты */
+    align-items: center; /* Центрирование по вертикали */
+    position: fixed; /* Позиционирование относительно окна */
+    top: 50%; /* Центр по вертикали */
+    left: 50%; /* Центр по горизонтали */
+    transform: translate(-50%, -50%); /* Сдвиг на 50% от своего размера, чтобы точно центрировать */
+    width: 80%; /* Ширина меню */
+    max-width: 400px; /* Максимальная ширина меню */
+    height: 50px; /* Высота меню */
     padding: 10px; /* Отступы внутри меню */
-    background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный фон (по желанию) */
-    border-radius: 10px; /* Закругленные углы (по желанию) */
+    background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный фон */
+    border-radius: 10px; /* Закругленные углы */
 }
 
 .menu_2-item {
     background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный фон для элементов меню */
     border-radius: 5px; /* Скругление углов */
     padding: 10px 20px; /* Отступы внутри элементов меню */
-    margin: 0 15px; /* Увеличенные отступы между элементами меню */
+    margin: 0 10px; /* Отступы между элементами */
     text-align: center; /* Центрирование текста */
     cursor: pointer; /* Указатель мыши при наведении */
     transition: background-color 0.3s; /* Плавный переход фона при наведении */
 }
-
 .menu_3 {
     display: flex; /* Используем flexbox для горизонтального расположения */
     justify-content: center; /* Центрирование по горизонтали */
@@ -741,6 +1040,43 @@ text-align: center; /* Центрирование изображения */
 
 .menu-item_4:hover {
     background-color: rgba(255, 255, 0, 0.8); /* Изменение фона при наведении */
+}
+
+
+.fixed-window {
+    position: fixed;
+    bottom: 200px; /* Позиция внизу экрана, поднято на 20 пикселей */
+    left: 50%; /* Центрирование по горизонтали */
+    transform: translateX(-50%); /* Центрирование по горизонтали */
+    background-color: #3E5F8A; /* Темно-синий цвет */
+    color: white; /* Цвет текста */
+    padding: 20px; /* Отступы внутри окна */
+    border-radius: 10px; /* Закругленные углы */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Тень для эффекта поднятости */
+    width: 200px; /* Ширина окна */
+    height: 300px; /* Высота окна */
+}
+
+.left-icon {
+    align-self: flex-start; /* Выравнивание по левому краю */
+}
+
+.center-icon {
+    align-self: center; /* Центрирование по горизонтали */
+}
+
+.right-icon {
+    align-self: flex-end; /* Выравнивание по правому краю */
+}
+
+.icon_nita {
+    width: 50px; /* Ширина иконок (можете изменить) */
+    height: auto; /* Автоматическая высота для сохранения пропорций */
+    margin: 5px; /* Отступы между иконками */
+}весты */
+.header {
+    text-align: center; /* Центрирование текста */
+    margin-top: 20px; /* Отступ сверху */
 }
 
 /* Босс1*/
