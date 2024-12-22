@@ -1,3 +1,25 @@
+
+document.addEventListener("DOMContentLoaded", () => {
+  const links = document.querySelectorAll(".nav-button");
+  const currentPath = window.location.pathname;
+
+  // Убираем класс 'active' у всех ссылок
+  links.forEach(link => {
+    link.classList.remove("active");
+  });
+
+  // Применяем класс 'active' только к ссылке, которая соответствует текущему пути
+  links.forEach(link => {
+    const linkPath = link.getAttribute("href");
+
+    // Проверяем, если текущий путь точно совпадает с путем ссылки или если ссылка - это главная
+    if (currentPath === linkPath || (currentPath === "/" && linkPath === "/")) {
+      link.classList.add("active");
+    }
+  });
+});
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const clickButton = document.getElementById('clickButton');
     const currentScore = document.getElementById('currentScore');
@@ -48,6 +70,7 @@ document.addEventListener('click', (event) => {
     }
 });
 
+
 let autoClickInterval;
 
         // Функция для показа кнопки автокликера
@@ -78,6 +101,8 @@ let autoClickInterval;
             const mainImage = document.getElementById('mainImage');
             mainImage.src = imagePath; // Изменяем путь к изображению на переданный
 }
+
+
 
 
 

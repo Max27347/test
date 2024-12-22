@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     display: flex;
-    height: 90vh;
+    height: 95vh;
     flex-direction: column;
     background-image: url("/static/images/brawl_stars_lobby.png"); /* Укажите путь к вашему изображению */
     background-size: cover; /* Растянуть изображение на весь контейнер */
@@ -32,12 +32,13 @@ body {
 }
 
 /* Стили для активного пункта меню */
-.nav-button.active {
-    background-color: #ffd700; /* Золотистый фон для активного пункта */
-    color: #3E5F8A; /* Темно-синий текст */
-    border-radius: 10px; /* Скругление углов */
-    padding: 5px 0;
+/* Добавьте этот CSS-код в ваш файл стилей */
+
+.navigation .nav-button.active {
+    background-color: #ffd700; /* Цвет фона для активного пункта */
+    color: black; /* Цвет текста (по желанию) */
 }
+
 
 /* Стили для фигур и изображений */
 .nav-button figure {
@@ -73,21 +74,43 @@ body {
 
 #clickButton:active {
     transform: scale(1.1); /* Увеличиваем размер картинки на 10% */
+    .nav-button.active {
+    background-color: yellow; /* Цвет фона для активного пункта */
+    color: black; /* Цвет текста для контраста */
+}
+}
+
+@font-face {
+    font-family: 'Pusia-bold';
+    src: url('/static/fonts/pusia-bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 #score {
     position: fixed;
-    top: 80px;
+    top: 70px;
     left: 185px;
-
     width: 40px;
     height: 40px;
-    top: 70px;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Pusia-bold', sans-serif; /* Шрифт */
     font-size: 22px; /* Размер шрифта */
     color: white; /* Цвет текста */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 }
 
+
+#nick {
+    position: fixed;
+    top: 55px;
+    left: 10px;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    font-family: 'Pusia-bold', sans-serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
+
+}
 
 .icon-container {
     position: fixed;
@@ -111,17 +134,6 @@ body {
     top: -20px;
     left: 17px;
 
-
-}
-
-#nick {
-    position: fixed;
-    top: 55px;
-    left: 10px;
-    font-size: 20px;
-    color: white;
-    font-weight: bold;
-    font-family: 'Arial', sans-serif;
 
 }
 
@@ -177,7 +189,7 @@ progress {
     position: fixed;
     bottom: 87px;
     left: 20px;
-    width: 90%;
+    width: 10%;
     height: 15px;
     border: none;
     background-color: #f3f3f3;

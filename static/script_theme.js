@@ -36,3 +36,4 @@ document.getElementById('premium-button').addEventListener('click', function() {
             // Переход на страницу page10
             window.location.href = '/page10';  // Указываем путь к странице
         });
+
