@@ -21,19 +21,10 @@
             }
         };
 
-document.getElementById('common-button').addEventListener('click', function() {
-            // Переход на страницу page6
-            window.location.href = '/page6';  // Указываем путь к странице
-        });
 
-// Обработчик клика для кнопки "Редкие"
-document.getElementById('rare-button').addEventListener('click', function() {
-    // Переход на страницу page9
-            window.location.href = '/page9';  // Указываем путь к странице
-        });
 
-document.getElementById('premium-button').addEventListener('click', function() {
-            // Переход на страницу page10
-            window.location.href = '/page10';  // Указываем путь к странице
-        });
+
+
+
+
 

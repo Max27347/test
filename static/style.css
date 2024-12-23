@@ -20,6 +20,8 @@ body {
     padding: 10px 0; /* Внутренние отступы сверху и снизу */
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Тень над меню */
     z-index: 1000; /* Поверх остальных элементов */
+    font-family: 'Pusia-bold', sans-serif; /* Шрифт */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 }
 
 /* Стили для кнопок меню */
@@ -32,11 +34,8 @@ body {
 }
 
 /* Стили для активного пункта меню */
-/* Добавьте этот CSS-код в ваш файл стилей */
-
 .navigation .nav-button.active {
     background-color: #ffd700; /* Цвет фона для активного пункта */
-    color: black; /* Цвет текста (по желанию) */
 }
 
 
@@ -67,17 +66,14 @@ body {
 
 #clickButton {
     position: absolute;
-    bottom: 110px;
+    bottom: 110px; /* Расположение от нижней грани */
+    left: 50%; /* Устанавливаем левую границу на 50% ширины родительского элемента */
+    transform: translateX(-50%); /* Сдвигаем элемент влево на 50% его ширины для центрирования */
     transition: transform 0.5s ease; /* Плавный переход для трансформации */
-    margin-left: -20px; /* Сдвигаем изображение влево на 20 пикселей */
 }
 
 #clickButton:active {
-    transform: scale(1.1); /* Увеличиваем размер картинки на 10% */
-    .nav-button.active {
-    background-color: yellow; /* Цвет фона для активного пункта */
-    color: black; /* Цвет текста для контраста */
-}
+    transform: scale(1.1) translateX(-50%); /* Увеличиваем размер картинки на 10% и сохраняем центрирование */
 }
 
 @font-face {
@@ -89,7 +85,7 @@ body {
 
 #score {
     position: fixed;
-    top: 70px;
+    top: 60px;
     left: 185px;
     width: 40px;
     height: 40px;
@@ -114,8 +110,8 @@ body {
 
 .icon-container {
     position: fixed;
-    top: -8px;
-    left: 5px;
+    top: 10px;
+    left: 10px;
     width: 40px;
     height: 40px;
 
@@ -129,12 +125,34 @@ body {
     height: 40px;
 }
 
-.figure img {
-    position: fixed;
-    top: -20px;
-    left: 17px;
+.image-container {
+    display: flex;
+    flex-direction: row; /* Расположение элементов в строку */
+    justify-content: center; /* Центрирование по горизонтали */
+    align-items: flex-start; /* Выравнивание по верхнему краю */
+    margin-top: 20px; /* Отступ сверху для отступа от верхнего края экрана */
+    position: absolute; /* Позволяет позиционировать элемент относительно окна */
+    top: 0; /* Прижимаем к верхнему краю */
+    left: 50%; /* Сдвигаем влево на 50% ширины окна */
+    transform: translateX(-50%); /* Центрируем по горизонтали */
+}
 
+.image-item {
+    display: flex;
+    align-items: center; /* Выравнивание текста и изображения по центру */
+    margin-right: 10px; /* Отступ между элементами */
+}
 
+.image-text {
+    margin-right: 10px; /* Отступ между текстом и картинкой */
+    color: white;
+    font-family: 'Pusia-bold', sans-serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
+}
+
+.image-container img {
+    width: 50px; /* Ширина картинки */
+    height: 50px; /* Высота картинки */
 }
 
 .dropdown {
@@ -387,69 +405,120 @@ progress::-webkit-progress-value {
     font-size: 18px;
     color: #333;
 }
-
-.center-container {
-            display: flex;
-            flex-direction: column; /* Вертикальное расположение элементов */
-            justify-content: center; /* Центрирование по вертикали */
-            align-items: center; /* Центрирование по горизонтали */
-            height: 100vh; /* Высота вьюпорта для центрирования */
-            margin: 0; /* Убираем отступы */
-        }
         #gift {
             width: 50px; /* Уменьшаем размер значка */
             cursor: pointer; /* Курсор при наведении */
             position: relative; /* Относительное позиционирование */
             right: 160px; /* Сдвиг изображения влево */
         }
-        #autoClickerButton {
-            display: none; /* Скрываем кнопку по умолчанию */
-            padding: 10px 20px; /* Отступы внутри кнопки */
-            font-size: 14px; /* Размер шрифта */
-            color: white; /* Цвет текста */
-            background-color: #4CAF50; /* Цвет фона кнопки */
-            border: none; /* Убираем рамку */
-            border-radius: 5px; /* Закругленные углы */
-            cursor: pointer; /* Курсор при наведении */
-            transition: background-color 0.3s; /* Плавный переход цвета фона */
-            width: auto; /* Ширина кнопки автоматически подстраивается под содержимое */
-            min-width: 120px; /* Минимальная ширина кнопки для компактности */
-            margin-left: -250px;
-        }
-        #autoClickerButton:hover {
-            background-color: #45a049; /* Цвет фона при наведении */
-        }
+
+#autoClickerButton {
+    display: none; /* Скрываем кнопку по умолчанию */
+    padding: 10px 20px; /* Отступы внутри кнопки */
+    font-size: 14px; /* Размер шрифта */
+    color: white; /* Цвет текста */
+    background-color: #4CAF50; /* Цвет фона кнопки */
+    border: none; /* Убираем рамку */
+    border-radius: 5px; /* Закругленные углы */
+    cursor: pointer; /* Курсор при наведении */
+    transition: background-color 0.3s; /* Плавный переход цвета фона */
+    width: auto; /* Ширина кнопки автоматически подстраивается под содержимое */
+    min-width: 120px; /* Минимальная ширина кнопки для компактности */
+}
+
+#autoClickerButton:hover {
+    background-color: #45a049; /* Цвет фона при наведении */
+}
 
 /* Страница Друзья */
 
 .friends_6 {
-    padding-top: 20px; /* Сместить содержимое вниз на 20 пикселей */
-    text-align: center; /* Центрирование изображения */
+    padding-top: 40px; /* Сместить содержимое вниз на 20 пикселей */
+    text-align: center; /* Центрирование текста */
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
+    font-family: 'Pusia-bold', sans-serif; /* Шрифт */
 }
+
+.friends_6 h1 {
+    font-size: 30px; /* Размер шрифта для заголовка (больше, чем основной текст) */
+    margin: 0; /* Убираем отступы по умолчанию */
+}
+
+.friends_6 p {
+    font-size: 20px; /* Размер шрифта для обычного текста */
+}
+
 .friends_3 {
     padding-top: 20px; /* Сместить содержимое вниз на 20 пикселей */
     text-align: center; /* Центрирование изображения */
 }
 
 .friends_4 {
-padding-top: 20px; /* Сместить содержимое вниз на 20 пикселей */
+font-size: 30px; /* Размер шрифта для заголовка (больше, чем основной текст) */
+padding-top: 0px; /* Сместить содержимое вниз на 20 пикселей */
 text-align: center; /* Центрирование изображения */
+color: white;
+font-family: 'Pusia-bold', sans-serif; /* Шрифт */
+text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 }
+
 
 .friends_5 {
-padding-top: 20px; /* Сместить содержимое вниз на 20 пикселей */
+padding-top: 10px; /* Сместить содержимое вниз на 20 пикселей */
 text-align: center; /* Центрирование изображения */
 }
 
+.friend-list {
+      margin: 0px auto;
+      width: 300px; /* Ограничиваем ширину контейнера */
+    }
 
+    .friend-card {
+      display: flex;
+      align-items: center;
+      background-color: #3E5F8A;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      width: 100%; /* Карточка адаптируется под контейнер */
+      margin-left: auto;
+      margin-right: auto; /* Центрирование карточки */
+    }
+
+    .friend-card img {
+      width: 30px; /* Увеличиваем размер изображения */
+      height: 30px;
+      border-radius: 10px;
+      margin-right: 20px;
+    }
+
+    .friend-info {
+      font-size: 20px; /* Делаем текст больше */
+      font-weight: bold;
+      color: white;
+      text-align: left;
+      font-family: 'Pusia-bold', sans-serif; /* Шрифт */
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
+    }
 /* Страница Магазин */
+
+body {
+    margin: 0; /* Убираем отступы по умолчанию */
+}
 
 .box_1 {
     position: fixed; /* Фиксированное позиционирование */
     top: 50px; /* Расположение по вертикали */
     left: 20px; /* Расположение по горизонтали */
     z-index: 1000; /* Уровень наложения */
+    background-image: url('/static/images/theme_11.png'); /* Фоновое изображение */
+    background-size: cover; /* Масштабирование фона, чтобы он заполнил контейнер */
+    padding: 10px; /* Отступ внутри контейнера для текста и изображения */
+    border-radius: 8px; /* Скругление углов (по желанию) */
 }
+
 .box1 {
     float: left; /* Изображение будет слева */
     margin-right: 10px; /* Отступ между изображением и текстом */
@@ -458,8 +527,8 @@ text-align: center; /* Центрирование изображения */
 .text_box1 {
     display: inline-block; /* Позволяет тексту выравниваться рядом с изображением */
     vertical-align: middle; /* Вертикальное выравнивание текста по центру */
-    font-size: 24px; /* Установите желаемый размер шрифта */
-    font-weight: bold; /* Сделать текст жирным (по желанию) */
+    font-family: 'Pusia-bold', sans-serif; /* Шрифт */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
     color: white; /* Цвет текста (по желанию) */
 }
 
@@ -468,6 +537,8 @@ text-align: center; /* Центрирование изображения */
     font-size: 14px; /* Установите желаемый размер шрифта для маленького текста */
     color: white; /* Цвет текста (по желанию) */
     margin-top: 5px; /* Отступ сверху для разделения от основного текста */
+    font-family: 'Pusia-bold', sans-serif; /* Шрифт */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 }
 
 .box_2 {
@@ -475,32 +546,46 @@ text-align: center; /* Центрирование изображения */
     top: 150px; /* Расположение по вертикали */
     left: 20px; /* Расположение по горизонтали */
     z-index: 1000; /* Уровень наложения */
+    background-image: url('/static/images/theme_3.png'); /* Фоновое изображение */
+    background-size: cover; /* Масштабирование фона, чтобы он заполнил контейнер */
+    padding: 10px; /* Отступ внутри контейнера для текста и изображения */
+    border-radius: 8px; /* Скругление углов (по желанию) */
 }
+
 .box2 {
     float: left; /* Изображение будет слева */
     margin-right: 10px; /* Отступ между изображением и текстом */
 }
+
 .text_box2 {
     display: inline-block; /* Позволяет тексту выравниваться рядом с изображением */
     vertical-align: middle; /* Вертикальное выравнивание текста по центру */
-    font-size: 24px; /* Установите желаемый размер шрифта */
-    font-weight: bold; /* Сделать текст жирным (по желанию) */
+    font-family: 'Pusia-bold', sans-serif; /* Шрифт */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
     color: white; /* Цвет текста (по желанию) */
 }
+
 .text_box22 {
     display: block; /* Отображение в блоке, чтобы текст был на новой строке */
     font-size: 14px; /* Установите желаемый размер шрифта для маленького текста */
     color: white; /* Цвет текста (по желанию) */
     margin-top: 5px; /* Отступ сверху для разделения от основного текста */
+    font-family: 'Pusia-bold', sans-serif; /* Шрифт */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 }
+
 
 .box_3 {
     position: fixed; /* Фиксированное позиционирование */
     top: 250px; /* Расположение по вертикали */
     left: 20px; /* Расположение по горизонтали */
     z-index: 1000; /* Уровень наложения */
-
+    background-image: url('/static/images/theme_5.png'); /* Фоновое изображение */
+    background-size: cover; /* Масштабирование фона, чтобы он заполнил контейнер */
+    padding: 10px; /* Отступ внутри контейнера для текста и изображения */
+    border-radius: 8px; /* Скругление углов (по желанию) */
 }
+
 .box3 {
     float: left; /* Изображение будет слева */
     margin-right: 10px; /* Отступ между изображением и текстом */
@@ -509,39 +594,52 @@ text-align: center; /* Центрирование изображения */
 .text_box3 {
     display: inline-block; /* Позволяет тексту выравниваться рядом с изображением */
     vertical-align: middle; /* Вертикальное выравнивание текста по центру */
-    font-size: 24px; /* Установите желаемый размер шрифта */
-    font-weight: bold; /* Сделать текст жирным (по желанию) */
+    font-family: 'Pusia-bold', sans-serif; /* Шрифт */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
     color: white; /* Цвет текста (по желанию) */
 }
+
 .text_box33 {
     display: block; /* Отображение в блоке, чтобы текст был на новой строке */
     font-size: 14px; /* Установите желаемый размер шрифта для маленького текста */
     color: white; /* Цвет текста (по желанию) */
     margin-top: 5px; /* Отступ сверху для разделения от основного текста */
+    font-family: 'Pusia-bold', sans-serif; /* Шрифт */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 }
+
 
 .box_4 {
     position: fixed; /* Фиксированное позиционирование */
     top: 350px; /* Расположение по вертикали */
     left: 20px; /* Расположение по горизонтали */
     z-index: 1000; /* Уровень наложения */
+    background-image: url('/static/images/theme_6.png'); /* Фоновое изображение */
+    background-size: cover; /* Масштабирование фона, чтобы он заполнил контейнер */
+    padding: 10px; /* Отступ внутри контейнера для текста и изображения */
+    border-radius: 8px; /* Скругление углов (по желанию) */
 }
+
 .box4 {
     float: left; /* Изображение будет слева */
     margin-right: 10px; /* Отступ между изображением и текстом */
 }
+
 .text_box4 {
     display: inline-block; /* Позволяет тексту выравниваться рядом с изображением */
     vertical-align: middle; /* Вертикальное выравнивание текста по центру */
-    font-size: 24px; /* Установите желаемый размер шрифта */
-    font-weight: bold; /* Сделать текст жирным (по желанию) */
+    font-family: 'Pusia-bold', sans-serif; /* Шрифт */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
     color: white; /* Цвет текста (по желанию) */
 }
+
 .text_box44 {
     display: block; /* Отображение в блоке, чтобы текст был на новой строке */
     font-size: 14px; /* Установите желаемый размер шрифта для маленького текста */
     color: white; /* Цвет текста (по желанию) */
     margin-top: 5px; /* Отступ сверху для разделения от основного текста */
+    font-family: 'Pusia-bold', sans-serif; /* Шрифт */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 }
 
 
@@ -568,63 +666,6 @@ text-align: center; /* Центрирование изображения */
 
 
 /* Страница квесты */
-.content-container {
-            position: relative; /* Для абсолютного позиционирования текста */
-            text-align: center; /* Центрируем содержимое по горизонтали */
-            margin-top: 70px; /* Отступ сверху для смещения содержимого вниз */
-        }
-
-        .quests_text {
-            margin-top: 20px; /* Отступ сверху для смещения текста вниз */
-        }
-
-        .quests_text h1 {
-            color: white; /* Устанавливаем цвет текста белым */
-            font-size: 2em; /* Размер шрифта (можете изменить по желанию) */
-        }
-.content-container_2 {
-            position: relative; /* Для абсолютного позиционирования текста */
-            text-align: center; /* Центрируем содержимое по горизонтали */
-            margin-top: 170px; /* Отступ сверху для смещения содержимого вниз */
-        }
-
-        .quests_text {
-            margin-top: 20px; /* Отступ сверху для смещения текста вниз */
-        }
-
-        .quests_text h1 {
-            color: white; /* Устанавливаем цвет текста белым */
-            font-size: 2em; /* Размер шрифта (можете изменить по желанию) */
-        }
-.content-container_3 {
-            position: relative; /* Для абсолютного позиционирования текста */
-            text-align: center; /* Центрируем содержимое по горизонтали */
-            margin-top: 150px; /* Отступ сверху для смещения содержимого вниз */
-        }
-
-        .quests_text {
-            margin-top: 20px; /* Отступ сверху для смещения текста вниз */
-        }
-
-        .quests_text h1 {
-            color: white; /* Устанавливаем цвет текста белым */
-            font-size: 2em; /* Размер шрифта (можете изменить по желанию) */
-        }
-.content-container_4 {
-            position: relative; /* Для абсолютного позиционирования текста */
-            text-align: center; /* Центрируем содержимое по горизонтали */
-            margin-top: 150px; /* Отступ сверху для смещения содержимого вниз */
-        }
-
-        .quests_text {
-            margin-top: 20px; /* Отступ сверху для смещения текста вниз */
-        }
-
-        .quests_text h1 {
-            color: white; /* Устанавливаем цвет текста белым */
-            font-size: 2em; /* Размер шрифта (можете изменить по желанию) */
-        }
-
 
 .card {
     display: flex; /* Горизонтальное расположение элементов */
@@ -637,7 +678,7 @@ text-align: center; /* Центрирование изображения */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Тень для блока */
     color: white; /* Цвет текста */
     font-family: Arial, sans-serif; /* Шрифт */
-    position: fixed; /* Фиксированное положение относительно окна */
+    position: absolute; /* Изменено на абсолютное положение */ /* Фиксированное положение относительно окна */
     top: 150px; /* Расположено сверху на 20px от края окна */
     left: 50%; /* Расположено в центре по горизонтали */
     transform: translateX(-50%); /* Сдвиг на 50% ширины элемента для центрирования */
@@ -681,7 +722,6 @@ text-align: center; /* Центрирование изображения */
     color: white; /* Цвет стрелки */
     margin-left: 10px; /* Отступ слева */
 }
-
 .card_2 {
     display: flex; /* Горизонтальное расположение элементов */
     align-items: center; /* Вертикальное выравнивание */
@@ -693,51 +733,11 @@ text-align: center; /* Центрирование изображения */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Тень для блока */
     color: white; /* Цвет текста */
     font-family: Arial, sans-serif; /* Шрифт */
-    position: fixed; /* Фиксированное положение относительно окна */
-    top: 350px; /* Расположено сверху на 20px от края окна */
+    position: absolute; /* Изменено на абсолютное положение */ /* Фиксированное положение относительно окна */
+    top: 250px; /* Расположено сверху на 20px от края окна */
     left: 50%; /* Расположено в центре по горизонтали */
     transform: translateX(-50%); /* Сдвиг на 50% ширины элемента для центрирования */
 }
-
-.card-logo {
-    width: 50px; /* Размер логотипа */
-    height: 50px;
-    border-radius: 50%; /* Скругление для логотипа */
-    margin-right: 20px; /* Отступ справа */
-}
-
-.card-content {
-    flex: 1; /* Заполнение оставшегося пространства */
-    display: flex;
-    flex-direction: column;
-}
-
-.card-title {
-    font-size: 18px; /* Размер заголовка */
-    font-weight: bold;
-}
-
-.card-amount {
-    display: flex; /* Горизонтальное расположение суммы и иконки */
-    align-items: center; /* Вертикальное выравнивание */
-    margin-top: 5px; /* Отступ сверху */
-    font-size: 16px; /* Размер текста суммы */
-    font-weight: bold;
-}
-
-.coin-icon {
-    width: 20px; /* Размер иконки монеты */
-    height: 20px;
-    margin-right: 8px; /* Отступ справа от текста */
-}
-
-.card-arrow {
-    font-size: 24px; /* Размер стрелки */
-    font-weight: bold;
-    color: white; /* Цвет стрелки */
-    margin-left: 10px; /* Отступ слева */
-}
-
 .card_3 {
     display: flex; /* Горизонтальное расположение элементов */
     align-items: center; /* Вертикальное выравнивание */
@@ -749,49 +749,10 @@ text-align: center; /* Центрирование изображения */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Тень для блока */
     color: white; /* Цвет текста */
     font-family: Arial, sans-serif; /* Шрифт */
-    position: fixed; /* Фиксированное положение относительно окна */
-    top: 550px; /* Расположено сверху на 20px от края окна */
+    position: absolute; /* Изменено на абсолютное положение */ /* Фиксированное положение относительно окна */
+    top: 450px; /* Расположено сверху на 20px от края окна */
     left: 50%; /* Расположено в центре по горизонтали */
     transform: translateX(-50%); /* Сдвиг на 50% ширины элемента для центрирования */
-}
-
-.card-logo {
-    width: 50px; /* Размер логотипа */
-    height: 50px;
-    border-radius: 50%; /* Скругление для логотипа */
-    margin-right: 20px; /* Отступ справа */
-}
-
-.card-content {
-    flex: 1; /* Заполнение оставшегося пространства */
-    display: flex;
-    flex-direction: column;
-}
-
-.card-title {
-    font-size: 18px; /* Размер заголовка */
-    font-weight: bold;
-}
-
-.card-amount {
-    display: flex; /* Горизонтальное расположение суммы и иконки */
-    align-items: center; /* Вертикальное выравнивание */
-    margin-top: 5px; /* Отступ сверху */
-    font-size: 16px; /* Размер текста суммы */
-    font-weight: bold;
-}
-
-.coin-icon {
-    width: 20px; /* Размер иконки монеты */
-    height: 20px;
-    margin-right: 8px; /* Отступ справа от текста */
-}
-
-.card-arrow {
-    font-size: 24px; /* Размер стрелки */
-    font-weight: bold;
-    color: white; /* Цвет стрелки */
-    margin-left: 10px; /* Отступ слева */
 }
 
 .card_4 {
@@ -805,106 +766,49 @@ text-align: center; /* Центрирование изображения */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Тень для блока */
     color: white; /* Цвет текста */
     font-family: Arial, sans-serif; /* Шрифт */
-    position: fixed; /* Фиксированное положение относительно окна */
-    top: 750px; /* Расположено сверху на 20px от края окна */
+    position: absolute; /* Изменено на абсолютное положение */ /* Фиксированное положение относительно окна */
+    top: 550px; /* Расположено сверху на 20px от края окна */
     left: 50%; /* Расположено в центре по горизонтали */
     transform: translateX(-50%); /* Сдвиг на 50% ширины элемента для центрирования */
 }
 
-.card-logo {
-    width: 50px; /* Размер логотипа */
-    height: 50px;
-    border-radius: 50%; /* Скругление для логотипа */
-    margin-right: 20px; /* Отступ справа */
+.quests_text {
+font-size: 30px; /* Размер шрифта для заголовка (больше, чем основной текст) */
+padding-top: 0px; /* Сместить содержимое вниз на 20 пикселей */
+text-align: center; /* Центрирование изображения */
+color: white;
+font-family: 'Pusia-bold', sans-serif; /* Шрифт */
+text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 }
 
-.card-content {
-    flex: 1; /* Заполнение оставшегося пространства */
-    display: flex;
-    flex-direction: column;
+.quests_text_2 {
+font-size: 30px; /* Размер шрифта для заголовка (больше, чем основной текст) */
+padding-top: 230px; /* Сместить содержимое вниз на 20 пикселей */
+text-align: center; /* Центрирование изображения */
+color: white;
+font-family: 'Pusia-bold', sans-serif; /* Шрифт */
+text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 }
 
-.card-title {
-    font-size: 18px; /* Размер заголовка */
-    font-weight: bold;
+.quests_text_3 {
+font-size: 30px; /* Размер шрифта для заголовка (больше, чем основной текст) */
+padding-top: 250px; /* Сместить содержимое вниз на 20 пикселей */
+text-align: center; /* Центрирование изображения */
+color: white;
+font-family: 'Pusia-bold', sans-serif; /* Шрифт */
+text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 }
 
-.card-amount {
-    display: flex; /* Горизонтальное расположение суммы и иконки */
-    align-items: center; /* Вертикальное выравнивание */
-    margin-top: 5px; /* Отступ сверху */
-    font-size: 16px; /* Размер текста суммы */
-    font-weight: bold;
+.quests_text_4 {
+font-size: 30px; /* Размер шрифта для заголовка (больше, чем основной текст) */
+padding-top: 10px; /* Сместить содержимое вниз на 20 пикселей */
+text-align: center; /* Центрирование изображения */
+color: white;
+font-family: 'Pusia-bold', sans-serif; /* Шрифт */
+text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 }
 
-.coin-icon {
-    width: 20px; /* Размер иконки монеты */
-    height: 20px;
-    margin-right: 8px; /* Отступ справа от текста */
-}
 
-.card-arrow {
-    font-size: 24px; /* Размер стрелки */
-    font-weight: bold;
-    color: white; /* Цвет стрелки */
-    margin-left: 10px; /* Отступ слева */
-}
-
-.card_5 {
-    display: flex; /* Горизонтальное расположение элементов */
-    align-items: center; /* Вертикальное выравнивание */
-    background-color: #2F3E64; /* Цвет фона */
-    border-radius: 10px; /* Скругленные углы */
-    padding: 10px 20px; /* Внутренние отступы */
-    width: 100%; /* Ширина блока */
-    max-width: 600px; /* Максимальная ширина */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Тень для блока */
-    color: white; /* Цвет текста */
-    font-family: Arial, sans-serif; /* Шрифт */
-    position: fixed; /* Фиксированное положение относительно окна */
-    top: 230px; /* Расположено сверху на 20px от края окна */
-    left: 50%; /* Расположено в центре по горизонтали */
-    transform: translateX(-50%); /* Сдвиг на 50% ширины элемента для центрирования */
-}
-
-.card-logo {
-    width: 50px; /* Размер логотипа */
-    height: 50px;
-    border-radius: 50%; /* Скругление для логотипа */
-    margin-right: 20px; /* Отступ справа */
-}
-
-.card-content {
-    flex: 1; /* Заполнение оставшегося пространства */
-    display: flex;
-    flex-direction: column;
-}
-
-.card-title {
-    font-size: 18px; /* Размер заголовка */
-    font-weight: bold;
-}
-
-.card-amount {
-    display: flex; /* Горизонтальное расположение суммы и иконки */
-    align-items: center; /* Вертикальное выравнивание */
-    margin-top: 5px; /* Отступ сверху */
-    font-size: 16px; /* Размер текста суммы */
-    font-weight: bold;
-}
-
-.coin-icon {
-    width: 20px; /* Размер иконки монеты */
-    height: 20px;
-    margin-right: 8px; /* Отступ справа от текста */
-}
-
-.card-arrow {
-    font-size: 24px; /* Размер стрелки */
-    font-weight: bold;
-    color: white; /* Цвет стрелки */
-    margin-left: 10px; /* Отступ слева */
-}
 
 /* Страница топ */
 
@@ -955,6 +859,7 @@ text-align: center; /* Центрирование изображения */
 
 
 /* Страница скины */
+
 .shelly_p3 {
     display: flex;
     justify-content: center;  /* Центрирование по горизонтали */
@@ -965,39 +870,52 @@ text-align: center; /* Центрирование изображения */
 }
 
 #mainImage {
-    max-width: 30%;    /* Уменьшаем изображение до 50% от ширины контейнера */
+    max-width: 30%;    /* Уменьшаем изображение до 30% от ширины контейнера */
     max-height: 30%;   /* Ограничиваем максимальную высоту изображения */
     object-fit: contain;  /* Сохраняем пропорции изображения */
     position: relative;
-    top: -250px;           /* Поднимаем картинку на 20px вверх */
+    top: -250px;           /* Поднимаем картинку на 250px вверх */
 }
 
 
-.menu_2 {
-    display: flex;
-    justify-content: center; /* Центрирование по горизонтали */
-    align-items: center; /* Центрирование по вертикали */
-    position: fixed; /* Позиционирование относительно окна */
-    top: 50%; /* Центр по вертикали */
-    left: 50%; /* Центр по горизонтали */
-    transform: translate(-50%, -50%); /* Сдвиг на 50% от своего размера, чтобы точно центрировать */
-    width: 80%; /* Ширина меню */
-    max-width: 400px; /* Максимальная ширина меню */
-    height: 50px; /* Высота меню */
-    padding: 10px; /* Отступы внутри меню */
-    background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный фон */
+.fixed-window {
+    position: fixed;
+    bottom: 300px; /* Позиция внизу экрана, поднято на 20 пикселей */
+    left: 50%; /* Центрирование по горизонтали */
+    transform: translateX(-50%); /* Центрирование по горизонтали */
+    background-color: #3E5F8A; /* Темно-синий цвет */
+    color: white; /* Цвет текста */
+    padding: 20px; /* Отступы внутри окна */
     border-radius: 10px; /* Закругленные углы */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Тень для эффекта поднятости */
+    width: 200px; /* Ширина окна */
+    height: 200px; /* Высота окна */
 }
 
-.menu_2-item {
-    background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный фон для элементов меню */
-    border-radius: 5px; /* Скругление углов */
-    padding: 10px 20px; /* Отступы внутри элементов меню */
-    margin: 0 10px; /* Отступы между элементами */
-    text-align: center; /* Центрирование текста */
-    cursor: pointer; /* Указатель мыши при наведении */
-    transition: background-color 0.3s; /* Плавный переход фона при наведении */
+.left-icon {
+    align-self: flex-start; /* Выравнивание по левому краю */
 }
+
+.center-icon {
+    align-self: center; /* Центрирование по горизонтали */
+}
+
+.right-icon {
+    align-self: flex-end; /* Выравнивание по правому краю */
+}
+
+.icon_nita {
+    width: 50px; /* Ширина иконок (можете изменить) */
+    height: auto; /* Автоматическая высота для сохранения пропорций */
+    margin: 5px; /* Отступы между иконками */
+}
+.header {
+    text-align: center; /* Центрирование текста */
+    margin-top: 20px; /* Отступ сверху */
+}
+
+/* Фоны*/
+
 .menu_3 {
     display: flex; /* Используем flexbox для горизонтального расположения */
     justify-content: center; /* Центрирование по горизонтали */
@@ -1054,42 +972,6 @@ text-align: center; /* Центрирование изображения */
     background-color: rgba(255, 255, 0, 0.8); /* Изменение фона при наведении */
 }
 
-
-.fixed-window {
-    position: fixed;
-    bottom: 200px; /* Позиция внизу экрана, поднято на 20 пикселей */
-    left: 50%; /* Центрирование по горизонтали */
-    transform: translateX(-50%); /* Центрирование по горизонтали */
-    background-color: #3E5F8A; /* Темно-синий цвет */
-    color: white; /* Цвет текста */
-    padding: 20px; /* Отступы внутри окна */
-    border-radius: 10px; /* Закругленные углы */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Тень для эффекта поднятости */
-    width: 200px; /* Ширина окна */
-    height: 300px; /* Высота окна */
-}
-
-.left-icon {
-    align-self: flex-start; /* Выравнивание по левому краю */
-}
-
-.center-icon {
-    align-self: center; /* Центрирование по горизонтали */
-}
-
-.right-icon {
-    align-self: flex-end; /* Выравнивание по правому краю */
-}
-
-.icon_nita {
-    width: 50px; /* Ширина иконок (можете изменить) */
-    height: auto; /* Автоматическая высота для сохранения пропорций */
-    margin: 5px; /* Отступы между иконками */
-}весты */
-.header {
-    text-align: center; /* Центрирование текста */
-    margin-top: 20px; /* Отступ сверху */
-}
 
 /* Босс1*/
 /* Стили для очков и таймера */
