@@ -8,14 +8,30 @@
 <body>
 
 
-<div class="leaderboard-container">
-    <h1 class="leaderboard-title">Топ Игроков</h1>
 
-    <div class="tabs">
-        <button class="tab-button active" id="coins-tab">По Монетам</button>
-        <button class="tab-button" id="club-tab">По Клубам</button>
+<div class="friends_4">
+    <p>Топ игроков</p>
+</div>
+
+<div class="tabs">
+    <button class="tab-button active" id="coins-tab">По Монетам</button>
+    <button onclick="window.location.href='/page8'" class="tab-button" id="club-tab">По Клубам</button>
+</div>
+
+ <div class="friend-list">
+    <div class="friend-card">
+      <img src="/static/images/colt_av.png" alt="Avatar">
+      <div class="friend-info">Ник - монеты</div>
     </div>
-
+    <div class="friend-card">
+      <img src="/static/images/colt_av.png" alt="Avatar">
+      <div class="friend-info">Ник - монеты</div>
+    </div>
+    <div class="friend-card">
+      <img src="/static/images/colt_av.png" alt="Avatar">
+      <div class="friend-info">Ник - монеты</div>
+    </div>
+  </div>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
       <script src="{{ url_for('static', filename='script_theme.js') }}"></script>

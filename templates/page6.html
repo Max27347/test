@@ -21,21 +21,24 @@
 
 
 <div class="shelly_p3">
-    <img id="mainImage" src="/static/images/shelly_3.png" alt="Main Image">
+    <img id="mainImage" src="/static/images/shelly.png" alt="Main Image">
 </div>
 
+<div class="fixed-window">
+    <img id="targetImage" src="/static/images/shelly_av.png" alt="Icon Left" class="icon_nita left-icon" onclick="selectCharacter('shelly')">
+    <img src="/static/images/colt_av.png" alt="Icon Left" class="icon_nita left-icon" onclick="selectCharacter('colt')">
+    <img src="/static/images/dyno_av.png" alt="Icon Center" class="icon_nita center-icon" onclick="selectCharacter('dyno')">
+    <img src="/static/images/piper_av.png" alt="Icon Right" class="icon_nita right-icon" onclick="selectCharacter('piper')">
+    <img src="/static/images/edgar_av.png" alt="Icon Right" class="icon_nita right-icon" onclick="selectCharacter('edgar')">
+    <img src="/static/images/crow_av.png" alt="Icon Right" class="icon_nita right-icon" onclick="selectCharacter('crow')">
+    <img src="/static/images/spike_av.png" alt="Icon Right" class="icon_nita right-icon" onclick="selectCharacter('spike')">
+    <img src="/static/images/leon_av.png" alt="Icon Right" class="icon_nita right-icon" onclick="selectCharacter('leon')">
+    <img src="/static/images/kit_av.png" alt="Icon Right" class="icon_nita right-icon" onclick="selectCharacter('kit')">
+</div>
 
-    <div class="fixed-window">
-        <img id="targetImage" src="/static/images/shelly_av.png" alt="Icon Left" class="icon_nita left-icon" onclick="changeImage('/static/images/shelly_3.png')">
-        <img src="/static/images/colt_av.png" alt="Icon Left" class="icon_nita left-icon" onclick="changeImage('/static/images/colt.png')">
-        <img src="/static/images/dyno_av.png" alt="Icon Center" class="icon_nita center-icon" onclick="changeImage('/static/images/dyno.png')">
-        <img src="/static/images/piper_av.png" alt="Icon Right" class="icon_nita right-icon" onclick="changeImage('/static/images/piper.png')">
-        <img src="/static/images/edgar_av.png" alt="Icon Right" class="icon_nita right-icon" onclick="changeImage('/static/images/edgar.png')">
-        <img src="/static/images/crow_av.png" alt="Icon Right" class="icon_nita right-icon" onclick="changeImage('/static/images/crow.png')">
-        <img src="/static/images/spike_av.png" alt="Icon Right" class="icon_nita right-icon" onclick="changeImage('/static/images/spike.png')">
-        <img src="/static/images/leon_av.png" alt="Icon Right" class="icon_nita right-icon" onclick="changeImage('/static/images/leon.png')">
-        <img src="/static/images/kit_av.png" alt="Icon Right" class="icon_nita right-icon" onclick="changeImage('/static/images/kit.png')">
-    </div>
+<div class="arrow" onclick="changeImage()">
+    <img src="/static/images/right_arrow.png" width="320">
+</div>
 
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>

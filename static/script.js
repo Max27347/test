@@ -97,12 +97,52 @@ let autoClickInterval;
             }
         };
 
- function changeImage(imagePath) {
-            const mainImage = document.getElementById('mainImage');
-            mainImage.src = imagePath; // Изменяем путь к изображению на переданный
+
+
+function changeImage(imagePath) {
+    const mainImage = document.getElementById('mainImage');
+    mainImage.src = imagePath; // Изменяем путь к изображению на переданный
 }
 
+function selectCharacter(character) {
+    let imagePath;
 
+    // Определяем путь к изображению в зависимости от выбранного персонажа
+    switch (character) {
+        case 'shelly':
+            imagePath = '/static/images/shelly.png';
+            break;
+        case 'colt':
+            imagePath = '/static/images/colt.png';
+            break;
+        case 'dyno':
+            imagePath = '/static/images/dyno.png';
+            break;
+        case 'piper':
+            imagePath = '/static/images/piper.png';
+            break;
+        case 'edgar':
+            imagePath = '/static/images/edgar.png';
+            break;
+        case 'crow':
+            imagePath = '/static/images/crow.png';
+            break;
+        case 'spike':
+            imagePath = '/static/images/spike.png';
+            break;
+        case 'leon':
+            imagePath = '/static/images/leon.png';
+            break;
+        case 'kit':
+            imagePath = '/static/images/kit.png';
+            break;
+        default:
+            console.error('Unknown character:', character);
+            return; // Если персонаж не найден, выходим из функции
+    }
 
+    // Вызываем функцию для изменения изображения
+    changeImage(imagePath);
+}
 
 

@@ -2,14 +2,33 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Кликер Бравл Старс</title>
+    <title>Клубы</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Кликер Бравл Старс_2</h1>
-<button onclick="window.location.href='/page5'">топ игроков по монетам</button>
-<button onclick="window.location.href='/page8'">топ клубов</button>
+<div class="friends_4">
+    <p>Топ игроков</p>
+</div>
 
+<div class="tabs">
+    <button onclick="window.location.href='/page5'" class="tab-button active" id="coins-tab">По Монетам</button>
+    <button onclick="window.location.href='/page8'" class="tab-button" id="club-tab">По Клубам</button>
+</div>
+
+ <div class="friend-list">
+    <div class="friend-card">
+      <img src="/static/images/colt_av.png" alt="Avatar">
+      <div class="friend-info">Клуб - монеты</div>
+    </div>
+    <div class="friend-card">
+      <img src="/static/images/colt_av.png" alt="Avatar">
+      <div class="friend-info">Клуб - монеты</div>
+    </div>
+    <div class="friend-card">
+      <img src="/static/images/colt_av.png" alt="Avatar">
+      <div class="friend-info">Клуб - монеты</div>
+    </div>
+  </div>
 
 
 
