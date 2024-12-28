@@ -27,6 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let score = parseInt(currentScore.innerText);
 
+    // Установите максимальное значение для полосы прогресса
+    const maxProgress = 1000; // Максимальное значение полосы прогресса
+    progressBar.value = 0; // Начальное значение полосы прогресса
+
     clickButton.onclick = async () => {
         try {
             const response = await fetch('/click', { method: 'POST' });
@@ -35,16 +39,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (data.success) {
                 score++;
                 currentScore.innerText = score;
-                let currentValue = progressBar.value; // Текущее значение прогресса
 
-                // Уменьшаем значение полосы на 10% при каждом клике, но не меньше 0%
-                if (currentValue > 0) {
-                    progressBar.value = currentValue - 10;
+                // Увеличиваем значение полосы на 10% при каждом клике, но не больше максимума
+                if (progressBar.value < maxProgress) {
+                    progressBar.value += 10; // Увеличиваем на 10
                 }
 
-                // Проверяем, достиг ли прогресс минимума
-                if (progressBar.value === 0) {
-                    alert('Энергия закончилась');
+                // Проверяем, достиг ли прогресс максимума
+                if (progressBar.value >= maxProgress) {
+                    alert('Максимальный уровень достигнут!');
                 }
             }
         } catch (error) {
@@ -52,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 });
+
 
 // Получаем элементы
 const menuIcon = document.getElementById('menu-icon');

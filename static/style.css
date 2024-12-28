@@ -3,7 +3,7 @@ body {
     display: flex;
     height: 95vh;
     flex-direction: column;
-    background-image: url("/static/images/brawl_stars_lobby.png"); /* Укажите путь к вашему изображению */
+    background-image: url("/static/images/fon_1.png"); /* Укажите путь к вашему изображению */
     background-size: cover; /* Растянуть изображение на весь контейнер */
     background-position: center; /* Центровка изображения */
     background-repeat: no-repeat; /* Запрет на повторение изображения */
@@ -449,11 +449,6 @@ progress::-webkit-progress-value {
     font-size: 20px; /* Размер шрифта для обычного текста */
 }
 
-.friends_3 {
-    padding-top: 20px; /* Сместить содержимое вниз на 20 пикселей */
-    text-align: center; /* Центрирование изображения */
-}
-
 .friends_4 {
 font-size: 30px; /* Размер шрифта для заголовка (больше, чем основной текст) */
 padding-top: 0px; /* Сместить содержимое вниз на 20 пикселей */
@@ -463,11 +458,57 @@ font-family: 'Pusia-bold', sans-serif; /* Шрифт */
 text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 }
 
+.invite-container {
+      margin: 0px auto;
+    }
+.invite-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: linear-gradient(90deg, #1c1c3c, #3b4db7);
+        border-radius: 12px;
+        padding: 10px 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        border: 1px solid #3d5afe;
+        width: 400px;
+        height: 100px;
+    }
 
-.friends_5 {
-padding-top: 10px; /* Сместить содержимое вниз на 20 пикселей */
-text-align: center; /* Центрирование изображения */
-}
+    .coin-stack img.coins {
+        width: 60px;
+        height: auto;
+    }
+
+    .invite-text {
+        flex-grow: 1;
+        margin-left: 15px;
+        color: white;
+        font-family: Arial, sans-serif;
+    }
+
+    .invite-text .title {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .invite-text .reward {
+        display: flex;
+        align-items: center;
+        margin-top: 8px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .invite-text .reward img.coin-icon {
+        width: 24px;
+        height: auto;
+        margin-right: 5px;
+    }
+
+    .invite-text .reward .reward-amount {
+        color: #FFD700; /* Золотой цвет для награды */
+    }
+
 
 .friend-list {
       margin: 0px auto;
@@ -502,6 +543,33 @@ text-align: center; /* Центрирование изображения */
       font-family: 'Pusia-bold', sans-serif; /* Шрифт */
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
     }
+
+
+ .link {
+      display: flex;
+      align-items: center;
+      justify-content: center; /* Центрирование по горизонтали */
+      background: linear-gradient(90deg, #1c1c3c, #3b4db7);
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 0px;
+      margin-top: 20px;
+      width: 420px; /* Фиксированная ширина */
+      height: 50px; /* Фиксированная высота */
+      margin-left: auto;
+      margin-right: auto; /* Центрирование карточки */
+    }
+
+    .link_text {
+      font-size: 20px; /* Делаем текст больше */
+      font-weight: bold;
+      color: white;
+      text-align: center;
+      font-family: 'Pusia-bold', sans-serif; /* Шрифт */
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
+    }
+
+
 /* Страница Магазин */
 
 body {
@@ -516,7 +584,9 @@ body {
     background-image: url('/static/images/theme_11.png'); /* Фоновое изображение */
     background-size: cover; /* Масштабирование фона, чтобы он заполнил контейнер */
     padding: 10px; /* Отступ внутри контейнера для текста и изображения */
-    border-radius: 8px; /* Скругление углов (по желанию) */
+    padding-right: 80px; /* Добавляем отступ справа для монет */
+    border-radius: 8px; /* Скругление углов */
+
 }
 
 .box1 {
@@ -534,22 +604,48 @@ body {
 
 .text_box11 {
     display: block; /* Отображение в блоке, чтобы текст был на новой строке */
-    font-size: 14px; /* Установите желаемый размер шрифта для маленького текста */
     color: white; /* Цвет текста (по желанию) */
     margin-top: 5px; /* Отступ сверху для разделения от основного текста */
+    font-size: 12px;
     font-family: 'Pusia-bold', sans-serif; /* Шрифт */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 }
+
+.coin_container {
+    display: flex; /* Используем flexbox для выравнивания элементов */
+    align-items: center; /* Вертикальное выравнивание по центру контейнера */
+    justify-content: flex-end; /* Выравнивание по правому краю */
+    position: absolute; /* Абсолютное позиционирование относительно родителя (.box_1) */
+    top: 50%; /* Центрируем по вертикали относительно родителя */
+    transform: translateY(-50%); /* Сдвигаем на половину высоты для точного центрирования */
+    right: 10px; /* Отступ от правого края контейнера */
+}
+
+.coin_icon {
+    margin-left: 10px; /* Отступ слева от текста */
+}
+
+.coin_text {
+    font-family: 'Pusia-bold', sans-serif; /* Шрифт */
+    color: white; /* Цвет текста (по желанию) */
+    font-size: 16px; /* Размер шрифта для текста монет */
+    margin-left: 5px; /* Отступ между иконкой и текстом */
+}
+
+
+
 
 .box_2 {
     position: fixed; /* Фиксированное позиционирование */
     top: 150px; /* Расположение по вертикали */
     left: 20px; /* Расположение по горизонтали */
     z-index: 1000; /* Уровень наложения */
-    background-image: url('/static/images/theme_3.png'); /* Фоновое изображение */
+    background-image: url('/static/images/theme_11.png'); /* Фоновое изображение */
     background-size: cover; /* Масштабирование фона, чтобы он заполнил контейнер */
     padding: 10px; /* Отступ внутри контейнера для текста и изображения */
-    border-radius: 8px; /* Скругление углов (по желанию) */
+    padding-right: 80px; /* Добавляем отступ справа для монет */
+    border-radius: 8px; /* Скругление углов */
+
 }
 
 .box2 {
@@ -567,12 +663,34 @@ body {
 
 .text_box22 {
     display: block; /* Отображение в блоке, чтобы текст был на новой строке */
-    font-size: 14px; /* Установите желаемый размер шрифта для маленького текста */
     color: white; /* Цвет текста (по желанию) */
     margin-top: 5px; /* Отступ сверху для разделения от основного текста */
+    font-size: 12px;
     font-family: 'Pusia-bold', sans-serif; /* Шрифт */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 }
+
+.coin_container {
+    display: flex; /* Используем flexbox для выравнивания элементов */
+    align-items: center; /* Вертикальное выравнивание по центру контейнера */
+    justify-content: flex-end; /* Выравнивание по правому краю */
+    position: absolute; /* Абсолютное позиционирование относительно родителя (.box_1) */
+    top: 50%; /* Центрируем по вертикали относительно родителя */
+    transform: translateY(-50%); /* Сдвигаем на половину высоты для точного центрирования */
+    right: 10px; /* Отступ от правого края контейнера */
+}
+
+.coin_icon {
+    margin-left: 10px; /* Отступ слева от текста */
+}
+
+.coin_text {
+    font-family: 'Pusia-bold', sans-serif; /* Шрифт */
+    color: white; /* Цвет текста (по желанию) */
+    font-size: 16px; /* Размер шрифта для текста монет */
+    margin-left: 5px; /* Отступ между иконкой и текстом */
+}
+
 
 
 .box_3 {
@@ -580,10 +698,12 @@ body {
     top: 250px; /* Расположение по вертикали */
     left: 20px; /* Расположение по горизонтали */
     z-index: 1000; /* Уровень наложения */
-    background-image: url('/static/images/theme_5.png'); /* Фоновое изображение */
+    background-image: url('/static/images/theme_11.png'); /* Фоновое изображение */
     background-size: cover; /* Масштабирование фона, чтобы он заполнил контейнер */
     padding: 10px; /* Отступ внутри контейнера для текста и изображения */
-    border-radius: 8px; /* Скругление углов (по желанию) */
+    padding-right: 80px; /* Добавляем отступ справа для монет */
+    border-radius: 8px; /* Скругление углов */
+
 }
 
 .box3 {
@@ -601,11 +721,32 @@ body {
 
 .text_box33 {
     display: block; /* Отображение в блоке, чтобы текст был на новой строке */
-    font-size: 14px; /* Установите желаемый размер шрифта для маленького текста */
     color: white; /* Цвет текста (по желанию) */
     margin-top: 5px; /* Отступ сверху для разделения от основного текста */
+    font-size: 12px;
     font-family: 'Pusia-bold', sans-serif; /* Шрифт */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
+}
+
+.coin_container {
+    display: flex; /* Используем flexbox для выравнивания элементов */
+    align-items: center; /* Вертикальное выравнивание по центру контейнера */
+    justify-content: flex-end; /* Выравнивание по правому краю */
+    position: absolute; /* Абсолютное позиционирование относительно родителя (.box_1) */
+    top: 50%; /* Центрируем по вертикали относительно родителя */
+    transform: translateY(-50%); /* Сдвигаем на половину высоты для точного центрирования */
+    right: 10px; /* Отступ от правого края контейнера */
+}
+
+.coin_icon {
+    margin-left: 10px; /* Отступ слева от текста */
+}
+
+.coin_text {
+    font-family: 'Pusia-bold', sans-serif; /* Шрифт */
+    color: white; /* Цвет текста (по желанию) */
+    font-size: 16px; /* Размер шрифта для текста монет */
+    margin-left: 5px; /* Отступ между иконкой и текстом */
 }
 
 
@@ -614,10 +755,12 @@ body {
     top: 350px; /* Расположение по вертикали */
     left: 20px; /* Расположение по горизонтали */
     z-index: 1000; /* Уровень наложения */
-    background-image: url('/static/images/theme_6.png'); /* Фоновое изображение */
+    background-image: url('/static/images/theme_11.png'); /* Фоновое изображение */
     background-size: cover; /* Масштабирование фона, чтобы он заполнил контейнер */
     padding: 10px; /* Отступ внутри контейнера для текста и изображения */
-    border-radius: 8px; /* Скругление углов (по желанию) */
+    padding-right: 80px; /* Добавляем отступ справа для монет */
+    border-radius: 8px; /* Скругление углов */
+
 }
 
 .box4 {
@@ -635,12 +778,34 @@ body {
 
 .text_box44 {
     display: block; /* Отображение в блоке, чтобы текст был на новой строке */
-    font-size: 14px; /* Установите желаемый размер шрифта для маленького текста */
     color: white; /* Цвет текста (по желанию) */
     margin-top: 5px; /* Отступ сверху для разделения от основного текста */
+    font-size: 12px;
     font-family: 'Pusia-bold', sans-serif; /* Шрифт */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 }
+
+.coin_container {
+    display: flex; /* Используем flexbox для выравнивания элементов */
+    align-items: center; /* Вертикальное выравнивание по центру контейнера */
+    justify-content: flex-end; /* Выравнивание по правому краю */
+    position: absolute; /* Абсолютное позиционирование относительно родителя (.box_1) */
+    top: 50%; /* Центрируем по вертикали относительно родителя */
+    transform: translateY(-50%); /* Сдвигаем на половину высоты для точного центрирования */
+    right: 10px; /* Отступ от правого края контейнера */
+}
+
+.coin_icon {
+    margin-left: 10px; /* Отступ слева от текста */
+}
+
+.coin_text {
+    font-family: 'Pusia-bold', sans-serif; /* Шрифт */
+    color: white; /* Цвет текста (по желанию) */
+    font-size: 16px; /* Размер шрифта для текста монет */
+    margin-left: 5px; /* Отступ между иконкой и текстом */
+}
+
 
 
 .menu_p3 {
@@ -905,15 +1070,7 @@ position: center
     margin-top: 20px; /* Отступ сверху */
 }
 
-.arrow {
-    position: fixed; /* Фиксируем элемент относительно окна браузера */
-    top: 340px; /* Отступ сверху */
-    right: 450px; /* Отступ справа */
-}
-.arrow img {
-    width: 70px; /* Уменьшаем ширину изображения стрелки */
-    height: auto; /* Автоматическая высота для сохранения пропорций */
-}
+
 /* Фоны*/
 
 .menu_3 {
