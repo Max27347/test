@@ -20,13 +20,26 @@
         <div class="result" id="result"></div>
     </div>
 
-
 <p id="score"><span id="currentScore">0</span></p>
-<p id="nick">Максим</p>
+<div class="coin">
+    <img src="/static/images/coin.png" alt="Монеты" width="80">
+</div>
+
+<div class="image-container">
+    <div class="image-item">
+        <span class="image-text">0</span>
+        <img src="/static/images/coin.png" alt="Картинка 1">
+    </div>
+    <div class="image-item">
+        <span class="image-text">0</span>
+        <img src="/static/images/bling.png" alt="Картинка 2">
+    </div>
+</div>
+
 
 <img id="clickButton" src="/static/images/shelly.png" style="width: 330px;" onclick="alert('Кнопка нажата!');">
 <br>
-<button id="autoClickerButton">Автокликер</button>
+
 
 
 <img id="gift" src="/static/images/gift.png" onclick="showAutoClickerButton();">
@@ -36,23 +49,9 @@
 <div class="icon-container">
     <img src="/static/images/icon.png" alt="Иконка" width="75">
 </div>
-
-<div class="coin">
-    <img src="/static/images/coin.png" alt="Монеты" width="80">
-</div>
+<p id="nick">Максим</p>
 
 
-
-<div class="image-container">
-    <div class="image-item">
-        <span class="image-text">10000</span>
-        <img src="/static/images/coin.png" alt="Картинка 1">
-    </div>
-    <div class="image-item">
-        <span class="image-text">3000</span>
-        <img src="/static/images/bling.png" alt="Картинка 2">
-    </div>
-</div>
 
 
 
@@ -69,10 +68,14 @@
 </div>
 
 
+<a href="/page5" class="open-page5-button">
+    <img src="/static/images/top_2.png" alt="Редкие" class="button-image">
+</a>
 
 <script src="{{ url_for('static', filename='script_wheel.js') }}"></script>
 <script src="{{ url_for('static', filename='script.js') }}"></script>
-  <script src="{{ url_for('static', filename='script_theme.js') }}"></script>
+<script src="{{ url_for('static', filename='script_theme.js') }}"></script>
+<script src="{{ url_for('static', filename='script_box.js') }}"></script>
 
 {% include '_nav.html' %}
 

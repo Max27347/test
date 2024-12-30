@@ -22,14 +22,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     const clickButton = document.getElementById('clickButton');
-    const currentScore = document.getElementById('currentScore');
-    const progressBar = document.getElementById('progressBar');
+    const currentScoreElement = document.getElementById('currentScore');
+    const imageTextElement = document.querySelector('.image-text');
 
-    let score = parseInt(currentScore.innerText);
+    // Загружаем сохраненное значение счета
+    const savedScore = localStorage.getItem('currentScore');
+    if (savedScore) {
+        updateScore(parseInt(savedScore)); // Устанавливаем сохраненное значение
+    } else {
+        updateScore(0); // Устанавливаем начальное значение
+    }
 
-    // Установите максимальное значение для полосы прогресса
-    const maxProgress = 1000; // Максимальное значение полосы прогресса
-    progressBar.value = 0; // Начальное значение полосы прогресса
+    // Загружаем сохраненный текст
+    const savedImageText = localStorage.getItem('imageText');
+    if (savedImageText) {
+        updateImageText(savedImageText); // Устанавливаем сохраненный текст
+    } else {
+        updateImageText('0'); // Устанавливаем начальное значение
+    }
 
     clickButton.onclick = async () => {
         try {
@@ -37,24 +47,36 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
 
             if (data.success) {
+                let score = parseInt(currentScoreElement.innerText);
                 score++;
-                currentScore.innerText = score;
+                updateScore(score);
 
-                // Увеличиваем значение полосы на 10% при каждом клике, но не больше максимума
-                if (progressBar.value < maxProgress) {
-                    progressBar.value += 10; // Увеличиваем на 10
-                }
+                // Обновляем текст в элементе с классом image-text
+                updateImageText(score);
 
-                // Проверяем, достиг ли прогресс максимума
-                if (progressBar.value >= maxProgress) {
-                    alert('Максимальный уровень достигнут!');
-                }
+                // Другие действия...
             }
         } catch (error) {
             console.error("Ошибка при обновлении счета:", error);
         }
     };
 });
+
+function updateScore(newScore) {
+    const currentScoreElement = document.getElementById('currentScore');
+    currentScoreElement.innerText = newScore;
+
+    // Сохраняем текущее значение счета в localStorage
+    localStorage.setItem('currentScore', newScore);
+}
+
+function updateImageText(newText) {
+    const imageTextElement = document.querySelector('.image-text');
+    imageTextElement.innerText = newText;
+
+    // Сохраняем текст в localStorage
+    localStorage.setItem('imageText', newText);
+}
 
 
 // Получаем элементы
@@ -108,7 +130,7 @@ function changeImage(imagePath) {
     mainImage.src = imagePath; // Изменяем путь к изображению на переданный
 }
 
-function selectCharacter(character) {
+function selectCharacter(character, price) {
     let imagePath;
 
     // Определяем путь к изображению в зависимости от выбранного персонажа
@@ -147,6 +169,13 @@ function selectCharacter(character) {
 
     // Вызываем функцию для изменения изображения
     changeImage(imagePath);
+
+    // Обновляем цену в элементе с id "price"
+    const priceElement = document.getElementById('price');
+    priceElement.innerHTML = `${price} <img src="/static/images/coin.png" alt="Монета" class="coin-icon">`; // Обновляем текст с ценой и добавляем значок монеты
 }
+
+
+
 
 

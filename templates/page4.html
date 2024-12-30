@@ -5,33 +5,24 @@
     <title>Квесты</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
+<body class="quests-page"> <!-- Добавлен класс friends-page -->
 
 <div class = 'quests_text'>
-<p>Игровые задачи</p>
-</div>
-
-
-<div class = 'quests_text_2'>
 <p>Основные задачи</p>
 </div>
 
+<div class = 'quests_text_2'>
+<p>Боец</p>
+</div>
 
 <div class = 'quests_text_3'>
-<p>Бонус задачи</p>
+<p>Легенда</p>
 </div>
-
-
-<div class = 'quests_text_4'>
-<p>Доп задачи</p>
-</div>
-
-
 
 <div class="card">
     <img src="/static/images/shelly_av.png" alt="TON Logo" class="card-logo">
     <div class="card-content">
-        <div class="card-title">Победи Босса</div>
+        <div class="card-title">Подпишись на наш телеграм канал</div>
         <div class="card-amount">
             <img src="/static/images/coin.png" alt="Coin Icon" class="coin-icon">
             3 200 000
@@ -55,7 +46,7 @@
 <div class="card_3">
     <img src="/static/images/shelly_av.png" alt="TON Logo" class="card-logo">
     <div class="card-content">
-        <div class="card-title">Пригласи 10 друзей</div>
+        <div class="card-title">Открой новый мир</div>
         <div class="card-amount">
             <img src="/static/images/coin.png" alt="Coin Icon" class="coin-icon">
             1 500 000
@@ -67,7 +58,7 @@
 <div class="card_4">
     <img src="/static/images/shelly_av.png" alt="TON Logo" class="card-logo">
     <div class="card-content">
-        <div class="card-title">Пригласи 100 друзей</div>
+        <div class="card-title">Победи Босса мира</div>
         <div class="card-amount">
             <img src="/static/images/coin.png" alt="Coin Icon" class="coin-icon">
             1 500 000
@@ -75,6 +66,43 @@
     </div>
     <div class="card-arrow">&gt;</div>
 </div>
+
+<div class="card_5">
+    <img src="/static/images/shelly_av.png" alt="TON Logo" class="card-logo">
+    <div class="card-content">
+        <div class="card-title">Сыграй в мини-игру</div>
+        <div class="card-amount">
+            <img src="/static/images/coin.png" alt="Coin Icon" class="coin-icon">
+            1 500 000
+        </div>
+    </div>
+    <div class="card-arrow">&gt;</div>
+</div>
+
+<div class="card_6">
+    <img src="/static/images/shelly_av.png" alt="TON Logo" class="card-logo">
+    <div class="card-content">
+        <div class="card-title">Открой 5 новых миров</div>
+        <div class="card-amount">
+            <img src="/static/images/coin.png" alt="Coin Icon" class="coin-icon">
+            1 500 000
+        </div>
+    </div>
+    <div class="card-arrow">&gt;</div>
+</div>
+
+<div class="card_7">
+    <img src="/static/images/shelly_av.png" alt="TON Logo" class="card-logo">
+    <div class="card-content">
+        <div class="card-title">Достигни 10 уровня</div>
+        <div class="card-amount">
+            <img src="/static/images/coin.png" alt="Coin Icon" class="coin-icon">
+            1 500 000
+        </div>
+    </div>
+    <div class="card-arrow">&gt;</div>
+</div>
+
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
   <script src="{{ url_for('static', filename='script_theme.js') }}"></script>

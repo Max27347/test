@@ -17,59 +17,147 @@
         <img src="/static/images/button_menu_2.png" width="110" alt="Image 2" class="image">
     </a>
     <a href="/page7" class="item">
-        <img src="/static/images/button_menu_3.png" width="110" alt="Image 3" class="image">
+        <img src="/static/images/button_menu.png" width="110" alt="Image 3" class="image">
     </a>
 </div>
 
 
-<div class="box_1">
+
+<div class="icon-container">
+    <img src="/static/images/icon.png" alt="Иконка" width="75">
+</div>
+<p id="nick">Максим</p>
+
+
+<div class="image-container">
+    <div class="image-item">
+        <span class="image-text">10000</span>
+        <img src="/static/images/coin.png" alt="Картинка 1">
+    </div>
+    <div class="image-item">
+        <span class="image-text">3000</span>
+        <img src="/static/images/bling.png" alt="Картинка 2">
+    </div>
+</div>
+
+<div class="dropdown">
+    <img src="/static/images/menu.png" alt="Меню" id="menu-icon">
+
+    <!-- Выпадающее меню -->
+    <div class="dropdown-menu" id="dropdown-menu">
+        <a href="#item1">Язык</a>
+        <a href="#item2">Как играть</a>
+        <a href="#item3">Аирдроп</a>
+        <a href="#item4">Тех поддержка</a>
+    </div>
+</div>
+
+
+
+<div class="box_1" id="box1">
     <img src="/static/images/box_1.png" width="80" class="box1">
     <span class="text_box1">Сундук начала</span>
-    <br> <!-- Перенос строки для разделения основного и дополнительного текста -->
+    <br>
     <span class="text_box11">Сундук, излучающий загадочный свет <br>Его содержимое связано с истоками магической вселенной</span>
     <div class="coin_container">
-        <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon"> <!-- Иконка монеты -->
-        <span class="coin_text">1000</span> <!-- Текст с количеством монет -->
+        <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
+        <span class="coin_text">1000</span>
+    </div>
+</div>
+
+<!-- Скрытое меню -->
+<div class="menu" id="menu" style="display: none;">
+    <img src="/static/images/box_1.png" alt="Ящик" class="menu_box_image">
+    <div class="coin_display">
+        <span class="coin_text">1000</span>
+        <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
+    </div>
+    <button id="buyButton" class="buy_button">Купить</button>
+</div>
+
+<!-- Меню с выпавшими предметами -->
+<div class="rewards_menu" id="rewardsMenu" style="display: none;">
+    <div class="rewards_content">
+        <h2>Выпавшие предметы:</h2>
+        <div id="rewardsItems">
+            <!-- Здесь появятся выпавшие предметы -->
+        </div>
+        <button id="closeRewardsButton" class="close_button">Закрыть</button>
     </div>
 </div>
 
 
-<div class="box_2">
+
+<div class="box_2" id="box2">
     <img src="/static/images/box_2.png" width="80" class="box2">
     <span class="text_box2">Призрачный Ларец</span>
-    <br> <!-- Перенос строки для разделения основного и дополнительного текста -->
-     <span class="text_box22">Окутан дымкой, этот ларец будто <br> существует на грани реальности и потустороннего мира</span>
+    <br>
+    <span class="text_box22">Окутан дымкой, этот ларец будто <br> существует на грани реальности и потустороннего мира</span>
     <div class="coin_container">
-        <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon"> <!-- Иконка монеты -->
-        <span class="coin_text">1000</span> <!-- Текст с количеством монет -->
+        <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
+        <span class="coin_text">1000</span>
     </div>
-
 </div>
-<div class="box_3">
+
+<!-- Скрытое меню для второго ящика -->
+<div class="menu" id="menu2" style="display: none;">
+    <img src="/static/images/box_2.png" alt="Ящик" class="menu_box_image">
+    <div class="coin_display">
+        <span class="coin_text">1000</span>
+        <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
+    </div>
+    <button id="buyButton2" class="buy_button">Купить</button>
+</div>
+</div>
+
+<div class="box_3" id="box3">
     <img src="/static/images/box_3.png" width="80" class="box3">
     <span class="text_box3">Ящик Звездного Света</span>
-    <br> <!-- Перенос строки для разделения основного и дополнительного текста -->
-     <span class="text_box33">Сияние этого ящика напоминает бескрайние галактики. Его открытие связано с загадками космоса</span>
-<div class="coin_container">
-        <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon"> <!-- Иконка монеты -->
-        <span class="coin_text">1000</span> <!-- Текст с количеством монет -->
+    <br>
+    <span class="text_box33">Сияние ящика напоминает бескрайние галактики <br> Его открытие связано с загадками космоса</span>
+    <div class="coin_container">
+        <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
+        <span class="coin_text">1000</span>
     </div>
 </div>
 
-<div class="box_4">
+<!-- Скрытое меню для третьего ящика -->
+<div class="menu" id="menu3" style="display: none;">
+    <img src="/static/images/box_3.png" alt="Ящик" class="menu_box_image">
+    <div class="coin_display">
+        <span class="coin_text">1000</span>
+        <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
+    </div>
+    <button id="buyButton3" class="buy_button">Купить</button>
+</div>
+
+
+<div class="box_4" id="box4">
     <img src="/static/images/box_4.png" width="80" class="box4">
     <span class="text_box4">Сундук Бездны</span>
-    <br> <!-- Перенос строки для разделения основного и дополнительного текста -->
-     <span class="text_box44">Самый редкий сундук, в глубине которого кроется опасная и могущественная сила</span>
-<div class="coin_container">
-        <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon"> <!-- Иконка монеты -->
-        <span class="coin_text">1000</span> <!-- Текст с количеством монет -->
+    <br>
+    <span class="text_box44">Самый редкий сундук, в глубине которого кроется <br> опасная и могущественная сила</span>
+    <div class="coin_container">
+        <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
+        <span class="coin_text">1000</span>
     </div>
 </div>
+
+<!-- Скрытое меню для четвертого ящика -->
+<div class="menu" id="menu4" style="display: none;">
+    <img src="/static/images/box_4.png" alt="Ящик" class="menu_box_image">
+    <div class="coin_display">
+        <span class="coin_text">1000</span>
+        <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
+    </div>
+    <button id="buyButton4" class="buy_button">Купить</button>
+</div>
+
 
 
 <script src="{{ url_for('static', filename='script.js') }}"></script>
   <script src="{{ url_for('static', filename='script_theme.js') }}"></script>
+  <script src="{{ url_for('static', filename='script_box.js') }}"></script>
 {% include '_nav.html' %}
 </body>
 </html>
