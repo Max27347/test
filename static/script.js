@@ -150,8 +150,8 @@ function selectCharacter(character, price) {
         case 'edgar':
             imagePath = '/static/images/edgar.png';
             break;
-        case 'crow':
-            imagePath = '/static/images/crow.png';
+        case 'mortis':
+            imagePath = '/static/images/mortis.png';
             break;
         case 'spike':
             imagePath = '/static/images/spike.png';

@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
+<body class="shop-page"> <!-- Добавлен класс friends-page -->
 
 <div class="menu_p3">
     <a href="/page3" class="item">
@@ -31,15 +31,28 @@
 
 <div class="image-container">
     <div class="image-item">
-        <span class="image-text">10000</span>
+        <span class="image-text">0</span>
         <img src="/static/images/coin.png" alt="Картинка 1">
     </div>
     <div class="image-item">
-        <span class="image-text">3000</span>
+        <span class="image-text_2">0</span>
         <img src="/static/images/bling.png" alt="Картинка 2">
     </div>
 </div>
 
+<!-- Модальное окно для уведомления о недостатке монет -->
+<div id="insufficientFundsModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span id="closeModalButton" class="close-button">&times;</span>
+        <p>У вас не хватает монет для покупки!</p>
+    </div>
+</div>
+
+
+<p id="score"><span id="currentScore">0</span></p>
+<div class="coin">
+    <img src="/static/images/coin.png" alt="Монеты" width="80">
+</div>
 <div class="dropdown">
     <img src="/static/images/menu.png" alt="Меню" id="menu-icon">
 
