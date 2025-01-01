@@ -49,8 +49,8 @@ body {
 }
 
 .nav-button img {
-    width: 35px; /* Размер иконки */
-    height: 35px;
+    width: 45px; /* Размер иконки */
+    height: 45px;
     transition: transform 0.3s ease; /* Анимация увеличения при наведении */
 }
 
@@ -699,7 +699,7 @@ body {
     margin-top: 10px; /* Отступ сверху для разделения с изображением ящика */
 }
 
-.menu {
+.menu_box {
     position: fixed;
     top: 200px;
     left: 20px;
@@ -949,99 +949,88 @@ body {
    margin-left: 5px;
 }
 
-.menu {
-   position: fixed;
-   top: 200px;
-   left: 20px;
-   background-color: rgba(0, 0, 0, 0.8);
-   color: white;
-   padding: 10px;
-   border-radius: 8px;
-   z-index: 1001;
+/* Основной блок внутри меню */
+/* Полное меню */
+.fullscreen_menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Полупрозрачный черный фон */
+    z-index: 9999; /* Поверх всех элементов */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+/* Содержимое меню */
+.menu_content {
+    background: white; /* Белый фон для блока с содержимым */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Тень вокруг блока */
+    max-width: 400px; /* Максимальная ширина блока */
+    width: 90%; /* Ширина блока */
+}
+
+/* Заголовок меню */
+.menu_content h2 {
+    margin-bottom: 15px; /* Отступ снизу */
+}
+
+/* Изображение ящика */
 .menu_box_image {
-   width: 80px;
-   margin-bottom: 10px;
-}
-
-.coin_display {
-   display:flex ;
-   align-items:center ;
-   margin-top :10 px ;
-}
-
-.buy_button {
-   background-color:#4CAF50 ;
-   color:white ;
-   border:none ;
-   padding :10 px15 px ;
-   text-align:center ;
-   text-decoration:none ;
-   display:inline-block ;
-   font-size :16 px ;
-   margin-top :10 px ;
-   border-radius :5 px ;
-   cursor:pointer ;
-   transition :background-color .3 s ease ;
-}
-
-.buy_button:hover {
-       background-color:#45a049 ;
-}
-
-
-
-.menu_p3 {
-    position: fixed; /* Фиксированное позиционирование */
-    bottom: 90px; /* Увеличиваем значение, чтобы сместить элемент вниз */
-    left: 50%; /* Центрируем по горизонтали */
-    transform: translateX(-50%); /* Сдвигаем на половину ширины контейнера для центрирования */
-    display: flex; /* Используем flexbox для расположения изображений */
-    gap: 10px; /* Расстояние между картинками */
-    z-index: 1000; /* Устанавливаем высокий z-index для отображения поверх других элементов */
-}
-}
-
-
-.image-container {
-    display: flex; /* Используем flexbox для центрирования */
-    justify-content: center; /* Центрируем по горизонтали */
-    margin-top: 20px; /* Отступ сверху */
-}
-
-#mainImage {
-    width: 500px; /* Ширина основного изображения */
+    width: 100%; /* Ширина изображения по размеру блока */
     height: auto; /* Автоматическая высота для сохранения пропорций */
+    margin-bottom: 15px; /* Отступ снизу */
+}
+
+/* Отображение монет */
+.coin_display {
+    display: flex; /* Используем flex для выравнивания иконки и текста */
+    align-items: center; /* Вертикальное выравнивание по центру */
+    justify-content: center; /* Центрируем содержимое по горизонтали */
+    margin-bottom: 15px; /* Отступ снизу */
+}
+
+/* Текст с количеством монет */
+.coin_text_2 {
+    font-size: 18px; /* Размер шрифта для текста монет */
+    margin-right: 5px; /* Отступ справа от текста к иконке монеты */
+        color: black;
+}
+
+/* Кнопка "Купить" */
+.buy_box {
+    background-color: #4CAF50; /* Зеленый фон кнопки */
+    color: white; /* Белый текст на кнопке */
+    border: none; /* Убираем рамку кнопки */
+    padding: 10px 20px; /* Внутренние отступы кнопки */
+    border-radius: 5px; /* Скругление углов кнопки */
+    cursor: pointer; /* Указатель при наведении на кнопку */
+    font-size: 16px; /* Размер шрифта на кнопке */
+}
+
+/* Кнопка "Закрыть" */
+.close_button {
+    background-color: #f44336; /* Красный фон кнопки закрытия */
+    color: white; /* Белый текст на кнопке закрытия */
+    border: none; /* Убираем рамку кнопки закрытия */
+    padding: 10px 20px; /* Внутренние отступы кнопки закрытия */
+    border-radius: 5px; /* Скругление углов кнопки закрытия */
+    cursor: pointer; /* Указатель при наведении на кнопку закрытия */
+    font-size: 16px; /* Размер шрифта на кнопке закрытия */
+}
+
+/* Эффект при наведении на кнопку "Купить" и "Закрыть" */
+.buy_box:hover,
+.close_button:hover {
+    opacity: 0.9; /* Изменяем прозрачность при наведении для эффекта наведения */
 }
 
 .rewards_menu {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.7); /* Полупрозрачный черный фон */
-        z-index: 9999; /* Поверх всех элементов */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    /* Основной блок меню */
-    .rewards_content {
-        background: white; /* Белый фон для блока с предметами */
-        padding: 20px;
-        border-radius: 10px;
-        text-align: center;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Тень вокруг блока */
-        max-width: 400px;
-        width: 90%;
-    }
-
-    /* Стили для текста выпавших предметов */
- /* Задний фон затемняющего слоя */
-    .rewards_menu {
         position: fixed;
         top: 0;
         left: 0;
@@ -1109,6 +1098,41 @@ body {
     body.no-scroll {
         overflow: hidden;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+.menu_p3 {
+    position: fixed; /* Фиксированное позиционирование */
+    bottom: 90px; /* Увеличиваем значение, чтобы сместить элемент вниз */
+    left: 50%; /* Центрируем по горизонтали */
+    transform: translateX(-50%); /* Сдвигаем на половину ширины контейнера для центрирования */
+    display: flex; /* Используем flexbox для расположения изображений */
+    gap: 10px; /* Расстояние между картинками */
+    z-index: 1000; /* Устанавливаем высокий z-index для отображения поверх других элементов */
+}
+}
+
+
+.image-container {
+    display: flex; /* Используем flexbox для центрирования */
+    justify-content: center; /* Центрируем по горизонтали */
+    margin-top: 20px; /* Отступ сверху */
+}
+
+#mainImage {
+    width: 500px; /* Ширина основного изображения */
+    height: auto; /* Автоматическая высота для сохранения пропорций */
+}
+
 
 /* Страница квесты */
 body.quests-page {
@@ -1347,6 +1371,9 @@ position: center
 
 
 /* Страница скины */
+body.heroes-page {
+    min-height: 150vh; /* Минимальная высота равная высоте окна браузера */
+}
 
  .menu_char {
       display: grid;
@@ -1393,7 +1420,7 @@ position: center
     }
 
     .preview {
-      position: fixed;
+      position: absolute;
       top: 60px;
       left: 50%;
       transform: translateX(-50%);
@@ -1417,10 +1444,11 @@ position: center
     padding: 10px; /* Отступы внутри меню */
     border-radius: 10px; /* Закругленные углы */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Тень для эффекта поднятости */
-    position: fixed; /* Фиксированное позиционирование */
-    bottom: 330px; /* Поднимаем меню выше элемента .fixed-window */
+    position: absolute; /* Позиционирование относительно ближайшего родителя с position: relative */
+    bottom: 380px; /* Отступ от нижней части родительского элемента */
     left: 50%; /* Центрирование по горизонтали */
     transform: translateX(-50%); /* Центрирование по горизонтали */
+    z-index: 1000; /* Убедитесь, что меню выше других элементов */
 }
 
 .menu-button {
@@ -1441,7 +1469,10 @@ position: center
 }
 
 
-/* Фоны*/
+/* Улучшения*/
+body.upgrade-page {
+    min-height: 150vh; /* Минимальная высота равная высоте окна браузера */
+}
 
 .menu_3 {
     display: flex; /* Используем flexbox для горизонтального расположения */

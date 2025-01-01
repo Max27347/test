@@ -5,7 +5,7 @@
     <title>Скины</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
+<body class="heroes-page"> <!-- Добавлен класс friends-page -->
 
 <div class="icon-container">
     <img src="/static/images/icon.png" alt="Иконка" width="75">
@@ -55,32 +55,32 @@
 </div>
 
 <div class="preview" id="preview">
-    <img src="/static/images/shelly.png" alt="Preview">
+    <img src="/static/images/croco.png" alt="Preview">
     <p id="preview-name">Character 1</p>
   </div>
   <div class="menu_char">
-    <div class="character" data-id="1" data-name="Character 1" data-img="/static/images/shelly.png">
-      <img src="/static/images/shelly.png" alt="Character 1">
+    <div class="character" data-id="1" data-name="Character 1" data-img="/static/images/croco.png">
+      <img src="/static/images/croco.png" alt="Character 1">
       <p>Character 1</p>
     </div>
-    <div class="character" data-id="2" data-name="Character 2" data-img="/static/images/colt.png">
-      <img src="/static/images/colt.png" alt="Character 2">
+    <div class="character" data-id="2" data-name="Character 2" data-img="/static/images/cot.png">
+      <img src="/static/images/cot.png" alt="Character 2">
       <p>Character 2</p>
     </div>
-    <div class="character" data-id="3" data-name="Character 3" data-img="https://via.placeholder.com/200">
-      <img src="https://via.placeholder.com/80" alt="Character 3">
+    <div class="character" data-id="3" data-name="Character 3" data-img="/static/images/groot.png">
+      <img src="/static/images/groot.png" alt="Character 3">
       <p>Character 3</p>
     </div>
-    <div class="character" data-id="4" data-name="Character 4" data-img="https://via.placeholder.com/200">
-      <img src="https://via.placeholder.com/80" alt="Character 4">
+    <div class="character" data-id="4" data-name="Character 4" data-img="/static/images/golem.png">
+      <img src="/static/images/golem.png" alt="Character 4">
       <p>Character 4</p>
     </div>
-    <div class="character" data-id="5" data-name="Character 5" data-img="https://via.placeholder.com/200">
-      <img src="https://via.placeholder.com/80" alt="Character 5">
+    <div class="character" data-id="5" data-name="Character 5" data-img="/static/images/fire.png">
+      <img src="/static/images/fire.png" alt="Character 5">
       <p>Character 5</p>
     </div>
-    <div class="character" data-id="6" data-name="Character 6" data-img="https://via.placeholder.com/200">
-      <img src="https://via.placeholder.com/80" alt="Character 6">
+    <div class="character" data-id="6" data-name="Character 6" data-img="/static/images/water.png">
+      <img src="/static/images/water.png" alt="Character 6">
       <p>Character 6</p>
     </div>
     <div class="character" data-id="7" data-name="Character 7" data-img="https://via.placeholder.com/200">
@@ -108,6 +108,7 @@
     <script src="{{ url_for('static', filename='script.js') }}"></script>
   <script src="{{ url_for('static', filename='script_theme.js') }}"></script>
   <script src="{{ url_for('static', filename='script_heroes.js') }}"></script>
+  <script src="{{ url_for('static', filename='script_box.js') }}"></script>
 {% include '_nav.html' %}
 </body>
 </html>

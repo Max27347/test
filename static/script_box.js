@@ -1,24 +1,55 @@
+// Функция для обновления счета и сохранения в localStorage
+function updateScore(newScore) {
+    const currentScoreElement = document.getElementById('currentScore');
+    currentScoreElement.innerText = newScore;
+
+    // Сохраняем текущее значение счета в localStorage
+    localStorage.setItem('currentScore', newScore);
+
+    // Обновление значения в image-text
+    const imageTextElement = document.querySelector('.image-text');
+    imageTextElement.innerText = newScore; // Обновляем текст
+}
+
+// Функция для загрузки счета из localStorage при загрузке страницы
+function loadScore() {
+    const storedScore = localStorage.getItem('currentScore');
+    if (storedScore) {
+        // Устанавливаем сохраненный счет на странице
+        updateScore(parseInt(storedScore));
+    } else {
+        // Если нет сохраненного значения, устанавливаем 0
+        updateScore(0);
+    }
+}
+
+// Загружаем счет при загрузке страницы
+window.onload = loadScore;
+
 // Открытие меню сундука
 document.getElementById('box1').addEventListener('click', function () {
-    const menu = document.getElementById('menu');
-    menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
+    const clickBox = document.getElementById('click_box');
+    clickBox.style.display = 'flex'; // Показываем меню сундука
+});
+
+// Закрытие меню сундука
+document.getElementById('closeBoxButton').addEventListener('click', function () {
+    const clickBox = document.getElementById('click_box');
+    clickBox.style.display = 'none'; // Скрываем меню сундука
 });
 
 // Покупка сундука
-document.getElementById('buyButton').addEventListener('click', function () {
+document.getElementById('buyButton1').addEventListener('click', function () {
     const cost = 10; // Стоимость покупки
     const currentScoreElement = document.getElementById('currentScore');
     let currentScore = parseInt(currentScoreElement.innerText);
 
     // Проверка, достаточно ли монет для покупки
     if (currentScore >= cost) {
-        currentScore -= cost; // Списываем 1000 монет
+        currentScore -= cost; // Списываем монеты
         updateScore(currentScore); // Обновляем счет
 
-        // Обновляем значение в элементах с классом image-text
-        updateImageText(currentScore.toString()); // Обновляем текст
-
-        // Генерация случайных предметов
+        // Генерация одного случайного предмета
         const items = [
             { name: 'Кот', icon: '/static/images/colt.png' },
             { name: 'Кот', icon: '/static/images/colt.png' },
@@ -26,25 +57,21 @@ document.getElementById('buyButton').addEventListener('click', function () {
             { name: 'Кот', icon: '/static/images/colt.png' },
             { name: 'Кот', icon: '/static/images/colt.png' },
         ];
-        const rewards = [];
-        for (let i = 0; i < 2; i++) {
-            const randomItem = items[Math.floor(Math.random() * items.length)];
-            rewards.push(randomItem);
-        }
 
-        // Отображение выпавших предметов
+        // Генерация одного случайного предмета
+        const randomItem = items[Math.floor(Math.random() * items.length)];
+
+        // Отображение выпавшего предмета в rewardsMenu
         const rewardsItems = document.getElementById('rewardsItems');
         rewardsItems.innerHTML = ''; // Очищаем блок
-        rewards.forEach(item => {
-            const rewardDiv = document.createElement('div');
-            rewardDiv.className = 'reward_item';
+        const rewardDiv = document.createElement('div');
+        rewardDiv.className = 'reward_item';
 
-            rewardDiv.innerHTML = `
-                <img src="${item.icon}" alt="${item.name}">
-                <span>${item.name}</span>
-            `;
-            rewardsItems.appendChild(rewardDiv);
-        });
+        rewardDiv.innerHTML = `
+            <img src="${randomItem.icon}" alt="${randomItem.name}">
+            <span>${randomItem.name}</span>
+        `;
+        rewardsItems.appendChild(rewardDiv);
 
         // Показать меню с выпавшими предметами
         const rewardsMenu = document.getElementById('rewardsMenu');
@@ -54,8 +81,8 @@ document.getElementById('buyButton').addEventListener('click', function () {
         document.body.classList.add('no-scroll');
 
         // Скрыть меню покупки
-        const menu = document.getElementById('menu');
-        menu.style.display = 'none';
+        const clickBox = document.getElementById('click_box');
+        clickBox.style.display = 'none';
     } else {
         showInsufficientFundsModal(); // Показать модальное окно недостатка средств
     }
@@ -64,48 +91,8 @@ document.getElementById('buyButton').addEventListener('click', function () {
 // Закрытие меню с выпавшими предметами
 document.getElementById('closeRewardsButton').addEventListener('click', function () {
     const rewardsMenu = document.getElementById('rewardsMenu');
-    rewardsMenu.style.display = 'none';
+    rewardsMenu.style.display = 'none'; // Скрываем меню с выпавшими предметами
 
     // Включаем скроллинг страницы
     document.body.classList.remove('no-scroll');
-});
-
-// Функция для обновления счета и сохранения в localStorage
-function updateScore(newScore) {
-    const currentScoreElement = document.getElementById('currentScore');
-    currentScoreElement.innerText = newScore;
-
-    // Сохраняем текущее значение счета в localStorage
-    localStorage.setItem('currentScore', newScore);
-}
-
-// Функция для обновления текста в элементах с классом image-text
-function updateImageText(newText) {
-    const imageTextElements = document.querySelectorAll('.image-text');
-    imageTextElements.forEach(element => {
-        element.innerText = newText;
-    });
-
-    // Сохраняем текст в localStorage (если нужно)
-    localStorage.setItem('imageText', newText);
-}
-
-// Функция для показа модального окна недостатка средств
-function showInsufficientFundsModal() {
-    const modal = document.getElementById('insufficientFundsModal');
-    modal.style.display = 'block'; // Показываем модальное окно
-}
-
-// Закрытие модального окна при нажатии на кнопку закрытия
-document.getElementById('closeModalButton').addEventListener('click', function () {
-    const modal = document.getElementById('insufficientFundsModal');
-    modal.style.display = 'none'; // Скрываем модальное окно
-});
-
-// Закрытие модального окна при клике вне его области
-window.addEventListener('click', function (event) {
-    const modal = document.getElementById('insufficientFundsModal');
-    if (event.target === modal) {
-        modal.style.display = 'none'; // Скрываем модальное окно при клике вне его области
-    }
 });

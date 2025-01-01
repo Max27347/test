@@ -74,30 +74,35 @@
     <span class="text_box11">Сундук, излучающий загадочный свет <br>Его содержимое связано с истоками магической вселенной</span>
     <div class="coin_container">
         <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
-        <span class="coin_text">1000</span>
+        <span class="coin_text">10</span>
     </div>
 </div>
 
-<!-- Скрытое меню -->
-<div class="menu" id="menu" style="display: none;">
-    <img src="/static/images/box_1.png" alt="Ящик" class="menu_box_image">
-    <div class="coin_display">
-        <span class="coin_text">1000</span>
-        <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
+<!-- Меню сундука -->
+<div class="fullscreen_menu" id="click_box" style="display: none;">
+    <div class="menu_content">
+        <h2>Содержимое сундука:</h2>
+        <img src="/static/images/box_1.png" alt="Ящик" class="menu_box_image">
+        <div class="coin_display">
+            <span class="coin_text_2">1000</span>
+            <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
+        </div>
+        <button id="buyButton1" class="buy_box">Купить</button>
+        <button id="closeBoxButton" class="close_button">Закрыть</button>
     </div>
-    <button id="buyButton" class="buy_button">Купить</button>
 </div>
 
 <!-- Меню с выпавшими предметами -->
 <div class="rewards_menu" id="rewardsMenu" style="display: none;">
     <div class="rewards_content">
-        <h2>Выпавшие предметы:</h2>
+        <h2>Выпавший предмет:</h2>
         <div id="rewardsItems">
-            <!-- Здесь появятся выпавшие предметы -->
+            <!-- Здесь появится один выпавший предмет -->
         </div>
         <button id="closeRewardsButton" class="close_button">Закрыть</button>
     </div>
 </div>
+
 
 
 
