@@ -40,7 +40,7 @@ document.getElementById('closeBoxButton').addEventListener('click', function () 
 
 // Покупка сундука
 document.getElementById('buyButton1').addEventListener('click', function () {
-    const cost = 10; // Стоимость покупки
+    const cost = 1; // Стоимость покупки
     const currentScoreElement = document.getElementById('currentScore');
     let currentScore = parseInt(currentScoreElement.innerText);
 
@@ -51,11 +51,11 @@ document.getElementById('buyButton1').addEventListener('click', function () {
 
         // Генерация одного случайного предмета
         const items = [
-            { name: 'Кот', icon: '/static/images/colt.png' },
-            { name: 'Кот', icon: '/static/images/colt.png' },
-            { name: 'Кот', icon: '/static/images/colt.png' },
-            { name: 'Кот', icon: '/static/images/colt.png' },
-            { name: 'Кот', icon: '/static/images/colt.png' },
+            { name: 'Кот', icon: '/static/images/cot.png' },
+            { name: 'Кот', icon: '/static/images/cot.png' },
+            { name: 'Кот', icon: '/static/images/cot.png' },
+            { name: 'Кот', icon: '/static/images/cot.png' },
+            { name: 'Кот', icon: '/static/images/cot.png' },
         ];
 
         // Генерация одного случайного предмета

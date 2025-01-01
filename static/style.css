@@ -528,8 +528,8 @@ text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
         padding: 10px 20px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         border: 1px solid #3d5afe;
-        width: 400px;
-        height: 100px;
+        width: 300px;
+        height: 80px;
     }
 
     .coin-stack img.coins {
@@ -612,7 +612,7 @@ text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
       padding: 10px;
       margin-bottom: 0px;
       margin-top: 20px;
-      width: 420px; /* Фиксированная ширина */
+      width: 320px; /* Фиксированная ширина */
       height: 50px; /* Фиксированная высота */
       margin-left: auto;
       margin-right: auto; /* Центрирование карточки */
@@ -646,7 +646,7 @@ body {
     padding: 10px; /* Отступ внутри контейнера для текста и изображения */
     padding-right: 80px; /* Добавляем отступ справа для монет */
     border-radius: 8px; /* Скругление углов */
-    width: 400px; /* Устанавливаем фиксированную ширину контейнера */
+    width: 300px; /* Устанавливаем фиксированную ширину контейнера */
     height: 75px;
 }
 
@@ -745,7 +745,7 @@ body {
     padding: 10px; /* Отступ внутри контейнера для текста и изображения */
     padding-right: 80px; /* Добавляем отступ справа для монет */
     border-radius: 8px; /* Скругление углов */
-    width: 400px; /* Устанавливаем фиксированную ширину контейнера */
+    width: 300px; /* Устанавливаем фиксированную ширину контейнера */
     height: 75px;
 }
 
@@ -771,68 +771,6 @@ body {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 }
 
-.coin_container {
-   display: flex;
-   align-items: center;
-   justify-content: flex-end;
-   position: absolute;
-   top: 50%;
-   transform: translateY(-50%);
-   right: 10px;
-}
-
-.coin_icon {
-   margin-left: 10px;
-}
-
-.coin_text {
-   font-family: 'Pusia-bold', sans-serif;
-   color: white;
-   font-size: 16px;
-   margin-left: 5px;
-}
-
-.menu {
-   position: fixed;
-   top: 200px;
-   left: 20px;
-   background-color: rgba(0, 0, 0, 0.8);
-   color: white;
-   padding: 10px;
-   border-radius: 8px;
-   z-index: 1001;
-}
-
-.menu_box_image {
-   width: 80px;
-   margin-bottom: 10px;
-}
-
-.coin_display {
-   display: flex;
-   align-items: center;
-   margin-top: 10px;
-}
-
-.buy_button {
-   background-color: #4CAF50;
-   color: white;
-   border:none;
-   padding :10 px15 px ;
-   text-align:center ;
-   text-decoration:none ;
-   display:inline-block ;
-   font-size :16 px ;
-   margin-top :10 px ;
-   border-radius :5 px ;
-   cursor:pointer ;
-   transition :background-color .3 s ease ;
-}
-
-.buy_button:hover {
-   background-color:#45a049 ;
-}
-
 
 .box_3 {
     position: relative; /* Изменено на относительное позиционирование */
@@ -844,7 +782,7 @@ body {
     padding: 10px; /* Отступ внутри контейнера для текста и изображения */
     padding-right: 80px; /* Добавляем отступ справа для монет */
     border-radius: 8px; /* Скругление углов */
-    width: 400px; /* Устанавливаем фиксированную ширину контейнера */
+    width: 300px; /* Устанавливаем фиксированную ширину контейнера */
     height: 75px;
 }
 
@@ -870,27 +808,6 @@ body {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 }
 
-.coin_container {
-    display: flex; /* Используем flexbox для выравнивания элементов */
-    align-items: center; /* Вертикальное выравнивание по центру контейнера */
-    justify-content: flex-end; /* Выравнивание по правому краю */
-    position: absolute; /* Абсолютное позиционирование относительно родителя (.box_1) */
-    top: 50%; /* Центрируем по вертикали относительно родителя */
-    transform: translateY(-50%); /* Сдвигаем на половину высоты для точного центрирования */
-    right: 10px; /* Отступ от правого края контейнера */
-}
-
-.coin_icon {
-    margin-left: 10px; /* Отступ слева от текста */
-}
-
-.coin_text {
-    font-family: 'Pusia-bold', sans-serif; /* Шрифт */
-    color: white; /* Цвет текста (по желанию) */
-    font-size: 16px; /* Размер шрифта для текста монет */
-    margin-left: 5px; /* Отступ между иконкой и текстом */
-}
-
 
 .box_4 {
     position: relative; /* Изменено на относительное позиционирование */
@@ -902,7 +819,7 @@ body {
     padding: 10px; /* Отступ внутри контейнера для текста и изображения */
     padding-right: 80px; /* Добавляем отступ справа для монет */
     border-radius: 8px; /* Скругление углов */
-    width: 400px; /* Устанавливаем фиксированную ширину контейнера */
+    width: 300px; /* Устанавливаем фиксированную ширину контейнера */
     height: 75px;
 }
 
@@ -928,28 +845,7 @@ body {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 }
 
-.coin_container {
-   display: flex;
-   align-items: center;
-   justify-content: flex-end;
-   position: absolute;
-   top: 50%;
-   transform: translateY(-50%);
-   right: 10px;
-}
 
-.coin_icon {
-   margin-left: 10px;
-}
-
-.coin_text {
-   font-family: 'Pusia-bold', sans-serif;
-   color: white;
-   font-size: 16px;
-   margin-left: 5px;
-}
-
-/* Основной блок внутри меню */
 /* Полное меню */
 .fullscreen_menu {
     position: fixed;
@@ -971,8 +867,9 @@ body {
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Тень вокруг блока */
-    max-width: 400px; /* Максимальная ширина блока */
-    width: 90%; /* Ширина блока */
+    max-width: 200px; /* Максимальная ширина блока */
+
+
 }
 
 /* Заголовок меню */
@@ -982,7 +879,7 @@ body {
 
 /* Изображение ящика */
 .menu_box_image {
-    width: 100%; /* Ширина изображения по размеру блока */
+    width: 50%; /* Ширина изображения по размеру блока */
     height: auto; /* Автоматическая высота для сохранения пропорций */
     margin-bottom: 15px; /* Отступ снизу */
 }
@@ -1050,7 +947,7 @@ body {
         border-radius: 10px;
         text-align: center;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Тень вокруг блока */
-        max-width: 400px;
+        max-width: 200px;
         width: 90%;
     }
 
@@ -1468,6 +1365,22 @@ body.heroes-page {
     background-color: #45a049; /* Более темный зеленый при наведении на кнопку */
 }
 
+
+
+
+
+#buy-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#buy-button:hover {
+  background-color: #218838;
+}
 
 /* Улучшения*/
 body.upgrade-page {
