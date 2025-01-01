@@ -19,9 +19,13 @@
         <img src="/static/images/coin.png" alt="Картинка 1">
     </div>
     <div class="image-item">
-        <span class="image-text">0</span>
+        <span class="image-text_2">0</span>
         <img src="/static/images/bling.png" alt="Картинка 2">
     </div>
+</div>
+<p id="score"><span id="currentScore">0</span></p>
+<div class="coin">
+    <img src="/static/images/coin.png" alt="Монеты" width="80">
 </div>
 
 
@@ -50,29 +54,48 @@
     </a>
 </div>
 
-
-<div class="shelly_p3">
-    <img id="mainImage" src="/static/images/shelly.png" alt="Main Image">
-    <div class="product-info">
-        <p id="price" class="price">
-            1000 <img src="/static/images/coin.png" alt="Монета" class="coin-icon"> <!-- Добавьте изображение монеты -->
-        </p>
-        <button class="buy-button">Купить</button>
+<div class="preview" id="preview">
+    <img src="/static/images/shelly.png" alt="Preview">
+    <p id="preview-name">Character 1</p>
+  </div>
+  <div class="menu_char">
+    <div class="character" data-id="1" data-name="Character 1" data-img="/static/images/shelly.png">
+      <img src="/static/images/shelly.png" alt="Character 1">
+      <p>Character 1</p>
     </div>
-</div>
-
-
-<div class="fixed-window">
-    <img id="targetImage" src="/static/images/shelly_av.png" alt="Icon Left" class="icon_nita left-icon" onclick="selectCharacter('shelly', 1000)">
-    <img src="/static/images/colt_av.png" alt="Icon Left" class="icon_nita left-icon" onclick="selectCharacter('colt', 1200)">
-    <img src="/static/images/dyno_av.png" alt="Icon Center" class="icon_nita center-icon" onclick="selectCharacter('dyno', 1100)">
-    <img src="/static/images/piper_av.png" alt="Icon Right" class="icon_nita right-icon" onclick="selectCharacter('piper', 1300)">
-    <img src="/static/images/edgar_av.png" alt="Icon Right" class="icon_nita right-icon" onclick="selectCharacter('edgar', 1400)">
-    <img src="/static/images/crow_av.png" alt="Icon Right" class="icon_nita right-icon" onclick="selectCharacter('mortis', 1500)">
-    <img src="/static/images/spike_av.png" alt="Icon Right" class="icon_nita right-icon" onclick="selectCharacter('spike', 1600)">
-    <img src="/static/images/leon_av.png" alt="Icon Right" class="icon_nita right-icon" onclick="selectCharacter('leon', 1700)">
-    <img src="/static/images/kit_av.png" alt="Icon Right" class="icon_nita right-icon" onclick="selectCharacter('kit', 1800)">
-</div>
+    <div class="character" data-id="2" data-name="Character 2" data-img="/static/images/colt.png">
+      <img src="/static/images/colt.png" alt="Character 2">
+      <p>Character 2</p>
+    </div>
+    <div class="character" data-id="3" data-name="Character 3" data-img="https://via.placeholder.com/200">
+      <img src="https://via.placeholder.com/80" alt="Character 3">
+      <p>Character 3</p>
+    </div>
+    <div class="character" data-id="4" data-name="Character 4" data-img="https://via.placeholder.com/200">
+      <img src="https://via.placeholder.com/80" alt="Character 4">
+      <p>Character 4</p>
+    </div>
+    <div class="character" data-id="5" data-name="Character 5" data-img="https://via.placeholder.com/200">
+      <img src="https://via.placeholder.com/80" alt="Character 5">
+      <p>Character 5</p>
+    </div>
+    <div class="character" data-id="6" data-name="Character 6" data-img="https://via.placeholder.com/200">
+      <img src="https://via.placeholder.com/80" alt="Character 6">
+      <p>Character 6</p>
+    </div>
+    <div class="character" data-id="7" data-name="Character 7" data-img="https://via.placeholder.com/200">
+      <img src="https://via.placeholder.com/80" alt="Character 7">
+      <p>Character 7</p>
+    </div>
+    <div class="character" data-id="8" data-name="Character 8" data-img="https://via.placeholder.com/200">
+      <img src="https://via.placeholder.com/80" alt="Character 8">
+      <p>Character 8</p>
+    </div>
+    <div class="character" data-id="9" data-name="Character 9" data-img="https://via.placeholder.com/200">
+      <img src="https://via.placeholder.com/80" alt="Character 9">
+      <p>Character 9</p>
+    </div>
+  </div>
 
 
 <div class="menu_rare">
@@ -84,6 +107,7 @@
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
   <script src="{{ url_for('static', filename='script_theme.js') }}"></script>
+  <script src="{{ url_for('static', filename='script_heroes.js') }}"></script>
 {% include '_nav.html' %}
 </body>
 </html>

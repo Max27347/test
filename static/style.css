@@ -1348,89 +1348,66 @@ position: center
 
 /* Страница скины */
 
-.shelly_p3 {
-    display: flex;
-    justify-content: center;  /* Центрирование по горизонтали */
-    align-items: flex-start;  /* Выравнивание по верхнему краю */
-    width: 100%;              /* Растягиваем контейнер на всю ширину */
-    height: 100%;             /* Растягиваем контейнер на всю высоту родительского элемента */
-    text-align: center;       /* Выравнивание текста по центру (если нужно) */
-    padding-top: 80px;       /* Отступ сверху для дополнительного пространства (по желанию) */
-}
+ .menu_char {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      width: 400px;
+      margin: 300px auto 0 auto;
+    }
 
-#mainImage {
-    max-width: 40%;           /* Уменьшаем изображение до 30% от ширины контейнера */
-    max-height: 40%;          /* Ограничиваем максимальную высоту изображения */
-    object-fit: contain;      /* Сохраняем пропорции изображения */
-}
+    .character {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 8px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
 
-.product-info {
-    margin-left: 20px;        /* Отступ между изображением и текстом */
-}
+    .character img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: -10px;
+    }
 
-.price {
-    font-size: 24px;          /* Размер шрифта для цены */
-    color: white;              /* Цвет текста для цены */
-}
+    .character button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
 
-.buy-button {
-    padding: 10px 20px;       /* Отступы для кнопки */
-    font-size: 16px;          /* Размер шрифта для кнопки */
-    color: white;             /* Цвет текста кнопки */
-    background-color: #28a745; /* Цвет фона кнопки (зеленый) */
-    border: none;             /* Убираем границу у кнопки */
-    border-radius: 5px;      /* Скругление углов кнопки */
-    cursor: pointer;          /* Курсор при наведении на кнопку */
-}
+    .character button:hover {
+      background-color: #45a049;
+    }
 
-.buy-button:hover {
-    background-color: #218838; /* Темный зеленый цвет при наведении на кнопку */
-}
-.coin-icon {
-    width: 20px; /* Ширина значка монеты (измените по необходимости) */
-    height: auto; /* Автоматическая высота для сохранения пропорций */
-    vertical-align: middle; /* Выравнивание по центру относительно текста */
-    margin-left: 5px; /* Отступ слева от значка монеты */
-}
+    .selected {
+      border: 2px solid #4CAF50;
+    }
 
+    .preview {
+      position: fixed;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      text-align: center;
+    }
 
-
-.fixed-window {
-    position: relative;
-    bottom: 120px; /* Позиция внизу экрана, поднято на 20 пикселей */
-    left: 50%; /* Центрирование по горизонтали */
-    transform: translateX(-50%); /* Центрирование по горизонтали */
-    background-image: url('/static/images/theme_11.png'); /* Фоновое изображение */
-    color: white; /* Цвет текста */
-    padding: 10px; /* Отступы внутри окна */
-    border-radius: 10px; /* Закругленные углы */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Тень для эффекта поднятости */
-    width: 175px; /* Ширина окна */
-    height: 170px; /* Высота окна */
-    z-index: 999;
-}
-
-.left-icon {
-    align-self: flex-start; /* Выравнивание по левому краю */
-}
-
-.center-icon {
-    align-self: center; /* Центрирование по горизонтали */
-}
-
-.right-icon {
-    align-self: flex-end; /* Выравнивание по правому краю */
-}
-
-.icon_nita {
-    width: 45px; /* Ширина иконок (можете изменить) */
-    height: auto; /* Автоматическая высота для сохранения пропорций */
-    margin: 5px; /* Отступы между иконками */
-}
-.header {
-    text-align: center; /* Центрирование текста */
-    margin-top: 20px; /* Отступ сверху */
-}
+    .preview img {
+      width: 200px;
+      height: 200px;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
 
 
 .menu_rare {
@@ -1462,7 +1439,6 @@ position: center
 .menu-button:hover {
     background-color: #45a049; /* Более темный зеленый при наведении на кнопку */
 }
-
 
 
 /* Фоны*/
