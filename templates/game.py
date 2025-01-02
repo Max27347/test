@@ -23,7 +23,7 @@ def load_image_from_file(file_path, size=None):
 # Класс Игрока
 class Player:
     def __init__(self):
-        self.image = load_image_from_file('D:/brawl_clicker-master/static/images/colt.png', (80, 110))  # Увеличиваем размер игрока
+        self.image = load_image_from_file('D:/brawl_clicker-master/static/images/cot.png', (80, 110))  # Увеличиваем размер игрока
         self.rect = self.image.get_rect()
         self.rect.centerx = WIDTH // 2
         self.rect.bottom = HEIGHT - 20
@@ -42,7 +42,7 @@ class Player:
 # Класс Бомбы
 class Bomb:
     def __init__(self):
-        self.image = load_image_from_file('D:/brawl_clicker-master/static/images/dyno.png', (30, 40))  # Увеличиваем размер бомб
+        self.image = load_image_from_file('D:/brawl_clicker-master/static/images/leon.png', (30, 40))  # Увеличиваем размер бомб
         self.rect = self.image.get_rect()
         self.reset()
         self.speed = 2  # Начальная скорость падения
@@ -84,11 +84,11 @@ def main():
     score = 0
 
     # Загружаем фон
-    background_image = load_image_from_file('D:/brawl_clicker-master/static/images/brawl_stars_lobby.png', (1000, 700))  # Замените путь на свой
+    background_image = load_image_from_file('D:/brawl_clicker-master/static/images/fon_1.png', (1000, 700))  # Замените путь на свой
 
     # Создание кнопок управления с изображениями
-    left_button = Button(50, HEIGHT - 100, 'D:/brawl_clicker-master/static/images/left_arrow.png', 100, 60)   # Кнопка влево
-    right_button = Button(WIDTH - 150, HEIGHT - 100, 'D:/brawl_clicker-master/static/images/right_arrow.png', 100, 60)   # Кнопка вправо
+    left_button = Button(50, HEIGHT - 100, 'D:/brawl_clicker-master/static/images/leon.png', 100, 60)   # Кнопка влево
+    right_button = Button(WIDTH - 150, HEIGHT - 100, 'D:/brawl_clicker-master/static/images/leon.png', 100, 60)   # Кнопка вправо
 
     while True:
         for event in pygame.event.get():

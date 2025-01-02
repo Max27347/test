@@ -52,10 +52,10 @@ document.getElementById('buyButton1').addEventListener('click', function () {
         // Генерация одного случайного предмета
         const items = [
             { name: 'Кот', icon: '/static/images/cot.png' },
-            { name: 'Кот', icon: '/static/images/cot.png' },
-            { name: 'Кот', icon: '/static/images/cot.png' },
-            { name: 'Кот', icon: '/static/images/cot.png' },
-            { name: 'Кот', icon: '/static/images/cot.png' },
+            { name: 'Голем', icon: '/static/images/golem.png' },
+            { name: 'Грут', icon: '/static/images/groot.png' },
+            { name: 'Огонь', icon: '/static/images/fire.png' },
+            { name: 'Вода', icon: '/static/images/water.png' },
         ];
 
         // Генерация одного случайного предмета

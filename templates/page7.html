@@ -2,22 +2,20 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Улучшения</title>
+    <title>Фоны</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body class="upgrade-page"> <!-- Добавлен класс friends-page -->
-
+<body class="heroes-page"> <!-- Добавлен класс friends-page -->
 
 <div class="icon-container">
     <img src="/static/images/icon.png" alt="Иконка" width="75">
 </div>
 <p id="nick">Максим</p>
+
 <p id="score"><span id="currentScore">0</span></p>
 <div class="coin">
     <img src="/static/images/coin.png" alt="Монеты" width="80">
 </div>
-
 <div class="image-container">
     <div class="image-item">
         <span class="image-text">0</span>
@@ -28,6 +26,7 @@
         <img src="/static/images/bling.png" alt="Картинка 2">
     </div>
 </div>
+
 
 
 <div class="dropdown">
@@ -43,77 +42,64 @@
 </div>
 
 
-
-<div class="box_1" id="box1">
-    <img src="/static/images/click.png" width="80" class="box1">
-    <span class="text_box1">Клик по экрану</span>
-    <br>
-    <span class="text_box11">Ты получаешь больше <br>монет за 1 нажатие</span>
-    <div class="coin_container">
-        <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
-        <span class="coin_text">1000</span>
-    </div>
-    <!-- Кнопка "Купить" -->
-    <button class="buy-button" id="buy-box-button">Купить</button>
-</div>
-
-
-<div class="box_2" id="box2">
-    <img src="/static/images/energy.png" width="80" class="box2">
-    <span class="text_box2">Энергия</span>
-    <br>
-    <span class="text_box22">Увеличивает энергию на 500  <br> единиц </span>
-    <div class="coin_container">
-        <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
-        <span class="coin_text">1000</span>
-    </div>
-</div>
-
-<div class="box_3" id="box3">
-    <img src="/static/images/energy_regen.png" width="80" class="box3">
-    <span class="text_box3">Восстановление энергии</span>
-    <br>
-    <span class="text_box33">Энергия восстанавливается <br> быстрее</span>
-    <div class="coin_container">
-        <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
-        <span class="coin_text">1000</span>
-    </div>
-</div>
-
-
-<div class="box_4" id="box4">
-    <img src="/static/images/jackpot.png" width="80" class="box4">
-    <span class="text_box4">Шанс на Джекпот</span>
-    <br>
-    <span class="text_box44">Увеличивает вероятность <br> джекпота</span>
-    <div class="coin_container">
-        <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
-        <span class="coin_text">1000</span>
-    </div>
-</div>
-
-
-
-
-
 <div class="menu_p3">
     <a href="/page3" class="item">
-        <img src="/static/images/button_menu.png" width="110" alt="Image 1" class="image">
+        <button class="menu-button">Ящики</button>
     </a>
     <a href="/page6" class="item">
-        <img src="/static/images/button_menu_2.png" width="110" alt="Image 2" class="image">
+        <button class="menu-button">Герои</button>
     </a>
     <a href="/page7" class="item">
-        <img src="/static/images/button_menu.png" width="110" alt="Image 3" class="image">
+        <button class="menu-button">Фоны</button>
     </a>
 </div>
 
 
-    <script src="{{ url_for('static', filename='script_theme.js') }}"></script>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
-    <script src="{{ url_for('static', filename='script_box.js') }}"></script>
-    <script src="{{ url_for('static', filename='script_heroes.js') }}"></script>
+<div class="background-container">
+  <div class="background-preview" id="background-preview">
+    <img src="/static/images/fon_1.png" alt="Preview" id="preview-image">
+    <p id="background-preview-name">Background 1</p>
+  </div>
 
+  <div class="background-menu">
+    <div class="background-option" data-id="1" data-name="Background 1" data-img="/static/images/fon_1.png">
+      <p>Background 1</p>
+    </div>
+    <div class="background-option" data-id="2" data-name="Background 2" data-img="/static/images/fon_2.png">
+      <p>Background 2</p>
+    </div>
+    <div class="background-option" data-id="3" data-name="Background 3" data-img="/static/images/fon_3.png">
+      <p>Background 3</p>
+    </div>
+    <div class="background-option" data-id="4" data-name="Background 4" data-img="/static/images/fon_4.png">
+      <p>Background 4</p>
+    </div>
+    <div class="background-option" data-id="5" data-name="Background 5" data-img="/static/images/fon_5.png">
+      <p>Background 5</p>
+    </div>
+    <div class="background-option" data-id="6" data-name="Background 6" data-img="/static/images/fon_6.png">
+      <p>Background 6</p>
+    </div>
+    <div class="background-option" data-id="7" data-name="Background 7" data-img="/static/images/fon_7.png">
+      <p>Background 7</p>
+    </div>
+    <div class="background-option" data-id="8" data-name="Background 8" data-img="/static/images/fon_8.png">
+      <p>Background 8</p>
+    </div>
+  </div>
+
+  <div class="background-buttons">
+    <button id="background-select-button">Выбрать</button>
+    <button id="background-reset-button">Сбросить фон</button>
+  </div>
+</div>
+
+
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <script src="{{ url_for('static', filename='script_theme.js') }}"></script>
+  <script src="{{ url_for('static', filename='script_heroes.js') }}"></script>
+  <script src="{{ url_for('static', filename='script_box.js') }}"></script>
 {% include '_nav.html' %}
 </body>
 </html>
