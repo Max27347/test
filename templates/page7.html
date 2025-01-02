@@ -8,26 +8,27 @@
 </head>
 <body class="upgrade-page"> <!-- Добавлен класс friends-page -->
 
-<div class="up_text">
-    <p>Улучшения</p>
-</div>
 
 <div class="icon-container">
     <img src="/static/images/icon.png" alt="Иконка" width="75">
 </div>
 <p id="nick">Максим</p>
-
+<p id="score"><span id="currentScore">0</span></p>
+<div class="coin">
+    <img src="/static/images/coin.png" alt="Монеты" width="80">
+</div>
 
 <div class="image-container">
     <div class="image-item">
-        <span class="image-text">10000</span>
+        <span class="image-text">0</span>
         <img src="/static/images/coin.png" alt="Картинка 1">
     </div>
     <div class="image-item">
-        <span class="image-text">3000</span>
+        <span class="image-text_2">0</span>
         <img src="/static/images/bling.png" alt="Картинка 2">
     </div>
 </div>
+
 
 <div class="dropdown">
     <img src="/static/images/menu.png" alt="Меню" id="menu-icon">
@@ -52,16 +53,8 @@
         <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
         <span class="coin_text">1000</span>
     </div>
-</div>
-
-<!-- Скрытое меню -->
-<div class="menu" id="menu" style="display: none;">
-    <img src="/static/images/box_1.png" alt="Ящик" class="menu_box_image">
-    <div class="coin_display">
-        <span class="coin_text">1000</span>
-        <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
-    </div>
-    <button id="buyButton" class="buy_button">Купить</button>
+    <!-- Кнопка "Купить" -->
+    <button class="buy-button" id="buy-box-button">Купить</button>
 </div>
 
 
@@ -76,17 +69,6 @@
     </div>
 </div>
 
-<!-- Скрытое меню для второго ящика -->
-<div class="menu" id="menu2" style="display: none;">
-    <img src="/static/images/box_2.png" alt="Ящик" class="menu_box_image">
-    <div class="coin_display">
-        <span class="coin_text">1000</span>
-        <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
-    </div>
-    <button id="buyButton2" class="buy_button">Купить</button>
-</div>
-</div>
-
 <div class="box_3" id="box3">
     <img src="/static/images/energy_regen.png" width="80" class="box3">
     <span class="text_box3">Восстановление энергии</span>
@@ -96,16 +78,6 @@
         <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
         <span class="coin_text">1000</span>
     </div>
-</div>
-
-<!-- Скрытое меню для третьего ящика -->
-<div class="menu" id="menu3" style="display: none;">
-    <img src="/static/images/box_3.png" alt="Ящик" class="menu_box_image">
-    <div class="coin_display">
-        <span class="coin_text">1000</span>
-        <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
-    </div>
-    <button id="buyButton3" class="buy_button">Купить</button>
 </div>
 
 
@@ -118,16 +90,6 @@
         <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
         <span class="coin_text">1000</span>
     </div>
-</div>
-
-<!-- Скрытое меню для четвертого ящика -->
-<div class="menu" id="menu4" style="display: none;">
-    <img src="/static/images/box_4.png" alt="Ящик" class="menu_box_image">
-    <div class="coin_display">
-        <span class="coin_text">1000</span>
-        <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
-    </div>
-    <button id="buyButton4" class="buy_button">Купить</button>
 </div>
 
 
@@ -149,6 +111,8 @@
 
     <script src="{{ url_for('static', filename='script_theme.js') }}"></script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='script_box.js') }}"></script>
+    <script src="{{ url_for('static', filename='script_heroes.js') }}"></script>
 
 {% include '_nav.html' %}
 </body>

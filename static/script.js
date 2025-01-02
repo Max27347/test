@@ -1,4 +1,4 @@
-
+    // Выделение навигации
 document.addEventListener("DOMContentLoaded", () => {
   const links = document.querySelectorAll(".nav-button");
   const currentPath = window.location.pathname;
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateImageText('0'); // Устанавливаем начальное значение
     }
 
-    clickButton.onclick = async () => {
+    clickButton.onclick = async (event) => {
         try {
             const response = await fetch('/click', { method: 'POST' });
             const data = await response.json();
@@ -54,7 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Обновляем текст в элементе с классом image-text
                 updateImageText(score);
 
-                // Другие действия...
+                // Создаем одну монету с классом coin_drop
+                spawnCoinDrop(event);
             }
         } catch (error) {
             console.error("Ошибка при обновлении счета:", error);
@@ -78,8 +79,38 @@ function updateImageText(newText) {
     localStorage.setItem('imageText', newText);
 }
 
+// Функция для создания одной монеты с классом coin_drop
+function spawnCoinDrop(event) {
+    const coinContainer = document.getElementById('coinContainer');
 
-// Получаем элементы
+    if (!coinContainer) {
+        console.error('Контейнер для монет (coinContainer) не найден');
+        return;
+    }
+
+    // Создаем одну монету
+    const coin = document.createElement('div');
+    coin.classList.add('coin_drop');
+
+    // Устанавливаем начальную позицию монеты около клика
+    const startX = event.clientX; // Позиция клика по X
+    const startY = event.clientY; // Позиция клика по Y
+
+    coin.style.left = `${startX}px`;
+    coin.style.top = `${startY}px`;
+
+    // Добавляем монету в контейнер
+    coinContainer.appendChild(coin);
+
+    // Удаляем монету после завершения анимации
+    coin.addEventListener('animationend', () => {
+        coin.remove();
+    });
+}
+
+
+
+// Менюшка
 const menuIcon = document.getElementById('menu-icon');
 const dropdownMenu = document.getElementById('dropdown-menu');
 
@@ -96,31 +127,5 @@ document.addEventListener('click', (event) => {
     }
 });
 
-
-let autoClickInterval;
-
-        // Функция для показа кнопки автокликера
-        function showAutoClickerButton() {
-            document.getElementById("autoClickerButton").style.display = "block";
-        }
-
-        // Функция для автоматического нажатия на изображение
-        function autoClick() {
-            document.getElementById("clickButton").click();
-        }
-
-        // Запуск автокликера
-        document.getElementById("autoClickerButton").onclick = function() {
-            if (!autoClickInterval) {
-                autoClickInterval = setInterval(autoClick, 1000); // Нажимает каждую секунду
-
-                // Остановка автокликера через 30 секунд
-                setTimeout(function() {
-                    clearInterval(autoClickInterval);
-                    autoClickInterval = null;
-                    alert("Автокликер остановлен через 10 секунд.");
-                }, 10000); // 10000 миллисекунд = 10 секунд
-            }
-        };
 
 

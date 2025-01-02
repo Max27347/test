@@ -37,22 +37,15 @@
 </div>
 
 
-<img id="clickButton" src="/static/images/croco.png" style="width: 330px;" onclick="alert('Кнопка нажата!');">
-<br>
+<div id="coinContainer"></div>
+<img id="clickButton" src="/static/images/croco.png" style="width: 330px;" onclick="spawnCoins(event)">
 
 
-
-<img id="gift" src="/static/images/gift.png" onclick="showAutoClickerButton();">
-
-<progress id="progressBar" value="1000" max="1000"></progress>
 
 <div class="icon-container">
     <img src="/static/images/icon.png" alt="Иконка" width="75">
 </div>
 <p id="nick">Максим</p>
-
-
-
 
 
 <div class="dropdown">
@@ -71,6 +64,8 @@
 <a href="/page5" class="open-page5-button">
     <img src="/static/images/top_2.png" alt="Редкие" class="button-image">
 </a>
+
+
 
 <script src="{{ url_for('static', filename='script_wheel.js') }}"></script>
 <script src="{{ url_for('static', filename='script.js') }}"></script>
