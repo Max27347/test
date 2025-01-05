@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Загружаем сохраненное значение счета
     const savedScore = localStorage.getItem('currentScore');
-    if (savedScore) {
-        updateScore(parseInt(savedScore)); // Устанавливаем сохраненное значение
+    if (savedScore !== null) {
+        updateScore(parseInt(savedScore) || 0); // Устанавливаем сохраненное значение или 0
     } else {
         updateScore(0); // Устанавливаем начальное значение
     }
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
 
             if (data.success) {
-                let score = parseInt(currentScoreElement.innerText);
+                let score = parseInt(currentScoreElement.innerText) || 0; // Проверка на NaN
                 score++;
                 updateScore(score);
 
@@ -78,6 +78,7 @@ function updateImageText(newText) {
     // Сохраняем текст в localStorage
     localStorage.setItem('imageText', newText);
 }
+
 
 // Функция для создания одной монеты с классом coin_drop
 function spawnCoinDrop(event) {

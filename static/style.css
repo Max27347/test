@@ -1051,7 +1051,7 @@ body.quests-page {
     border-radius: 10px; /* Скругленные углы */
     padding: 10px 20px; /* Внутренние отступы */
     width: 100%; /* Ширина блока */
-    max-width: 600px; /* Максимальная ширина */
+    max-width: 300px; /* Максимальная ширина */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Тень для блока */
     color: white; /* Цвет текста */
     font-family: Arial, sans-serif; /* Шрифт */
@@ -1106,7 +1106,7 @@ body.quests-page {
     border-radius: 10px; /* Скругленные углы */
     padding: 10px 20px; /* Внутренние отступы */
     width: 100%; /* Ширина блока */
-    max-width: 600px; /* Максимальная ширина */
+    max-width: 300px; /* Максимальная ширина */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Тень для блока */
     color: white; /* Цвет текста */
     font-family: Arial, sans-serif; /* Шрифт */
@@ -1122,7 +1122,7 @@ body.quests-page {
     border-radius: 10px; /* Скругленные углы */
     padding: 10px 20px; /* Внутренние отступы */
     width: 100%; /* Ширина блока */
-    max-width: 600px; /* Максимальная ширина */
+    max-width: 300px; /* Максимальная ширина */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Тень для блока */
     color: white; /* Цвет текста */
     font-family: Arial, sans-serif; /* Шрифт */
@@ -1139,7 +1139,7 @@ body.quests-page {
     border-radius: 10px; /* Скругленные углы */
     padding: 10px 20px; /* Внутренние отступы */
     width: 100%; /* Ширина блока */
-    max-width: 600px; /* Максимальная ширина */
+    max-width: 300px; /* Максимальная ширина */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Тень для блока */
     color: white; /* Цвет текста */
     font-family: Arial, sans-serif; /* Шрифт */
@@ -1155,7 +1155,7 @@ body.quests-page {
     border-radius: 10px; /* Скругленные углы */
     padding: 10px 20px; /* Внутренние отступы */
     width: 100%; /* Ширина блока */
-    max-width: 600px; /* Максимальная ширина */
+    max-width: 300px; /* Максимальная ширина */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Тень для блока */
     color: white; /* Цвет текста */
     font-family: Arial, sans-serif; /* Шрифт */
@@ -1171,7 +1171,7 @@ body.quests-page {
     border-radius: 10px; /* Скругленные углы */
     padding: 10px 20px; /* Внутренние отступы */
     width: 100%; /* Ширина блока */
-    max-width: 600px; /* Максимальная ширина */
+    max-width: 300px; /* Максимальная ширина */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Тень для блока */
     color: white; /* Цвет текста */
     font-family: Arial, sans-serif; /* Шрифт */
@@ -1189,7 +1189,7 @@ body.quests-page {
     border-radius: 10px; /* Скругленные углы */
     padding: 10px 20px; /* Внутренние отступы */
     width: 100%; /* Ширина блока */
-    max-width: 600px; /* Максимальная ширина */
+    max-width: 300px; /* Максимальная ширина */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Тень для блока */
     color: white; /* Цвет текста */
     font-family: Arial, sans-serif; /* Шрифт */
@@ -1346,15 +1346,23 @@ body.heroes-page {
     display: flex; /* Используем flexbox для выравнивания кнопок в строку */
     justify-content: center; /* Центрируем кнопки по горизонтали */
     background-color: #3E5F8A; /* Фоновый цвет меню */
-    padding: 10px; /* Отступы внутри меню */
-    border-radius: 10px; /* Закругленные углы */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Тень для эффекта поднятости */
+    padding: 5px; /* Уменьшаем отступы внутри меню */
+    border-radius: 8px; /* Уменьшаем радиус закругления углов */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Уменьшаем тень для эффекта поднятости */
     position: absolute; /* Позиционирование относительно ближайшего родителя с position: relative */
-    bottom: 380px; /* Отступ от нижней части родительского элемента */
+    bottom: 270px; /* Уменьшаем отступ от нижней части родительского элемента (по желанию) */
     left: 50%; /* Центрирование по горизонтали */
     transform: translateX(-50%); /* Центрирование по горизонтали */
     z-index: 1000; /* Убедитесь, что меню выше других элементов */
+    width: auto; /* Можно установить фиксированную ширину, если это необходимо */
 }
+
+/* Дополнительные стили для кнопок внутри меню (если есть) */
+.menu_rare button {
+    font-size: 14px; /* Уменьшаем размер шрифта для кнопок (по желанию) */
+    padding: 5px 10px; /* Уменьшаем отступы внутри кнопок */
+}
+
 
 .menu-button {
     background-color: #4CAF50; /* Цвет фона кнопок */
@@ -1558,3 +1566,50 @@ body.upgrade-page {
 }
 
 
+.button-container {
+    position: relative; /* Устанавливаем относительное позиционирование для контейнера кнопок */
+    height: 100vh; /* Высота контейнера равна высоте вьюпорта */
+}
+
+.button {
+    padding: 10px 20px; /* Отступы внутри кнопок */
+    font-size: 16px; /* Размер шрифта */
+    cursor: pointer; /* Курсор при наведении */
+}
+
+/* Миры */
+/* Расположение кнопок */
+.top {
+    position: absolute;
+    top: 10px; /* Отступ от верхней части */
+    left: 50%;
+    transform: translateX(-50%); /* Центрируем по горизонтали */
+}
+
+.left {
+    position: absolute;
+    top: 50%;
+    left: 10px; /* Отступ от левой стороны */
+    transform: translateY(-50%); /* Центрируем по вертикали */
+}
+
+.right {
+    position: absolute;
+    top: 50%;
+    right: 10px; /* Отступ от правой стороны */
+    transform: translateY(-50%); /* Центрируем по вертикали */
+}
+
+.bottom {
+    position: absolute;
+    bottom: 50px; /* Отступ от нижней части */
+    left: 50%;
+    transform: translateX(-50%); /* Центрируем по горизонтали */
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Центрируем по обеим осям */
+}
