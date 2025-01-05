@@ -58,6 +58,9 @@ def page10():
 def page11():
     return render_template('page11.html')
 
+@app.route('/upgrade')
+def upgrade():
+    return render_template('upgrade.html')
 
 @app.route('/click', methods=['POST'])
 def click():

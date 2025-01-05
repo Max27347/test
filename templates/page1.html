@@ -22,30 +22,28 @@
 
 <p id="score"><span id="currentScore">0</span></p>
 <div class="coin">
-    <img src="/static/images/coin.png" alt="Монеты" width="80">
+    <img src="/static/images/coin.png" alt="Монеты">
 </div>
-
-<div class="image-container">
-    <div class="image-item">
-        <span class="image-text">0</span>
-        <img src="/static/images/coin.png" alt="Картинка 1">
-    </div>
-    <div class="image-item">
-        <span class="image-text_2">0</span>
-        <img src="/static/images/bling.png" alt="Картинка 2">
-    </div>
-</div>
-
 
 <div id="coinContainer"></div>
-<img id="clickButton" src="/static/images/croco.png" style="width: 330px;" onclick="spawnCoins(event)">
-
+<img id="clickButton" src="/static/images/croco.png" onclick="spawnCoins(event)">
 
 
 <div class="icon-container">
     <img src="/static/images/icon.png" alt="Иконка" width="75">
 </div>
 <p id="nick">Максим</p>
+
+ <!-- Полоса прогресса -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Полоса энергии -->
+    <div class="energy-container">
+        <div class="energy-bar" id="energyBar"></div>
+    </div>
+
 
 
 <div class="dropdown">
@@ -65,6 +63,9 @@
     <img src="/static/images/top_2.png" alt="Редкие" class="button-image">
 </a>
 
+<a href="/upgrade" class="open-up-button">
+    <img src="/static/images/bomb.png" alt="Редкие" class="button-image_up">
+</a>
 
 
 <script src="{{ url_for('static', filename='script_wheel.js') }}"></script>

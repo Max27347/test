@@ -5,10 +5,6 @@ function updateScore(newScore) {
 
     // Сохраняем текущее значение счета в localStorage
     localStorage.setItem('currentScore', newScore);
-
-    // Обновление значения в image-text
-    const imageTextElement = document.querySelector('.image-text');
-    imageTextElement.innerText = newScore; // Обновляем текст
 }
 
 // Функция для загрузки счета из localStorage при загрузке страницы
