@@ -38,9 +38,9 @@ def page5():
 def page6():
     return render_template('page6.html')
 
-@app.route('/page7')
-def page7():
-    return render_template('page7.html')
+@app.route('/fons')
+def fons():
+    return render_template('fons.html')
 
 @app.route('/page8')
 def page8():

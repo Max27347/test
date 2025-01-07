@@ -42,7 +42,7 @@ class Player:
 # Класс Бомбы
 class Bomb:
     def __init__(self):
-        self.image = load_image_from_file('D:/brawl_clicker-master/static/images/leon.png', (30, 40))  # Увеличиваем размер бомб
+        self.image = load_image_from_file('D:/brawl_clicker-master/static/images/leon.png', (20, 20))  # Увеличиваем размер бомб
         self.rect = self.image.get_rect()
         self.reset()
         self.speed = 2  # Начальная скорость падения

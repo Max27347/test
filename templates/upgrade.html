@@ -17,7 +17,6 @@
 <p id="nick">Максим</p>
 
 
-
 <!-- Модальное окно для уведомления о недостатке монет -->
 <div id="insufficientFundsModal" class="modal" style="display: none;">
     <div class="modal-content">
@@ -43,16 +42,18 @@
     </div>
 </div>
 
-
+<div class = 'quests_text'>
+<p>Первый мир</p>
+</div>
 
 <div class="box_1" id="box1">
-    <img src="/static/images/box_1.png" width="80" class="box1">
-    <span class="text_box1">Сундук героя</span>
+    <img src="/static/images/click.png" width="80" class="box1">
+    <span class="text_box1">Автокликер</span>
     <br>
-    <span class="text_box11">Здесь вы можете получить <br> нового персонажа</span>
+    <span class="text_box11">Автоматически <br> фармит монеты 5ч</span>
     <div class="coin_container">
         <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
-        <span class="coin_text">10000</span>
+        <span class="coin_text">70000</span>
     </div>
 </div>
 
@@ -85,13 +86,13 @@
 
 
 <div class="box_2" id="box2">
-    <img src="/static/images/box_2.png" width="80" class="box2">
-    <span class="text_box2">Ящик инструментов</span>
+    <img src="/static/images/rocket.png" width="80" class="box2">
+    <span class="text_box2">Ракета</span>
     <br>
-    <span class="text_box22">Здесь вы можете выбить <br> полезные предметы </span>
+    <span class="text_box22">Увеличивает количество <br>получаемых монет на 1 минуту </span>
     <div class="coin_container">
         <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
-        <span class="coin_text">30000</span>
+        <span class="coin_text">1000</span>
     </div>
 </div>
 
@@ -150,6 +151,17 @@
 </div>
 
 
+<div class="menu_p3">
+    <a href="/page3" class="item">
+        <button class="menu-button">Ящики</button>
+    </a>
+    <a href="/page6" class="item">
+        <button class="menu-button">Герои</button>
+    </a>
+    <a href="/upgrade" class="item">
+        <button class="menu-button">Улучшения</button>
+    </a>
+</div>
 
 <script src="{{ url_for('static', filename='script.js') }}"></script>
   <script src="{{ url_for('static', filename='script_theme.js') }}"></script>

@@ -157,7 +157,7 @@ body {
 
 #score {
     position: fixed;
-    top: 68px;
+    top: 7px;
     left: 200px;
     width: 50px;
     height: 50px;
@@ -168,7 +168,7 @@ body {
 }
 .coin img {
     position: fixed;
-    top: 80px;
+    top: 20px;
     left: 140px;
     width: 50px;
     height: 50px;
@@ -517,7 +517,7 @@ body {
 .open-up-button {
     position: fixed; /* Фиксированное позиционирование */
     left: 40px; /* Отступ от левой стороны окна */
-    bottom: 300px; /* Отступ от нижней части окна */
+    bottom: 250px; /* Отступ от нижней части окна */
     z-index: 1000; /* Убедитесь, что кнопка выше других элементов */
 }
 
@@ -904,6 +904,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 /* Содержимое меню */
@@ -993,8 +994,8 @@ body {
         border-radius: 10px;
         text-align: center;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Тень вокруг блока */
-        max-width: 200px;
-        width: 90%;
+        max-width: 210px;
+        width: 100%;
     }
 
     /* Блок для каждого выпавшего предмета */
@@ -1382,6 +1383,30 @@ body.heroes-page {
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
+#character-description {
+  position: absolute; /* Используем абсолютное позиционирование */
+  top: 50px; /* Отступ сверху */
+  left: -210px; /* Отступ слева */
+  font-size: 14px;
+  color: #555;
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  width: 170px;
+  z-index: 1000; /* Повышаем z-index, чтобы элемент был выше остальных */
+}
+
+
+.character.selected-preview {
+  border: 2px dashed #2196f3;
+  border-radius: 8px;
+}
+
+.character.selected {
+  border: 2px solid #f4c01c;
+  border-radius: 8px;
+}
 
 .menu_rare {
     display: flex; /* Используем flexbox для выравнивания кнопок в строку */
