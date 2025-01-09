@@ -92,3 +92,5 @@ document.getElementById('closeRewardsButton').addEventListener('click', function
     // Включаем скроллинг страницы
     document.body.classList.remove('no-scroll');
 });
+
+
