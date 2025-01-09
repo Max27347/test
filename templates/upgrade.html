@@ -7,73 +7,140 @@
 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body class="up_page">
+<body class="shop-page"> <!-- Добавлен класс friends-page -->
 
-<div class="container_up">
-  <div class="item_up">
-    <div class="item-icon">🤖</div>
-    <div class="item-info">
-      <p class="item-title">Кликер-бот</p>
-      <p class="item-details">2,000 / 1ч • Уровень 1</p>
+
+
+<div class="icon-container">
+    <img src="/static/images/icon.png" alt="Иконка" width="75">
+</div>
+<p id="nick">Максим</p>
+
+
+<!-- Модальное окно для уведомления о недостатке монет -->
+<div id="insufficientFundsModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span id="closeModalButton" class="close-button">&times;</span>
+        <p>У вас не хватает монет для покупки!</p>
     </div>
-    <div class="item-action">></div>
-  </div>
-  <div class="item_up2">
-    <div class="item-icon">⚔️</div>
-    <div class="item-info">
-      <p class="item-title">Клик</p>
-      <p class="item-details">4,000 • Уровень 1</p>
-    </div>
-    <div class="item-action">></div>
-  </div>
-  <div class="item_up3">
-    <div class="item-icon">⚡</div>
-    <div class="item-info">
-      <p class="item-title">Запас энергии</p>
-      <p class="item-details">100 • Уровень 1</p>
-    </div>
-    <div class="item-action">></div>
-  </div>
-  <div class="item_up4">
-    <div class="item-icon">🔄</div>
-    <div class="item-info">
-      <p class="item-title">Скорость перезарядки</p>
-      <p class="item-details">100 • Уровень 1</p>
-    </div>
-    <div class="item-action">></div>
-  </div>
 </div>
 
 
-<div class="background">
-    <!-- Слой затемнения -->
-    <div class="overlay" style="display: none;"></div>
+<p id="score"><span id="currentScore">0</span></p>
+<div class="coin">
+    <img src="/static/images/coin.png" alt="Монеты" width="80">
+</div>
+<div class="dropdown">
+    <img src="/static/images/menu.png" alt="Меню" id="menu-icon">
 
-    <!-- Окно -->
-    <div class="container_up_buy" style="display: none;">
-        <!-- Кнопка закрытия -->
-        <button class="close-button">&times;</button>
-
-        <!-- Картинка сверху -->
-        <div class="top-image">
-            <img src="/static/images/croco.png" alt="Символ" />
-        </div>
-
-        <div class="character_up_buy"></div>
-        <h1 class="title">СКОРОСТЬ<br>ВОССТАНОВЛЕНИЯ<br>ЭНЕРГИИ</h1>
-        <p class="description">
-            Приобретите зелье восстановления, чтобы<br>
-            увеличить скорость восполнения энергии.<br>
-            Прокачайте навык до максимума!
-        </p>
-        <div class="price_up_buy">
-            <!-- Картинка монеты -->
-            <img class="coin-icon" src="/static/images/coin.png" alt="Монета" />
-            <span class="coin">2,000</span>
-        </div>
-        <button class="upgrade-button">УЛУЧШИТЬ</button>
+    <!-- Выпадающее меню -->
+    <div class="dropdown-menu" id="dropdown-menu">
+        <a href="#item1">Язык</a>
+        <a href="#item2">Как играть</a>
+        <a href="#item3">Аирдроп</a>
+        <a href="#item4">Тех поддержка</a>
     </div>
 </div>
+
+<div class = 'up_text'>
+<p>Первый мир</p>
+</div>
+
+<div class="up_1" id="up1">
+    <img src="/static/images/click.png" width="80" class="box1">
+    <span class="text_box1">Автокликер</span>
+    <br>
+    <span class="text_box11">Автоматически <br> фармит монеты 5ч</span>
+    <div class="coin_container">
+        <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
+        <span class="coin_text">70000</span>
+    </div>
+</div>
+
+<!-- Меню сундука -->
+<div class="fullscreen_menu" id="click_box" style="display: none;">
+    <div class="menu_content">
+        <h2>Сундук героя</h2>
+        <img src="/static/images/box_1.png" alt="Ящик" class="menu_box_image">
+        <div class="coin_display">
+            <span class="coin_text_2">1000</span>
+            <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
+        </div>
+        <button id="buyButton1" class="buy_box">Купить</button>
+        <button id="closeBoxButton" class="close_button">Закрыть</button>
+    </div>
+</div>
+
+<!-- Меню с выпавшими предметами -->
+<div class="rewards_menu" id="rewardsMenu" style="display: none;">
+    <div class="rewards_content">
+        <h2>Вы получили:</h2>
+        <div id="rewardsItems">
+            <!-- Здесь появится один выпавший предмет -->
+        </div>
+        <button id="closeRewardsButton" class="close_button">Закрыть</button>
+    </div>
+</div>
+
+<div class="up_2" id="up2">
+    <img src="/static/images/rocket.png" width="80" class="box2">
+    <span class="text_box2">Ракета</span>
+    <br>
+    <span class="text_box22">Увеличивает количество <br>получаемых монет на 1 минуту </span>
+    <div class="coin_container">
+        <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
+        <span class="coin_text">10000</span>
+    </div>
+</div>
+
+<!-- Скрытое меню для второго ящика -->
+<div class="menu" id="menu2" style="display: none;">
+    <img src="/static/images/box_2.png" alt="Ящик" class="menu_box_image">
+    <div class="coin_display">
+        <span class="coin_text">1000</span>
+        <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
+    </div>
+    <button id="buyButton2" class="buy_button">Купить</button>
+</div>
+</div>
+
+<div class="up_3" id="up3">
+    <img src="/static/images/energy_regen.png" width="80" class="box3">
+    <span class="text_box3">Энергия</span>
+    <br>
+    <span class="text_box33"> Сверхбыстрая регенерация на 1ч</span>
+    <div class="coin_container">
+        <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
+        <span class="coin_text">20000</span>
+    </div>
+</div>
+
+<!-- Скрытое меню для третьего ящика -->
+<div class="menu" id="menu3" style="display: none;">
+    <img src="/static/images/box_3.png" alt="Ящик" class="menu_box_image">
+    <div class="coin_display">
+        <span class="coin_text">1000</span>
+        <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
+    </div>
+    <button id="buyButton3" class="buy_button">Купить</button>
+</div>
+
+
+<div class = 'up_text2'>
+<p>Второй мир</p>
+</div>
+
+<div class="up_4" id="up4">
+    <img src="/static/images/energy_lighty.png" width="80" class="box3">
+    <span class="text_box3">Энергия света</span>
+    <br>
+    <span class="text_box33">Автокликер на 6ч</span>
+    <div class="coin_container">
+        <img src="/static/images/coin.png" width="20" alt="Монета" class="coin_icon">
+        <span class="coin_text">0</span>
+    </div>
+</div>
+
 
 <div class="menu_p3">
     <a href="/page3" class="item">
@@ -88,9 +155,8 @@
 </div>
 
 <script src="{{ url_for('static', filename='script.js') }}"></script>
-<script src="{{ url_for('static', filename='script_theme.js') }}"></script>
-<script src="{{ url_for('static', filename='script_up.js') }}"></script>
-
+  <script src="{{ url_for('static', filename='script_theme.js') }}"></script>
+  <script src="{{ url_for('static', filename='script_box.js') }}"></script>
 {% include '_nav.html' %}
 </body>
 </html>

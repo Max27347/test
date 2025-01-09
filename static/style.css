@@ -29,21 +29,6 @@ body {
     background-color: #f4c01c;
     transition: width 0.3s;
 }
-.progress-label {
-    position: fixed; /* Меняем на fixed для независимости от родителя */
-    bottom: 95px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 18px;
-    font-weight: bold;
-    color: #000; /* Сделаем текст более контрастным */
-    background-color: rgba(255, 255, 255, 0.8); /* Фон для читаемости */
-    padding: 5px 10px; /* Отступы для удобства */
-    border-radius: 5px; /* Сглаживание углов */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    z-index: 1000; /* Поверх других элементов */
-}
-
 
 .energy-container {
     position: fixed;
@@ -64,12 +49,13 @@ body {
     transition: width 0.3s;
 }
 
+
 .navigation {
     position: fixed;
     bottom: 0; /* Прикрепляем меню к нижней части экрана */
     left: 0;
     width: 100%; /* На всю ширину экрана */
-    background-color: #f4bb0b; /* Темно-синий фон */
+    background-color: #3E5F8A; /* Темно-синий фон */
     display: flex; /* Flexbox для размещения элементов */
     justify-content: space-around; /* Равномерное распределение пунктов меню */
     padding: 10px 0; /* Внутренние отступы сверху и снизу */
@@ -90,7 +76,7 @@ body {
 
 /* Стили для активного пункта меню */
 .navigation .nav-button.active {
-    background-color:  #FF4F00; /* Цвет фона для активного пункта */
+    background-color: #ffd700; /* Цвет фона для активного пункта */
 }
 
 
@@ -100,7 +86,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center; /* Центрируем иконки и текст */
-    gap: 0px; /* Расстояние между иконкой и подписью */
+    gap: 5px; /* Расстояние между иконкой и подписью */
 }
 
 .nav-button img {
@@ -825,6 +811,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 /* Содержимое меню */
@@ -835,6 +822,8 @@ body {
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Тень вокруг блока */
     max-width: 200px; /* Максимальная ширина блока */
+
+
 }
 
 /* Заголовок меню */
@@ -892,59 +881,53 @@ body {
     opacity: 0.9; /* Изменяем прозрачность при наведении для эффекта наведения */
 }
 
-/* Второе всплывающее окно - Rewards Menu */
 .rewards_menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Полупрозрачный черный фон */
-    z-index: 9999; /* Поверх всех элементов */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7); /* Полупрозрачный черный фон */
+        z-index: 9999; /* Поверх всех элементов */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-/* Основной блок меню */
-.rewards_content {
-    background: white; /* Белый фон для блока с предметами */
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Тень вокруг блока */
-    max-width: 200px; /* Совпадает с первым окном */
-    width: 100%;
-}
+    /* Основной блок меню */
+    .rewards_content {
+        background: white; /* Белый фон для блока с предметами */
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Тень вокруг блока */
+        max-width: 210px;
+        width: 100%;
+    }
 
-/* Блок для каждого выпавшего предмета */
-.reward_item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #333; /* Темный фон */
-    color: white; /* Белый текст */
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 5px;
-    font-size: 16px;
-    width: 100%; /* Расширяем на всю ширину */
-    box-sizing: border-box; /* Учитываем padding в ширине */
-}
+    /* Блок для каждого выпавшего предмета */
+    .reward_item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: #333; /* Темный фон */
+        color: white; /* Белый текст */
+        padding: 15px;
+        margin: 10px 0;
+        border-radius: 5px;
+        font-size: 16px;
+    }
 
-/* Картинки */
-.reward_item img {
-    width: 50%; /* Как в первом окне */
-    height: auto; /* Пропорционально */
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
+    .reward_item img {
+        width: 100px; /* Крупные картинки */
+        height: 100px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
 
-/* Текст внутри каждого элемента */
-.reward_item span {
-    text-align: center;
-}
-
+    .reward_item span {
+        text-align: center;
+    }
 
     /* Кнопка закрытия */
     .close_button {
@@ -1604,210 +1587,74 @@ body.upgrade-page {
     transform: translate(-50%, -50%); /* Центрируем по обеим осям */
 }
 /* Улучшения*/
-body.up_page {
-    min-height: 150vh; /* Минимальная высота равная высоте окна браузера */
-    font-family: Arial, sans-serif;
-    color: #fff;
+.up_1 {
+    position: relative; /* Изменено на относительное позиционирование */
+    top: 30px; /* Расположение по вертикали */
+    left: 20px; /* Расположение по горизонтали */
+    z-index: 999; /* Уровень наложения */
+    background-image: url('/static/images/theme_11.png'); /* Фоновое изображение */
+    background-size: cover; /* Масштабирование фона, чтобы он заполнил контейнер */
+    padding: 10px; /* Отступ внутри контейнера для текста и изображения */
+    padding-right: 80px; /* Добавляем отступ справа для монет */
+    border-radius: 8px; /* Скругление углов */
+    width: 300px; /* Устанавливаем фиксированную ширину контейнера */
+    height: 75px;
+}
+.up_2 {
+    position: relative; /* Изменено на относительное позиционирование */
+    top: 40px; /* Расположение по вертикали */
+    left: 20px; /* Расположение по горизонтали */
+    z-index: 999; /* Уровень наложения */
+    background-image: url('/static/images/theme_11.png'); /* Фоновое изображение */
+    background-size: cover; /* Масштабирование фона, чтобы он заполнил контейнер */
+    padding: 10px; /* Отступ внутри контейнера для текста и изображения */
+    padding-right: 80px; /* Добавляем отступ справа для монет */
+    border-radius: 8px; /* Скругление углов */
+    width: 300px; /* Устанавливаем фиксированную ширину контейнера */
+    height: 75px;
+}
+.up_3 {
+    position: relative; /* Изменено на относительное позиционирование */
+    top: 50px; /* Расположение по вертикали */
+    left: 20px; /* Расположение по горизонтали */
+    z-index: 999; /* Уровень наложения */
+    background-image: url('/static/images/theme_11.png'); /* Фоновое изображение */
+    background-size: cover; /* Масштабирование фона, чтобы он заполнил контейнер */
+    padding: 10px; /* Отступ внутри контейнера для текста и изображения */
+    padding-right: 80px; /* Добавляем отступ справа для монет */
+    border-radius: 8px; /* Скругление углов */
+    width: 300px; /* Устанавливаем фиксированную ширину контейнера */
+    height: 75px;
+}
+.up_4 {
+    position: relative; /* Изменено на относительное позиционирование */
+    top: 0px; /* Расположение по вертикали */
+    left: 20px; /* Расположение по горизонтали */
+    z-index: 999; /* Уровень наложения */
+    background-image: url('/static/images/theme_11.png'); /* Фоновое изображение */
+    background-size: cover; /* Масштабирование фона, чтобы он заполнил контейнер */
+    padding: 10px; /* Отступ внутри контейнера для текста и изображения */
+    padding-right: 80px; /* Добавляем отступ справа для монет */
+    border-radius: 8px; /* Скругление углов */
+    width: 300px; /* Устанавливаем фиксированную ширину контейнера */
+    height: 75px;
 }
 
-.container_up {
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 0; /* Убираем внутренний отступ */
-  border-radius: 10px; /* Округление только для общего контейнера */
-  margin-top: 100px;
-  background-color: #4a3228; /* Общий фон */
-  overflow: hidden; /* Для корректного отображения границ */
-  border: 2px solid #d1a34a; /* Обводка контейнера */
+
+.up_text {
+font-size: 30px; /* Размер шрифта для заголовка (больше, чем основной текст) */
+padding-top: 15px; /* Сместить содержимое вниз на 20 пикселей */
+text-align: center; /* Центрирование изображения */
+color: white;
+font-family: 'Pusia-bold', sans-serif; /* Шрифт */
+text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 }
 
-.item_up {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 15px;
-  background-color: #4a3228; /* Совпадает с общим фоном */
-}
-.item_up2 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 15px;
-  background-color: #4a3228; /* Совпадает с общим фоном */
-}
-.item_up3 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 15px;
-  background-color: #4a3228; /* Совпадает с общим фоном */
-}
-.item_up4 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 15px;
-  background-color: #4a3228; /* Совпадает с общим фоном */
-}
-
-.item_up:not(:last-child) {
-  border-bottom: 2px solid #d1a34a; /* Линия между элементами */
-}
-.item_up2:not(:last-child) {
-  border-bottom: 2px solid #d1a34a; /* Линия между элементами */
-}
-.item_up3:not(:last-child) {
-  border-bottom: 2px solid #d1a34a; /* Линия между элементами */
-}
-.item-icon {
-  flex-shrink: 0;
-  width: 50px;
-  height: 50px;
-  background-color: #d1a34a;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.item-info {
-  flex-grow: 1;
-  margin-left: 10px;
-}
-
-.item-title {
-  font-size: 18px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.item-details {
-  font-size: 14px;
-  color: #d1a34a;
-}
-
-.item-action {
-  font-size: 20px;
-  color: #d1a34a;
-  cursor: pointer;
-}
-
-.item-action:hover {
-  color: #ffd700;
-}
-
-/* Общие стили окна */
-.container_up_buy {
-    text-align: center;
-    background-color: #35292a;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-    max-width: 400px;
-    width: 90%;
-    height: 700px;
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 999;
-    position: absolute;
-}
-
-/* Слой затемнения */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 998;
-}
-
-/* Кнопка закрытия */
-.close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    font-size: 24px;
-    color: #fff;
-    cursor: pointer;
-    z-index: 1000;
-    transition: transform 0.3s ease;
-}
-
-.close-button:hover {
-    transform: scale(1.2);
-}
-
-/* Картинка сверху */
-.top-image {
-    margin-bottom: 5px;
-}
-
-.top-image img {
-    max-width: 200px;
-    display: block;
-    margin: 0 auto;
-}
-
-/* Монета слева от текста */
-.price_up_buy {
-    font-size: 24px;
-    font-weight: bold;
-    color: #ffaa00;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.coin-icon {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-}
-
-/* Остальные стили остаются такими же */
-.character_up_buy {
-    width: 150px;
-    height: 150px;
-    margin: 0 auto 20px;
-    background: url('character.png') no-repeat center center;
-    background-size: contain;
-}
-
-.title {
-    font-size: 24px;
-    line-height: 1.5;
-    font-weight: bold;
-    margin: 0px 0;
-}
-
-.description {
-    font-size: 16px;
-    line-height: 1.5;
-    color: #c0c0c0;
-    margin-bottom: 20px;
-}
-
-.upgrade-button {
-    background-color: #ffaa00;
-    border: none;
-    border-radius: 10px;
-    color: #ffffff;
-    font-size: 18px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.upgrade-button:hover {
-    background-color: #cc8800;
+.up_text2 {
+font-size: 30px; /* Размер шрифта для заголовка (больше, чем основной текст) */
+padding-top: 20px; /* Сместить содержимое вниз на 20 пикселей */
+text-align: center; /* Центрирование изображения */
+color: white;
+font-family: 'Pusia-bold', sans-serif; /* Шрифт */
+text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 }
