@@ -10,15 +10,24 @@
 
 <img id="open-wheel" src="/static/images/wheel_2.png" alt="Открыть рулетку" class="open-wheel-img">
 
-    <!-- Контейнер рулетки -->
-    <div class="wheel-container" id="wheel-container">
-        <!-- Кнопка-крестик для закрытия -->
-        <button class="close-btn" id="close-btn">×</button>
-        <div class="pointer"></div>
-        <div class="wheel" id="wheel"></div>
-        <button class="spin-btn" id="spin-btn">Крутить</button>
-        <div class="result" id="result"></div>
+
+<!-- Контейнер рулетки -->
+<div class="wheel-container" id="wheel-container">
+    <button class="close-btn" id="close-btn">×</button>
+    <div class="pointer"></div>
+    <div class="wheel" id="wheel">
+        <div class="sector" style="transform: rotate(10deg);">1000 монет</div>
+        <div class="sector" style="transform: rotate(70deg);">2000 монет</div>
+        <div class="sector" style="transform: rotate(130deg);">5000 монет</div>
+        <div class="sector" style="transform: rotate(190deg);">100% энергия</div>
+        <div class="sector" style="transform: rotate(250deg);">Факел</div>
+        <div class="sector" style="transform: rotate(310deg);">+Сундук</div>
     </div>
+    <button class="spin-btn" id="spin-btn">Крутить</button>
+    <div class="result" id="result"></div>
+</div>
+
+
 
 <p id="score"><span id="currentScore">0</span></p>
 <div class="coin">
@@ -35,10 +44,11 @@
 <p id="nick">Максим</p>
 
  <!-- Полоса прогресса -->
-    <div class="progress-container">
-        <div class="progress-bar" id="progressBar"></div>
-    </div>
+<div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
 
+</div>
+<div class="progress-label" id="progressLabel">Бронзовая лига</div>
     <!-- Полоса энергии -->
     <div class="energy-container">
         <div class="energy-bar" id="energyBar"></div>
@@ -67,7 +77,9 @@
     <img src="/static/images/bomb.png" alt="Редкие" class="button-image_up">
 </a>
 
-
+<a href="/boss" class="open-boss-button">
+    <img src="/static/images/boss.png" alt="Редкие" class="button-image_up">
+</a>
 
 <script src="{{ url_for('static', filename='script_wheel.js') }}"></script>
 <script src="{{ url_for('static', filename='script.js') }}"></script>

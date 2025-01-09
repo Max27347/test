@@ -18,21 +18,36 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// Логика для кнопки, которая показывает прогресс и обновляет счет
 document.addEventListener('DOMContentLoaded', () => {
   const clickButton = document.getElementById('clickButton');
   const currentScoreElement = document.getElementById('currentScore');
   const progressBar = document.getElementById('progressBar');
+  const progressLabel = document.getElementById('progressLabel');
   const energyBar = document.getElementById('energyBar');
   const coinContainer = document.getElementById('coinContainer');
 
   let progress = 0; // Текущий прогресс
   const maxProgress = 100; // Максимальное значение прогресса
+  let leagueLevel = 0; // Уровень лиги: 0 - Бронзовая, 1 - Серебряная, 2 - Золотая
+  let clicksPerLevel = 10; // Количество кликов для перехода на следующий уровень (по умолчанию для Бронзовой лиги)
 
-  let energy = 100; // Текущая энергия
-  const maxEnergy = 100; // Максимальная энергия
+  let energy = 500; // Текущая энергия
+  const maxEnergy = 500; // Максимальная энергия
   const energyCost = 10; // Стоимость энергии за нажатие
-  const energyRecoveryRate = 15; // Скорость восстановления энергии (единиц в секунду)
+  const energyRecoveryRate = 10; // Скорость восстановления энергии (единиц в секунду)
+
+  // Загрузка сохраненного фона из localStorage
+  const savedBackground = localStorage.getItem('backgroundImage');
+  if (savedBackground) {
+    document.body.style.backgroundImage = `url("${savedBackground}")`;
+  }
+
+  // Загрузка сохраненного уровня лиги из localStorage
+  const savedLeagueLevel = localStorage.getItem('leagueLevel');
+  if (savedLeagueLevel !== null) {
+    leagueLevel = parseInt(savedLeagueLevel, 10);
+    setLeagueBackground(leagueLevel); // Применяем фон для сохраненной лиги
+  }
 
   // Загружаем сохраненное значение счета
   const savedScore = localStorage.getItem('currentScore');
@@ -60,8 +75,9 @@ document.addEventListener('DOMContentLoaded', () => {
           score++;
           updateScore(score);
 
-          // Увеличиваем прогресс
-          progress = Math.min(progress + 10, maxProgress);
+          // Увеличиваем прогресс в зависимости от текущей лиги
+          const progressIncrement = maxProgress / clicksPerLevel;
+          progress = Math.min(progress + progressIncrement, maxProgress);
           progressBar.style.width = `${progress}%`;
 
           // Расходуем энергию
@@ -73,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
           // Если прогресс достиг максимума, выполняем действие
           if (progress === maxProgress) {
-            alert('Прогресс завершен!');
+            updateLeague(); // Обновляем лигу
             progress = 0; // Сбрасываем прогресс
             progressBar.style.width = '0%';
           }
@@ -103,6 +119,45 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('currentScore', newScore);
   }
 
+  // Функция для обновления лиги
+  function updateLeague() {
+    leagueLevel++;
+    localStorage.setItem('leagueLevel', leagueLevel); // Сохраняем текущий уровень лиги
+    setLeagueBackground(leagueLevel); // Обновляем фон
+  }
+
+  // Функция установки фона для лиги
+  function setLeagueBackground(level) {
+    const body = document.body; // Элемент, фон которого будем менять
+    let backgroundImage = '';
+
+    switch (level) {
+      case 1:
+        progressLabel.innerText = 'Серебряная лига';
+        clicksPerLevel = 20;
+        backgroundImage = '/static/images/fon_7.png'; // Укажите путь к фону Серебряной лиги
+        break;
+      case 2:
+        progressLabel.innerText = 'Золотая лига';
+        clicksPerLevel = 25;
+        backgroundImage = '/static/images/fon_6.png'; // Укажите путь к фону Золотой лиги
+        break;
+      case 3:
+        progressLabel.innerText = 'Алмазная лига';
+        clicksPerLevel = 30;
+        backgroundImage = '/static/images/fon_3.png'; // Укажите путь к фону Алмазной лиги
+        break;
+      default:
+        progressLabel.innerText = 'Бронзовая лига';
+        leagueLevel = 0;
+        clicksPerLevel = 10;
+        backgroundImage = '/static/images/fon_5.png'; // Укажите путь к фону Бронзовой лиги
+    }
+
+    body.style.backgroundImage = `url("${backgroundImage}")`;
+    localStorage.setItem('backgroundImage', backgroundImage); // Сохраняем фон в localStorage
+  }
+
   // Функция для создания одной монеты с анимацией
   function spawnCoinDrop(event) {
     const coin = document.createElement('div');
@@ -125,6 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+
 // Менюшка
 const menuIcon = document.getElementById('menu-icon');
 const dropdownMenu = document.getElementById('dropdown-menu');
@@ -141,3 +197,5 @@ document.addEventListener('click', (event) => {
     dropdownMenu.classList.remove('active');
   }
 });
+
+

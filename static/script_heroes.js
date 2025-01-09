@@ -77,7 +77,5 @@ document.addEventListener('DOMContentLoaded', () => {
     currentPreviewCharacter.classList.remove('selected-preview');
     currentPreviewCharacter.classList.add('selected');
     selectedCharacter = currentPreviewCharacter;
-
-    alert(`Вы выбрали персонажа "${name}"!`);
   });
 });

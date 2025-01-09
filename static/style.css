@@ -29,6 +29,21 @@ body {
     background-color: #f4c01c;
     transition: width 0.3s;
 }
+.progress-label {
+    position: fixed; /* Меняем на fixed для независимости от родителя */
+    bottom: 95px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    font-weight: bold;
+    color: #000; /* Сделаем текст более контрастным */
+    background-color: rgba(255, 255, 255, 0.8); /* Фон для читаемости */
+    padding: 5px 10px; /* Отступы для удобства */
+    border-radius: 5px; /* Сглаживание углов */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    z-index: 1000; /* Поверх других элементов */
+}
+
 
 .energy-container {
     position: fixed;
@@ -156,8 +171,8 @@ body {
 }
 
 #score {
-    position: fixed;
-    top: 7px;
+    position: absolute;
+    top: 0px;
     left: 200px;
     width: 50px;
     height: 50px;
@@ -167,8 +182,8 @@ body {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 }
 .coin img {
-    position: fixed;
-    top: 20px;
+    position: absolute;
+    top: 15px;
     left: 140px;
     width: 50px;
     height: 50px;
@@ -176,7 +191,7 @@ body {
 }
 
 #nick {
-    position: fixed;
+    position: absolute;
     top: 55px;
     left: 10px;
     font-size: 20px;
@@ -187,7 +202,7 @@ body {
 }
 
 .icon-container {
-    position: fixed;
+    position: absolute;
     top: 10px;
     left: 10px;
     width: 40px;
@@ -195,36 +210,6 @@ body {
 
 }
 
-.image-container {
-    display: flex;
-    flex-direction: row; /* Расположение элементов в строку */
-    justify-content: center; /* Центрирование по горизонтали */
-    align-items: flex-start; /* Выравнивание по верхнему краю */
-    margin-top: 20px; /* Отступ сверху для отступа от верхнего края экрана */
-    position: absolute; /* Позволяет позиционировать элемент относительно окна */
-    top: 0; /* Прижимаем к верхнему краю */
-    left: 50%; /* Сдвигаем влево на 50% ширины окна */
-    transform: translateX(-50%); /* Центрируем по горизонтали */
-}
-
-.image-item {
-    display: flex;
-    align-items: center; /* Выравнивание текста и изображения по центру */
-    margin-right: 10px; /* Отступ между элементами */
-}
-
-.image-text {
-    margin-right: 10px; /* Отступ между текстом и картинкой */
-    color: white;
-    font-family: 'Pusia-bold', sans-serif;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
-}
-.image-text_2 {
-    margin-right: 10px; /* Отступ между текстом и картинкой */
-    color: white;
-    font-family: 'Pusia-bold', sans-serif;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
-}
 .modal {
     display: none; /* Скрыто по умолчанию */
     position: fixed; /* Остается на месте */
@@ -268,7 +253,7 @@ body {
 }
 
 .dropdown {
-            position: fixed; /* Для абсолютного позиционирования меню */
+            position: absolute; /* Для абсолютного позиционирования меню */
             top: 10px;
             right: 3px;
         }
@@ -327,35 +312,58 @@ body {
     z-index: 1000;
 }
 .wheel-container {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            display: none; /* Рулетка скрыта по умолчанию */
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            z-index: 9999; /* Устанавливаем высокий z-index, чтобы окно было выше других элементов */
-        }
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    display: none; /* Рулетка скрыта по умолчанию */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 9999; /* Устанавливаем высокий z-index, чтобы окно было выше других элементов */
+}
 
-        .wheel {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: conic-gradient(
-                #FF6347 0deg 60deg,
-                #FFD700 60deg 120deg,
-                #ADFF2F 120deg 180deg,
-                #00CED1 180deg 240deg,
-                #FF69B4 240deg 300deg,
-                #7B68EE 300deg 360deg
-            );
-            transform: rotate(0deg);
-            transition: transform 5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
-        }
+.wheel {
+    position: relative; /* Добавлено для позиционирования секторов */
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: conic-gradient(
+        #FF6347 0deg 60deg,
+        #FFD700 60deg 120deg,
+        #ADFF2F 120deg 180deg,
+        #00CED1 180deg 240deg,
+        #FF69B4 240deg 300deg,
+        #7B68EE 300deg 360deg
+    );
+    transform: rotate(0deg);
+    transition: transform 5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+.sector {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    transform-origin: 100% 100%; /* Центр вращения */
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff; /* Цвет текста */
+}
+
+.sector:nth-child(1) { color:  white; }
+.sector:nth-child(2) { color:  white; }
+.sector:nth-child(3) { color:  white; }
+.sector:nth-child(4) { color:  white; font-size: 10px;}
+.sector:nth-child(5) { color:  white; }
+.sector:nth-child(6) { color:  white; }
 
 .spin-btn {
     margin-top: 20px;
@@ -406,98 +414,6 @@ body {
     color: #333;
 }
 
-.open-wheel_2-img {
-    position: fixed;
-    top: 50%;
-    left: 20px;
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
-    transform: translateY(-50%);
-    z-index: 1000;
-}
-.wheel-container {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            display: none; /* Рулетка скрыта по умолчанию */
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            z-index: 9999; /* Устанавливаем высокий z-index, чтобы окно было выше других элементов */
-        }
-
-        .wheel {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: conic-gradient(
-                #FF6347 0deg 60deg,
-                #FFD700 60deg 120deg,
-                #ADFF2F 120deg 180deg,
-                #00CED1 180deg 240deg,
-                #FF69B4 240deg 300deg,
-                #7B68EE 300deg 360deg
-            );
-            transform: rotate(0deg);
-            transition: transform 5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
-        }
-
-.spin-btn {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #4caf50;
-    color: white;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.open-wheel-btn:hover {
-    background-color: #0056b3;
-}
-
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 25px;
-    height: 25px;
-    background-color: #ff4d4d;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    border: none;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.close-btn:hover {
-    background-color: #e60000;
-}
-
-.result {
-    margin-top: 10px;
-    font-size: 18px;
-    color: #333;
-}
-        #gift {
-            width: 50px; /* Уменьшаем размер значка */
-            cursor: pointer; /* Курсор при наведении */
-            position: relative; /* Относительное позиционирование */
-            right: 160px; /* Сдвиг изображения влево */
-        }
-
 
 
 .open-page5-button {
@@ -526,10 +442,16 @@ body {
     height: 40px; /* Установите нужный размер изображения */
 }
 
-
 .button-image {
 width: 50px; /* Ширина изображения (измените по необходимости) */
 height: auto; /* Автоматическая высота для сохранения пропорций */
+}
+
+.open-boss-button {
+    position: fixed; /* Фиксированное позиционирование */
+    right: 20px; /* Отступ от левой стороны окна */
+    bottom: 350px; /* Отступ от нижней части окна */
+    z-index: 1000; /* Убедитесь, что кнопка выше других элементов */
 }
 /* Страница Друзья */
 body.friends-page {
@@ -904,7 +826,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 /* Содержимое меню */
@@ -915,8 +836,6 @@ body {
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Тень вокруг блока */
     max-width: 200px; /* Максимальная ширина блока */
-
-
 }
 
 /* Заголовок меню */
@@ -974,53 +893,59 @@ body {
     opacity: 0.9; /* Изменяем прозрачность при наведении для эффекта наведения */
 }
 
+/* Второе всплывающее окно - Rewards Menu */
 .rewards_menu {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.7); /* Полупрозрачный черный фон */
-        z-index: 9999; /* Поверх всех элементов */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Полупрозрачный черный фон */
+    z-index: 9999; /* Поверх всех элементов */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-    /* Основной блок меню */
-    .rewards_content {
-        background: white; /* Белый фон для блока с предметами */
-        padding: 20px;
-        border-radius: 10px;
-        text-align: center;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Тень вокруг блока */
-        max-width: 210px;
-        width: 100%;
-    }
+/* Основной блок меню */
+.rewards_content {
+    background: white; /* Белый фон для блока с предметами */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Тень вокруг блока */
+    max-width: 200px; /* Совпадает с первым окном */
+    width: 100%;
+}
 
-    /* Блок для каждого выпавшего предмета */
-    .reward_item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background: #333; /* Темный фон */
-        color: white; /* Белый текст */
-        padding: 15px;
-        margin: 10px 0;
-        border-radius: 5px;
-        font-size: 16px;
-    }
+/* Блок для каждого выпавшего предмета */
+.reward_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #333; /* Темный фон */
+    color: white; /* Белый текст */
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%; /* Расширяем на всю ширину */
+    box-sizing: border-box; /* Учитываем padding в ширине */
+}
 
-    .reward_item img {
-        width: 100px; /* Крупные картинки */
-        height: 100px;
-        border-radius: 5px;
-        margin-bottom: 10px;
-    }
+/* Картинки */
+.reward_item img {
+    width: 50%; /* Как в первом окне */
+    height: auto; /* Пропорционально */
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
 
-    .reward_item span {
-        text-align: center;
-    }
+/* Текст внутри каждого элемента */
+.reward_item span {
+    text-align: center;
+}
+
 
     /* Кнопка закрытия */
     .close_button {
@@ -1678,4 +1603,76 @@ body.upgrade-page {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); /* Центрируем по обеим осям */
+}
+/* Улучшения*/
+.up_1 {
+    position: relative; /* Изменено на относительное позиционирование */
+    top: 30px; /* Расположение по вертикали */
+    left: 20px; /* Расположение по горизонтали */
+    z-index: 999; /* Уровень наложения */
+    background-image: url('/static/images/theme_11.png'); /* Фоновое изображение */
+    background-size: cover; /* Масштабирование фона, чтобы он заполнил контейнер */
+    padding: 10px; /* Отступ внутри контейнера для текста и изображения */
+    padding-right: 80px; /* Добавляем отступ справа для монет */
+    border-radius: 8px; /* Скругление углов */
+    width: 300px; /* Устанавливаем фиксированную ширину контейнера */
+    height: 75px;
+}
+.up_2 {
+    position: relative; /* Изменено на относительное позиционирование */
+    top: 40px; /* Расположение по вертикали */
+    left: 20px; /* Расположение по горизонтали */
+    z-index: 999; /* Уровень наложения */
+    background-image: url('/static/images/theme_11.png'); /* Фоновое изображение */
+    background-size: cover; /* Масштабирование фона, чтобы он заполнил контейнер */
+    padding: 10px; /* Отступ внутри контейнера для текста и изображения */
+    padding-right: 80px; /* Добавляем отступ справа для монет */
+    border-radius: 8px; /* Скругление углов */
+    width: 300px; /* Устанавливаем фиксированную ширину контейнера */
+    height: 75px;
+}
+.up_3 {
+    position: relative; /* Изменено на относительное позиционирование */
+    top: 50px; /* Расположение по вертикали */
+    left: 20px; /* Расположение по горизонтали */
+    z-index: 999; /* Уровень наложения */
+    background-image: url('/static/images/theme_11.png'); /* Фоновое изображение */
+    background-size: cover; /* Масштабирование фона, чтобы он заполнил контейнер */
+    padding: 10px; /* Отступ внутри контейнера для текста и изображения */
+    padding-right: 80px; /* Добавляем отступ справа для монет */
+    border-radius: 8px; /* Скругление углов */
+    width: 300px; /* Устанавливаем фиксированную ширину контейнера */
+    height: 75px;
+}
+.up_4 {
+    position: relative; /* Изменено на относительное позиционирование */
+    top: 0px; /* Расположение по вертикали */
+    left: 20px; /* Расположение по горизонтали */
+    z-index: 999; /* Уровень наложения */
+    background-image: url('/static/images/theme_11.png'); /* Фоновое изображение */
+    background-size: cover; /* Масштабирование фона, чтобы он заполнил контейнер */
+    padding: 10px; /* Отступ внутри контейнера для текста и изображения */
+    padding-right: 80px; /* Добавляем отступ справа для монет */
+    border-radius: 8px; /* Скругление углов */
+    width: 300px; /* Устанавливаем фиксированную ширину контейнера */
+    height: 75px;
+}
+
+
+.up_text {
+font-size: 30px; /* Размер шрифта для заголовка (больше, чем основной текст) */
+padding-top: 15px; /* Сместить содержимое вниз на 20 пикселей */
+text-align: center; /* Центрирование изображения */
+color: white;
+font-family: 'Pusia-bold', sans-serif; /* Шрифт */
+text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
+}
+
+.up_text2 {
+font-size: 30px; /* Размер шрифта для заголовка (больше, чем основной текст) */
+padding-top: 20px; /* Сместить содержимое вниз на 20 пикселей */
+text-align: center; /* Центрирование изображения */
+color: white;
+font-family: 'Pusia-bold', sans-serif; /* Шрифт */
+text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 }

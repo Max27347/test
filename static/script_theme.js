@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Сохраняем выбранный фон в localStorage
     localStorage.setItem('selectedBackground', imgSrc);
-    alert(`Фон "${currentSelectedBackground.getAttribute('data-name')}" установлен!`);
   });
 
   // Функция для сброса фона

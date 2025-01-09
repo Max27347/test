@@ -48,3 +48,7 @@
                 currentRotation += targetRotation;
             }, 5000);
         });
+
+        const prizesContainer = document.getElementById('prizes-container');
+
+
