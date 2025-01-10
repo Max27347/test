@@ -133,22 +133,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     switch (level) {
       case 1:
-        progressLabel.innerText = 'Серебряная лига';
+        progressLabel.innerText = 'Хогвартс';
         clicksPerLevel = 20;
         backgroundImage = '/static/images/fon_7.png'; // Укажите путь к фону Серебряной лиги
         break;
       case 2:
-        progressLabel.innerText = 'Золотая лига';
+        progressLabel.innerText = 'Адский мир';
         clicksPerLevel = 25;
         backgroundImage = '/static/images/fon_6.png'; // Укажите путь к фону Золотой лиги
         break;
       case 3:
-        progressLabel.innerText = 'Алмазная лига';
+        progressLabel.innerText = 'Космический мир';
         clicksPerLevel = 30;
         backgroundImage = '/static/images/fon_3.png'; // Укажите путь к фону Алмазной лиги
         break;
       default:
-        progressLabel.innerText = 'Бронзовая лига';
+        progressLabel.innerText = 'Начальный мир';
         leagueLevel = 0;
         clicksPerLevel = 10;
         backgroundImage = '/static/images/fon_5.png'; // Укажите путь к фону Бронзовой лиги
