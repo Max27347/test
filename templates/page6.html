@@ -17,19 +17,22 @@
     <img src="/static/images/coin.png" alt="Монеты" width="80">
 </div>
 
-
-
-<div class="dropdown">
-    <img src="/static/images/menu.png" alt="Меню" id="menu-icon">
-
-    <!-- Выпадающее меню -->
-    <div class="dropdown-menu" id="dropdown-menu">
-        <a href="#item1">Язык</a>
-        <a href="#item2">Как играть</a>
-        <a href="#item3">Аирдроп</a>
-        <a href="#item4">Тех поддержка</a>
-    </div>
-</div>
+<nav class="shop_menu">
+        <ul>
+            <li class="shop_menu-item">
+                <a href="/page3">Особое</a>
+            </li>
+            <li class="shop_menu-item">
+                <a href="/page6">Герои</a>
+            </li>
+            <li class="shop_menu-item">
+                <a href="/upgrade">Улучшения</a>
+            </li>
+            <li class="shop_menu-item">
+                <a href="#">Инвентарь</a>
+            </li>
+        </ul>
+    </nav>
 
 
 <div class="menu_p3">
@@ -43,7 +46,6 @@
         <button class="menu-button">Улучшения</button>
     </a>
 </div>
-
 
 <div class="character-preview">
 <div class="preview" id="preview">
@@ -73,20 +75,13 @@
     <img src="/static/images/fire.png" alt="Character 5">
     <p>Character 5</p>
   </div>
-  <div class="character" data-id="6" data-name="Character 6" data-img="/static/images/water.png" data-description="Water is calm and adaptable, flowing through challenges.">
+  <div class="character" data-id="6" data-name="Character 6" data-img="/static/images/tor.png" data-description="Water is calm and adaptable, flowing through challenges.">
     <img src="/static/images/water.png" alt="Character 6">
     <p>Character 6</p>
   </div>
 </div>
 <button id="select-button">Выбрать</button>
 
-
-
-<div class="menu_rare">
-    <button onclick="window.location.href='/page6'" class="menu-button">Редкие</button>
-    <button onclick="window.location.href='/page9'" class="menu-button">Премиум</button>
-    <button onclick="window.location.href='/page10'" class="menu-button">Эксклюзив</button>
-</div>
 
 
   <script src="{{ url_for('static', filename='script.js') }}"></script>

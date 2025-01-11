@@ -9,49 +9,30 @@
 </head>
 <body class="shop-page"> <!-- Добавлен класс friends-page -->
 
-<div class="menu_p3">
-    <a href="/page3" class="item">
-        <button class="menu-button">Ящики</button>
-    </a>
-    <a href="/page6" class="item">
-        <button class="menu-button">Герои</button>
-    </a>
-    <a href="/upgrade" class="item">
-        <button class="menu-button">Улучшения</button>
-    </a>
-</div>
-
-<div class="icon-container">
-    <img src="/static/images/icon.png" alt="Иконка" width="75">
-</div>
-<p id="nick">Максим</p>
-
-<!-- Модальное окно для уведомления о недостатке монет -->
-<div id="insufficientFundsModal" class="modal" style="display: none;">
-    <div class="modal-content">
-        <span id="closeModalButton" class="close-button">&times;</span>
-        <p>У вас не хватает монет для покупки!</p>
-    </div>
-</div>
-
-
 <p id="score"><span id="currentScore">0</span></p>
 <div class="coin">
     <img src="/static/images/coin.png" alt="Монеты" width="80">
 </div>
-<div class="dropdown">
-    <img src="/static/images/menu.png" alt="Меню" id="menu-icon">
 
-    <!-- Выпадающее меню -->
-    <div class="dropdown-menu" id="dropdown-menu">
-        <a href="#item1">Язык</a>
-        <a href="#item2">Как играть</a>
-        <a href="#item3">Аирдроп</a>
-        <a href="#item4">Тех поддержка</a>
-    </div>
-</div>
 
-<div class = "spec">Спец предложения дня</div>
+<nav class="shop_menu">
+        <ul>
+            <li class="shop_menu-item">
+                <a href="/page3">Особое</a>
+            </li>
+            <li class="shop_menu-item">
+                <a href="/page6">Герои</a>
+            </li>
+            <li class="shop_menu-item">
+                <a href="/upgrade">Улучшения</a>
+            </li>
+            <li class="shop_menu-item">
+                <a href="#">Инвентарь</a>
+            </li>
+        </ul>
+    </nav>
+
+
 
 <div class="shop_container">
 <div class="shop_box">
@@ -76,15 +57,7 @@
     </div>
 </div>
 
-<div class="menu-container_scroll">
-        <div class="menu_scroll">
-            <img src="/static/images/box_1.png" alt="Изображение 1">
-            <img src="/static/images/box_2.png" alt="Изображение 2">
-            <img src="/static/images/box_3.png" alt="Изображение 3">
-            <img src="/static/images/box_4.png" alt="Изображение 4">
-            <!-- Добавьте другие изображения по желанию -->
-        </div>
-    </div>
+
 
 
 

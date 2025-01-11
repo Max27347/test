@@ -69,7 +69,7 @@ body {
     bottom: 0; /* Прикрепляем меню к нижней части экрана */
     left: 0;
     width: 100%; /* На всю ширину экрана */
-    background-color: #f4bb0b; /* Темно-синий фон */
+    background-color: #2e2e3a;
     display: flex; /* Flexbox для размещения элементов */
     justify-content: space-around; /* Равномерное распределение пунктов меню */
     padding: 10px 0; /* Внутренние отступы сверху и снизу */
@@ -90,7 +90,7 @@ body {
 
 /* Стили для активного пункта меню */
 .navigation .nav-button.active {
-    background-color:  #FF4F00; /* Цвет фона для активного пункта */
+    background-color:  #f4bb0b; /* Цвет фона для активного пункта */
 }
 
 
@@ -654,55 +654,89 @@ body.shop-page {
 }
 
 
-.menu-container-scroll {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    background-color: #333; /* Цвет фона меню */
+.shop_menu {
+    width: 60%; /* Уменьшенная ширина меню */
+    margin: 60px auto; /* Отступ сверху и центрирование по горизонтали */
+    background-color: #2e2e3a; /* Фон меню */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
 }
 
-.menu_scroll {
+/* Список меню */
+.shop_menu ul {
+    list-style: none;
     display: flex;
-    animation: scrollMenu 15s linear infinite;
+    justify-content: space-around; /* Равномерное распределение пунктов */
+    margin: 0;
+    padding: 0;
+}
+/* Пункты меню */
+.shop_menu-item {
+    position: relative;
 }
 
-.menu_scroll img {
-    width: 150px; /* Ширина изображений */
-    height: auto;
-    margin: 0 10px; /* Отступы между изображениями */
-    object-fit: cover;
+/* Ссылка в меню */
+.shop_menu-item a {
+    text-decoration: none;
+    color: #fff; /* Белый текст */
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 8px 12px;
+    display: inline-block;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-@keyframes scrollMenu {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
+/* Эффект при наведении */
+.shop_menu-item a:hover {
+    background-color: #ffcc00; /* Жёлтый фон */
+    color: #333; /* Тёмный текст */
 }
 
+/* Дополнительные стили */
+.shop_menu-item a:active {
+    background-color: #ff9933; /* Оранжевый цвет при клике */
+}
+
+/* Hover-эффекты */
+.menu-item a:hover {
+    color: #ffcc00; /* Цвет текста при наведении */
+}
+
+.menu-item.special a:hover {
+    color: #fff; /* Белый текст для "Особого" пункта при наведении */
+}
 
 .shop_container {
     display: flex; /* Выравнивание блоков по горизонтали */
     align-items: center; /* Выравнивание по вертикали */
-    margin-top: 30px; /* Сместить контейнер ниже */
+    margin-top: 20px; /* Сместить контейнер ниже */
+    margin-left: 20px; /* Сместить контейнер ниже */
+    gap: 20px; /* Расстояние между блоками */
 }
 
 .shop_box, .shop_box_2 {
     width: 230px;
-    height: 230px;
-    background-color: #4a3228; /* Коричневый цвет */
+    height: 180px; /* Высота контейнера */
+    background-color: #2e2e3a; /* Коричневый цвет */
     border: 2px solid #d1a34a; /* Обводка контейнера */
-    border-radius: 10px;
+    position: relative;
     text-align: center;
     font-family: Arial, sans-serif;
-    position: relative;
     margin: 0; /* Убираем отступы */
+    transform: skew(-10deg); /* Создаём наклон всей формы */
+    overflow: hidden; /* Скрываем выходящее содержимое */
 }
 
-.shop_box_2 {
-    margin-left: 50px; /* Отступ справа от первого блока */
+/* Содержимое внутри остаётся ровным */
+.shop_box > *, .shop_box_2 > * {
+    transform: skew(10deg); /* Компенсация наклона для ровного содержимого */
+}
+
+.shop_icon {
+    margin-top: 10px;
 }
 
 .shop_icon img {
@@ -714,200 +748,37 @@ body.shop-page {
 
 h1 {
     color: white;
-    font-size: 24px;
+    font-size: 18px;
     margin: 10px 0 0 0;
 }
 
 h2 {
     color: #d1a34a; /* Золотистый цвет */
-    font-size: 16px;
+    font-size: 14px;
     margin: 5px 0;
 }
 
 .shop_price {
     position: absolute;
-    bottom: 20px;
+    bottom: 10px;
     left: 50%;
-    transform: translateX(-50%);
-    font-size: 24px;
+    transform: translateX(-50%) skew(10deg); /* Компенсация наклона для цены */
+    font-size: 18px;
     font-weight: bold;
     color: white;
 }
 
 .shop_price img {
-    width: 30px;
+    width: 20px;
     vertical-align: middle;
     margin-right: 5px;
 }
+
 .shop_price span {
-    font-size: 18px; /* Новый размер текста */
+    font-size: 16px; /* Новый размер текста */
     color: white;
     vertical-align: middle;
 }
-
-.spec {
-font-size: 30px; /* Размер шрифта для заголовка (больше, чем основной текст) */
-padding-top: 40px; /* Сместить содержимое вниз на 20 пикселей */
-text-align: center; /* Центрирование изображения */
-color: white;
-font-family: 'Pusia-bold', sans-serif; /* Шрифт */
-text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
-}
-
-
-/* Полное меню */
-.fullscreen_menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Полупрозрачный черный фон */
-    z-index: 9999; /* Поверх всех элементов */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Содержимое меню */
-.menu_content {
-    background: white; /* Белый фон для блока с содержимым */
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Тень вокруг блока */
-    max-width: 200px; /* Максимальная ширина блока */
-}
-
-/* Заголовок меню */
-.menu_content h2 {
-    margin-bottom: 15px; /* Отступ снизу */
-}
-
-/* Изображение ящика */
-.menu_box_image {
-    width: 50%; /* Ширина изображения по размеру блока */
-    height: auto; /* Автоматическая высота для сохранения пропорций */
-    margin-bottom: 15px; /* Отступ снизу */
-}
-
-/* Отображение монет */
-.coin_display {
-    display: flex; /* Используем flex для выравнивания иконки и текста */
-    align-items: center; /* Вертикальное выравнивание по центру */
-    justify-content: center; /* Центрируем содержимое по горизонтали */
-    margin-bottom: 15px; /* Отступ снизу */
-}
-
-/* Текст с количеством монет */
-.coin_text_2 {
-    font-size: 18px; /* Размер шрифта для текста монет */
-    margin-right: 5px; /* Отступ справа от текста к иконке монеты */
-        color: black;
-}
-
-/* Кнопка "Купить" */
-.buy_box {
-    background-color: #4CAF50; /* Зеленый фон кнопки */
-    color: white; /* Белый текст на кнопке */
-    border: none; /* Убираем рамку кнопки */
-    padding: 10px 20px; /* Внутренние отступы кнопки */
-    border-radius: 5px; /* Скругление углов кнопки */
-    cursor: pointer; /* Указатель при наведении на кнопку */
-    font-size: 16px; /* Размер шрифта на кнопке */
-}
-
-/* Кнопка "Закрыть" */
-.close_button {
-    background-color: #f44336; /* Красный фон кнопки закрытия */
-    color: white; /* Белый текст на кнопке закрытия */
-    border: none; /* Убираем рамку кнопки закрытия */
-    padding: 10px 20px; /* Внутренние отступы кнопки закрытия */
-    border-radius: 5px; /* Скругление углов кнопки закрытия */
-    cursor: pointer; /* Указатель при наведении на кнопку закрытия */
-    font-size: 16px; /* Размер шрифта на кнопке закрытия */
-}
-
-/* Эффект при наведении на кнопку "Купить" и "Закрыть" */
-.buy_box:hover,
-.close_button:hover {
-    opacity: 0.9; /* Изменяем прозрачность при наведении для эффекта наведения */
-}
-
-/* Второе всплывающее окно - Rewards Menu */
-.rewards_menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Полупрозрачный черный фон */
-    z-index: 9999; /* Поверх всех элементов */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Основной блок меню */
-.rewards_content {
-    background: white; /* Белый фон для блока с предметами */
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Тень вокруг блока */
-    max-width: 200px; /* Совпадает с первым окном */
-    width: 100%;
-}
-
-/* Блок для каждого выпавшего предмета */
-.reward_item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #333; /* Темный фон */
-    color: white; /* Белый текст */
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 5px;
-    font-size: 16px;
-    width: 100%; /* Расширяем на всю ширину */
-    box-sizing: border-box; /* Учитываем padding в ширине */
-}
-
-/* Картинки */
-.reward_item img {
-    width: 50%; /* Как в первом окне */
-    height: auto; /* Пропорционально */
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-/* Текст внутри каждого элемента */
-.reward_item span {
-    text-align: center;
-}
-
-
-    /* Кнопка закрытия */
-    .close_button {
-        margin-top: 20px;
-        padding: 10px 20px;
-        background: #007bff;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-    }
-
-    .close_button:hover {
-        background: #0056b3;
-    }
-
-    /* Убираем скроллинг страницы при открытии меню */
-    body.no-scroll {
-        overflow: hidden;
-    }
 
 
 .menu_p3 {
@@ -932,8 +803,6 @@ text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease;
 }
-}
-
 
 .image-container {
     display: flex; /* Используем flexbox для центрирования */
@@ -1234,7 +1103,7 @@ body.heroes-page {
 
     .preview {
       position: absolute;
-      top: 60px;
+      top: 160px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 1000;
@@ -1272,27 +1141,6 @@ body.heroes-page {
 .character.selected {
   border: 2px solid #f4c01c;
   border-radius: 8px;
-}
-
-.menu_rare {
-    display: flex; /* Используем flexbox для выравнивания кнопок в строку */
-    justify-content: center; /* Центрируем кнопки по горизонтали */
-    background-color: #3E5F8A; /* Фоновый цвет меню */
-    padding: 5px; /* Уменьшаем отступы внутри меню */
-    border-radius: 8px; /* Уменьшаем радиус закругления углов */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Уменьшаем тень для эффекта поднятости */
-    position: absolute; /* Позиционирование относительно ближайшего родителя с position: relative */
-    bottom: 295px; /* Уменьшаем отступ от нижней части родительского элемента (по желанию) */
-    left: 50%; /* Центрирование по горизонтали */
-    transform: translateX(-50%); /* Центрирование по горизонтали */
-    z-index: 1000; /* Убедитесь, что меню выше других элементов */
-    width: auto; /* Можно установить фиксированную ширину, если это необходимо */
-}
-
-/* Дополнительные стили для кнопок внутри меню (если есть) */
-.menu_rare button {
-    font-size: 14px; /* Уменьшаем размер шрифта для кнопок (по желанию) */
-    padding: 5px 10px; /* Уменьшаем отступы внутри кнопок */
 }
 
 
