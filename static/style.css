@@ -21,6 +21,7 @@ body {
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 10px;
+    border: 2px solid orange; /* Обводка контейнера */
 }
 
 .progress-bar {
@@ -55,6 +56,7 @@ body {
     background-color: #ddd;
     border-radius: 10px;
     overflow: hidden;
+    border: 2px solid #42AAFF; /* Обводка контейнера */
 }
 
 .energy-bar {
@@ -488,9 +490,9 @@ text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 
   /* Центрирование с отступом */
   position: absolute;
-  top: 52%; /* Центрирование по вертикали */
-  left: 50%; /* Центрирование по горизонтали */
-  transform: translate(-50%, -40%); /* Сдвиг, чтобы элемент был по центру */
+  top: 300px; /* Центрирование по вертикали */
+  left: 210px; /* Центрирование по горизонтали */
+
 }
     .coin-stack img.coins {
         width: 60px;
@@ -573,9 +575,9 @@ text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 
   /* Позиция контейнера */
   position: absolute;
-  top: 10%;
-  left: 25%;
-  margin-bottom: 30px; /* Отступ снизу */
+  top: 100px;
+  left: 250px;
+  margin-bottom: 0px; /* Отступ снизу */
   overflow: hidden; /* Убедимся, что контент не выходит за границы */
 }
 
@@ -615,7 +617,7 @@ text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 .icon img {
   position: absolute; /* Позиционируем изображение внутри контейнера */
   top: 10px; /* Расстояние от верхнего края */
-  right: -25px; /* Расстояние от правого края */
+  right: -35px; /* Расстояние от правого края */
   width: 120px;
   height: 120px;
 }
@@ -633,6 +635,7 @@ body.shop-page {
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     padding: 10px 20px;
+      border: 2px solid #d1a34a; /* Обводка контейнера */
 }
 
 /* Список меню */
@@ -683,31 +686,30 @@ body.shop-page {
 
 .shop_container {
     display: flex;
-    flex-wrap: wrap; /* Разрешаем перенос на новую строку */
-    align-items: center; /* Выравнивание по вертикали */
+    flex-wrap: wrap; /* Перенос строк */
+    align-items: center;
     margin-top: 20px;
     margin-left: 20px;
-    gap: 20px; /* Расстояние между блоками */
+    gap: 20px;
 }
 
 .shop_box, .shop_box_2, .shop_box_3,
 .shop_box_4, .shop_box_5, .shop_box_6 {
     width: 230px;
-    height: 180px; /* Высота контейнера */
-    background-color: #2e2e3a; /* Основной цвет для фона */
-    border: 2px solid #d1a34a; /* Обводка контейнера */
+    height: 180px;
+    background-color: #2e2e3a;
+    border: 2px solid #d1a34a;
     position: relative;
     text-align: center;
     font-family: Arial, sans-serif;
-    margin: 0; /* Убираем отступы */
-    transform: skew(-10deg); /* Создаём наклон всей формы */
-    overflow: hidden; /* Скрываем выходящее содержимое */
+    margin: 0;
+    transform: skew(-10deg);
+    overflow: hidden;
 }
 
-/* Содержимое внутри остаётся ровным */
 .shop_box > *, .shop_box_2 > *, .shop_box_3 > *,
 .shop_box_4 > *, .shop_box_5 > *, .shop_box_6 > * {
-    transform: skew(10deg); /* Компенсация наклона для ровного содержимого */
+    transform: skew(10deg);
 }
 
 .shop_icon {
@@ -728,7 +730,7 @@ h1 {
 }
 
 h2 {
-    color: #d1a34a; /* Золотистый цвет */
+    color: #d1a34a;
     font-size: 14px;
     margin: 5px 0;
 }
@@ -737,7 +739,7 @@ h2 {
     position: absolute;
     bottom: 10px;
     left: 50%;
-    transform: translateX(-50%) skew(10deg); /* Компенсация наклона для цены */
+    transform: translateX(-50%) skew(10deg);
     font-size: 18px;
     font-weight: bold;
     color: white;
@@ -754,6 +756,22 @@ h2 {
     color: white;
     vertical-align: middle;
 }
+
+/* Стили для метки "ЛУЧШЕЕ" */
+.shop_discount {
+    position: absolute;
+    bottom: 10px; /* Отступ снизу */
+    left: 10px; /* Отступ слева */
+    background-color: #ff3b3b; /* Красный фон */
+    color: white; /* Белый текст */
+    font-size: 9px; /* Размер текста */
+    font-weight: bold;
+    padding: 5px 10px; /* Отступы внутри */
+    border-radius: 5px; /* Закругление углов */
+    transform: skew(10deg); /* Наклон для метки */
+    z-index: 10; /* Поверх других элементов */
+}
+
 
 /* Дополнительные стили для уникальных контейнеров */
 .shop_box_4 {
@@ -805,6 +823,7 @@ body.quests-page {
     top: 100px; /* Расположено сверху на 20px от края окна */
     left: 50%; /* Расположено в центре по горизонтали */
     transform: translateX(-50%); /* Сдвиг на 50% ширины элемента для центрирования */
+      border: 2px solid #d1a34a; /* Обводка контейнера */
 }
 
 .card-logo {
@@ -860,6 +879,7 @@ body.quests-page {
     top: 200px; /* Расположено сверху на 20px от края окна */
     left: 50%; /* Расположено в центре по горизонтали */
     transform: translateX(-50%); /* Сдвиг на 50% ширины элемента для центрирования */
+      border: 2px solid #d1a34a; /* Обводка контейнера */
 }
 .card_3 {
     display: flex; /* Горизонтальное расположение элементов */
@@ -876,6 +896,7 @@ body.quests-page {
     top: 350px; /* Расположено сверху на 20px от края окна */
     left: 50%; /* Расположено в центре по горизонтали */
     transform: translateX(-50%); /* Сдвиг на 50% ширины элемента для центрирования */
+      border: 2px solid #d1a34a; /* Обводка контейнера */
 }
 
 .card_4 {
@@ -893,6 +914,7 @@ body.quests-page {
     top: 450px; /* Расположено сверху на 20px от края окна */
     left: 50%; /* Расположено в центре по горизонтали */
     transform: translateX(-50%); /* Сдвиг на 50% ширины элемента для центрирования */
+      border: 2px solid #d1a34a; /* Обводка контейнера */
 }
 .card_5 {
     display: flex; /* Горизонтальное расположение элементов */
@@ -909,6 +931,7 @@ body.quests-page {
     top: 550px; /* Расположено сверху на 20px от края окна */
     left: 50%; /* Расположено в центре по горизонтали */
     transform: translateX(-50%); /* Сдвиг на 50% ширины элемента для центрирования */
+      border: 2px solid #d1a34a; /* Обводка контейнера */
 }
 .card_6 {
     display: flex; /* Горизонтальное расположение элементов */
@@ -925,8 +948,8 @@ body.quests-page {
     top: 700px; /* Расположено сверху на 20px от края окна */
     left: 50%; /* Расположено в центре по горизонтали */
     transform: translateX(-50%); /* Сдвиг на 50% ширины элемента для центрирования */
+      border: 2px solid #d1a34a; /* Обводка контейнера */
 }
-
 
 .card_7 {
     display: flex; /* Горизонтальное расположение элементов */
@@ -943,6 +966,7 @@ body.quests-page {
     top: 800px; /* Расположено сверху на 20px от края окна */
     left: 50%; /* Расположено в центре по горизонтали */
     transform: translateX(-50%); /* Сдвиг на 50% ширины элемента для центрирования */
+      border: 2px solid #d1a34a; /* Обводка контейнера */
 }
 
 .quests_text {
@@ -1089,8 +1113,8 @@ body.heroes-page {
 
 #character-description {
   position: absolute; /* Используем абсолютное позиционирование */
-  top: 50px; /* Отступ сверху */
-  left: -210px; /* Отступ слева */
+  top: 20px; /* Отступ сверху */
+  left: 230px; /* Отступ слева */
   font-size: 14px;
   color: #555;
   background: #f9f9f9;
@@ -1103,8 +1127,10 @@ body.heroes-page {
 
 
 .character.selected-preview {
-  border: 2px dashed #2196f3;
-  border-radius: 8px;
+  background-color:  #ffd700; /* Заливка желтым цветом */
+  border: none; /* Убираем рамку */
+  border-radius: 8px; /* Оставляем закругленные углы, если нужно */
+  padding: 5px; /* Добавляем отступы, чтобы выделение не перекрывало картинку */
 }
 
 .character.selected {
@@ -1133,8 +1159,8 @@ body.heroes-page {
 
 #select-button {
   position: absolute;
-  top: 150px;
-  right: 100px;
+  top: 280px;
+  right: 150px;
   padding: 10px 20px;
   background-color: #2e2e3a; /* Зеленый цвет */
   color: white;
@@ -1375,50 +1401,32 @@ body.up_page {
   margin: 0 auto;
   padding: 0; /* Убираем внутренний отступ */
   border-radius: 10px; /* Округление только для общего контейнера */
-  margin-top: 50px;
-  background-color: #2e2e3a; /* Общий фон */
-  overflow: hidden; /* Для корректного отображения границ */
-  border: 2px solid #d1a34a; /* Обводка контейнера */
+  margin-top: 10px;
+  display: flex; /* Гибкая модель */
+  flex-direction: column; /* Элементы в столбик */
+  gap: 0px; /* Расстояние между элементами */
 }
 
-.item_up {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 15px;
-
-}
-.item_up2 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 15px;
-
-}
-.item_up3 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 15px;
-
-}
+.item_up,
+.item_up2,
+.item_up3,
 .item_up4 {
+  position: relative; /* Для использования псевдоэлементов */
+  padding: 15px 25px; /* Пространство внутри */
+  background-color: #3e3e4a; /* Фон элемента */
+  margin: 10px 0; /* Отступ между элементами */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 15px;
-
+  border: 2px solid #d1a34a;
+  transform: skew(-10deg); /* Наклон для параллелограмма */
+  overflow: hidden;
 }
 
-.item_up:not(:last-child) {
-  border-bottom: 2px solid #d1a34a; /* Линия между элементами */
+.item_up > *, .item_up2 > *, .item_up3 > *, .item_up4 > * {
+  transform: skew(10deg); /* Обратный наклон для внутренних элементов */
 }
-.item_up2:not(:last-child) {
-  border-bottom: 2px solid #d1a34a; /* Линия между элементами */
-}
-.item_up3:not(:last-child) {
-  border-bottom: 2px solid #d1a34a; /* Линия между элементами */
-}
+
 .item-icon {
   flex-shrink: 0;
   width: 50px;
@@ -1434,7 +1442,7 @@ body.up_page {
 
 .item-info {
   flex-grow: 1;
-  margin-left: 10px;
+  margin-left: 15px; /* Чуть больше отступа для визуального баланса */
 }
 
 .item-title {
@@ -1458,10 +1466,11 @@ body.up_page {
   color: #ffd700;
 }
 
+
 /* Общие стили окна */
 .container_up_buy {
     text-align: center;
-    background-color: #35292a;
+    background-color: #2e2e3a;
     padding: 20px;
     border-radius: 20px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
@@ -1478,7 +1487,7 @@ body.up_page {
 /* Общие стили окна */
 .container_up_buy_2 {
     text-align: center;
-    background-color: #35292a;
+    background-color: #2e2e3a;
     padding: 20px;
     border-radius: 20px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
@@ -1493,7 +1502,7 @@ body.up_page {
 }
 .container_up_buy_3 {
     text-align: center;
-    background-color: #35292a;
+    background-color: #2e2e3a;
     padding: 20px;
     border-radius: 20px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
@@ -1508,7 +1517,7 @@ body.up_page {
 }
 .container_up_buy_4 {
     text-align: center;
-    background-color: #35292a;
+    background-color: #2e2e3a;
     padding: 20px;
     border-radius: 20px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
@@ -1648,8 +1657,31 @@ body.up_page {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
+.upgrade-button_2 {
+    background-color: #ffaa00;
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 18px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 .upgrade-button:hover {
     background-color: #cc8800;
+}
+
+.upgrade-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  background-color: #2e2e3a;
+  color: white;
+  border-radius: 5px;
+  font-size: 18px;
+  display: none;
+  z-index: 9999; /* Чтобы сообщение было поверх других элементов */
 }
 

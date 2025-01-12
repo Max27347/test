@@ -52,3 +52,21 @@
         const prizesContainer = document.getElementById('prizes-container');
 
 
+// Функция сброса кликов до 1
+function resetClicks() {
+  coinsPerClick = 1; // Сбрасываем количество монет за клик
+  localStorage.setItem('coinsPerClick', coinsPerClick); // Обновляем значение в localStorage
+}
+
+// Вызываем сброс
+resetClicks();
+
+
+
+
+
+// Функция сброса уровня до 1
+// Сброс уровня до 1 и монет за клик для теста
+localStorage.setItem('level', 1);
+localStorage.setItem('coinsPerClick', 1);
+

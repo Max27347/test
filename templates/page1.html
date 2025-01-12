@@ -28,7 +28,6 @@
 </div>
 
 
-
 <p id="score"><span id="currentScore">0</span></p>
 <div class="coin">
     <img src="/static/images/coin.png" alt="Монеты">
@@ -81,9 +80,10 @@
     <img src="/static/images/boss.png" alt="Редкие" class="button-image_up">
 </a>
 
-<script src="{{ url_for('static', filename='script_wheel.js') }}"></script>
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 <script src="{{ url_for('static', filename='script_box.js') }}"></script>
+<script src="{{ url_for('static', filename='script_up.js') }}"></script>
+
 
 {% include '_nav.html' %}
 

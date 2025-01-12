@@ -9,6 +9,11 @@
 </head>
 <body class="up_page">
 
+<p id="score"><span id="currentScore">0</span></p>
+<div class="coin">
+    <img src="/static/images/coin.png" alt="Монеты" width="80">
+</div>
+
 <nav class="shop_menu">
         <ul>
             <li class="shop_menu-item">
@@ -19,9 +24,6 @@
             </li>
             <li class="shop_menu-item">
                 <a href="/upgrade">Улучшения</a>
-            </li>
-            <li class="shop_menu-item">
-                <a href="#">Инвентарь</a>
             </li>
         </ul>
     </nav>
@@ -41,7 +43,7 @@
     <div class="item-icon">⚔️</div>
     <div class="item-info">
       <p class="item-title">Клик</p>
-      <p class="item-details">4,000 • Уровень 1</p>
+      <p class="item-details">1 • Уровень 1</p>
     </div>
     <div class="item-action">></div>
   </div>
@@ -118,9 +120,9 @@
         <div class="price_up_buy">
             <!-- Картинка монеты -->
             <img class="coin-icon" src="/static/images/coin.png" alt="Монета" />
-            <span class="coin">2,000</span>
+            <span class="coin_up">1000</span>
         </div>
-        <button class="upgrade-button">УЛУЧШИТЬ</button>
+        <button class="upgrade-button_2">УЛУЧШИТЬ</button>
     </div>
 </div>
 
@@ -188,7 +190,7 @@
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 <script src="{{ url_for('static', filename='script_theme.js') }}"></script>
 <script src="{{ url_for('static', filename='script_up.js') }}"></script>
-
+<script src="{{ url_for('static', filename='script_box.js') }}"></script>
 {% include '_nav.html' %}
 </body>
 </html>
