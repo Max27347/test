@@ -162,25 +162,65 @@ document.addEventListener('DOMContentLoaded', () => {
 
     switch (level) {
       case 1:
-        progressLabel.innerText = 'Хогвартс';
-        clicksPerLevel = 20;
-        backgroundImage = '/static/images/fon_7.png'; // Укажите путь к фону Серебряной лиги
+        progressLabel.innerText = 'Ледяной мир';
+        clicksPerLevel = 10;
+        backgroundImage = '/static/images/ice.png'; // Укажите путь к фону Серебряной лиги
         break;
       case 2:
         progressLabel.innerText = 'Адский мир';
-        clicksPerLevel = 25;
-        backgroundImage = '/static/images/fon_6.png'; // Укажите путь к фону Золотой лиги
+        clicksPerLevel = 10;
+        backgroundImage = '/static/images/ad.png'; // Укажите путь к фону Золотой лиги
         break;
       case 3:
-        progressLabel.innerText = 'Космический мир';
-        clicksPerLevel = 30;
-        backgroundImage = '/static/images/fon_3.png'; // Укажите путь к фону Алмазной лиги
+        progressLabel.innerText = 'Ниндзя';
+        clicksPerLevel = 10;
+        backgroundImage = '/static/images/ninja_world.png'; // Укажите путь к фону Алмазной лиги
         break;
+      case 4:
+        progressLabel.innerText = 'Рай';
+        clicksPerLevel = 10;
+        backgroundImage = '/static/images/rai.png'; // Укажите путь к фону Алмазной лиги
+        break;
+      case 5:
+        progressLabel.innerText = 'Водный мир';
+        clicksPerLevel = 10;
+        backgroundImage = '/static/images/water_world.png'; // Укажите путь к фону Алмазной лиги
+        break;
+      case 6:
+        progressLabel.innerText = 'Мистика';
+        clicksPerLevel = 10;
+        backgroundImage = '/static/images/mystical.png'; // Укажите путь к фону Алмазной лиги
+        break;
+      case 7:
+        progressLabel.innerText = 'Майнкрафт';
+        clicksPerLevel = 10;
+        backgroundImage = '/static/images/minecraft.png'; // Укажите путь к фону Алмазной лиги
+        break;
+      case 8:
+        progressLabel.innerText = 'Тьма';
+        clicksPerLevel = 10;
+        backgroundImage = '/static/images/dark.png'; // Укажите путь к фону Алмазной лиги
+        break;
+       case 9:
+        progressLabel.innerText = 'Космос';
+        clicksPerLevel = 10;
+        backgroundImage = '/static/images/cosmos.png'; // Укажите путь к фону Алмазной лиги
+        break;
+      case 10:
+        progressLabel.innerText = 'Темнота';
+        clicksPerLevel = 10;
+        backgroundImage = '/static/images/dark_2.png'; // Укажите путь к фону Алмазной лиги
+       break;
+      case 11:
+        progressLabel.innerText = 'НЛО';
+        clicksPerLevel = 10;
+        backgroundImage = '/static/images/plat.png'; // Укажите путь к фону Алмазной лиги
+       break;
       default:
-        progressLabel.innerText = 'Начальный мир';
+        progressLabel.innerText = 'мистическая деревня';
         leagueLevel = 0;
         clicksPerLevel = 10;
-        backgroundImage = '/static/images/fon_5.png'; // Укажите путь к фону Бронзовой лиги
+        backgroundImage = '/static/images/hogwarts.png'; // Укажите путь к фону Бронзовой лиги
     }
 
     body.style.backgroundImage = `url("${backgroundImage}")`; // Используем правильный синтаксис
