@@ -2,9 +2,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // Найти элементы
   const itemUp = document.querySelector('.item_up');
   const itemUp2 = document.querySelector('.item_up2');
+  const itemUp3 = document.querySelector('.item_up3'); // Новый элемент
   const containerUpBuy2 = document.querySelector('.container_up_buy_2');
+  const containerUpBuy3 = document.querySelector('.container_up_buy_3'); // Новый контейнер
   const overlay = document.querySelector('.overlay');
   const closeButton2 = document.querySelector('.close-button_2');
+  const closeButton3 = document.querySelector('.close-button_3'); // Новая кнопка закрытия
   const upgradeButton = document.querySelector('.upgrade-button_2'); // Кнопка улучшения
   const upgradeMessage = document.createElement('div'); // Сообщение
   const itemDetails = document.querySelector('.item_up2 .item-details'); // Поле для обновления
@@ -91,21 +94,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Открытие окна улучшений
+  // Открытие окна улучшений (item_up2)
   itemUp2.addEventListener('click', () => {
     containerUpBuy2.style.display = 'block';
     overlay.style.display = 'block';
   });
 
-  // Закрытие окон
+  // Открытие окна улучшений (item_up3)
+  itemUp3.addEventListener('click', () => {
+    containerUpBuy3.style.display = 'block';
+    overlay.style.display = 'block';
+  });
+
+  // Закрытие окон улучшений
   closeButton2.addEventListener('click', () => {
     containerUpBuy2.style.display = 'none';
+    overlay.style.display = 'none';
+  });
+
+  closeButton3.addEventListener('click', () => {
+    containerUpBuy3.style.display = 'none';
     overlay.style.display = 'none';
   });
 
   // Закрытие окна при клике на затемнение
   overlay.addEventListener('click', () => {
     containerUpBuy2.style.display = 'none';
+    containerUpBuy3.style.display = 'none';
     overlay.style.display = 'none';
   });
 

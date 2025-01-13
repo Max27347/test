@@ -50,10 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
   let leagueLevel = 0; // Уровень лиги: 0 - Бронзовая, 1 - Серебряная, 2 - Золотая
   let clicksPerLevel = 10; // Количество кликов для перехода на следующий уровень (по умолчанию для Бронзовой лиги)
 
-  let energy = 500; // Текущая энергия
-  const maxEnergy = 500; // Максимальная энергия
+  let energy = 1000; // Текущая энергия
+  const maxEnergy = 1000; // Максимальная энергия
   const energyCost = 10; // Стоимость энергии за нажатие
-  const energyRecoveryRate = 10; // Скорость восстановления энергии (единиц в секунду)
+  const energyRecoveryRate = 5; // Скорость восстановления энергии (единиц в секунду)
 
   let coinsPerClick = 1; // Количество монет за клик (по умолчанию 1)
 
@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
         backgroundImage = '/static/images/mystical.png'; // Укажите путь к фону Алмазной лиги
         break;
       case 7:
-        progressLabel.innerText = 'Майнкрафт';
+        progressLabel.innerText = 'Кубический мир';
         clicksPerLevel = 10;
         backgroundImage = '/static/images/minecraft.png'; // Укажите путь к фону Алмазной лиги
         break;
@@ -227,6 +227,14 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('backgroundImage', backgroundImage); // Сохраняем фон в localStorage
   }
 
+  // Обработка нажатия кнопки улучшения
+  upgradeButton.onclick = () => {
+    coinsPerClick = 2; // Увеличиваем количество монет за клик
+    localStorage.setItem('coinsPerClick', coinsPerClick); // Сохраняем значение в localStorage
+    upgradeButton.disabled = true; // Делаем кнопку неактивной после улучшения
+  };
+});
+
   // Функция для создания одной монеты с анимацией
   function spawnCoinDrop(event) {
     const coin = document.createElement('div');
@@ -247,14 +255,3 @@ document.addEventListener('DOMContentLoaded', () => {
       coin.remove();
     });
   }
-
-  // Обработка нажатия кнопки улучшения
-  upgradeButton.onclick = () => {
-    coinsPerClick = 2; // Увеличиваем количество монет за клик
-    localStorage.setItem('coinsPerClick', coinsPerClick); // Сохраняем значение в localStorage
-    upgradeButton.disabled = true; // Делаем кнопку неактивной после улучшения
-  };
-});
-
-
-
