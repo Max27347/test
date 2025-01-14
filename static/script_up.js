@@ -1,17 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Найти элементы
-  const itemUp = document.querySelector('.item_up');
   const itemUp2 = document.querySelector('.item_up2');
-  const itemUp3 = document.querySelector('.item_up3'); // Новый элемент
   const containerUpBuy2 = document.querySelector('.container_up_buy_2');
-  const containerUpBuy3 = document.querySelector('.container_up_buy_3'); // Новый контейнер
   const overlay = document.querySelector('.overlay');
   const closeButton2 = document.querySelector('.close-button_2');
-  const closeButton3 = document.querySelector('.close-button_3'); // Новая кнопка закрытия
-  const upgradeButton = document.querySelector('.upgrade-button_2'); // Кнопка улучшения
+  const upgradeButton = document.querySelector('.upgrade-button_2');
   const upgradeMessage = document.createElement('div'); // Сообщение
   const itemDetails = document.querySelector('.item_up2 .item-details'); // Поле для обновления
-  const coinElement = document.querySelector('.coin_up'); // Элемент для отображения цены улучшения (используем класс coin_up)
+  const coinElement = document.querySelector('.coin_up'); // Элемент для отображения цены улучшения
   const currentScoreElement = document.getElementById('currentScore'); // Элемент для отображения текущего баланса монет
 
   // Добавляем сообщение на страницу
@@ -100,37 +96,17 @@ document.addEventListener('DOMContentLoaded', () => {
     overlay.style.display = 'block';
   });
 
-  // Открытие окна улучшений (item_up3)
-  itemUp3.addEventListener('click', () => {
-    containerUpBuy3.style.display = 'block';
-    overlay.style.display = 'block';
-  });
-
-  // Закрытие окон улучшений
+  // Закрытие окна улучшений
   closeButton2.addEventListener('click', () => {
     containerUpBuy2.style.display = 'none';
-    overlay.style.display = 'none';
-  });
-
-  closeButton3.addEventListener('click', () => {
-    containerUpBuy3.style.display = 'none';
     overlay.style.display = 'none';
   });
 
   // Закрытие окна при клике на затемнение
   overlay.addEventListener('click', () => {
     containerUpBuy2.style.display = 'none';
-    containerUpBuy3.style.display = 'none';
     overlay.style.display = 'none';
   });
-
-  // Обработчик клика для кнопки на этой странице, увеличиваем счет
-  const clickButton = document.getElementById('clickButton');
-
-  clickButton.addEventListener('click', () => {
-    let currentScore = parseInt(currentScoreElement.innerText) || 0;
-    currentScore += coinsPerClick;
-    currentScoreElement.innerText = currentScore;
-    localStorage.setItem('currentScore', currentScore);
-  });
 });
+
+
