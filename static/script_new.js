@@ -56,3 +56,30 @@ document.addEventListener('click', (event) => {
     dropdownMenu.classList.remove('active');
   }
 });
+
+
+// Функция для загрузки контента по клику на "Герои"
+function loadContent(page) {
+  const contentContainer = document.getElementById('contentContainer');
+  if (page === 'heroes') {
+    contentContainer.innerHTML = document.querySelector('.menu_char').outerHTML;
+  }
+}
+
+// Обработчик клика по персонажам
+const characters = document.querySelectorAll('.character');
+
+characters.forEach(character => {
+  character.addEventListener('click', function() {
+    const name = character.getAttribute('data-name');
+    const imgSrc = character.getAttribute('data-img');
+    const description = character.getAttribute('data-description');
+
+    // Обновляем превью
+    document.getElementById('preview-name').innerText = name;
+    document.getElementById('preview-image').src = imgSrc;
+    document.getElementById('character-description').innerText = description;
+  });
+});
+
+

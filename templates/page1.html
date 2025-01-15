@@ -44,7 +44,7 @@
 </div>
 
 <div id="content">
-  <!-- Контент для секции "Играть" -->
+  <!-- Играть -->
   <div class="page" id="play" style="display:block;">
   <!-- Элементы для первой секции -->
   <p id="score"><span id="currentScore">0</span></p>
@@ -64,7 +64,6 @@
 
   <p id="nick">Максим</p>
 
-
     <!-- Полоса прогресса -->
     <div class="progress-container">
       <div class="progress-bar" id="progressBar"></div>
@@ -76,8 +75,7 @@
     <div class="energy-container">
       <div class="energy-bar" id="energyBar">1000</div>
     </div>
-  </div>
-<div class="dropdown">
+      <div class="dropdown">
     <img src="/static/images/menu.png" alt="Меню" id="menu-icon">
 
     <!-- Выпадающее меню -->
@@ -87,37 +85,241 @@
         <a href="#item3">Аирдроп</a>
         <a href="#item4">Тех поддержка</a>
     </div>
+  </div>
 </div>
-  <!-- Контент для других секций (оставим для примера) -->
+
+  <!-- Друзья -->
   <div class="page" id="friends" style="display:none;">
-    <h2>Друзья</h2>
-    <p>Здесь будет список друзей.</p>
-  </div>
-  <div class="page" id="shop" style="display:none;">
-    <h2>Магазин</h2>
-    <p>Здесь будет список товаров.</p>
-  </div>
-  <div class="page" id="quests" style="display:none;">
-    <h2>Квесты</h2>
-    <p>Здесь будут доступные квесты.</p>
-  </div>
-  <div class="page" id="top" style="display:none;">
-    <h2>Топ игроков</h2>
-    <p>Здесь будет список топ игроков.</p>
-  </div>
+<div class="invite-container">
+    <div class="coin-stack">
+        <img src="/static/images/coin.png" alt="Coins" class="coins">
+    </div>
+    <div class="invite-text">
+        <div class="title">Пригласить друга</div>
+        <div class="reward">
+            <img src="/static/images/coin.png" alt="Coin" class="coin-icon">
+            <span class="reward-amount">+5,000</span>
+        </div>
+    </div>
 </div>
 
+<div class="up_text">
+    <p>Список ваших друзей</p>
+</div>
 
-<a href="/page5" class="open-page5-button">
-    <img src="/static/images/top_2.png" alt="Редкие" class="button-image">
-</a>
+  <div class="friend-list">
+    <div class="friend-card">
+      <img src="/static/images/colt_av.png" alt="Avatar">
+      <div class="friend-info">Ник - уровень</div>
+    </div>
+    <div class="friend-card">
+      <img src="/static/images/colt_av.png" alt="Avatar">
+      <div class="friend-info">Ник - уровень</div>
+    </div>
+    <div class="friend-card">
+      <img src="/static/images/colt_av.png" alt="Avatar">
+      <div class="friend-info">Ник - уровень</div>
+    </div>
+  </div>
 
-<a href="/fons" class="open-up-button">
-    <img src="/static/images/bomb.png" alt="Редкие" class="button-image_up">
-</a>
+<div class="invitation-container">
+  <div class="header">
+    <h1>Ваши друзья</h1>
+    <h2 class="friends-count">0 ДРУЗЕЙ</h2>
+    <button class="how-it-works">Доход с друзей</button>
+  </div>
+</div>
+  </div>
+
+<!-- Магазин -->
+  <div class="page" id="shop" style="display:none;">
+<p id="score"><span id="currentScore">0</span></p>
+<div class="coin">
+    <img src="/static/images/coin.png" alt="Монеты" width="80">
+</div>
+
+<nav class="shop_menu">
+  <ul>
+    <li class="shop_menu-item">
+      <a href="#" onclick="loadContent('special')">Особое</a>
+    </li>
+    <li class="shop_menu-item">
+      <a href="#" onclick="loadContent('heroes')">Герои</a>
+    </li>
+    <li class="shop_menu-item">
+      <a href="#" onclick="loadContent('upgrades')">Улучшения</a>
+    </li>
+  </ul>
+</nav>
+
+<!-- Контейнер для контента -->
+<div id="contentContainer">
+  <!-- Контент будет загружаться сюда -->
+</div>
+
+<div class="shop_container">
+    <!-- Первая строка -->
+    <div class="shop_box">
+        <div class="shop_discount">ЛУЧШЕЕ</div> <!-- Добавлено для метки -->
+        <div class="shop_icon">
+            <img src="/static/images/box_1.png" alt="Сундук">
+        </div>
+        <h1>Сундук героя</h1>
+        <h2>здесь новый перс</h2>
+        <div class="shop_price">
+            <img src="/static/images/coin.png" alt="coin"> <span>10000</span>
+        </div>
+    </div>
+    <div class="shop_box_2">
+        <div class="shop_icon">
+            <img src="/static/images/box_1.png" alt="Сундук">
+        </div>
+        <h1>Сундук героя</h1>
+        <h2>здесь новый перс</h2>
+        <div class="shop_price">
+            <img src="/static/images/stars.png" alt="coin"> <span>100</span>
+        </div>
+    </div>
+    <div class="shop_box_3">
+        <div class="shop_icon">
+            <img src="/static/images/box_3.png" alt="Сундук">
+        </div>
+        <h1>Сундук героя</h1>
+        <h2>здесь новый перс</h2>
+        <div class="shop_price">
+            <img src="/static/images/stars.png" alt="coin"> <span>100</span>
+        </div>
+    </div>
+
+    <!-- Вторая строка -->
+    <div class="shop_box_4">
+        <div class="shop_icon">
+            <img src="/static/images/box_3.png" alt="Сундук">
+        </div>
+        <h1>Сундук мастера</h1>
+        <h2>содержит редкий лут</h2>
+        <div class="shop_price">
+            <img src="/static/images/coin.png" alt="coin"> <span>20000</span>
+        </div>
+    </div>
+    <div class="shop_box_5">
+        <div class="shop_icon">
+            <img src="/static/images/box_3.png" alt="Сундук">
+        </div>
+        <h1>Сундук мастера</h1>
+        <h2>содержит редкий лут</h2>
+        <div class="shop_price">
+            <img src="/static/images/stars.png" alt="coin"> <span>200</span>
+        </div>
+    </div>
+    <div class="shop_box_6">
+        <div class="shop_icon">
+            <img src="/static/images/box_3.png" alt="Сундук">
+        </div>
+        <h1>Сундук мастера</h1>
+        <h2>содержит редкий лут</h2>
+        <div class="shop_price">
+            <img src="/static/images/stars.png" alt="coin"> <span>200</span>
+        </div>
+    </div>
+</div>
+  </div>
+        <!-- Квесты -->
+  <div class="page" id="quests" style="display:none;">
+<div class = 'quests_text'>
+<p>Основные задачи</p>
+</div>
+
+<div class = 'quests_text_2'>
+<p>Дополнительные задачи</p>
+</div>
+
+<div class = 'quests_text_3'>
+<p>Игровые задачи</p>
+</div>
+
+<div class="card">
+    <img src="/static/images/icon.png" alt="TON Logo" class="card-logo">
+    <div class="card-content">
+        <div class="card-title">Подпишись на наш телеграм канал</div>
+        <div class="card-amount">
+            <img src="/static/images/coin.png" alt="Coin Icon" class="coin-icon">
+            50 000
+        </div>
+    </div>
+    <div class="card-arrow">&gt;</div>
+</div>
+
+<div class="card_2">
+    <img src="/static/images/icon.png" alt="TON Logo" class="card-logo">
+    <div class="card-content">
+        <div class="card-title">Пригласи 5 друзей</div>
+        <div class="card-amount">
+            <img src="/static/images/coin.png" alt="Coin Icon" class="coin-icon">
+            100 000
+        </div>
+    </div>
+    <div class="card-arrow">&gt;</div>
+</div>
+
+<div class="card_3">
+    <img src="/static/images/icon.png" alt="TON Logo" class="card-logo">
+    <div class="card-content">
+        <div class="card-title">Подключи свой кошелек</div>
+        <div class="card-amount">
+            <img src="/static/images/coin.png" alt="Coin Icon" class="coin-icon">
+            150 000
+        </div>
+    </div>
+    <div class="card-arrow">&gt;</div>
+</div>
+
+<div class="card_4">
+    <img src="/static/images/icon.png" alt="TON Logo" class="card-logo">
+    <div class="card-content">
+        <div class="card-title">Подпишись на тг Павла Дурова</div>
+        <div class="card-amount">
+            <img src="/static/images/coin.png" alt="Coin Icon" class="coin-icon">
+            200 000
+        </div>
+    </div>
+    <div class="card-arrow">&gt;</div>
+</div>
+
+<div class="card_5">
+    <img src="/static/images/icon.png" alt="TON Logo" class="card-logo">
+    <div class="card-content">
+        <div class="card-title">Сыграй в мини-игру</div>
+        <div class="card-amount">
+            <img src="/static/images/coin.png" alt="Coin Icon" class="coin-icon">
+           30 000
+        </div>
+    </div>
+    <div class="card-arrow">&gt;</div>
+</div>
+
+<div class="card_6">
+    <img src="/static/images/icon.png" alt="TON Logo" class="card-logo">
+    <div class="card-content">
+        <div class="card-title">Открой 5 новых миров</div>
+        <div class="card-amount">
+            <img src="/static/images/coin.png" alt="Coin Icon" class="coin-icon">
+            200 000
+        </div>
+    </div>
+    <div class="card-arrow">&gt;</div>
+</div>
+  </div>
+            <!-- Босс -->
+  <div class="page" id="top" style="display:none;">
+  </div>
+</div>
 
 <script src="{{ url_for('static', filename='script_new.js') }}"></script>
 <script src="{{ url_for('static', filename='script.js') }}"></script>
+<script src="{{ url_for('static', filename='script.heroes') }}"></script>
+<script src="{{ url_for('static', filename='script.up') }}"></script>
+
 
 
 </body>

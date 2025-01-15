@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
         backgroundImage = '/static/images/plat.png'; // Укажите путь к фону Алмазной лиги
         break;
       default:
-        progressLabel.innerText = 'мистическая деревня';
+        progressLabel.innerText = 'Мистическая деревня';
         leagueLevel = 0;
         clicksPerLevel = 10;
         backgroundImage = '/static/images/hogwarts.png'; // Укажите путь к фону Бронзовой лиги
@@ -202,19 +202,18 @@ document.addEventListener('DOMContentLoaded', () => {
     body.style.backgroundImage = `url("${backgroundImage}")`; // Используем правильный синтаксис
     localStorage.setItem('backgroundImage', backgroundImage); // Сохраняем фон в localStorage
   }
-
-// Функция для создания одной монеты с анимацией
+});
+  // Функция для создания одной монеты с анимацией
   function spawnCoinDrop(event) {
-    const coin = document.createElement('img'); // Используем <img> вместо <div>
-    coin.src = '/static/images/coin.png'; // Устанавливаем источник изображения монеты
-    coin.classList.add('coin_drop'); // Добавляем класс для анимации
+    const coin = document.createElement('div');
+    coin.classList.add('coin_drop');
 
     // Устанавливаем начальную позицию монеты около клика
-    const startX = event.clientX - 15; // Центрируем монету по клику
-    const startY = event.clientY - 15; // Центрируем монету по клику
+    const startX = event.clientX - 20; // Центрируем монету по клику
+    const startY = event.clientY - 20;
 
-    coin.style.left = `${startX}px`; // Устанавливаем позицию по горизонтали
-    coin.style.top = `${startY}px`; // Устанавливаем позицию по вертикали
+    coin.style.left = `${startX}px`; // Используем правильный синтаксис
+    coin.style.top = `${startY}px`; // Используем правильный синтаксис
 
     // Добавляем монету в контейнер
     coinContainer.appendChild(coin);
@@ -224,7 +223,3 @@ document.addEventListener('DOMContentLoaded', () => {
       coin.remove();
     });
   }
-
-  // Пример использования функции
-  document.getElementById('clickButton').addEventListener('click', spawnCoinDrop);
-});
