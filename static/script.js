@@ -1,40 +1,3 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const links = document.querySelectorAll(".nav-button");
-  const currentPath = window.location.pathname;
-
-  // Убираем класс 'active' у всех ссылок
-  links.forEach(link => {
-    link.classList.remove("active");
-  });
-
-  // Применяем класс 'active' только к ссылке, которая соответствует текущему пути
-  links.forEach(link => {
-    const linkPath = link.getAttribute("href");
-
-    // Проверяем, если текущий путь точно совпадает с путем ссылки или если ссылка - это главная
-    if (currentPath === linkPath || (currentPath === "/" && linkPath === "/")) {
-      link.classList.add("active");
-    }
-  });
-});
-
-// Менюшка
-const menuIcon = document.getElementById('menu-icon');
-const dropdownMenu = document.getElementById('dropdown-menu');
-
-// Переключение видимости меню при клике на картинку
-menuIcon.addEventListener('click', (event) => {
-  event.stopPropagation(); // Предотвращаем всплытие события
-  dropdownMenu.classList.toggle('active');
-});
-
-// Закрываем меню, если кликнули вне его
-document.addEventListener('click', (event) => {
-  if (!menuIcon.contains(event.target) && !dropdownMenu.contains(event.target)) {
-    dropdownMenu.classList.remove('active');
-  }
-});
-
 document.addEventListener('DOMContentLoaded', () => {
   const clickButton = document.getElementById('clickButton');
   const currentScoreElement = document.getElementById('currentScore');
@@ -81,12 +44,21 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     updateScore(0); // Устанавливаем начальное значение
   }
-// Загружаем сохраненную энергию
+
+  // Загружаем сохраненную энергию
   const savedEnergy = localStorage.getItem('currentEnergy');
   if (savedEnergy !== null) {
     energy = parseInt(savedEnergy, 10);
     energyBar.style.width = `${(energy / maxEnergy) * 100}%`;
   }
+
+  // Загружаем сохраненный прогресс
+  const savedProgress = localStorage.getItem('currentProgress');
+  if (savedProgress !== null) {
+    progress = parseFloat(savedProgress); // Восстанавливаем прогресс
+    progressBar.style.width = `${progress}%`; // Устанавливаем сохраненное значение прогресса в полосе
+  }
+
   // Загружаем изображение выбранного персонажа
   const savedCharacterImg = localStorage.getItem('selectedCharacterImg');
   if (savedCharacterImg) {
@@ -110,6 +82,9 @@ document.addEventListener('DOMContentLoaded', () => {
           progress = Math.min(progress + progressIncrement, maxProgress);
           progressBar.style.width = `${progress}%`; // Используем правильный синтаксис
 
+          // Сохраняем прогресс в localStorage
+          localStorage.setItem('currentProgress', progress);
+
           // Расходуем энергию
           energy = Math.max(energy - energyCost, 0);
           energyBar.style.width = `${(energy / maxEnergy) * 100}%`; // Используем правильный синтаксис
@@ -122,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
             updateLeague(); // Обновляем лигу
             progress = 0; // Сбрасываем прогресс
             progressBar.style.width = '0%';
+            localStorage.setItem('currentProgress', 0); // Сохраняем сброшенный прогресс
           }
         }
       } catch (error) {
@@ -133,28 +109,25 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // Функция восстановления энергии
- function recoverEnergy() {
+  function recoverEnergy() {
     energy = Math.min(energy + energyRecoveryRate / 10, maxEnergy);
     updateEnergy(energy); // Сохраняем энергию в localStorage при восстановлении
   }
+
   // Запускаем таймер восстановления энергии
-  setInterval(recoverEnergy, 100); // Восстановление энергии каждые 100 мс (0.1 секунды)
+  setInterval(recoverEnergy, 10); // Восстановление энергии каждые 100 мс (0.1 секунды)
 
   // Функция обновления счета
   function updateScore(newScore) {
     currentScoreElement.innerText = newScore;
     localStorage.setItem('currentScore', newScore);
   }
- // Функция обновления энергии
+
+  // Функция обновления энергии
   function updateEnergy(newEnergy) {
     energyBar.style.width = `${(newEnergy / maxEnergy) * 100}%`;
     localStorage.setItem('currentEnergy', newEnergy); // Сохраняем энергию в localStorage
   }
-
-
-
-
-
 
   // Функция для обновления лиги
   function updateLeague() {
@@ -180,50 +153,45 @@ document.addEventListener('DOMContentLoaded', () => {
         backgroundImage = '/static/images/ad.png'; // Укажите путь к фону Золотой лиги
         break;
       case 3:
-        progressLabel.innerText = 'Ниндзя';
+        progressLabel.innerText = 'Китай';
         clicksPerLevel = 10;
-        backgroundImage = '/static/images/ninja_world.png'; // Укажите путь к фону Алмазной лиги
+        backgroundImage = '/static/images/china.png'; // Укажите путь к фону Алмазной лиги
         break;
       case 4:
-        progressLabel.innerText = 'Рай';
-        clicksPerLevel = 10;
-        backgroundImage = '/static/images/rai.png'; // Укажите путь к фону Алмазной лиги
-        break;
-      case 5:
         progressLabel.innerText = 'Водный мир';
         clicksPerLevel = 10;
         backgroundImage = '/static/images/water_world.png'; // Укажите путь к фону Алмазной лиги
         break;
-      case 6:
+      case 5:
         progressLabel.innerText = 'Мистика';
         clicksPerLevel = 10;
         backgroundImage = '/static/images/mystical.png'; // Укажите путь к фону Алмазной лиги
         break;
-      case 7:
+      case 6:
         progressLabel.innerText = 'Кубический мир';
         clicksPerLevel = 10;
         backgroundImage = '/static/images/minecraft.png'; // Укажите путь к фону Алмазной лиги
         break;
-      case 8:
+      case 7:
         progressLabel.innerText = 'Тьма';
         clicksPerLevel = 10;
         backgroundImage = '/static/images/dark.png'; // Укажите путь к фону Алмазной лиги
         break;
-       case 9:
+      case 8:
         progressLabel.innerText = 'Космос';
         clicksPerLevel = 10;
         backgroundImage = '/static/images/cosmos.png'; // Укажите путь к фону Алмазной лиги
         break;
-      case 10:
+      case 9:
         progressLabel.innerText = 'Темнота';
         clicksPerLevel = 10;
         backgroundImage = '/static/images/dark_2.png'; // Укажите путь к фону Алмазной лиги
-       break;
-      case 11:
+        break;
+      case 10:
         progressLabel.innerText = 'НЛО';
         clicksPerLevel = 10;
         backgroundImage = '/static/images/plat.png'; // Укажите путь к фону Алмазной лиги
-       break;
+        break;
       default:
         progressLabel.innerText = 'мистическая деревня';
         leagueLevel = 0;
@@ -235,25 +203,18 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('backgroundImage', backgroundImage); // Сохраняем фон в localStorage
   }
 
-  // Обработка нажатия кнопки улучшения
-  upgradeButton.onclick = () => {
-    coinsPerClick = 2; // Увеличиваем количество монет за клик
-    localStorage.setItem('coinsPerClick', coinsPerClick); // Сохраняем значение в localStorage
-    upgradeButton.disabled = true; // Делаем кнопку неактивной после улучшения
-  };
-});
-
-  // Функция для создания одной монеты с анимацией
+// Функция для создания одной монеты с анимацией
   function spawnCoinDrop(event) {
-    const coin = document.createElement('div');
-    coin.classList.add('coin_drop');
+    const coin = document.createElement('img'); // Используем <img> вместо <div>
+    coin.src = '/static/images/coin.png'; // Устанавливаем источник изображения монеты
+    coin.classList.add('coin_drop'); // Добавляем класс для анимации
 
     // Устанавливаем начальную позицию монеты около клика
-    const startX = event.clientX - 20; // Центрируем монету по клику
-    const startY = event.clientY - 20;
+    const startX = event.clientX - 15; // Центрируем монету по клику
+    const startY = event.clientY - 15; // Центрируем монету по клику
 
-    coin.style.left = `${startX}px`; // Используем правильный синтаксис
-    coin.style.top = `${startY}px`; // Используем правильный синтаксис
+    coin.style.left = `${startX}px`; // Устанавливаем позицию по горизонтали
+    coin.style.top = `${startY}px`; // Устанавливаем позицию по вертикали
 
     // Добавляем монету в контейнер
     coinContainer.appendChild(coin);
@@ -264,4 +225,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-
+  // Пример использования функции
+  document.getElementById('clickButton').addEventListener('click', spawnCoinDrop);
+});

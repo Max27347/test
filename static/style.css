@@ -3,11 +3,16 @@ body {
     display: flex;
     height: 95vh;
     flex-direction: column;
-    background-image: url("/static/images/fon_1.png"); /* Укажите путь к вашему изображению */
     background-size: cover; /* Растянуть изображение на весь контейнер */
     background-position: center; /* Центровка изображения */
     background-repeat: no-repeat; /* Запрет на повторение изображения */
 }
+
+/* Скрываем все страницы по умолчанию */
+.page {
+  display: none;
+}
+
 
   /* Стили для полос */
 .progress-container {

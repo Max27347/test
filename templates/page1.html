@@ -2,57 +2,81 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Играть</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <title>Heroes</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<img id="open-wheel" src="/static/images/wheel_2.png" alt="Открыть рулетку" class="open-wheel-img">
-
-
-<!-- Контейнер рулетки -->
-<div class="wheel-container" id="wheel-container">
-    <button class="close-btn" id="close-btn">×</button>
-    <div class="pointer"></div>
-    <div class="wheel" id="wheel">
-        <div class="sector" style="transform: rotate(10deg);">1000 монет</div>
-        <div class="sector" style="transform: rotate(70deg);">2000 монет</div>
-        <div class="sector" style="transform: rotate(130deg);">5000 монет</div>
-        <div class="sector" style="transform: rotate(190deg);">100% энергия</div>
-        <div class="sector" style="transform: rotate(250deg);">Факел</div>
-        <div class="sector" style="transform: rotate(310deg);">+Сундук</div>
-    </div>
-    <button class="spin-btn" id="spin-btn">Крутить</button>
-    <div class="result" id="result"></div>
+<!-- Навигация -->
+<div class="navigation" id="menu">
+  <a href="#" class="nav-button active" data-page="play">
+    <figure>
+      <img src="static/images/play.png" alt="Играть" width="15" height="15">
+      <figcaption>Играть</figcaption>
+    </figure>
+  </a>
+  <a href="#" class="nav-button" data-page="friends">
+    <figure>
+      <img src="static/images/friends_7.png" alt="Друзья" width="15" height="15">
+      <figcaption>Друзья</figcaption>
+    </figure>
+  </a>
+  <a href="#" class="nav-button" data-page="shop">
+    <figure>
+      <img src="static/images/shop.png" alt="Магазин" width="15" height="15">
+      <figcaption>Магазин</figcaption>
+    </figure>
+  </a>
+  <a href="#" class="nav-button" data-page="quests">
+    <figure>
+      <img src="static/images/quests.png" alt="Квесты" width="15" height="15">
+      <figcaption>Квесты</figcaption>
+    </figure>
+  </a>
+  <a href="#" class="nav-button" data-page="top">
+    <figure>
+      <img src="static/images/boss.png" alt="Топ" width="15" height="15">
+      <figcaption>Босс</figcaption>
+    </figure>
+  </a>
 </div>
 
+<div id="content">
+  <!-- Контент для секции "Играть" -->
+  <div class="page" id="play" style="display:block;">
+  <!-- Элементы для первой секции -->
+  <p id="score"><span id="currentScore">0</span></p>
 
-<p id="score"><span id="currentScore">0</span></p>
-<div class="coin">
+  <div class="coin">
     <img src="/static/images/coin.png" alt="Монеты">
-</div>
+  </div>
 
-<div id="coinContainer"></div>
-<img id="clickButton" src="/static/images/croco.png" onclick="spawnCoins(event)">
+  <!-- Контейнер для анимации монет -->
+  <div id="coinContainer"></div> <!-- Контейнер для монет с анимацией -->
 
+  <img id="clickButton" onclick="spawnCoins(event)">
 
-<div class="icon-container">
+  <div class="icon-container">
     <img src="/static/images/icon.png" alt="Иконка" width="75">
-</div>
-<p id="nick">Максим</p>
+  </div>
 
- <!-- Полоса прогресса -->
-<div class="progress-container">
-    <div class="progress-bar" id="progressBar"></div>
+  <p id="nick">Максим</p>
 
-</div>
-<div class="progress-label" id="progressLabel">Бронзовая лига</div>
+
+    <!-- Полоса прогресса -->
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="progress-label" id="progressLabel"></div>
+
     <!-- Полоса энергии -->
-<div class="energy-container">
-    <div class="energy-bar" id="energyBar">1000</div>
-</div>
-
+    <div class="energy-container">
+      <div class="energy-bar" id="energyBar">1000</div>
+    </div>
+  </div>
 <div class="dropdown">
     <img src="/static/images/menu.png" alt="Меню" id="menu-icon">
 
@@ -64,6 +88,24 @@
         <a href="#item4">Тех поддержка</a>
     </div>
 </div>
+  <!-- Контент для других секций (оставим для примера) -->
+  <div class="page" id="friends" style="display:none;">
+    <h2>Друзья</h2>
+    <p>Здесь будет список друзей.</p>
+  </div>
+  <div class="page" id="shop" style="display:none;">
+    <h2>Магазин</h2>
+    <p>Здесь будет список товаров.</p>
+  </div>
+  <div class="page" id="quests" style="display:none;">
+    <h2>Квесты</h2>
+    <p>Здесь будут доступные квесты.</p>
+  </div>
+  <div class="page" id="top" style="display:none;">
+    <h2>Топ игроков</h2>
+    <p>Здесь будет список топ игроков.</p>
+  </div>
+</div>
 
 
 <a href="/page5" class="open-page5-button">
@@ -74,14 +116,9 @@
     <img src="/static/images/bomb.png" alt="Редкие" class="button-image_up">
 </a>
 
-<a href="/boss" class="open-boss-button">
-    <img src="/static/images/boss.png" alt="Редкие" class="button-image_up">
-</a>
-
+<script src="{{ url_for('static', filename='script_new.js') }}"></script>
 <script src="{{ url_for('static', filename='script.js') }}"></script>
-<script src="{{ url_for('static', filename='script_box.js') }}"></script>
 
-{% include '_nav.html' %}
 
 </body>
 </html>
