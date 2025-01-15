@@ -58,28 +58,20 @@ document.addEventListener('click', (event) => {
 });
 
 
-// Функция для загрузки контента по клику на "Герои"
-function loadContent(page) {
-  const contentContainer = document.getElementById('contentContainer');
-  if (page === 'heroes') {
-    contentContainer.innerHTML = document.querySelector('.menu_char').outerHTML;
+// Функция для загрузки содержимого по вкладке
+function loadContent(section) {
+  // Скрываем все секции
+  const sections = document.querySelectorAll('.content-section');
+  sections.forEach(section => {
+    section.style.display = 'none';
+  });
+
+  // Показываем нужную секцию
+  const activeSection = document.getElementById(section);
+  if (activeSection) {
+    activeSection.style.display = 'block';
   }
 }
 
-// Обработчик клика по персонажам
-const characters = document.querySelectorAll('.character');
-
-characters.forEach(character => {
-  character.addEventListener('click', function() {
-    const name = character.getAttribute('data-name');
-    const imgSrc = character.getAttribute('data-img');
-    const description = character.getAttribute('data-description');
-
-    // Обновляем превью
-    document.getElementById('preview-name').innerText = name;
-    document.getElementById('preview-image').src = imgSrc;
-    document.getElementById('character-description').innerText = description;
-  });
-});
 
 

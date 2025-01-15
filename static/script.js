@@ -199,9 +199,15 @@ document.addEventListener('DOMContentLoaded', () => {
         backgroundImage = '/static/images/hogwarts.png'; // Укажите путь к фону Бронзовой лиги
     }
 
+  // Устанавливаем фон с нужным размером
     body.style.backgroundImage = `url("${backgroundImage}")`; // Используем правильный синтаксис
-    localStorage.setItem('backgroundImage', backgroundImage); // Сохраняем фон в localStorage
-  }
+    body.style.backgroundSize = 'cover'; // Растягиваем фон на весь экран
+    body.style.backgroundPosition = 'center'; // Центрируем фон
+    body.style.backgroundAttachment = 'fixed'; // Фиксируем фон при прокрутке (опционально)
+
+    // Сохраняем фон в localStorage
+    localStorage.setItem('backgroundImage', backgroundImage);
+}
 });
   // Функция для создания одной монеты с анимацией
   function spawnCoinDrop(event) {

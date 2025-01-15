@@ -133,7 +133,7 @@
 
 <!-- Магазин -->
   <div class="page" id="shop" style="display:none;">
-<p id="score"><span id="currentScore">0</span></p>
+<p class="score"><span class="currentScore">0</span></p>
 <div class="coin">
     <img src="/static/images/coin.png" alt="Монеты" width="80">
 </div>
@@ -151,12 +151,9 @@
     </li>
   </ul>
 </nav>
-
-<!-- Контейнер для контента -->
+<!-- Контейнер для содержимого -->
 <div id="contentContainer">
-  <!-- Контент будет загружаться сюда -->
-</div>
-
+  <div id="special" class="content-section">
 <div class="shop_container">
     <!-- Первая строка -->
     <div class="shop_box">
@@ -224,6 +221,236 @@
     </div>
 </div>
   </div>
+  </div>
+  <div id="heroes" class="content-section" style="display:none;">
+<p class="score"><span class="currentScore">0</span></p>
+<div class="coin">
+    <img src="/static/images/coin.png" alt="Монеты" width="80">
+</div>
+
+<div class="character-preview">
+<div class="preview" id="preview">
+  <img src="/static/images/croco.png" alt="Preview">
+  <p id="preview-name">Character 1</p>
+  <p id="character-description">Description of Character 1</p>
+</div>
+
+<div class="menu_char">
+  <div class="character" data-id="1" data-name="Character 1" data-img="/static/images/croco.png" data-description="Каждый приглашенный друг дает +1000 монет">
+    <img src="/static/images/croco.png" alt="Character 1">
+    <p>Character 1</p>
+  </div>
+  <div class="character" data-id="2" data-name="Character 2" data-img="/static/images/cot.png" data-description="Кот играет на гитаре, удваивая количество получаемых монет на 5 мин">
+    <img src="/static/images/cot.png" alt="Character 2">
+    <p>Character 2</p>
+  </div>
+  <div class="character" data-id="3" data-name="Character 3" data-img="/static/images/groot.png" data-description="Восстанавливает энергию на 10% быстрее">
+    <img src="/static/images/groot.png" alt="Character 3">
+    <p>Character 3</p>
+  </div>
+  <div class="character" data-id="4" data-name="Character 4" data-img="/static/images/golem.png" data-description="Голем Базя позволяет крутить рулетку 2 раза">
+    <img src="/static/images/golem.png" alt="Character 4">
+    <p>Character 4</p>
+  </div>
+  <div class="character" data-id="5" data-name="Character 5" data-img="/static/images/fire.png" data-description="Fire is a blazing warrior full of passion.">
+    <img src="/static/images/fire.png" alt="Character 5">
+    <p>Character 5</p>
+  </div>
+  <div class="character" data-id="6" data-name="Character 6" data-img="/static/images/water.png" data-description="Water is calm and adaptable, flowing through challenges.">
+    <img src="/static/images/water.png" alt="Character 6">
+    <p>Character 6</p>
+  </div>
+      <div class="character" data-id="7" data-name="Character 7" data-img="/static/images/tor.png" data-description="Water is calm and adaptable, flowing through challenges.">
+    <img src="/static/images/tor.png" alt="Character 7">
+    <p>Character 7</p>
+  </div>
+  <div class="character" data-id="0" data-name="Character 8" data-img="/static/images/witch.png" data-description="Water is calm and adaptable, flowing through challenges.">
+    <img src="/static/images/witch.png" alt="Character 8">
+    <p>Character 8</p>
+  </div>
+  <div class="character" data-id="9" data-name="Character 9" data-img="/static/images/pumpkin.png" data-description="Water is calm and adaptable, flowing through challenges.">
+    <img src="/static/images/pumpkin.png" alt="Character 9">
+    <p>Character 9</p>
+  </div>
+      <div class="character" data-id="10" data-name="Character 10" data-img="/static/images/ananas.png" data-description="Water is calm and adaptable, flowing through challenges.">
+    <img src="/static/images/ananas.png" alt="Character 10">
+    <p>Character 10</p>
+  </div>
+      <div class="character" data-id="11" data-name="Character 11" data-img="/static/images/frog.png" data-description="Water is calm and adaptable, flowing through challenges.">
+    <img src="/static/images/frog.png" alt="Character 11">
+    <p>Character 11</p>
+  </div>
+      <div class="character" data-id="12" data-name="Character 12" data-img="/static/images/ninja.png" data-description="Water is calm and adaptable, flowing through challenges.">
+    <img src="/static/images/ninja.png" alt="Character 12">
+    <p>Character 12</p>
+  </div>
+</div>
+    </div>
+<button id="select-button">Выбрать</button>
+  </div>
+  <div id="upgrades" class="content-section" style="display:none;">
+<p class="score"><span class="currentScore">0</span></p>
+
+<div class="coin">
+    <img src="/static/images/coin.png" alt="Монеты" width="80">
+</div>
+
+<div class="container_up">
+  <div class="item_up">
+    <div class="item-icon">🤖</div>
+    <div class="item-info">
+      <p class="item-title">Кликер-бот</p>
+      <p class="item-details">2,000 / 1ч • Уровень 1</p>
+    </div>
+    <div class="item-action">></div>
+  </div>
+  <div class="item_up2">
+    <div class="item-icon">⚔️</div>
+    <div class="item-info">
+      <p class="item-title">Клик</p>
+      <p class="item-details">1 • Уровень 1</p>
+    </div>
+    <div class="item-action">></div>
+  </div>
+<div class="item_up3">
+  <div class="item-icon">⚡</div>
+  <div class="item-info">
+    <p class="item-title">Запас энергии</p>
+    <p class="item-details_3">100 • Уровень 1</p>
+  </div>
+  <div class="item-action">></div>
+</div>
+  <div class="item_up4">
+    <div class="item-icon">🔄</div>
+    <div class="item-info">
+      <p class="item-title">Скорость перезарядки</p>
+      <p class="item-details">100 • Уровень 1</p>
+    </div>
+    <div class="item-action">></div>
+  </div>
+</div>
+
+<div class="background">
+    <!-- Слой затемнения -->
+    <div class="overlay" style="display: none;"></div>
+
+    <!-- Окно -->
+    <div class="container_up_buy" style="display: none;">
+        <!-- Кнопка закрытия -->
+        <button class="close-button">&times;</button>
+
+        <!-- Картинка сверху -->
+        <div class="top-image">
+            <img src="/static/images/croco.png" alt="Символ" />
+        </div>
+
+        <div class="character_up_buy"></div>
+        <h1 class="title">АКТИВИРОВАТЬ<br>КЛИКЕР БОТА</h1>
+        <p class="description">
+            Приобретите зелье автоматизации, чтобы<br>
+            играть, пока спите.<br>
+            Бот будет кликать за вас
+        </p>
+        <div class="price_up_buy">
+            <!-- Картинка монеты -->
+            <img class="coin-icon" src="/static/images/coin.png" alt="Монета" />
+            <span class="coin">2,000</span>
+        </div>
+        <button class="upgrade-button">КУПИТЬ</button>
+    </div>
+</div>
+
+<div class="background">
+    <!-- Слой затемнения -->
+    <div class="overlay" style="display: none;"></div>
+
+    <!-- Окно -->
+    <div class="container_up_buy_2" style="display: none;">
+        <!-- Кнопка закрытия -->
+        <button class="close-button_2">&times;</button>
+
+        <!-- Картинка сверху -->
+        <div class="top-image">
+            <img src="/static/images/croco.png" alt="Символ" />
+        </div>
+
+        <div class="character_up_buy"></div>
+        <h1 class="title">КЛИК<br>ПО ЭКРАНУ<br></h1>
+        <p class="description">
+            Прокачайте свой клик, чтобы<br>
+            зарабатывать больше монет
+        </p>
+        <div class="price_up_buy">
+            <!-- Картинка монеты -->
+            <img class="coin-icon" src="/static/images/coin.png" alt="Монета" />
+            <span class="coin_up">1000</span>
+        </div>
+        <button class="upgrade-button_2">УЛУЧШИТЬ</button>
+    </div>
+</div>
+
+<div class="background">
+    <!-- Слой затемнения -->
+    <div class="overlay_3" style="display: none;"></div>
+
+    <!-- Окно -->
+    <div class="container_up_buy_3" style="display: none;">
+        <!-- Кнопка закрытия -->
+        <button class="close-button_3">&times;</button>
+
+        <!-- Картинка сверху -->
+        <div class="top-image">
+            <img src="/static/images/croco.png" alt="Символ" />
+        </div>
+
+        <div class="character_up_buy"></div>
+        <h1 class="title">ЗАПАС<br>ЭНЕРГИИ</h1>
+        <p class="description">
+            Приобретите зелье энергии, чтобы<br>
+            увеличить ее запас
+        </p>
+        <div class="price_up_buy">
+            <!-- Картинка монеты -->
+            <img class="coin-icon" src="/static/images/coin.png" alt="Монета" />
+            <span class="coin_up3">2,000</span>
+        </div>
+        <button class="upgrade-button_3">УЛУЧШИТЬ</button>
+    </div>
+</div>
+
+<div class="background">
+    <!-- Слой затемнения -->
+    <div class="overlay" style="display: none;"></div>
+
+    <!-- Окно -->
+    <div class="container_up_buy_4" style="display: none;">
+        <!-- Кнопка закрытия -->
+        <button class="close-button_4">&times;</button>
+
+        <!-- Картинка сверху -->
+        <div class="top-image">
+            <img src="/static/images/croco.png" alt="Символ" />
+        </div>
+
+        <div class="character_up_buy"></div>
+        <h1 class="title">СКОРОСТЬ<br>ВОССТАНОВЛЕНИЯ<br>ЭНЕРГИИ</h1>
+        <p class="description">
+            Приобретите зелье восстановления, чтобы<br>
+            увеличить скорость восполнения энергии.<br>
+            Прокачайте навык до максимума!
+        </p>
+        <div class="price_up_buy">
+            <!-- Картинка монеты -->
+            <img class="coin-icon" src="/static/images/coin.png" alt="Монета" />
+            <span class="coin">2,000</span>
+        </div>
+        <button class="upgrade-button">УЛУЧШИТЬ</button>
+    </div>
+</div>
+  </div>
+</div>
+
+
         <!-- Квесты -->
   <div class="page" id="quests" style="display:none;">
 <div class = 'quests_text'>
@@ -317,8 +544,8 @@
 
 <script src="{{ url_for('static', filename='script_new.js') }}"></script>
 <script src="{{ url_for('static', filename='script.js') }}"></script>
-<script src="{{ url_for('static', filename='script.heroes') }}"></script>
-<script src="{{ url_for('static', filename='script.up') }}"></script>
+<script src="{{ url_for('static', filename='script_heroes.js') }}"></script>
+<script src="{{ url_for('static', filename='script_up.js') }}"></script>
 
 
 

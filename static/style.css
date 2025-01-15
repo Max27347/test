@@ -13,7 +13,6 @@ body {
   display: none;
 }
 
-
   /* Стили для полос */
 .progress-container {
     position: fixed;
@@ -176,8 +175,18 @@ body {
     font-weight: normal;
     font-style: normal;
 }
-
 #score {
+    position: absolute;
+    top: 0px;
+    left: 200px;
+    width: 50px;
+    height: 50px;
+    font-family: 'Pusia-bold', sans-serif; /* Шрифт */
+    font-size: 22px; /* Размер шрифта */
+    color: white; /* Цвет текста */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
+}
+.score {
     position: absolute;
     top: 0px;
     left: 200px;
@@ -460,10 +469,6 @@ height: auto; /* Автоматическая высота для сохране
     bottom: 350px; /* Отступ от нижней части окна */
     z-index: 1000; /* Убедитесь, что кнопка выше других элементов */
 }
-/* Страница Друзья */
-body.friends-page {
-    min-height: 150vh; /* Минимальная высота равная высоте окна браузера */
-}
 
 .up_text {
 font-size: 30px; /* Размер шрифта для заголовка (больше, чем основной текст) */
@@ -632,6 +637,13 @@ text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 /* Страница Магазин */
 body.shop-page {
     min-height: 150vh; /* Минимальная высота равная высоте окна браузера */
+}
+.content-section {
+  display: none; /* Все секции скрыты по умолчанию */
+}
+
+#contentContainer > .content-section:first-child {
+  display: block; /* Показываем первую секцию по умолчанию */
 }
 
 .shop_menu {
@@ -1455,6 +1467,7 @@ body.up_page {
   font-size: 18px;
   font-weight: bold;
   margin: 0;
+  color: white;
 }
 
 .item-details {
