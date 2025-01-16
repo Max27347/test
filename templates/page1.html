@@ -53,16 +53,14 @@
     <img src="/static/images/coin.png" alt="Монеты">
   </div>
 
+  <!-- Контейнер для анимации монет -->
+  <div id="coinContainer"></div> <!-- Контейнер для монет с анимацией -->
 <button id="increaseEnergyButton">Увеличить восстановление энергии на 20</button>
 <p id="energyRecoveryRateDisplay" style="color: white;">Скорость восстановления энергии: 5</p>
 
-<button id="upgradeCoinsButton">Улучшить монеты за клик</button>
-<p id="coinsPerClickDisplay" style="color: white;">Монет за клик: 1</p>
 
-  <!-- Контейнер для анимации монет -->
-  <div id="coinContainer"></div> <!-- Контейнер для монет с анимацией -->
 
-<img id="clickButton"> <!-- Добавляем src и курсор pointer -->
+  <img id="clickButton">
 
   <div class="icon-container">
     <img src="/static/images/icon.png" alt="Иконка" width="75">
@@ -300,6 +298,7 @@
   <div id="upgrades" class="content-section" style="display:none;">
 <p class="score"><span class="currentScore">0</span></p>
 
+
 <div class="coin">
     <img src="/static/images/coin.png" alt="Монеты" width="80">
 </div>
@@ -333,7 +332,7 @@
     <div class="item-icon">🔄</div>
     <div class="item-info">
       <p class="item-title">Скорость перезарядки</p>
-      <p class="item-details">100 • Уровень 1</p>
+      <p class="item-details_4">100 • Уровень 1</p>
     </div>
     <div class="item-action">></div>
   </div>
@@ -429,7 +428,7 @@
 
 <div class="background">
     <!-- Слой затемнения -->
-    <div class="overlay" style="display: none;"></div>
+    <div class="overlay_4" style="display: none;"></div>
 
     <!-- Окно -->
     <div class="container_up_buy_4" style="display: none;">
@@ -451,9 +450,9 @@
         <div class="price_up_buy">
             <!-- Картинка монеты -->
             <img class="coin-icon" src="/static/images/coin.png" alt="Монета" />
-            <span class="coin">2,000</span>
+            <span class="coin_up4">2,000</span>
         </div>
-        <button class="upgrade-button">УЛУЧШИТЬ</button>
+        <button class="upgrade-button_4">УЛУЧШИТЬ</button>
     </div>
 </div>
   </div>

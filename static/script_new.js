@@ -1,38 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
   const menuButtons = document.querySelectorAll(".nav-button");
   const pages = document.querySelectorAll(".page");
-  const currentScoreElement = document.querySelectorAll('.currentScore'); // Все элементы для отображения баланса монет
-  const coinsPerClickElement = document.querySelectorAll('.coinsPerClick'); // Все элементы для отображения монет за клик
 
-  let coinsPerClick = parseInt(localStorage.getItem('coinsPerClick')) || 1; // Восстановление монет за клик из localStorage
-
-  // Функция для обновления баланса монет
-  function updateScoreDisplay(newScore) {
-    currentScoreElement.forEach(element => {
-      element.innerText = newScore;
-    });
-    // Сохраняем новое значение монет в localStorage
-    localStorage.setItem('currentScore', newScore);
-  }
-
-  // Функция для обновления монет за клик
-  function updateCoinsPerClickDisplay(newCoinsPerClick) {
-    coinsPerClickElement.forEach(element => {
-      element.innerText = newCoinsPerClick;
-    });
-    // Сохраняем новое значение монет за клик в localStorage
-    localStorage.setItem('coinsPerClick', newCoinsPerClick);
-  }
 
   // Восстановление значений из localStorage (при загрузке страницы)
   function initializeScore() {
     const storedScore = parseInt(localStorage.getItem('currentScore')) || 0;
     updateScoreDisplay(storedScore);
-  }
-
-  // Восстановление монет за клик
-  function initializeCoinsPerClick() {
-    updateCoinsPerClickDisplay(coinsPerClick);
   }
 
   // Функция для скрытия всех страниц
@@ -71,11 +45,6 @@ document.addEventListener("DOMContentLoaded", function() {
       activePage.style.display = "block"; // Показываем нужную страницу
     });
   });
-
-  // Инициализация при загрузке страницы
-  initializeScore();
-  initializeCoinsPerClick(); // Инициализируем отображение монет за клик
-
 });
 
 // Менюшка

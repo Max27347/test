@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Найти элементы
   const itemUp2 = document.querySelector('.item_up2');
   const containerUpBuy2 = document.querySelector('.container_up_buy_2');
   const overlay = document.querySelector('.overlay');
@@ -10,68 +9,80 @@ document.addEventListener('DOMContentLoaded', () => {
   const coinElement = document.querySelector('.coin_up'); // Элемент для отображения цены улучшения
   const currentScoreElements = document.querySelectorAll('.currentScore'); // Все элементы для отображения текущего баланса монет
 
-  // Добавляем сообщение на страницу
+  // Создание и добавление сообщения на страницу
   upgradeMessage.classList.add('upgrade-message');
-  upgradeMessage.style.display = 'none'; // Изначально скрыто
+  upgradeMessage.style.display = 'none';
   document.body.appendChild(upgradeMessage);
 
-  // Восстановление значений из localStorage
+  // Начальные значения
   let coinsPerClick = parseInt(localStorage.getItem('coinsPerClick')) || 1;
-  let level = parseInt(localStorage.getItem('level')) || 1; // Уровень
-  const maxLevel = 10; // Максимальный уровень
-
-  // Массив цен для каждого уровня
+  let level = parseInt(localStorage.getItem('level')) || 1;
+  const maxLevel = 10;
   const upgradePrices = [1000, 5000, 20000, 100000, 400000, 1000000, 3000000, 7000000, 18000000];
 
-  // Функция обновления отображения уровня и стоимости
-  function updateLevelDetails() {
-    itemDetails.textContent = `${coinsPerClick} • Уровень ${level}`;
+  // Экспортируем глобальные переменные и функции
+  window.coinsPerClick = coinsPerClick;
 
-    // Если уровень не превышает максимальный, показываем цену для следующего уровня
+  // Обновление coinsPerClick
+  window.updateCoinsPerClick = (newCoinsPerClick) => {
+    window.coinsPerClick = newCoinsPerClick;
+    localStorage.setItem('coinsPerClick', newCoinsPerClick);
+
+    // Обновляем интерфейс
+    updateLevelDetails();  // Обновляем отображение уровня
+  };
+
+  // Функция обновления счета
+  window.updateScore = (newScore) => {
+    currentScoreElements.forEach((element) => {
+      element.innerText = newScore;
+    });
+    localStorage.setItem('currentScore', newScore);  // Сохраняем в localStorage
+  };
+
+  // Функция обновления уровня и монет за клик
+  function updateLevelDetails() {
+    itemDetails.textContent = `${window.coinsPerClick} • Уровень ${level}`;  // Обновляем значение coinsPerClick в UI
     if (level < maxLevel) {
-      coinElement.textContent = upgradePrices[level - 1]; // Устанавливаем цену для текущего уровня
+      coinElement.textContent = upgradePrices[level - 1];
     } else {
-      coinElement.textContent = "Максимум"; // Устанавливаем текст "Максимум", если достигнут максимальный уровень
+      coinElement.textContent = "Максимум";
     }
   }
 
-  updateLevelDetails(); // Первоначальное обновление
+  // Первоначальное обновление UI
+  updateLevelDetails();
 
-  // Обработка нажатия кнопки улучшения
+  // Обработчик нажатия кнопки "Улучшить"
   upgradeButton.addEventListener('click', () => {
-    const currentPrice = upgradePrices[level - 1]; // Цена для текущего уровня
-
-    // Проверяем, есть ли достаточно средств для улучшения (проверка баланса)
+    const currentPrice = upgradePrices[level - 1];
     const currentScore = parseInt(localStorage.getItem('currentScore')) || 0;
 
-    if (level < maxLevel) { // Если уровень не максимальный
-      if (currentScore >= currentPrice) { // Проверяем наличие достаточно средств
-        level++; // Увеличиваем уровень
-        coinsPerClick = level; // Монеты за клик равны уровню
-        localStorage.setItem('level', level); // Сохраняем уровень в localStorage
-        localStorage.setItem('coinsPerClick', coinsPerClick); // Сохраняем монеты за клик
-        localStorage.setItem('currentScore', currentScore - currentPrice); // Списываем монеты
+    // Если уровень не максимальный
+    if (level < maxLevel) {
+      if (currentScore >= currentPrice) {
+        level++;  // Увеличиваем уровень
+        coinsPerClick = level;  // Увеличиваем монеты за клик до уровня
+        window.updateCoinsPerClick(coinsPerClick);  // Сразу обновляем значение в глобальной переменной
 
-        // Обновляем текст в элементе <p class="item-details">
+        // Сохраняем данные
+        localStorage.setItem('level', level);
+        window.updateScore(currentScore - currentPrice);  // Обновляем счет
+
+        // Обновляем интерфейс
         updateLevelDetails();
 
-        // Обновляем текст в блоке отображения монет на всех элементах
-        updateScore(currentScore - currentPrice);
+        upgradeMessage.innerText = `Монеты за клик увеличены до ${window.coinsPerClick}!`;
+        upgradeMessage.style.display = 'block';
 
-        // Отображаем сообщение
-        upgradeMessage.innerText = `Монеты за клик увеличены до ${coinsPerClick}!`;
-        upgradeMessage.style.display = 'block'; // Показываем сообщение
-
-        // Через 1.5 секунды скрываем сообщение
         setTimeout(() => {
           upgradeMessage.style.display = 'none';
         }, 1500);
 
-        // Закрываем окно улучшения и скрываем оверлей
+        // Закрытие окна улучшений
         containerUpBuy2.style.display = 'none';
         overlay.style.display = 'none';
       } else {
-        // Если недостаточно средств
         upgradeMessage.innerText = 'У вас недостаточно средств для улучшения!';
         upgradeMessage.style.display = 'block';
 
@@ -80,7 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1500);
       }
     } else {
-      // Если достигнут максимальный уровень, выводим сообщение
       upgradeMessage.innerText = 'Вы достигли максимального уровня!';
       upgradeMessage.style.display = 'block';
 
@@ -90,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Открытие окна улучшений (item_up2)
+  // Открытие окна улучшений (при клике на itemUp2)
   itemUp2.addEventListener('click', () => {
     containerUpBuy2.style.display = 'block';
     overlay.style.display = 'block';
@@ -102,19 +112,10 @@ document.addEventListener('DOMContentLoaded', () => {
     overlay.style.display = 'none';
   });
 
-  // Закрытие окна при клике на затемнение
+  // Закрытие окна при клике на overlay
   overlay.addEventListener('click', () => {
     containerUpBuy2.style.display = 'none';
     overlay.style.display = 'none';
   });
-
-  // Функция обновления счета на всех элементах с классом "currentScore"
-  function updateScore(newScore) {
-    currentScoreElements.forEach((element) => {
-      element.innerText = newScore; // Обновляем значение
-    });
-
-    localStorage.setItem('currentScore', newScore); // Сохраняем в localStorage
-  }
 });
 

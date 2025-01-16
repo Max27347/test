@@ -74,6 +74,18 @@ localStorage.setItem('coinsPerClick', 1);
 localStorage.setItem('currentScore', 100000000);
 
 
+ // Сбросить к начальному состоянию
+  energyRecoveryRate = 5;
+  recoveryLevel = 1;
+  itemDetails4.textContent = `${energyRecoveryRate} • Уровень ${recoveryLevel}`;
+});
+
+
+
+// Сброс скорости восстановления энергии до начального значения
+energyRecoveryRate = 5; // Сбрасываем на начальное значение
+localStorage.setItem('energyRecoveryRate', energyRecoveryRate); // Сохраняем в localStorage
+console.log(`Скорость восстановления энергии сброшена до начального значения: ${energyRecoveryRate}`);
 
 
 // Сброс скорости восстановления энергии до начального значения
