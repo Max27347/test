@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (savedCoinsPerClick) {
     coinsPerClick = parseInt(savedCoinsPerClick, 10); // Восстанавливаем сохраненное значение
   }
-
   // Загрузка сохраненного фона из localStorage
   const savedBackground = localStorage.getItem('backgroundImage');
   if (savedBackground) {
@@ -101,8 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (error) {
         console.error("Ошибка при обновлении счета:", error);
       }
-    } else {
-      alert('Недостаточно энергии!');
     }
   };
 
@@ -112,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateEnergy(energy);
   }
 
-  setInterval(recoverEnergy, 10); // Восстановление энергии каждые 100 мс (0.1 секунды)
+  setInterval(recoverEnergy, 50); // Восстановление энергии каждые 100 мс (0.1 секунды)
 
   // Функция обновления счета
   function updateScore(newScore) {
@@ -231,3 +228,4 @@ document.addEventListener('DOMContentLoaded', () => {
       coin.remove();
     });
   }
+

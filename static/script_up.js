@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const upgradeMessage = document.createElement('div'); // Сообщение
   const itemDetails = document.querySelector('.item_up2 .item-details'); // Поле для обновления
   const coinElement = document.querySelector('.coin_up'); // Элемент для отображения цены улучшения
-  const currentScoreElement = document.getElementById('currentScore'); // Элемент для отображения текущего баланса монет
+  const currentScoreElements = document.querySelectorAll('.currentScore'); // Все элементы для отображения текущего баланса монет
 
   // Добавляем сообщение на страницу
   upgradeMessage.classList.add('upgrade-message');
@@ -55,8 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Обновляем текст в элементе <p class="item-details">
         updateLevelDetails();
 
-        // Обновляем текст в блоке отображения монет на странице
-        currentScoreElement.innerText = currentScore - currentPrice;
+        // Обновляем текст в блоке отображения монет на всех элементах
+        updateScore(currentScore - currentPrice);
 
         // Отображаем сообщение
         upgradeMessage.innerText = `Монеты за клик увеличены до ${coinsPerClick}!`;
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
           upgradeMessage.style.display = 'none';
         }, 1500);
 
-        // Закрываем окно улучшения
+        // Закрываем окно улучшения и скрываем оверлей
         containerUpBuy2.style.display = 'none';
         overlay.style.display = 'none';
       } else {
@@ -107,7 +107,14 @@ document.addEventListener('DOMContentLoaded', () => {
     containerUpBuy2.style.display = 'none';
     overlay.style.display = 'none';
   });
+
+  // Функция обновления счета на всех элементах с классом "currentScore"
+  function updateScore(newScore) {
+    currentScoreElements.forEach((element) => {
+      element.innerText = newScore; // Обновляем значение
+    });
+
+    localStorage.setItem('currentScore', newScore); // Сохраняем в localStorage
+  }
 });
-
-
 

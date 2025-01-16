@@ -63,10 +63,18 @@ resetClicks();
 
 
 
-
-
 // Функция сброса уровня до 1
 // Сброс уровня до 1 и монет за клик для теста
 localStorage.setItem('level', 1);
 localStorage.setItem('coinsPerClick', 1);
+
+
+
+// Монеты
+localStorage.setItem('currentScore', 100000000);
+
+
+
+
+
 
