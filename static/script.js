@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const clickButton = document.getElementById('clickButton');
-  const currentScoreElement = document.querySelector('.currentScore'); // Это для "Играть"
+  const currentScoreElement = document.querySelector('.currentScore');
   const progressBar = document.querySelector('#progressBar');
   const progressLabel = document.querySelector('#progressLabel');
   const energyBar = document.querySelector('#energyBar');
@@ -14,55 +14,69 @@ document.addEventListener('DOMContentLoaded', () => {
   let energy = 100;
   const maxEnergy = 100;
   const energyCost = 10;
-  const energyRecoveryRate = 5;
+
+  // Инициализация глобальной переменной для скорости восстановления энергии
+  window.energyRecoveryRate = parseInt(localStorage.getItem('energyRecoveryRate'), 10) || 5;
 
   let coinsPerClick = 1;
 
-  // Сохраняем значение монет за клик в localStorage
+  // Загрузка сохраненных данных
   const savedCoinsPerClick = localStorage.getItem('coinsPerClick');
   if (savedCoinsPerClick) {
-    coinsPerClick = parseInt(savedCoinsPerClick, 10); // Восстанавливаем сохраненное значение
+    coinsPerClick = parseInt(savedCoinsPerClick, 10);
   }
-  // Загрузка сохраненного фона из localStorage
+
   const savedBackground = localStorage.getItem('backgroundImage');
   if (savedBackground) {
     document.body.style.backgroundImage = `url("${savedBackground}")`;
   }
 
-  // Загрузка сохраненного уровня лиги из localStorage
   const savedLeagueLevel = localStorage.getItem('leagueLevel');
   if (savedLeagueLevel !== null) {
     leagueLevel = parseInt(savedLeagueLevel, 10);
     setLeagueBackground(leagueLevel);
   }
 
-  // Загружаем сохраненное значение счета
   const savedScore = localStorage.getItem('currentScore');
   if (savedScore !== null) {
-    updateScore(parseInt(savedScore) || 0); // Устанавливаем сохраненное значение или 0
+    updateScore(parseInt(savedScore) || 0);
   } else {
-    updateScore(0); // Устанавливаем начальное значение
+    updateScore(0);
   }
 
-  // Загружаем сохраненную энергию
   const savedEnergy = localStorage.getItem('currentEnergy');
   if (savedEnergy !== null) {
     energy = parseInt(savedEnergy, 10);
     energyBar.style.width = `${(energy / maxEnergy) * 100}%`;
   }
 
-  // Загружаем сохраненный прогресс
   const savedProgress = localStorage.getItem('currentProgress');
   if (savedProgress !== null) {
     progress = parseFloat(savedProgress);
     progressBar.style.width = `${progress}%`;
   }
 
-  // Загружаем изображение выбранного персонажа
   const savedCharacterImg = localStorage.getItem('selectedCharacterImg');
   if (savedCharacterImg) {
     clickButton.src = savedCharacterImg;
   }
+
+  // Экспортируем глобальные функции
+  window.updateEnergyRecoveryRate = (newRate) => {
+    window.energyRecoveryRate = newRate;
+    localStorage.setItem('energyRecoveryRate', newRate);
+
+    const energyRecoveryRateDisplay = document.getElementById('energyRecoveryRateDisplay');
+    if (energyRecoveryRateDisplay) {
+      energyRecoveryRateDisplay.textContent = `Скорость восстановления энергии: ${newRate}`;
+    }
+  };
+
+  window.updateEnergy = (newEnergy) => {
+    energy = Math.min(newEnergy, maxEnergy);
+    energyBar.style.width = `${(energy / maxEnergy) * 100}%`;
+    localStorage.setItem('currentEnergy', energy);
+  };
 
   // Обработка клика на кнопку
   clickButton.onclick = async (event) => {
@@ -72,22 +86,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = await response.json();
 
         if (data.success) {
-          let score = parseInt(currentScoreElement.innerText) || 0; // Проверка на NaN
-          score += coinsPerClick; // Увеличиваем счет в зависимости от coinsPerClick
+          let score = parseInt(currentScoreElement.innerText) || 0;
+          score += coinsPerClick;
           updateScore(score);
 
           const progressIncrement = maxProgress / clicksPerLevel;
           progress = Math.min(progress + progressIncrement, maxProgress);
           progressBar.style.width = `${progress}%`;
-
-          // Сохраняем прогресс в localStorage
           localStorage.setItem('currentProgress', progress);
 
-          // Расходуем энергию
           energy = Math.max(energy - energyCost, 0);
           energyBar.style.width = `${(energy / maxEnergy) * 100}%`;
 
-          // Создаем одну монету с анимацией
           spawnCoinDrop(event);
 
           if (progress === maxProgress) {
@@ -103,29 +113,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // Функция восстановления энергии
+  // Восстановление энергии
   function recoverEnergy() {
-    energy = Math.min(energy + energyRecoveryRate / 10, maxEnergy);
-    updateEnergy(energy);
+    const recoveryRate = window.energyRecoveryRate; // Получаем актуальное значение
+    updateEnergy(energy + recoveryRate / 10);
   }
 
-  setInterval(recoverEnergy, 50); // Восстановление энергии каждые 100 мс (0.1 секунды)
+  setInterval(recoverEnergy, 50); // Восстановление энергии каждые 50 мс
 
   // Функция обновления счета
   function updateScore(newScore) {
-    // Обновляем все элементы, которые содержат класс "currentScore"
     const scoreElements = document.querySelectorAll('.currentScore');
     scoreElements.forEach((element) => {
-      element.innerText = newScore; // Обновляем значение
+      element.innerText = newScore;
     });
 
-    localStorage.setItem('currentScore', newScore); // Сохраняем в localStorage
+    localStorage.setItem('currentScore', newScore);
   }
 
-  // Функция обновления энергии
-  function updateEnergy(newEnergy) {
-    energyBar.style.width = `${(newEnergy / maxEnergy) * 100}%`;
-    localStorage.setItem('currentEnergy', newEnergy);
+  // Добавляем обработчик для кнопки увеличения скорости восстановления
+  const increaseEnergyButton = document.getElementById('increaseEnergyButton');
+  if (increaseEnergyButton) {
+    increaseEnergyButton.addEventListener('click', () => {
+      const newRate = window.energyRecoveryRate + 0;
+      window.updateEnergyRecoveryRate(newRate);
+    });
   }
 
   // Функция для обновления лиги
@@ -140,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.body; // Элемент, фон которого будем менять
     let backgroundImage = '';
 
-    switch (level) {
+  switch (level) {
       case 1:
         progressLabel.innerText = 'Ледяной мир';
         clicksPerLevel = 10;
@@ -195,9 +207,8 @@ document.addEventListener('DOMContentLoaded', () => {
         progressLabel.innerText = 'Мистическая деревня';
         leagueLevel = 0;
         clicksPerLevel = 10;
-        backgroundImage = '/static/images/hogwarts.png'; // Укажите путь к фону Бронзовой лиги
+        backgroundImage = '/static/images/hogwarts.png'; // Укажите путь к начальному фону
     }
-
   // Устанавливаем фон с нужным размером
     body.style.backgroundImage = `url("${backgroundImage}")`; // Используем правильный синтаксис
     body.style.backgroundSize = 'cover'; // Растягиваем фон на весь экран
@@ -206,26 +217,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Сохраняем фон в localStorage
     localStorage.setItem('backgroundImage', backgroundImage);
-}
-});
-  // Функция для создания одной монеты с анимацией
-  function spawnCoinDrop(event) {
+  };
+
+  // Функция создания монеты
+  const spawnCoinDrop = (event) => {
     const coin = document.createElement('div');
     coin.classList.add('coin_drop');
 
-    // Устанавливаем начальную позицию монеты около клика
-    const startX = event.clientX - 20; // Центрируем монету по клику
+    const startX = event.clientX - 20;
     const startY = event.clientY - 20;
 
-    coin.style.left = `${startX}px`; // Используем правильный синтаксис
-    coin.style.top = `${startY}px`; // Используем правильный синтаксис
+    coin.style.left = `${startX}px`;
+    coin.style.top = `${startY}px`;
 
-    // Добавляем монету в контейнер
     coinContainer.appendChild(coin);
 
-    // Удаляем монету после завершения анимации
     coin.addEventListener('animationend', () => {
       coin.remove();
     });
-  }
+  };
+});
 
+
+
+// Сброс скорости восстановления энергии до начального значения
+energyRecoveryRate = 5; // Сбрасываем на начальное значение
+localStorage.setItem('energyRecoveryRate', energyRecoveryRate); // Сохраняем в localStorage
+console.log(`Скорость восстановления энергии сброшена до начального значения: ${energyRecoveryRate}`);

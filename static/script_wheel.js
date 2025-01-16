@@ -76,5 +76,9 @@ localStorage.setItem('currentScore', 100000000);
 
 
 
+// Сброс скорости восстановления энергии до начального значения
+energyRecoveryRate = 5; // Сбрасываем на начальное значение
+localStorage.setItem('energyRecoveryRate', energyRecoveryRate); // Сохраняем в localStorage
+console.log(`Скорость восстановления энергии сброшена до начального значения: ${energyRecoveryRate}`);
 
 
