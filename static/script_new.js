@@ -1,6 +1,23 @@
 document.addEventListener("DOMContentLoaded", function() {
   const menuButtons = document.querySelectorAll(".nav-button");
   const pages = document.querySelectorAll(".page");
+const currentScoreElement = document.querySelectorAll('.currentScore'); // Все элементы для отображения баланса монет
+
+
+// Функция для обновления баланса монет
+  function updateScoreDisplay(newScore) {
+    // Обновляем все элементы, где отображаются монеты
+    currentScoreElement.forEach(element => {
+      element.innerText = newScore;
+    });
+    // Сохраняем новое значение монет в localStorage
+    localStorage.setItem('currentScore', newScore);
+  }
+   // Восстановление значений из localStorage (при загрузке страницы)
+  function initializeScore() {
+    const storedScore = parseInt(localStorage.getItem('currentScore')) || 0;
+    updateScoreDisplay(storedScore);
+  }
 
   // Функция для скрытия всех страниц
   function hideAllPages() {
@@ -39,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 });
-
+initializeScore();
 // Менюшка
 const menuIcon = document.getElementById('menu-icon');
 const dropdownMenu = document.getElementById('dropdown-menu');

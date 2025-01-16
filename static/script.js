@@ -1,22 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
   const clickButton = document.getElementById('clickButton');
-  const currentScoreElement = document.getElementById('currentScore');
-  const progressBar = document.getElementById('progressBar');
-  const progressLabel = document.getElementById('progressLabel');
-  const energyBar = document.getElementById('energyBar');
-  const coinContainer = document.getElementById('coinContainer');
+  const currentScoreElement = document.querySelector('.currentScore'); // Это для "Играть"
+  const progressBar = document.querySelector('#progressBar');
+  const progressLabel = document.querySelector('#progressLabel');
+  const energyBar = document.querySelector('#energyBar');
+  const coinContainer = document.querySelector('#coinContainer');
 
-  let progress = 0; // Текущий прогресс
-  const maxProgress = 100; // Максимальное значение прогресса
-  let leagueLevel = 0; // Уровень лиги: 0 - Бронзовая, 1 - Серебряная, 2 - Золотая
-  let clicksPerLevel = 10; // Количество кликов для перехода на следующий уровень (по умолчанию для Бронзовой лиги)
+  let progress = 0;
+  const maxProgress = 100;
+  let leagueLevel = 0;
+  let clicksPerLevel = 10;
 
-  let energy = 100; // Текущая энергия
-  const maxEnergy = 100; // Максимальная энергия
-  const energyCost = 10; // Стоимость энергии за нажатие
-  const energyRecoveryRate = 5; // Скорость восстановления энергии (единиц в секунду)
+  let energy = 100;
+  const maxEnergy = 100;
+  const energyCost = 10;
+  const energyRecoveryRate = 5;
 
-  let coinsPerClick = 1; // Количество монет за клик (по умолчанию 1)
+  let coinsPerClick = 1;
 
   // Сохраняем значение монет за клик в localStorage
   const savedCoinsPerClick = localStorage.getItem('coinsPerClick');
@@ -27,14 +27,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // Загрузка сохраненного фона из localStorage
   const savedBackground = localStorage.getItem('backgroundImage');
   if (savedBackground) {
-    document.body.style.backgroundImage = `url("${savedBackground}")`; // Используем правильные кавычки
+    document.body.style.backgroundImage = `url("${savedBackground}")`;
   }
 
   // Загрузка сохраненного уровня лиги из localStorage
   const savedLeagueLevel = localStorage.getItem('leagueLevel');
   if (savedLeagueLevel !== null) {
     leagueLevel = parseInt(savedLeagueLevel, 10);
-    setLeagueBackground(leagueLevel); // Применяем фон для сохраненной лиги
+    setLeagueBackground(leagueLevel);
   }
 
   // Загружаем сохраненное значение счета
@@ -55,14 +55,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // Загружаем сохраненный прогресс
   const savedProgress = localStorage.getItem('currentProgress');
   if (savedProgress !== null) {
-    progress = parseFloat(savedProgress); // Восстанавливаем прогресс
-    progressBar.style.width = `${progress}%`; // Устанавливаем сохраненное значение прогресса в полосе
+    progress = parseFloat(savedProgress);
+    progressBar.style.width = `${progress}%`;
   }
 
   // Загружаем изображение выбранного персонажа
   const savedCharacterImg = localStorage.getItem('selectedCharacterImg');
   if (savedCharacterImg) {
-    clickButton.src = savedCharacterImg; // Устанавливаем выбранное изображение на кнопку
+    clickButton.src = savedCharacterImg;
   }
 
   // Обработка клика на кнопку
@@ -77,27 +77,25 @@ document.addEventListener('DOMContentLoaded', () => {
           score += coinsPerClick; // Увеличиваем счет в зависимости от coinsPerClick
           updateScore(score);
 
-          // Увеличиваем прогресс в зависимости от текущей лиги
           const progressIncrement = maxProgress / clicksPerLevel;
           progress = Math.min(progress + progressIncrement, maxProgress);
-          progressBar.style.width = `${progress}%`; // Используем правильный синтаксис
+          progressBar.style.width = `${progress}%`;
 
           // Сохраняем прогресс в localStorage
           localStorage.setItem('currentProgress', progress);
 
           // Расходуем энергию
           energy = Math.max(energy - energyCost, 0);
-          energyBar.style.width = `${(energy / maxEnergy) * 100}%`; // Используем правильный синтаксис
+          energyBar.style.width = `${(energy / maxEnergy) * 100}%`;
 
           // Создаем одну монету с анимацией
           spawnCoinDrop(event);
 
-          // Если прогресс достиг максимума, выполняем действие
           if (progress === maxProgress) {
-            updateLeague(); // Обновляем лигу
-            progress = 0; // Сбрасываем прогресс
+            updateLeague();
+            progress = 0;
             progressBar.style.width = '0%';
-            localStorage.setItem('currentProgress', 0); // Сохраняем сброшенный прогресс
+            localStorage.setItem('currentProgress', 0);
           }
         }
       } catch (error) {
@@ -111,22 +109,26 @@ document.addEventListener('DOMContentLoaded', () => {
   // Функция восстановления энергии
   function recoverEnergy() {
     energy = Math.min(energy + energyRecoveryRate / 10, maxEnergy);
-    updateEnergy(energy); // Сохраняем энергию в localStorage при восстановлении
+    updateEnergy(energy);
   }
 
-  // Запускаем таймер восстановления энергии
   setInterval(recoverEnergy, 10); // Восстановление энергии каждые 100 мс (0.1 секунды)
 
   // Функция обновления счета
   function updateScore(newScore) {
-    currentScoreElement.innerText = newScore;
-    localStorage.setItem('currentScore', newScore);
+    // Обновляем все элементы, которые содержат класс "currentScore"
+    const scoreElements = document.querySelectorAll('.currentScore');
+    scoreElements.forEach((element) => {
+      element.innerText = newScore; // Обновляем значение
+    });
+
+    localStorage.setItem('currentScore', newScore); // Сохраняем в localStorage
   }
 
   // Функция обновления энергии
   function updateEnergy(newEnergy) {
     energyBar.style.width = `${(newEnergy / maxEnergy) * 100}%`;
-    localStorage.setItem('currentEnergy', newEnergy); // Сохраняем энергию в localStorage
+    localStorage.setItem('currentEnergy', newEnergy);
   }
 
   // Функция для обновления лиги

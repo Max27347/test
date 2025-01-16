@@ -13,6 +13,7 @@ body {
   display: none;
 }
 
+
   /* Стили для полос */
 .progress-container {
     position: fixed;
@@ -317,158 +318,7 @@ body {
         }
 
 
-.open-wheel-img {
-    position: fixed;
-    top: 50%;
-    right: 20px;
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
-    transform: translateY(-50%);
-    z-index: 1000;
-}
-.wheel-container {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    display: none; /* Рулетка скрыта по умолчанию */
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    z-index: 9999; /* Устанавливаем высокий z-index, чтобы окно было выше других элементов */
-}
-
-.wheel {
-    position: relative; /* Добавлено для позиционирования секторов */
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background: conic-gradient(
-        #FF6347 0deg 60deg,
-        #FFD700 60deg 120deg,
-        #ADFF2F 120deg 180deg,
-        #00CED1 180deg 240deg,
-        #FF69B4 240deg 300deg,
-        #7B68EE 300deg 360deg
-    );
-    transform: rotate(0deg);
-    transition: transform 5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
-}
-
-.sector {
-    position: absolute;
-    width: 50%;
-    height: 50%;
-    transform-origin: 100% 100%; /* Центр вращения */
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 12px;
-    font-weight: bold;
-    text-align: center;
-    color: #fff; /* Цвет текста */
-}
-
-.sector:nth-child(1) { color:  white; }
-.sector:nth-child(2) { color:  white; }
-.sector:nth-child(3) { color:  white; }
-.sector:nth-child(4) { color:  white; font-size: 10px;}
-.sector:nth-child(5) { color:  white; }
-.sector:nth-child(6) { color:  white; }
-
-.spin-btn {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #4caf50;
-    color: white;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.spin-btn:hover {
-    background-color: #45a049;
-}
-
-.open-wheel-btn:hover {
-    background-color: #0056b3;
-}
-
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 25px;
-    height: 25px;
-    background-color: #ff4d4d;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    border: none;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.close-btn:hover {
-    background-color: #e60000;
-}
-
-.result {
-    margin-top: 10px;
-    font-size: 18px;
-    color: #333;
-}
-
-
-
-.open-page5-button {
-            position: fixed; /* Фиксированное положение */
-            left: 20px; /* Отступ от левого края */
-            top: 200px; /* Отступ от верхнего края */
-            color: white; /* Цвет текста */
-            border: none; /* Убираем рамку */
-            border-radius: 5px; /* Скругленные углы */
-            padding: 10px 15px; /* Внутренние отступы */
-            font-size: 16px; /* Размер шрифта */
-            cursor: pointer; /* Курсор при наведении */
-            z-index: 1000; /* Чтобы кнопка была поверх других элементов */
-        }
-
-
-.open-up-button {
-    position: fixed; /* Фиксированное позиционирование */
-    left: 40px; /* Отступ от левой стороны окна */
-    bottom: 250px; /* Отступ от нижней части окна */
-    z-index: 1000; /* Убедитесь, что кнопка выше других элементов */
-}
-
-.button-image_up {
-    width: 40px; /* Установите нужный размер изображения */
-    height: 40px; /* Установите нужный размер изображения */
-}
-
-.button-image {
-width: 50px; /* Ширина изображения (измените по необходимости) */
-height: auto; /* Автоматическая высота для сохранения пропорций */
-}
-
-.open-boss-button {
-    position: fixed; /* Фиксированное позиционирование */
-    right: 20px; /* Отступ от левой стороны окна */
-    bottom: 350px; /* Отступ от нижней части окна */
-    z-index: 1000; /* Убедитесь, что кнопка выше других элементов */
-}
+/* Друзья */
 
 .up_text {
 font-size: 30px; /* Размер шрифта для заголовка (больше, чем основной текст) */
@@ -495,16 +345,17 @@ text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
   padding: 10px 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   border: 1px solid #3d5afe;
-  width: 400px;
+  width: 320px;
   height: 80px;
   border: 2px solid #d1a34a; /* Обводка контейнера */
 
   /* Центрирование с отступом */
-  position: absolute;
-  top: 300px; /* Центрирование по вертикали */
-  left: 210px; /* Центрирование по горизонтали */
-
+  position: absolute; /* Используем absolute для позиционирования */
+  top: 300px; /* Отступ сверху */
+  left: 50%; /* Центрируем по горизонтали */
+  transform: translateX(-50%); /* Сдвигаем на половину ширины контейнера для центрирования */
 }
+
     .coin-stack img.coins {
         width: 60px;
         height: auto;
@@ -576,21 +427,24 @@ text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
     }
 
 .invitation-container {
-  background-color: #2e2e3a;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  width: 320px;
-  text-align: center;
-  border: 2px solid #d1a34a; /* Обводка контейнера */
+    background-color: #2e2e3a;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 320px;
+    text-align: center;
+    border: 2px solid #d1a34a; /* Обводка контейнера */
 
-  /* Позиция контейнера */
-  position: absolute;
-  top: 100px;
-  left: 250px;
-  margin-bottom: 0px; /* Отступ снизу */
-  overflow: hidden; /* Убедимся, что контент не выходит за границы */
+    /* Позиция контейнера */
+    position: absolute; /* Или fixed, если нужно фиксированное положение */
+    top: 100px; /* Отступ сверху */
+    left: 50%; /* Центрирование по горизонтали */
+    transform: translateX(-50%); /* Сдвиг на половину ширины контейнера для центрирования */
+
+    margin-bottom: 0; /* Отступ снизу */
+    overflow: hidden; /* Убедимся, что контент не выходит за границы */
 }
+
 
 .header h1 {
   font-size: 24px;
@@ -713,7 +567,7 @@ body.shop-page {
 
 .shop_box, .shop_box_2, .shop_box_3,
 .shop_box_4, .shop_box_5, .shop_box_6 {
-    width: 230px;
+    width: 180px;
     height: 180px;
     background-color: #2e2e3a;
     border: 2px solid #d1a34a;
@@ -1132,7 +986,7 @@ body.heroes-page {
 #character-description {
   position: absolute; /* Используем абсолютное позиционирование */
   top: 20px; /* Отступ сверху */
-  left: 230px; /* Отступ слева */
+  left: 130px; /* Отступ слева */
   font-size: 14px;
   color: #555;
   background: #f9f9f9;

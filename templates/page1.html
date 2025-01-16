@@ -47,8 +47,8 @@
   <!-- Играть -->
   <div class="page" id="play" style="display:block;">
   <!-- Элементы для первой секции -->
-  <p id="score"><span id="currentScore">0</span></p>
 
+<p class="score"><span class="currentScore">0</span></p>
   <div class="coin">
     <img src="/static/images/coin.png" alt="Монеты">
   </div>
@@ -89,7 +89,7 @@
 </div>
 
   <!-- Друзья -->
-  <div class="page" id="friends" style="display:none;">
+  <div class="page" id="friends" style="display:none;height: 1000px;">
 <div class="invite-container">
     <div class="coin-stack">
         <img src="/static/images/coin.png" alt="Coins" class="coins">
@@ -222,6 +222,8 @@
 </div>
   </div>
   </div>
+
+    <!-- Магазин герои -->
   <div id="heroes" class="content-section" style="display:none;">
 <p class="score"><span class="currentScore">0</span></p>
 <div class="coin">
@@ -288,6 +290,7 @@
     </div>
 <button id="select-button">Выбрать</button>
   </div>
+          <!-- Магазин улучшения -->
   <div id="upgrades" class="content-section" style="display:none;">
 <p class="score"><span class="currentScore">0</span></p>
 
@@ -544,8 +547,8 @@
 
 <script src="{{ url_for('static', filename='script_new.js') }}"></script>
 <script src="{{ url_for('static', filename='script.js') }}"></script>
-<script src="{{ url_for('static', filename='script_heroes.js') }}"></script>
 <script src="{{ url_for('static', filename='script_up.js') }}"></script>
+<script src="{{ url_for('static', filename='script_heroes.js') }}"></script>
 
 
 
