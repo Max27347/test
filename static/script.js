@@ -159,27 +159,27 @@ clickButton.onclick = async (event) => {
   switch (level) {
       case 1:
         progressLabel.innerText = 'Ледяной мир';
-        clicksPerLevel = 10;
+        clicksPerLevel = 5;
         backgroundImage = '/static/images/ice.png'; // Укажите путь к фону Серебряной лиги
         break;
       case 2:
         progressLabel.innerText = 'Адский мир';
-        clicksPerLevel = 10;
+        clicksPerLevel = 6;
         backgroundImage = '/static/images/ad.png'; // Укажите путь к фону Золотой лиги
         break;
       case 3:
         progressLabel.innerText = 'Китай';
-        clicksPerLevel = 10;
+        clicksPerLevel = 7;
         backgroundImage = '/static/images/china.png'; // Укажите путь к фону Алмазной лиги
         break;
       case 4:
         progressLabel.innerText = 'Водный мир';
-        clicksPerLevel = 10;
+        clicksPerLevel = 8;
         backgroundImage = '/static/images/water_world.png'; // Укажите путь к фону Алмазной лиги
         break;
       case 5:
         progressLabel.innerText = 'Мистика';
-        clicksPerLevel = 10;
+        clicksPerLevel = 8;
         backgroundImage = '/static/images/mystical.png'; // Укажите путь к фону Алмазной лиги
         break;
       case 6:
@@ -189,28 +189,28 @@ clickButton.onclick = async (event) => {
         break;
       case 7:
         progressLabel.innerText = 'Тьма';
-        clicksPerLevel = 10;
+        clicksPerLevel = 11;
         backgroundImage = '/static/images/dark.png'; // Укажите путь к фону Алмазной лиги
         break;
       case 8:
         progressLabel.innerText = 'Космос';
-        clicksPerLevel = 10;
+        clicksPerLevel = 12;
         backgroundImage = '/static/images/cosmos.png'; // Укажите путь к фону Алмазной лиги
         break;
       case 9:
         progressLabel.innerText = 'Темнота';
-        clicksPerLevel = 10;
+        clicksPerLevel = 13;
         backgroundImage = '/static/images/dark_2.png'; // Укажите путь к фону Алмазной лиги
         break;
       case 10:
         progressLabel.innerText = 'НЛО';
-        clicksPerLevel = 10;
+        clicksPerLevel = 14;
         backgroundImage = '/static/images/plat.png'; // Укажите путь к фону Алмазной лиги
         break;
       default:
         progressLabel.innerText = 'Мистическая деревня';
         leagueLevel = 0;
-        clicksPerLevel = 10;
+        clicksPerLevel = 5;
         backgroundImage = '/static/images/hogwarts.png'; // Укажите путь к начальному фону
     }
   // Устанавливаем фон с нужным размером

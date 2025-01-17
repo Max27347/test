@@ -1,90 +1,83 @@
-let score = 0;
-        let timeLeft = 20;
-        let timerId;
+const boss = document.getElementById('boss');
+const healthBarInner = document.getElementById('health-bar-inner');
+const timerElement = document.getElementById('timer');
+const gameOverElement = document.getElementById('game-over');
+const startButton = document.getElementById('start-button');
 
-        const scoreElement_b1 = document.getElementById('score_b1');
-        const timerElement_b1 = document.getElementById('timer_b1');
-        const clickableImage_b1 = document.getElementById('clickable-image_b1');
-        const startButton = document.getElementById('start-button');
+let maxHealth = 100;
+let currentHealth = maxHealth;
+let timeLeft = 20; // В секундах
+let timerInterval;
+let gameStarted = false; // Флаг, что игра не началась
 
-        clickableImage_b1.style.pointerEvents = 'none'; // Отключаем клики до старта игры
+// Начать игру
+function startGame() {
+    // Сброс состояния
+    currentHealth = maxHealth;
+    timeLeft = 20;
+    healthBarInner.style.width = '100%';
+    timerElement.textContent = `Time Left: ${timeLeft}s`;
+    gameOverElement.textContent = '';
+    startButton.style.display = 'none';  // Скрыть кнопку старт
 
-        clickableImage_b1.addEventListener('click', () => {
-            if (timeLeft > 0) {
-                score++;
-                scoreElement_b1.textContent = `Очки: ${score}`;
+    // Показать таймер
+    timerElement.style.display = 'block';
 
-                // Добавляем эффект увеличения при клике
-                clickableImage_b1.style.animation = 'clickEffect 0.3s'; // Применяем анимацию
-                setTimeout(() => {
-                    clickableImage_b1.style.animation = ''; // Убираем анимацию после завершения
-                }, 300);
+    // Таймер
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        timerElement.textContent = `Time Left: ${timeLeft}s`;
 
-                if (score >= 50) {
-                    clearInterval(timerId);
-                    alert('Поздравляем! Вы выиграли!');
-                }
-            }
-        });
-
-        function startGame() {
-            score = 0; // Сброс очков
-            timeLeft = 20; // Сброс времени
-            scoreElement_b1.textContent = `Очки: ${score}`; // Обновление очков
-            timerElement_b1.textContent = `Время: ${timeLeft}`; // Обновление времени
-            clickableImage_b1.style.pointerEvents = 'auto'; // Включаем клики
-
-            timerId = setInterval(() => {
-                timeLeft--;
-                timerElement_b1.textContent = `Время: ${timeLeft}`;
-
-                if (timeLeft <= 0) {
-                    clearInterval(timerId);
-                    clickableImage_b1.style.pointerEvents = 'none'; // Отключаем клики после окончания времени
-                    alert('Время вышло! Вы набрали ' + score + ' очков.');
-                }
-
-                if (Math.random() < 0.3) { // Вероятность появления бомбы
-                    createBomb();
-                }
-
-            }, 1000);
-
-           createBomb(); // Создаем первую бомбу сразу при запуске игры
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            endGame(false);
         }
+    }, 1000);
 
-        function createBomb() {
-            const bomb = document.createElement('div');
-            bomb.classList.add('bomb');
+    // Игра началась
+    gameStarted = true;
 
-             // Получаем координаты области, где будет появляться бомба
-             const imageRect = clickableImage_b1.getBoundingClientRect();
-             const minX = imageRect.left;
-             const maxX = imageRect.right - bomb.offsetWidth;
+    // Включить возможность кликов по боссу
+    boss.style.pointerEvents = 'auto';
+    boss.classList.remove('grow-shrink');  // Убираем анимацию до начала игры
+}
 
-             // Устанавливаем случайную позицию по горизонтали в пределах области изображения
-             bomb.style.left = Math.random() * (maxX - minX) + minX + 'px';
+// Нажатие на босса
+boss.addEventListener('click', () => {
+    if (gameStarted && timeLeft > 0 && currentHealth > 0) {
+        currentHealth -= 10;
+        if (currentHealth < 0) currentHealth = 0;
 
-             document.body.appendChild(bomb);
+        const healthPercentage = (currentHealth / maxHealth) * 100;
+        healthBarInner.style.width = `${healthPercentage}%`;
 
-             // Удаляем бомбу после завершения анимации
-             bomb.addEventListener('animationend', () => {
-                 bomb.remove();
-             });
+        // Анимация при попадании (увеличение и уменьшение)
+        boss.classList.add('grow-shrink');
+        setTimeout(() => {
+            boss.classList.remove('grow-shrink');
+        }, 300);
 
-             // Добавляем обработчик клика на бомбу
-             bomb.addEventListener('click', () => {
-                 score -= 5; // Уменьшаем очки на 5
-                 scoreElement_b1.textContent = `Очки: ${score}`;
-                 bomb.remove(); // Удаляем бомбу при клике
-                 alert("Ой! Вы потеряли 5 очков!");
+        if (currentHealth === 0) {
+            clearInterval(timerInterval);
+            endGame(true);
+        }
+    }
+});
 
-                 if (score < 0) {
-                     score = 0; // Не допускаем отрицательных очков
-                     scoreElement_b1.textContent = `Очки: ${score}`;
-                 }
-             });
-         }
+// Завершение игры
+function endGame(won) {
+    boss.style.pointerEvents = 'none'; // Отключить клики
+    if (won) {
+        gameOverElement.textContent = 'You Win!';
+        gameOverElement.style.color = 'lime';
+    } else {
+        gameOverElement.textContent = 'Game Over!';
+        gameOverElement.style.color = 'red';
+    }
 
-         // Добавляем обработчик события для кнопки "Старт"
-         startButton.addEventListener('click', startGame);
+    startButton.style.display = 'inline-block';  // Показать кнопку старт
+    gameStarted = false; // Игра закончена
+}
+
+// Кнопка старт
+startButton.addEventListener('click', startGame);

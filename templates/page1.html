@@ -287,8 +287,8 @@
     <img src="/static/images/frog.png" alt="Character 11">
     <p>Character 11</p>
   </div>
-      <div class="character" data-id="12" data-name="Character 12" data-img="/static/images/ninja.png" data-description="Water is calm and adaptable, flowing through challenges.">
-    <img src="/static/images/ninja.png" alt="Character 12">
+      <div class="character" data-id="12" data-name="Character 12" data-img="/static/images/drako.png" data-description="Water is calm and adaptable, flowing through challenges.">
+    <img src="/static/images/drako.png" alt="Character 12">
     <p>Character 12</p>
   </div>
 </div>
@@ -546,6 +546,17 @@
   </div>
             <!-- Босс -->
   <div class="page" id="top" style="display:none;">
+<div class="boss-container">
+    <div id="health-bar" class="health-bar">
+        <div id="health-bar-inner" class="health-bar-inner"></div>
+    </div>
+    <img id="boss" class="boss" src="/static/images/boss1.png" alt="Boss" />
+    <div id="timer" class="timer">Time Left: 20s</div>
+    <div id="game-over" class="game-over"></div>
+    <button id="start-button">Start Game</button>
+</div>
+
+
   </div>
 </div>
 
@@ -554,6 +565,7 @@
 <script src="{{ url_for('static', filename='script_up.js') }}"></script>
 <script src="{{ url_for('static', filename='script_up_recovery.js') }}"></script>
 <script src="{{ url_for('static', filename='script_heroes.js') }}"></script>
+<script src="{{ url_for('static', filename='boss.js') }}"></script>
 
 
 </body>
