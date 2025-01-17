@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Инициализация глобальной переменной для скорости восстановления энергии
   window.energyRecoveryRate = parseInt(localStorage.getItem('energyRecoveryRate'), 10) || 5;
 
-  let coinsPerClick = 1;
+  let coinsPerClick = 1;  // Глобальная переменная для монет за клик
 
   // Загрузка сохраненных данных
   const savedCoinsPerClick = localStorage.getItem('coinsPerClick');
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const savedEnergy = localStorage.getItem('currentEnergy');
   if (savedEnergy !== null) {
     energy = parseInt(savedEnergy, 10);
-    energyBar.style.width = `${(energy / maxEnergy) * 100}%`;
+    energyBar.style.height = `${(energy / maxEnergy) * 100}%`;
   }
 
   const savedProgress = localStorage.getItem('currentProgress');
@@ -60,6 +60,17 @@ document.addEventListener('DOMContentLoaded', () => {
   if (savedCharacterImg) {
     clickButton.src = savedCharacterImg;
   }
+
+  // Обновление глобальной переменной coinsPerClick и ее отображения
+  window.updateCoinsPerClick = (newCoinsPerClick) => {
+    coinsPerClick = newCoinsPerClick;
+    localStorage.setItem('coinsPerClick', newCoinsPerClick);
+
+    const coinsPerClickDisplay = document.getElementById('coinsPerClickDisplay');
+    if (coinsPerClickDisplay) {
+      coinsPerClickDisplay.textContent = `Монет за клик: ${coinsPerClick}`;
+    }
+  };
 
   // Экспортируем глобальные функции
   window.updateEnergyRecoveryRate = (newRate) => {
@@ -74,44 +85,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.updateEnergy = (newEnergy) => {
     energy = Math.min(newEnergy, maxEnergy);
-    energyBar.style.width = `${(energy / maxEnergy) * 100}%`;
+    energyBar.style.height = `${(energy / maxEnergy) * 100}%`;
     localStorage.setItem('currentEnergy', energy);
   };
 
-  // Обработка клика на кнопку
-  clickButton.onclick = async (event) => {
-    if (energy >= energyCost) {
-      try {
-        const response = await fetch('/click', { method: 'POST' });
-        const data = await response.json();
+// Обработка клика на кнопку
+clickButton.onclick = async (event) => {
+  if (energy >= energyCost) {
+    try {
+      const response = await fetch('/click', { method: 'POST' });
+      const data = await response.json();
 
-        if (data.success) {
-          let score = parseInt(currentScoreElement.innerText) || 0;
-          score += coinsPerClick;
-          updateScore(score);
+      if (data.success) {
+        let score = parseInt(currentScoreElement.innerText) || 0;
 
-          const progressIncrement = maxProgress / clicksPerLevel;
-          progress = Math.min(progress + progressIncrement, maxProgress);
-          progressBar.style.width = `${progress}%`;
-          localStorage.setItem('currentProgress', progress);
+        // Используем актуальное значение coinsPerClick
+        score += window.coinsPerClick;  // Вместо coinsPerClick используем global window.coinsPerClick
+        updateScore(score);
 
-          energy = Math.max(energy - energyCost, 0);
-          energyBar.style.width = `${(energy / maxEnergy) * 100}%`;
+        const progressIncrement = maxProgress / clicksPerLevel;
+        progress = Math.min(progress + progressIncrement, maxProgress);
+        progressBar.style.width = `${progress}%`;
+        localStorage.setItem('currentProgress', progress);
 
-          spawnCoinDrop(event);
+        energy = Math.max(energy - energyCost, 0);
+        energyBar.style.height = `${(energy / maxEnergy) * 100}%`;
 
-          if (progress === maxProgress) {
-            updateLeague();
-            progress = 0;
-            progressBar.style.width = '0%';
-            localStorage.setItem('currentProgress', 0);
-          }
+        spawnCoinDrop(event);
+
+        if (progress === maxProgress) {
+          updateLeague();
+          progress = 0;
+          progressBar.style.width = '0%';
+          localStorage.setItem('currentProgress', 0);
         }
-      } catch (error) {
-        console.error("Ошибка при обновлении счета:", error);
       }
+    } catch (error) {
+      console.error("Ошибка при обновлении счета:", error);
     }
-  };
+  }
+};
 
   // Восстановление энергии
   function recoverEnergy() {
@@ -129,15 +142,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     localStorage.setItem('currentScore', newScore);
-  }
-
-  // Добавляем обработчик для кнопки увеличения скорости восстановления
-  const increaseEnergyButton = document.getElementById('increaseEnergyButton');
-  if (increaseEnergyButton) {
-    increaseEnergyButton.addEventListener('click', () => {
-      const newRate = window.energyRecoveryRate + 0;
-      window.updateEnergyRecoveryRate(newRate);
-    });
   }
 
   // Функция для обновления лиги

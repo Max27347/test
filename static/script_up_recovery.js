@@ -10,6 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const coinElement4 = document.querySelector('.coin_up4'); // Элемент для отображения цены улучшения
   const currentScoreElements = document.querySelectorAll('.currentScore'); // Все элементы для отображения текущего баланса монет
 
+  // Добавление сообщения в DOM
+  upgradeMessage4.classList.add('upgrade-message'); // Добавляем класс для стилизации
+  document.body.appendChild(upgradeMessage4); // Добавляем в body
+
   // Начальные значения
   let recoveryLevel = parseInt(localStorage.getItem('recoveryLevel'), 10) || 1;
   const maxRecoveryLevel = 5;
@@ -131,6 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Сброс скорости восстановления энергии до начального уровня для теста
- localStorage.setItem('recoveryLevel', 1);  // Устанавливаем уровень восстановления на 1
- localStorage.setItem('energyRecoveryRate', baseRecoveryRate);  // Устанавливаем начальную скорость восстановления
- window.energyRecoveryRate = baseRecoveryRate;  // Обновляем глобальную переменную
+localStorage.setItem('recoveryLevel', 1);  // Устанавливаем уровень восстановления на 1
+localStorage.setItem('energyRecoveryRate', baseRecoveryRate);  // Устанавливаем начальную скорость восстановления
+window.energyRecoveryRate = baseRecoveryRate;  // Обновляем глобальную переменную

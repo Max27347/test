@@ -48,6 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       coinElement.textContent = "Максимум";
     }
+
+    // Обновление значения монет за клик на экране
+    const coinsPerClickDisplay = document.getElementById('coinsPerClickDisplay');
+    if (coinsPerClickDisplay) {
+      coinsPerClickDisplay.textContent = `Монет за клик: ${window.coinsPerClick}`;
+    }
   }
 
   // Первоначальное обновление UI
