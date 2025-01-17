@@ -119,3 +119,5 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+localStorage.setItem('level', 1);
+localStorage.setItem('coinsPerClick', 1);
