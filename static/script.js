@@ -77,7 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('currentEnergy', energy);
   };
 
-// Обработка клика на кнопку
 clickButton.onclick = async (event) => {
   if (energy >= energyCost) {
     try {
@@ -91,7 +90,8 @@ clickButton.onclick = async (event) => {
         score += window.coinsPerClick;  // Вместо coinsPerClick используем global window.coinsPerClick
         updateScore(score);
 
-        const progressIncrement = maxProgress / clicksPerLevel;
+        // Увеличиваем прогресс в зависимости от coinsPerClick
+        const progressIncrement = (maxProgress / clicksPerLevel) * coinsPerClick;
         progress = Math.min(progress + progressIncrement, maxProgress);
         progressBar.style.width = `${progress}%`;
         localStorage.setItem('currentProgress', progress);
