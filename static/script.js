@@ -26,22 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
     coinsPerClick = parseInt(savedCoinsPerClick, 10);
   }
 
-  const savedBackground = localStorage.getItem('backgroundImage');
-  if (savedBackground) {
-    document.body.style.backgroundImage = `url("${savedBackground}")`;
-  }
-
   const savedLeagueLevel = localStorage.getItem('leagueLevel');
   if (savedLeagueLevel !== null) {
     leagueLevel = parseInt(savedLeagueLevel, 10);
     setLeagueBackground(leagueLevel);
-  }
-
-  const savedScore = localStorage.getItem('currentScore');
-  if (savedScore !== null) {
-    updateScore(parseInt(savedScore) || 0);
-  } else {
-    updateScore(0);
   }
 
   const savedEnergy = localStorage.getItem('currentEnergy');
