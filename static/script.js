@@ -91,7 +91,7 @@ clickButton.onclick = async (event) => {
         updateScore(score);
 
         // Увеличиваем прогресс в зависимости от coinsPerClick
-        const progressIncrement = (maxProgress / clicksPerLevel) * coinsPerClick;
+        const progressIncrement = (maxProgress / clicksPerLevel) * window.coinsPerClick;
         progress = Math.min(progress + progressIncrement, maxProgress);
         progressBar.style.width = `${progress}%`;
         localStorage.setItem('currentProgress', progress);
@@ -230,6 +230,5 @@ clickButton.onclick = async (event) => {
   };
 });
 
-
-
-
+localStorage.setItem('level', 1);
+localStorage.setItem('coinsPerClick', 1);
