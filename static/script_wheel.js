@@ -93,3 +93,31 @@ console.log(`Скорость восстановления энергии сбр
 localStorage.setItem('level', 1);
 localStorage.setItem('coinsPerClick', 1);
 
+
+// Сброс прогресса
+localStorage.setItem('currentProgress', 0);
+progressBar.style.width = '0%';
+console.log('Прогресс сброшен до 0 для тестирования.');
+
+
+// Сброс прогресса восстановления энергии
+localStorage.setItem('recoveryLevel', 1); // Сброс уровня восстановления
+localStorage.setItem('energyRecoveryRate', baseRecoveryRate); // Сброс скорости восстановления до начальной
+// Обновление интерфейса
+recoveryLevel = 1;
+window.energyRecoveryRate = baseRecoveryRate;
+updateEnergyRecoveryDisplay(); // Обновляем отображение уровня и скорости восстановления
+
+
+
+// Сброс энергии до 0
+localStorage.setItem('currentEnergy', 0); // Сброс текущей энергии
+localStorage.setItem('maxEnergy', 100); // Установка начальной максимальной энергии (например, 100)
+localStorage.setItem('energyLevel', 1); // Установка начального уровня энергии
+// Обновление переменных в скрипте
+energy = 0;
+maxEnergy = 100; // Или любое другое начальное значение
+energyLevel = 1;
+// Обновление интерфейса
+updateEnergyDetails(); // Обновление интерфейса с новыми значениями
+

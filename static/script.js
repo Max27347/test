@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const currentScoreElement = document.querySelector('.currentScore');
   const progressBar = document.querySelector('#progressBar');
   const progressLabel = document.querySelector('#progressLabel');
-  const energyBar = document.querySelector('#energyBar');
+  const energyStatus = document.querySelector('.energy-status');  // Новый контейнер для отображения энергии
   const coinContainer = document.querySelector('#coinContainer');
 
   let progress = 0;
@@ -11,9 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
   let leagueLevel = 0;
   let clicksPerLevel = 10;
 
-  let energy = 100;
-  const maxEnergy = 100;
+  // Загрузка значений энергии из localStorage
+  let energy = parseInt(localStorage.getItem('currentEnergy'), 10) || 100;  // Текущая энергия
+  let maxEnergy = parseInt(localStorage.getItem('maxEnergy'), 10) || 100;  // Максимальная энергия
   const energyCost = 10;
+
+  // Инициализация глобальных переменных
+  window.currentEnergyLabel = document.getElementById('currentEnergyLabel');
+  window.maxEnergyLabel = document.getElementById('maxEnergyLabel');
 
   // Инициализация глобальной переменной для скорости восстановления энергии
   window.energyRecoveryRate = parseInt(localStorage.getItem('energyRecoveryRate'), 10) || 5;
@@ -30,12 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (savedLeagueLevel !== null) {
     leagueLevel = parseInt(savedLeagueLevel, 10);
     setLeagueBackground(leagueLevel);
-  }
-
-  const savedEnergy = localStorage.getItem('currentEnergy');
-  if (savedEnergy !== null) {
-    energy = parseInt(savedEnergy, 10);
-    energyBar.style.height = `${(energy / maxEnergy) * 100}%`;
   }
 
   const savedProgress = localStorage.getItem('currentProgress');
@@ -72,47 +71,47 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   window.updateEnergy = (newEnergy) => {
-    energy = Math.min(newEnergy, maxEnergy);
-    energyBar.style.height = `${(energy / maxEnergy) * 100}%`;
-    localStorage.setItem('currentEnergy', energy);
+    energy = Math.min(newEnergy, maxEnergy); // Обновление текущей энергии, не превышая максимальную
+    localStorage.setItem('currentEnergy', energy); // Сохраняем значение в localStorage
+    updateEnergyStatus();  // Обновляем отображение энергии
   };
 
-clickButton.onclick = async (event) => {
-  if (energy >= energyCost) {
-    try {
-      const response = await fetch('/click', { method: 'POST' });
-      const data = await response.json();
+  clickButton.onclick = async (event) => {
+    if (energy >= energyCost) {
+      try {
+        const response = await fetch('/click', { method: 'POST' });
+        const data = await response.json();
 
-      if (data.success) {
-        let score = parseInt(currentScoreElement.innerText) || 0;
+        if (data.success) {
+          let score = parseInt(currentScoreElement.innerText) || 0;
 
-        // Используем актуальное значение coinsPerClick
-        score += window.coinsPerClick;  // Вместо coinsPerClick используем global window.coinsPerClick
-        updateScore(score);
+          // Используем актуальное значение coinsPerClick
+          score += window.coinsPerClick;  // Вместо coinsPerClick используем global window.coinsPerClick
+          updateScore(score);
 
-        // Увеличиваем прогресс в зависимости от coinsPerClick
-        const progressIncrement = (maxProgress / clicksPerLevel) * window.coinsPerClick;
-        progress = Math.min(progress + progressIncrement, maxProgress);
-        progressBar.style.width = `${progress}%`;
-        localStorage.setItem('currentProgress', progress);
+          // Увеличиваем прогресс в зависимости от coinsPerClick
+          const progressIncrement = (maxProgress / clicksPerLevel) * window.coinsPerClick;
+          progress = Math.min(progress + progressIncrement, maxProgress);
+          progressBar.style.width = `${progress}%`;
+          localStorage.setItem('currentProgress', progress);
 
-        energy = Math.max(energy - energyCost, 0);
-        energyBar.style.height = `${(energy / maxEnergy) * 100}%`;
+          energy = Math.max(energy - energyCost, 0);
+          updateEnergyStatus();  // Обновляем отображение энергии
 
-        spawnCoinDrop(event);
+          spawnCoinDrop(event);
 
-        if (progress === maxProgress) {
-          updateLeague();
-          progress = 0;
-          progressBar.style.width = '0%';
-          localStorage.setItem('currentProgress', 0);
+          if (progress === maxProgress) {
+            updateLeague();
+            progress = 0;
+            progressBar.style.width = '0%';
+            localStorage.setItem('currentProgress', 0);
+          }
         }
+      } catch (error) {
+        console.error("Ошибка при обновлении счета:", error);
       }
-    } catch (error) {
-      console.error("Ошибка при обновлении счета:", error);
     }
-  }
-};
+  };
 
   // Восстановление энергии
   function recoverEnergy() {
@@ -144,72 +143,86 @@ clickButton.onclick = async (event) => {
     const body = document.body; // Элемент, фон которого будем менять
     let backgroundImage = '';
 
-  switch (level) {
+    switch (level) {
       case 1:
         progressLabel.innerText = 'Ледяной мир';
         clicksPerLevel = 5;
-        backgroundImage = '/static/images/ice.png'; // Укажите путь к фону Серебряной лиги
+        backgroundImage = '/static/images/ice.png';
         break;
       case 2:
         progressLabel.innerText = 'Адский мир';
         clicksPerLevel = 6;
-        backgroundImage = '/static/images/ad.png'; // Укажите путь к фону Золотой лиги
+        backgroundImage = '/static/images/ad.png';
         break;
       case 3:
         progressLabel.innerText = 'Китай';
         clicksPerLevel = 7;
-        backgroundImage = '/static/images/china.png'; // Укажите путь к фону Алмазной лиги
+        backgroundImage = '/static/images/china.png';
         break;
       case 4:
         progressLabel.innerText = 'Водный мир';
         clicksPerLevel = 8;
-        backgroundImage = '/static/images/water_world.png'; // Укажите путь к фону Алмазной лиги
+        backgroundImage = '/static/images/water_world.png';
         break;
       case 5:
         progressLabel.innerText = 'Мистика';
         clicksPerLevel = 8;
-        backgroundImage = '/static/images/mystical.png'; // Укажите путь к фону Алмазной лиги
+        backgroundImage = '/static/images/mystical.png';
         break;
       case 6:
         progressLabel.innerText = 'Кубический мир';
         clicksPerLevel = 10;
-        backgroundImage = '/static/images/minecraft.png'; // Укажите путь к фону Алмазной лиги
+        backgroundImage = '/static/images/minecraft.png';
         break;
       case 7:
         progressLabel.innerText = 'Тьма';
         clicksPerLevel = 11;
-        backgroundImage = '/static/images/dark.png'; // Укажите путь к фону Алмазной лиги
+        backgroundImage = '/static/images/dark.png';
         break;
       case 8:
         progressLabel.innerText = 'Космос';
         clicksPerLevel = 12;
-        backgroundImage = '/static/images/cosmos.png'; // Укажите путь к фону Алмазной лиги
+        backgroundImage = '/static/images/cosmos.png';
         break;
       case 9:
         progressLabel.innerText = 'Темнота';
         clicksPerLevel = 13;
-        backgroundImage = '/static/images/dark_2.png'; // Укажите путь к фону Алмазной лиги
+        backgroundImage = '/static/images/dark_2.png';
         break;
       case 10:
         progressLabel.innerText = 'НЛО';
         clicksPerLevel = 14;
-        backgroundImage = '/static/images/plat.png'; // Укажите путь к фону Алмазной лиги
+        backgroundImage = '/static/images/plat.png';
         break;
       default:
         progressLabel.innerText = 'Мистическая деревня';
         leagueLevel = 0;
         clicksPerLevel = 5;
-        backgroundImage = '/static/images/hogwarts.png'; // Укажите путь к начальному фону
+        backgroundImage = '/static/images/hogwarts.png';
     }
-  // Устанавливаем фон с нужным размером
-    body.style.backgroundImage = `url("${backgroundImage}")`; // Используем правильный синтаксис
-    body.style.backgroundSize = 'cover'; // Растягиваем фон на весь экран
-    body.style.backgroundPosition = 'center'; // Центрируем фон
-    body.style.backgroundAttachment = 'fixed'; // Фиксируем фон при прокрутке (опционально)
 
-    // Сохраняем фон в localStorage
+    body.style.backgroundImage = `url("${backgroundImage}")`;
+    body.style.backgroundSize = 'cover';
+    body.style.backgroundPosition = 'center';
+    body.style.backgroundAttachment = 'fixed';
+
     localStorage.setItem('backgroundImage', backgroundImage);
-  };
+  }
+
+  // Функция обновления отображения энергии
+  function updateEnergyStatus() {
+    const currentEnergyLabel = document.getElementById('currentEnergyLabel');
+    const maxEnergyLabel = document.getElementById('maxEnergyLabel');
+
+    // Округляем текущую энергию до целого числа
+    const currentEnergyFormatted = Math.floor(energy); // Используем Math.floor для округления
+
+    // Обновляем отображение энергии
+    if (window.currentEnergyLabel && window.maxEnergyLabel) {
+      window.currentEnergyLabel.textContent = `${currentEnergyFormatted}`;
+      window.maxEnergyLabel.textContent = `/${maxEnergy}`;
+    }
+  }
 
   // Функция создания монеты
   const spawnCoinDrop = (event) => {
@@ -230,5 +243,3 @@ clickButton.onclick = async (event) => {
   };
 });
 
-localStorage.setItem('level', 1);
-localStorage.setItem('coinsPerClick', 1);

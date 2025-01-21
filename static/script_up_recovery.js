@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateUpgradeCostDisplay() {
     const cost = calculateUpgradeCost(recoveryLevel);
     if (coinElement4) {
-      coinElement4.textContent = `${cost} монет`;
+      coinElement4.textContent = `${cost}`;
     }
   }
 
@@ -134,7 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Сброс скорости восстановления энергии до начального уровня для теста
-localStorage.setItem('recoveryLevel', 1);  // Устанавливаем уровень восстановления на 1
-localStorage.setItem('energyRecoveryRate', baseRecoveryRate);  // Устанавливаем начальную скорость восстановления
-window.energyRecoveryRate = baseRecoveryRate;  // Обновляем глобальную переменную
+
+
+

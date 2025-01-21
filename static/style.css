@@ -35,6 +35,25 @@ body {
     background-color: #f4c01c;
     transition: width 0.3s;
 }
+.energy-status {
+  position: fixed;
+  bottom: 120px;  /* Выравниваем по одной линии с прогрессом */
+  left: 90%;  /* Отступаем от левого края экрана, чтобы расположить правее */
+  transform: translateX(-50%);
+  font-size: 14px;
+  background-color: rgba(0, 0, 0, 0.5); /* Прозрачный фон для читаемости */
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Стиль для меток энергии */
+.energy-status span {
+  margin-bottom: 5px; /* Отступ между строками */
+}
 .progress-label {
     position: fixed; /* Меняем на fixed для независимости от родителя */
     bottom: 95px;
