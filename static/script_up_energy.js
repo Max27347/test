@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Найти элементы
   const itemUp3 = document.querySelector('.item_up3');
   const containerUpBuy3 = document.querySelector('.container_up_buy_3');
   const overlay3 = document.querySelector('.overlay_3');
@@ -28,23 +27,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Функция обновления отображения уровня энергии и стоимости
   function updateEnergyDetails() {
-    // Обновляем текст в элементе itemDetails3
-    itemDetails3.textContent = `${maxEnergy} • Уровень ${energyLevel}`;
-    // Обновляем цену следующего уровня
-    coinElement3.textContent =
-      energyLevel < maxEnergyLevel ? upgradePricesEnergy[energyLevel - 1] : "Максимум";
-    // Обновляем отображение текущей и максимальной энергии
-    currentEnergyLabel.textContent = `Текущая энергия: ${energy}`;
+    console.log("Обновление интерфейса:");
+
+    // Выводим текущую энергию и максимальную энергию
+    console.log(`Текущая энергия: ${energy}, Максимальная энергия: ${maxEnergy}`);
+
+    if (itemDetails3) {
+      itemDetails3.textContent = `${maxEnergy} • Уровень ${energyLevel}`;
+    }
+
+    if (coinElement3) {
+      coinElement3.textContent = energyLevel < maxEnergyLevel ? upgradePricesEnergy[energyLevel - 1] : "Максимум";
+    }
+
+    // Обновляем метки энергии
+    if (currentEnergyLabel) {
+      currentEnergyLabel.textContent = `Текущая энергия: ${energy}`;
+    } else {
+      console.warn("Не найден элемент с id 'currentEnergyLabel'");
+    }
+
     if (maxEnergyLabel) {
       maxEnergyLabel.textContent = `Максимальная энергия: ${maxEnergy}`;
+    } else {
+      console.warn("Не найден элемент с id 'maxEnergyLabel'");
     }
-  }
-
-  // Функция обновления текущей энергии
-  function updateEnergy(newEnergy) {
-    energy = Math.min(newEnergy, maxEnergy); // Убедимся, что энергия не превышает максимальную
-    localStorage.setItem('currentEnergy', energy); // Сохраняем текущее значение в localStorage
-    updateEnergyDetails(); // Обновляем отображение
   }
 
   // Функция обновления счета
@@ -63,26 +70,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentScore = parseInt(localStorage.getItem('currentScore')) || 0;
     const currentPriceEnergy = upgradePricesEnergy[energyLevel - 1];
 
-    if (energyLevel < maxEnergyLevel) {
-      if (currentScore >= currentPriceEnergy) {
-        energyLevel++;
-        maxEnergy += 50; // Увеличиваем максимальный запас энергии
-        energy = Math.min(energy, maxEnergy); // Устанавливаем текущую энергию на максимум или оставляем прежнее значение, если оно меньше
+ if (energyLevel < maxEnergyLevel) {
+  if (currentScore >= currentPriceEnergy) {
+    // Увеличиваем уровень энергии
+    energyLevel++;
+    maxEnergy += 50;
+    // Увеличиваем текущую энергию пропорционально новому максимуму
+    energy += 50; // Или другое значение по вашему усмотрению
+    // Убедимся, что текущая энергия не превышает нового максимума
+    energy = Math.min(energy, maxEnergy);
 
         // Сохраняем изменения в localStorage
         localStorage.setItem('energyLevel', energyLevel);
         localStorage.setItem('maxEnergy', maxEnergy);
-        localStorage.setItem('currentScore', currentScore - currentPriceEnergy);
         localStorage.setItem('currentEnergy', energy);
+        localStorage.setItem('currentScore', currentScore - currentPriceEnergy);
 
         // Обновляем интерфейс
         updateScore(currentScore - currentPriceEnergy);
-        updateEnergyDetails(); // Обновляем сразу все
-
-        // Немедленно обновляем максимальную энергию в интерфейсе
-        if (maxEnergyLabel) {
-          maxEnergyLabel.textContent = `Максимальная энергия: ${maxEnergy}`;
-        }
 
         // Показ сообщения об успешном улучшении
         upgradeMessage3.textContent = `Максимальная энергия увеличена до ${maxEnergy}!`;
@@ -95,6 +100,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // Закрытие окна улучшения
         containerUpBuy3.style.display = 'none';
         overlay3.style.display = 'none';
+
+        // Обновляем интерфейс с новыми значениями
+        updateEnergyDetails();
+
+        // Восстановление энергии до максимума сразу
+        restoreEnergy();
       } else {
         // Если недостаточно монет
         upgradeMessage3.textContent = 'У вас недостаточно средств для улучшения!';
@@ -132,4 +143,39 @@ document.addEventListener('DOMContentLoaded', () => {
     containerUpBuy3.style.display = 'none';
     overlay3.style.display = 'none';
   });
+
+  // Если произошли изменения в localStorage, обновляем интерфейс
+  if (localStorage.getItem('currentEnergy') !== null && localStorage.getItem('maxEnergy') !== null) {
+    energy = parseInt(localStorage.getItem('currentEnergy')) || maxEnergy;
+    maxEnergy = parseInt(localStorage.getItem('maxEnergy')) || 100;
+    energyLevel = parseInt(localStorage.getItem('energyLevel')) || 1;
+
+    // Обновляем интерфейс в случае изменений
+    updateEnergyDetails();
+  }
+
+  // Функция восстановления текущей энергии
+  function restoreEnergy() {
+    // Восстанавливаем текущую энергию до максимума, если она меньше максимума
+    if (energy < maxEnergy) {
+      energy = maxEnergy;
+      localStorage.setItem('currentEnergy', energy); // Сохраняем новое значение в localStorage
+      console.log("Восстановление энергии:", energy);  // Проверяем в консоли
+
+      // Обновляем интерфейс с новой энергией
+      updateEnergyDetails();
+    } else {
+      console.log("Энергия уже на максимуме:", energy);
+    }
+  }
 });
+// Сброс энергии до 0
+localStorage.setItem('currentEnergy', 0); // Сброс текущей энергии
+localStorage.setItem('maxEnergy', 100); // Установка начальной максимальной энергии (например, 100)
+localStorage.setItem('energyLevel', 1); // Установка начального уровня энергии
+// Обновление переменных в скрипте
+energy = 0;
+maxEnergy = 100; // Или любое другое начальное значение
+energyLevel = 1;
+// Обновление интерфейса
+updateEnergyDetails(); // Обновление интерфейса с новыми значениями

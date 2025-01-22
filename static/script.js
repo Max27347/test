@@ -48,6 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
     clickButton.src = savedCharacterImg;
   }
 
+  // Загрузка текущего счета из localStorage
+  const savedScore = localStorage.getItem('currentScore');
+  let score = savedScore ? parseInt(savedScore, 10) : 0;
+
+  // Обновляем интерфейс с сохраненным счетом
+  currentScoreElement.textContent = score;
+
   // Обновление глобальной переменной coinsPerClick и ее отображения
   window.updateCoinsPerClick = (newCoinsPerClick) => {
     coinsPerClick = newCoinsPerClick;
@@ -83,8 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = await response.json();
 
         if (data.success) {
-          let score = parseInt(currentScoreElement.innerText) || 0;
-
           // Используем актуальное значение coinsPerClick
           score += window.coinsPerClick;  // Вместо coinsPerClick используем global window.coinsPerClick
           updateScore(score);
@@ -128,6 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
       element.innerText = newScore;
     });
 
+    // Сохраняем текущий счет в localStorage
     localStorage.setItem('currentScore', newScore);
   }
 
@@ -210,19 +216,24 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Функция обновления отображения энергии
-  function updateEnergyStatus() {
+  window.updateEnergyStatus = function() {
+    // Получаем актуальные данные из localStorage
+    const updatedEnergy = parseInt(localStorage.getItem('currentEnergy'), 10) || 0;
+    const updatedMaxEnergy = parseInt(localStorage.getItem('maxEnergy'), 10) || 0;
+
+    // Обновляем глобальные переменные
+    window.energy = updatedEnergy;
+    window.maxEnergy = updatedMaxEnergy;
+
+    // Обновляем отображение в UI
     const currentEnergyLabel = document.getElementById('currentEnergyLabel');
     const maxEnergyLabel = document.getElementById('maxEnergyLabel');
 
-    // Округляем текущую энергию до целого числа
-    const currentEnergyFormatted = Math.floor(energy); // Используем Math.floor для округления
-
-    // Обновляем отображение энергии
-    if (window.currentEnergyLabel && window.maxEnergyLabel) {
-      window.currentEnergyLabel.textContent = `${currentEnergyFormatted}`;
-      window.maxEnergyLabel.textContent = `/${maxEnergy}`;
+    if (currentEnergyLabel && maxEnergyLabel) {
+        currentEnergyLabel.textContent = `${Math.floor(updatedEnergy)}`;
+        maxEnergyLabel.textContent = `/${updatedMaxEnergy}`;
     }
-  }
+  };
 
   // Функция создания монеты
   const spawnCoinDrop = (event) => {
@@ -242,4 +253,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 });
+
 
