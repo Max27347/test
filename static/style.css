@@ -191,6 +191,7 @@ body {
   }
 }
 
+
 @font-face {
     font-family: 'Pusia-bold';
     src: url('/static/fonts/pusia-bold.ttf') format('truetype');
@@ -337,6 +338,7 @@ body {
         .dropdown-menu.active {
             display: flex; /* Показываем меню */
         }
+
 
 /* Друзья */
 
@@ -1017,6 +1019,7 @@ body.heroes-page {
   z-index: 1000; /* Повышаем z-index, чтобы элемент был выше остальных */
 }
 
+
 .character.selected-preview {
   background-color:  #ffd700; /* Заливка желтым цветом */
   border: none; /* Убираем рамку */
@@ -1028,6 +1031,7 @@ body.heroes-page {
   border: 2px solid #f4c01c;
   border-radius: 8px;
 }
+
 
 .menu-button {
     background-color: #4CAF50; /* Цвет фона кнопок */
@@ -1620,7 +1624,7 @@ body.up_page {
 /* Анимация для увеличения и уменьшения босса */
 @keyframes growShrinkAnimation {
     0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+    50% { transform: scale(1.2); }
     100% { transform: scale(1); }
 }
 
