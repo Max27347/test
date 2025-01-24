@@ -19,12 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // Инициализация глобальной переменной для скорости восстановления энергии
   window.energyRecoveryRate = parseInt(localStorage.getItem('energyRecoveryRate'), 10) || 5;
 
-  let coinsPerClick = 1;  // Глобальная переменная для монет за клик
+  window.coinsPerClick = 1;  // Глобальная переменная для монет за клик
 
   // Загрузка сохраненных данных
   const savedCoinsPerClick = localStorage.getItem('coinsPerClick');
   if (savedCoinsPerClick) {
-    coinsPerClick = parseInt(savedCoinsPerClick, 10);
+    window.coinsPerClick = parseInt(savedCoinsPerClick, 10);
   }
 
   const savedLeagueLevel = localStorage.getItem('leagueLevel');
@@ -52,12 +52,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Обновление глобальной переменной coinsPerClick и ее отображения
   window.updateCoinsPerClick = (newCoinsPerClick) => {
-    coinsPerClick = newCoinsPerClick;
+    window.coinsPerClick = newCoinsPerClick;
     localStorage.setItem('coinsPerClick', newCoinsPerClick);
 
     const coinsPerClickDisplay = document.getElementById('coinsPerClickDisplay');
     if (coinsPerClickDisplay) {
-      coinsPerClickDisplay.textContent = `Монет за клик: ${coinsPerClick}`;
+      coinsPerClickDisplay.textContent = `Монет за клик: ${window.coinsPerClick}`;
     }
   };
 
@@ -91,12 +91,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (data.success) {
           let score = parseInt(currentScoreElement.innerText) || 0;
 
-          // Используем актуальное значение coinsPerClick
-          score += window.coinsPerClick;  // Вместо coinsPerClick используем global window.coinsPerClick
+          // Используем актуальное значение window.coinsPerClick
+          score += window.coinsPerClick;  // Вместо coinsPerClick используем window.coinsPerClick
           updateScore(score);
 
-          // Увеличиваем прогресс в зависимости от coinsPerClick
-          const progressIncrement = (maxProgress / clicksPerLevel) * coinsPerClick;
+          // Увеличиваем прогресс в зависимости от window.coinsPerClick
+          const progressIncrement = (maxProgress / clicksPerLevel) * window.coinsPerClick;
           progress = Math.min(progress + progressIncrement, maxProgress);
           progressBar.style.width = `${progress}%`;
           localStorage.setItem('currentProgress', progress);
