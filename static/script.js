@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const currentScoreElement = document.querySelector('.currentScore');
   const progressBar = document.querySelector('#progressBar');
   const progressLabel = document.querySelector('#progressLabel');
-  const energyBar = document.querySelector('#energyBar');
+  const energyDisplay = document.querySelector('#energyDisplay'); // Элемент для отображения энергии
   const coinContainer = document.querySelector('#coinContainer');
 
   let progress = 0;
@@ -11,8 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let leagueLevel = 0;
   let clicksPerLevel = 10;
 
-  let energy = 100;
-  const maxEnergy = 100;
+  // Сделаем energy и maxEnergy глобальными переменными через window
+  window.energy = parseInt(localStorage.getItem('currentEnergy'), 10) || 100;
+  window.maxEnergy = parseInt(localStorage.getItem('maxEnergy'), 10) || 100;
   const energyCost = 10;
 
   // Инициализация глобальной переменной для скорости восстановления энергии
@@ -34,8 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const savedEnergy = localStorage.getItem('currentEnergy');
   if (savedEnergy !== null) {
-    energy = parseInt(savedEnergy, 10);
-    energyBar.style.height = `${(energy / maxEnergy) * 100}%`;
+    window.energy = parseInt(savedEnergy, 10);
+    energyDisplay.textContent = `${Math.round(window.energy)}/${window.maxEnergy}`; // Отображаем текущую энергию как целое число
   }
 
   const savedProgress = localStorage.getItem('currentProgress');
@@ -71,56 +72,52 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  window.updateEnergy = (newEnergy) => {
-    energy = Math.min(newEnergy, maxEnergy);
-    energyBar.style.height = `${(energy / maxEnergy) * 100}%`;
-    localStorage.setItem('currentEnergy', energy);
-  };
-
-clickButton.onclick = async (event) => {
-  if (energy >= energyCost) {
-    try {
-      const response = await fetch('/click', { method: 'POST' });
-      const data = await response.json();
-
-      if (data.success) {
-        let score = parseInt(currentScoreElement.innerText) || 0;
-
-        // Используем актуальное значение coinsPerClick
-        score += window.coinsPerClick;  // Вместо coinsPerClick используем global window.coinsPerClick
-        updateScore(score);
-
-        // Увеличиваем прогресс в зависимости от coinsPerClick
-        const progressIncrement = (maxProgress / clicksPerLevel) * coinsPerClick;
-        progress = Math.min(progress + progressIncrement, maxProgress);
-        progressBar.style.width = `${progress}%`;
-        localStorage.setItem('currentProgress', progress);
-
-        energy = Math.max(energy - energyCost, 0);
-        energyBar.style.height = `${(energy / maxEnergy) * 100}%`;
-
-        spawnCoinDrop(event);
-
-        if (progress === maxProgress) {
-          updateLeague();
-          progress = 0;
-          progressBar.style.width = '0%';
-          localStorage.setItem('currentProgress', 0);
-        }
-      }
-    } catch (error) {
-      console.error("Ошибка при обновлении счета:", error);
-    }
-  }
-};
-
   // Восстановление энергии
   function recoverEnergy() {
     const recoveryRate = window.energyRecoveryRate; // Получаем актуальное значение
-    updateEnergy(energy + recoveryRate / 10);
+    window.energy = Math.min(window.energy + recoveryRate / 10, window.maxEnergy); // Ограничиваем восстановленную энергию maxEnergy
+    energyDisplay.textContent = `${Math.round(window.energy)}/${window.maxEnergy}`; // Обновляем отображение энергии
   }
 
   setInterval(recoverEnergy, 50); // Восстановление энергии каждые 50 мс
+
+  // Кликер
+  clickButton.onclick = async (event) => {
+    if (window.energy >= energyCost) {
+      try {
+        const response = await fetch('/click', { method: 'POST' });
+        const data = await response.json();
+
+        if (data.success) {
+          let score = parseInt(currentScoreElement.innerText) || 0;
+
+          // Используем актуальное значение coinsPerClick
+          score += window.coinsPerClick;  // Вместо coinsPerClick используем global window.coinsPerClick
+          updateScore(score);
+
+          // Увеличиваем прогресс в зависимости от coinsPerClick
+          const progressIncrement = (maxProgress / clicksPerLevel) * coinsPerClick;
+          progress = Math.min(progress + progressIncrement, maxProgress);
+          progressBar.style.width = `${progress}%`;
+          localStorage.setItem('currentProgress', progress);
+
+          window.energy = Math.max(window.energy - energyCost, 0);
+          energyDisplay.textContent = `${Math.round(window.energy)}/${window.maxEnergy}`; // Обновляем отображение энергии
+
+          spawnCoinDrop(event);
+
+          if (progress === maxProgress) {
+            updateLeague();
+            progress = 0;
+            progressBar.style.width = '0%';
+            localStorage.setItem('currentProgress', 0);
+          }
+        }
+      } catch (error) {
+        console.error("Ошибка при обновлении счета:", error);
+      }
+    }
+  };
 
   // Функция обновления счета
   function updateScore(newScore) {
@@ -144,7 +141,7 @@ clickButton.onclick = async (event) => {
     const body = document.body; // Элемент, фон которого будем менять
     let backgroundImage = '';
 
-  switch (level) {
+    switch (level) {
       case 1:
         progressLabel.innerText = 'Ледяной мир';
         clicksPerLevel = 5;
@@ -201,7 +198,8 @@ clickButton.onclick = async (event) => {
         clicksPerLevel = 5;
         backgroundImage = '/static/images/hogwarts.png'; // Укажите путь к начальному фону
     }
-  // Устанавливаем фон с нужным размером
+
+    // Устанавливаем фон с нужным размером
     body.style.backgroundImage = `url("${backgroundImage}")`; // Используем правильный синтаксис
     body.style.backgroundSize = 'cover'; // Растягиваем фон на весь экран
     body.style.backgroundPosition = 'center'; // Центрируем фон
@@ -229,7 +227,3 @@ clickButton.onclick = async (event) => {
     });
   };
 });
-
-
-
-

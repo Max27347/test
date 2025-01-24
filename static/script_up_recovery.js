@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const maxRecoveryLevel = 5;
   const baseRecoveryRate = 3;
   const recoveryRateIncrement = 5;
-  const upgradePrices = [1000, 5000, 20000, 100000, 400000]; // Стоимость улучшения на каждом уровне
+  const upgradePrices = [1000, 5000, 20000, 100000]; // Стоимость улучшения на каждом уровне
 
   // Рассчитываем текущую скорость восстановления энергии
   window.energyRecoveryRate = baseRecoveryRate + (recoveryLevel - 1) * recoveryRateIncrement;
@@ -52,9 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Обновление отображения стоимости улучшения
   function updateUpgradeCostDisplay() {
-    const cost = calculateUpgradeCost(recoveryLevel);
+    const cost = recoveryLevel < maxRecoveryLevel ? calculateUpgradeCost(recoveryLevel) : 'Максимум'; // Если максимальный уровень, отображаем "Максимум"
     if (coinElement4) {
-      coinElement4.textContent = `${cost}`;
+      coinElement4.textContent = cost;
     }
   }
 
@@ -134,6 +134,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-
-
-
+// Сброс прогресса восстановления энергии
+localStorage.setItem('recoveryLevel', 1); // Сброс уровня восстановления
+localStorage.setItem('energyRecoveryRate', baseRecoveryRate); // Сброс скорости восстановления до начальной
+// Обновление интерфейса
+recoveryLevel = 1;
+window.energyRecoveryRate = baseRecoveryRate;
+updateEnergyRecoveryDisplay(); // Обновляем отображение уровня и скорости восстановления

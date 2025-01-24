@@ -115,10 +115,5 @@ updateEnergyRecoveryDisplay(); // Обновляем отображение ур
 localStorage.setItem('currentEnergy', 0); // Сброс текущей энергии
 localStorage.setItem('maxEnergy', 100); // Установка начальной максимальной энергии (например, 100)
 localStorage.setItem('energyLevel', 1); // Установка начального уровня энергии
-// Обновление переменных в скрипте
-energy = 0;
-maxEnergy = 100; // Или любое другое начальное значение
-energyLevel = 1;
-// Обновление интерфейса
-updateEnergyDetails(); // Обновление интерфейса с новыми значениями
+
 

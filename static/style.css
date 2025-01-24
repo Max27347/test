@@ -73,24 +73,13 @@ body {
 .energy-container {
     position: fixed;
     bottom: 130px;    /* Контейнер будет располагаться снизу */
-    right: 20px;      /* Контейнер будет располагаться слева */
+    right: 50px;      /* Контейнер будет располагаться слева */
     width: 25px;     /* Фиксированная ширина контейнера */
     height: 100px;   /* Высота контейнера */
-    background-color: #ddd;
-    border-radius: 10px;
-    overflow: hidden;
-    border: 2px solid #42AAFF; /* Обводка контейнера */
+    color: white;
     display: flex;
     flex-direction: column-reverse; /* Элементы будут располагаться снизу вверх */
 }
-
-.energy-bar {
-    width: 100%;           /* Ширина будет равна ширине контейнера */
-    height: 0%;            /* Изначально высота будет 0% */
-    background-color: #2196f3;
-    transition: height 0.3s ease; /* Плавное увеличение высоты */
-}
-
 
 .navigation {
     position: fixed;
