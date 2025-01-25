@@ -35,20 +35,6 @@ body {
     background-color: #f4c01c;
     transition: width 0.3s;
 }
-.energy-status {
-  position: fixed;
-  bottom: 120px;  /* Выравниваем по одной линии с прогрессом */
-  left: 90%;  /* Отступаем от левого края экрана, чтобы расположить правее */
-  transform: translateX(-50%);
-  font-size: 14px;
-  background-color: rgba(0, 0, 0, 0.5); /* Прозрачный фон для читаемости */
-  color: white;
-  padding: 10px;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
 
 /* Стиль для меток энергии */
 .energy-status span {
@@ -61,25 +47,36 @@ body {
     transform: translateX(-50%);
     font-size: 18px;
     font-weight: bold;
-    color: #000; /* Сделаем текст более контрастным */
-    background-color: rgba(255, 255, 255, 0.8); /* Фон для читаемости */
+    color: orange; /* Сделаем текст более контрастным */
+    background-color: #2e2e3a;
     padding: 5px 10px; /* Отступы для удобства */
     border-radius: 5px; /* Сглаживание углов */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     z-index: 1000; /* Поверх других элементов */
 }
 
-
 .energy-container {
     position: fixed;
-    bottom: 130px;    /* Контейнер будет располагаться снизу */
-    right: 50px;      /* Контейнер будет располагаться слева */
+    bottom: 160px;    /* Контейнер будет располагаться снизу */
+    right: 60px;      /* Контейнер будет располагаться слева */
     width: 25px;     /* Фиксированная ширина контейнера */
     height: 100px;   /* Высота контейнера */
     color: white;
     display: flex;
     flex-direction: column-reverse; /* Элементы будут располагаться снизу вверх */
 }
+
+#energyDisplay {
+  background-color: #2e2e3a;
+  color: orange; /* Белый текст */
+  padding: 10px; /* Отступы */
+  border-radius: 5px; /* Скругленные углы */
+  font-size: 16px; /* Размер текста */
+  width: fit-content; /* Подгонка ширины по содержимому */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Легкая тень */
+}
+
+
 
 .navigation {
     position: fixed;

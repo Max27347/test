@@ -53,16 +53,9 @@
     <img src="/static/images/coin.png" alt="Монеты">
   </div>
 
-
-
-<p id="energyRecoveryRateDisplay" style="color: white;">Скорость восстановления энергии: 5</p>
-
-<p id="coinsPerClickDisplay" style="color: white;">Монет за клик: 1</p>
-
-  <!-- Контейнер для анимации монет -->
   <div id="coinContainer"></div> <!-- Контейнер для монет с анимацией -->
 
-<img id="clickButton" src="/static/images/croco.png"> <!-- Добавляем src и курсор pointer -->
+<img id="clickButton"> <!-- Добавляем src и курсор pointer -->
 
   <div class="icon-container">
     <img src="/static/images/icon.png" alt="Иконка" width="75">
@@ -70,14 +63,11 @@
 
   <p id="nick">Максим</p>
 
-    <!-- Полоса прогресса -->
     <div class="progress-container">
       <div class="progress-bar" id="progressBar"></div>
     </div>
-
     <div class="progress-label" id="progressLabel"></div>
 
-    <!-- Полоса энергии -->
 <div class="energy-container">
   <div class="energy-bar" id="energyBar"></div>
   <div id="energyDisplay">100/100</div> <!-- Отображаем текущую энергию -->
@@ -570,6 +560,7 @@
 <script src="{{ url_for('static', filename='script_up_recovery.js') }}"></script>
 <script src="{{ url_for('static', filename='script_autoclicker.js') }}"></script>
 <script src="{{ url_for('static', filename='script_heroes.js') }}"></script>
+<script src="{{ url_for('static', filename='script_box.js') }}"></script>
 <script src="{{ url_for('static', filename='boss.js') }}"></script>
 
 
