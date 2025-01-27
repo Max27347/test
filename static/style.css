@@ -682,7 +682,21 @@ h2 {
     height: auto; /* Автоматическая высота для сохранения пропорций */
 }
 
+.close-button_box1,
+.close-reward-button {
+    background: orange;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
+.reward-image img {
+    max-width: 100px;
+    height: auto;
+    margin: 10px 0;
+}
 /* Страница квесты */
 body.quests-page {
     min-height: 200vh; /* Минимальная высота равная высоте окна браузера */
@@ -994,7 +1008,7 @@ body.heroes-page {
 #character-description {
   position: absolute; /* Используем абсолютное позиционирование */
   top: 20px; /* Отступ сверху */
-  left: 130px; /* Отступ слева */
+  left: 1000px; /* Отступ слева */
   font-size: 14px;
   color: #555;
   background: #f9f9f9;
@@ -1040,7 +1054,7 @@ body.heroes-page {
 #select-button {
   position: absolute;
   top: 280px;
-  right: 150px;
+  right: 50px;
   padding: 10px 20px;
   background-color: #2e2e3a; /* Зеленый цвет */
   color: white;
@@ -1437,6 +1451,36 @@ body.up_page {
     transform: translateX(-50%);
     z-index: 999;
 }
+.container_box_1 {
+    text-align: center;
+    background-color: #2e2e3a;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+    width: 90%;
+    height: 500px; /* Измените высоту здесь */
+    position: absolute;
+    bottom: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+}
+.container_box_11 {
+    text-align: center;
+    background-color: #2e2e3a;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+    width: 90%;
+    height: 500px; /* Измените высоту здесь */
+    position: absolute;
+    bottom: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+}
 /* Слой затемнения */
 .overlay {
     position: fixed;
@@ -1466,6 +1510,15 @@ body.up_page {
     z-index: 998;
 }
 .overlay_4 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+}
+.overlay_box1 {
     position: fixed;
     top: 0;
     left: 0;
@@ -1539,6 +1592,18 @@ body.up_page {
     transform: scale(1.2);
 }
 
+.close-button_box1 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
 /* Картинка сверху */
 .top-image {
     margin-bottom: 5px;
@@ -1642,6 +1707,18 @@ body.up_page {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
+.upgrade-button_box1 {
+    background-color: #ffaa00;
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 18px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
 .upgrade-message {
   position: fixed;
   top: 20px;
