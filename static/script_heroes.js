@@ -9,6 +9,27 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentPreviewCharacter = null;
   let selectedCharacter = null;
 
+  // Загрузка разблокированных персонажей из localStorage
+  let unlockedHeroes = JSON.parse(localStorage.getItem('unlockedHeroes')) || ["cot"]; // По умолчанию открыт первый герой
+
+  // Обновление доступности персонажей
+  function updateCharacterAvailability() {
+    characters.forEach((character) => {
+      const characterId = character.getAttribute('data-id');
+
+      if (unlockedHeroes.includes(characterId)) {
+        character.classList.remove('locked');  // Разблокируем персонажа
+        character.removeAttribute('data-locked');
+      } else {
+        character.classList.add('locked');  // Блокируем персонажа
+        character.setAttribute('data-locked', 'true');
+      }
+    });
+  }
+
+  // Инициализация доступности персонажей при загрузке страницы
+  updateCharacterAvailability();
+
   // Загружаем сохраненного персонажа, если он есть
   const savedCharacterId = localStorage.getItem('selectedCharacter');
   const savedCharacterImg = localStorage.getItem('selectedCharacterImg');
@@ -27,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Переключение персонажей для предпросмотра
+  // Переключение персонажей для предпросмотра (разрешаем смотреть любых)
   characters.forEach(character => {
     character.addEventListener('click', () => {
       const imgSrc = character.getAttribute('data-img');
@@ -54,6 +75,12 @@ document.addEventListener('DOMContentLoaded', () => {
   selectButton.addEventListener('click', () => {
     if (!currentPreviewCharacter) {
       alert('Выберите персонажа!');
+      return;
+    }
+
+    // Если выбранный персонаж заблокирован, не даем его выбрать
+    if (currentPreviewCharacter.getAttribute('data-locked') === 'true') {
+      alert('Этот персонаж пока недоступен! Разблокируйте его, чтобы выбрать.');
       return;
     }
 

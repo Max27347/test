@@ -8,14 +8,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const upgradeButtonBox1 = document.querySelector('.upgrade-button_box1');
     const rewardImage = document.getElementById('rewardImage');
 
-    // Массив героев
+    // Список героев с ID
     const heroes = [
-        "/static/images/groot.png",
-        "/static/images/groot.png",
-        "/static/images/groot.png",
-        "/static/images/groot.png",
-        "/static/images/groot.png",
+        { id: "cot", img: "/static/images/cot.png" },
+        { id: "groot", img: "/static/images/groot.png" },
+        { id: "golem", img: "/static/images/golem.png" },
+        { id: "fire", img: "/static/images/fire.png" },
+        { id: "water", img: "/static/images/water.png" }
     ];
+
+    // Получаем список разблокированных персонажей из localStorage
+    let unlockedHeroes = JSON.parse(localStorage.getItem('unlockedHeroes')) || ["cot"]; // По умолчанию открыт первый герой
+
+    // Обновляем доступность персонажей
+    function updateCharacterAvailability() {
+        document.querySelectorAll('.character').forEach(character => {
+            const characterId = character.getAttribute('data-id');
+
+            if (unlockedHeroes.includes(characterId)) {
+                character.classList.remove('locked');  // Разблокируем персонажа
+                character.removeAttribute('data-locked');
+            } else {
+                character.classList.add('locked');  // Блокируем персонажа
+                character.setAttribute('data-locked', 'true');
+            }
+        });
+    }
 
     // Открытие окна сундука
     shopBox.addEventListener('click', () => {
@@ -40,14 +58,27 @@ document.addEventListener('DOMContentLoaded', () => {
         // Закрываем текущее окно
         containerBox1.style.display = 'none';
 
-        // Открываем окно с выпавшим героем
+        // Фильтруем только заблокированных персонажей
+        const lockedHeroes = heroes.filter(hero => !unlockedHeroes.includes(hero.id));
+
+        if (lockedHeroes.length === 0) {
+            alert("Все персонажи уже разблокированы!");
+            return;
+        }
+
+        // Выбираем случайного персонажа из заблокированных
+        const randomHero = lockedHeroes[Math.floor(Math.random() * lockedHeroes.length)];
+
+        // Добавляем его в список разблокированных
+        unlockedHeroes.push(randomHero.id);
+        localStorage.setItem('unlockedHeroes', JSON.stringify(unlockedHeroes));
+
+        // Обновляем отображение персонажей
+        updateCharacterAvailability();
+
+        // Показываем окно с выпавшим героем
         containerBox11.style.display = 'block';
-
-        // Выбираем случайного героя
-        const randomHero = heroes[Math.floor(Math.random() * heroes.length)];
-
-        // Устанавливаем изображение выпавшего героя
-        rewardImage.src = randomHero;
+        rewardImage.src = randomHero.img;
         rewardImage.alt = 'Выпавший герой';
     });
 
@@ -56,4 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
         overlayBox1.style.display = 'none';
         containerBox11.style.display = 'none';
     });
+
+    // Первоначальная проверка доступных персонажей при загрузке страницы
+    updateCharacterAvailability();
 });
