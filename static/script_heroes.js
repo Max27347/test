@@ -62,12 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const description = currentPreviewCharacter.getAttribute('data-description');
     const characterId = currentPreviewCharacter.getAttribute('data-id');
 
-    // Сохраняем выбранного персонажа
-    localStorage.setItem('selectedCharacter', characterId);
-    localStorage.setItem('selectedCharacterImg', imgSrc);
-    localStorage.setItem('selectedCharacterName', name);
-    localStorage.setItem('selectedCharacterDescription', description);
-
     // Снимаем выделение с предыдущего выбранного персонажа
     if (selectedCharacter) {
       selectedCharacter.classList.remove('selected');
@@ -77,5 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
     currentPreviewCharacter.classList.remove('selected-preview');
     currentPreviewCharacter.classList.add('selected');
     selectedCharacter = currentPreviewCharacter;
+
   });
 });
