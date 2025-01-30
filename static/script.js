@@ -227,7 +227,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 });
-localStorage.setItem('currentScore', 10000);
-
-
-

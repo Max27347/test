@@ -221,52 +221,6 @@
   </div>
   </div>
 
-      <div class="background">
-    <!-- Слой затемнения -->
-    <div class="overlay_box1" style="display: none;"></div>
-    <!-- Окно -->
-    <div class="container_box_1" style="display: none;">
-        <!-- Кнопка закрытия -->
-        <button class="close-button_box1">&times;</button>
-
-        <!-- Картинка сверху -->
-        <div class="top-image">
-            <img src="/static/images/box_1.png" alt="Символ" />
-        </div>
-
-        <div class="character_up_buy"></div>
-        <h1 class="title">Сундук Героя</h1>
-        <p class="description">
-            Здесь можно выбить <br>
-            нового перса
-        </p>
-        <div class="price_up_buy">
-            <!-- Картинка монеты -->
-            <img class="coin-icon" src="/static/images/coin.png" alt="Монета" />
-            <span class="coin_up_box1">2,000</span>
-        </div>
-        <button class="upgrade-button_box1">КУПИТЬ</button>
-    </div>
-</div>
-
-
-<div class="background">
-    <div class="overlay_box1" style="display: none;"></div>
-    <!-- Окно для открытия коробки -->
-    <div class="container_box_11" style="display: none;">
-        <button class="close-button_box1">&times;</button>
-        <div class="top-image">
-            <img src="/static/images/croco.png" alt="Символ" />
-        </div>
-        <div class="character_up_buy"></div>
-        <h1 class="title">ВЫ ВЫБИЛИ ГЕРОЯ:</h1>
-        <div class="reward-image">
-            <img id="rewardImage" src="" alt="Герой" />
-        </div>
-        <button class="close-reward-button">ЗАКРЫТЬ</button>
-    </div>
-</div>
-
     <!-- Магазин герои -->
   <div id="heroes" class="content-section" style="display:none;">
 <p class="score"><span class="currentScore">0</span></p>
@@ -326,8 +280,8 @@
     <img src="/static/images/frog.png" alt="Character 11">
     <p>Character 11</p>
   </div>
-      <div class="character" data-id="12" data-name="Character 12" data-img="/static/images/angel.png" data-description="Water is calm and adaptable, flowing through challenges.">
-    <img src="/static/images/angel.png" alt="Character 12">
+      <div class="character" data-id="12" data-name="Character 12" data-img="/static/images/leon.png" data-description="Water is calm and adaptable, flowing through challenges.">
+    <img src="/static/images/leon.png" alt="Character 12">
     <p>Character 12</p>
   </div>
 </div>
@@ -594,8 +548,9 @@
     <div id="game-over" class="game-over"></div>
     <button id="start-button">Start Game</button>
 </div>
-  </div>
 
+
+  </div>
 </div>
 
 <script src="{{ url_for('static', filename='script_new.js') }}"></script>

@@ -1,59 +1,96 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const shopBox = document.querySelector('.shop_box');
-    const overlayBox1 = document.querySelector('.overlay_box1');
-    const containerBox1 = document.querySelector('.container_box_1');
-    const containerBox11 = document.querySelector('.container_box_11');
-    const closeButtonBox1 = document.querySelector('.close-button_box1');
-    const closeRewardButton = document.querySelector('.close-reward-button');
-    const upgradeButtonBox1 = document.querySelector('.upgrade-button_box1');
-    const rewardImage = document.getElementById('rewardImage');
+// Функция для обновления счета и сохранения в localStorage
+function updateScore(newScore) {
+    const currentScoreElement = document.getElementById('currentScore');
+    currentScoreElement.innerText = newScore;
 
-    // Массив героев
-    const heroes = [
-        "/static/images/groot.png",
-        "/static/images/groot.png",
-        "/static/images/groot.png",
-        "/static/images/groot.png",
-        "/static/images/groot.png",
-    ];
+    // Сохраняем текущее значение счета в localStorage
+    localStorage.setItem('currentScore', newScore);
+}
 
-    // Открытие окна сундука
-    shopBox.addEventListener('click', () => {
-        overlayBox1.style.display = 'block';
-        containerBox1.style.display = 'block';
-    });
+// Функция для загрузки счета из localStorage при загрузке страницы
+function loadScore() {
+    const storedScore = localStorage.getItem('currentScore');
+    if (storedScore) {
+        // Устанавливаем сохраненный счет на странице
+        updateScore(parseInt(storedScore));
+    } else {
+        // Если нет сохраненного значения, устанавливаем 0
+        updateScore(0);
+    }
+}
 
-    // Закрытие окна при нажатии на кнопку закрытия
-    closeButtonBox1.addEventListener('click', () => {
-        overlayBox1.style.display = 'none';
-        containerBox1.style.display = 'none';
-    });
+// Загружаем счет при загрузке страницы
+window.onload = loadScore;
 
-    // Закрытие окна при клике на слой затемнения
-    overlayBox1.addEventListener('click', () => {
-        overlayBox1.style.display = 'none';
-        containerBox1.style.display = 'none';
-    });
-
-    // Покупка сундука
-    upgradeButtonBox1.addEventListener('click', () => {
-        // Закрываем текущее окно
-        containerBox1.style.display = 'none';
-
-        // Открываем окно с выпавшим героем
-        containerBox11.style.display = 'block';
-
-        // Выбираем случайного героя
-        const randomHero = heroes[Math.floor(Math.random() * heroes.length)];
-
-        // Устанавливаем изображение выпавшего героя
-        rewardImage.src = randomHero;
-        rewardImage.alt = 'Выпавший герой';
-    });
-
-    // Закрытие окна с выпавшим героем
-    closeRewardButton.addEventListener('click', () => {
-        overlayBox1.style.display = 'none';
-        containerBox11.style.display = 'none';
-    });
+// Открытие меню сундука
+document.getElementById('box1').addEventListener('click', function () {
+    const clickBox = document.getElementById('click_box');
+    clickBox.style.display = 'flex'; // Показываем меню сундука
 });
+
+// Закрытие меню сундука
+document.getElementById('closeBoxButton').addEventListener('click', function () {
+    const clickBox = document.getElementById('click_box');
+    clickBox.style.display = 'none'; // Скрываем меню сундука
+});
+
+// Покупка сундука
+document.getElementById('buyButton1').addEventListener('click', function () {
+    const cost = 1; // Стоимость покупки
+    const currentScoreElement = document.getElementById('currentScore');
+    let currentScore = parseInt(currentScoreElement.innerText);
+
+    // Проверка, достаточно ли монет для покупки
+    if (currentScore >= cost) {
+        currentScore -= cost; // Списываем монеты
+        updateScore(currentScore); // Обновляем счет
+
+        // Генерация одного случайного предмета
+        const items = [
+            { name: 'Кот', icon: '/static/images/cot.png' },
+            { name: 'Голем', icon: '/static/images/golem.png' },
+            { name: 'Грут', icon: '/static/images/groot.png' },
+            { name: 'Огонь', icon: '/static/images/fire.png' },
+            { name: 'Вода', icon: '/static/images/water.png' },
+        ];
+
+        // Генерация одного случайного предмета
+        const randomItem = items[Math.floor(Math.random() * items.length)];
+
+        // Отображение выпавшего предмета в rewardsMenu
+        const rewardsItems = document.getElementById('rewardsItems');
+        rewardsItems.innerHTML = ''; // Очищаем блок
+        const rewardDiv = document.createElement('div');
+        rewardDiv.className = 'reward_item';
+
+        rewardDiv.innerHTML = `
+            <img src="${randomItem.icon}" alt="${randomItem.name}">
+            <span>${randomItem.name}</span>
+        `;
+        rewardsItems.appendChild(rewardDiv);
+
+        // Показать меню с выпавшими предметами
+        const rewardsMenu = document.getElementById('rewardsMenu');
+        rewardsMenu.style.display = 'flex';
+
+        // Блокируем скроллинг страницы
+        document.body.classList.add('no-scroll');
+
+        // Скрыть меню покупки
+        const clickBox = document.getElementById('click_box');
+        clickBox.style.display = 'none';
+    } else {
+        showInsufficientFundsModal(); // Показать модальное окно недостатка средств
+    }
+});
+
+// Закрытие меню с выпавшими предметами
+document.getElementById('closeRewardsButton').addEventListener('click', function () {
+    const rewardsMenu = document.getElementById('rewardsMenu');
+    rewardsMenu.style.display = 'none'; // Скрываем меню с выпавшими предметами
+
+    // Включаем скроллинг страницы
+    document.body.classList.remove('no-scroll');
+});
+
+
