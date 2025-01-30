@@ -45,10 +45,18 @@ document.addEventListener('DOMContentLoaded', () => {
     progressBar.style.width = `${progress}%`;
   }
 
+  // Установка героя
   const savedCharacterImg = localStorage.getItem('selectedCharacterImg');
   if (savedCharacterImg) {
     clickButton.src = savedCharacterImg;
   }
+
+window.updateClickButtonImage = (imgSrc) => {
+  const clickButton = document.getElementById('clickButton');
+  if (clickButton) {
+    clickButton.src = imgSrc;
+  }
+};
 
   // Обновление глобальной переменной coinsPerClick и ее отображения
   window.updateCoinsPerClick = (newCoinsPerClick) => {

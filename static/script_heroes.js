@@ -77,5 +77,10 @@ document.addEventListener('DOMContentLoaded', () => {
     currentPreviewCharacter.classList.remove('selected-preview');
     currentPreviewCharacter.classList.add('selected');
     selectedCharacter = currentPreviewCharacter;
+
+    // Обновляем изображение кнопки клика в основном скрипте
+    if (window.updateClickButtonImage) {
+      window.updateClickButtonImage(imgSrc);
+    }
   });
 });
