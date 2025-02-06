@@ -1733,68 +1733,134 @@ body.up_page {
   z-index: 9999; /* Чтобы сообщение было поверх других элементов */
 }
 
-/* Анимация для увеличения и уменьшения босса */
-@keyframes growShrinkAnimation {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
-}
 
-/* Стиль для кнопки Start */
 #start-button {
-    font-size: 24px;
-    padding: 10px 20px;
-    cursor: pointer;
     position: absolute;
-    bottom: -50px;
+    bottom: 10%;
     left: 50%;
     transform: translateX(-50%);
+    font-size: 1.5rem;
+    padding: 15px 30px;
+    cursor: pointer;
+    color: #000; /* Черный текст */
+    background: #fff; /* Белый фон */
+    border: 2px solid #000; /* Черная граница */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); /* Белая тень */
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 80%;
 }
 
-/* Стиль для контейнера босса */
-.boss-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 200px;
-    height: 250px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+#start-button:hover {
+    transform: translateX(-50%) scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3); /* Белая тень */
 }
+
+
 
 /* Босс */
 .boss {
-    width: 200px;
-    height: 200px;
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: 250px;
     cursor: pointer;
-    animation: growShrinkAnimation 1s infinite; /* Анимация увеличения/уменьшения */
+    animation: growShrinkAnimation 1.5s infinite;
+    pointer-events: none;
+    transition: transform 0.3s, width 0.3s, height 0.3s;
+}
+
+/* Анимация для увеличения и уменьшения босса */
+@keyframes growShrinkAnimation {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }
 
 /* Полоса здоровья */
 .health-bar {
     position: absolute;
-    top: -30px;
-    width: 100%;
-    height: 20px;
-    background-color: red;
-    border: 2px solid black;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 25px;
+    background-color: #333; /* Темно-серый фон */
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid #fff; /* Белая граница */
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2); /* Белая тень */
 }
 
-/* Внутренний элемент полосы здоровья */
 .health-bar-inner {
     width: 100%;
     height: 100%;
-    background-color: green;
-    transition: width 0.2s;
+    background-color: #fff; /* Белый цвет здоровья */
+    transition: width 0.2s, background-color 0.3s;
 }
 
-/* Таймер */
-.timer {
-    margin-top: 20px;
-    font-size: 24px;
-    display: none; /* Скрыто до начала
+ .timer {
+    position: absolute;
+    top: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: #fff; /* Белый текст */
+    background: rgba(0, 0, 0, 0.8); /* Полупрозрачный черный фон */
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1); /* Белая тень */
+    border: 1px solid #fff; /* Белая граница */
+    width: 70%;
+    text-align: center; /* Выравнивание текста по центру по горизонтали */
+    display: flex; /* Использование Flexbox */
+    align-items: center; /* Выравнивание по центру по вертикали */
+    justify-content: center; /* Выравнивание по центру по горизонтали */
+}
+
+.level-text {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    color: #fff; /* Белый текст */
+}
+
+.final-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    color: #fff; /* Белый текст */
+    text-align: center;
+    display: none;
+}
+
+#next-level-button {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    padding: 15px 30px;
+    cursor: pointer;
+    color: #000; /* Черный текст */
+    background: #fff; /* Белый фон */
+    border: 2px solid #000; /* Черная граница */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); /* Белая тень */
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 80%;
+}
+
+#next-level-button:hover {
+    transform: translateX(-50%) scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3); /* Белая тень */
+}
+
 
 

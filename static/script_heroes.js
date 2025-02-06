@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', () => {
   const characters = document.querySelectorAll('.character');
   const preview = document.getElementById('preview');
   const previewImg = preview.querySelector('img');
@@ -6,81 +6,140 @@ document.addEventListener('DOMContentLoaded', () => {
   const characterDescription = document.getElementById('character-description');
   const selectButton = document.getElementById('select-button');
 
-  let currentPreviewCharacter = null;
-  let selectedCharacter = null;
+  const shopBox = document.querySelector('.shop_box');
+  const overlayBox1 = document.querySelector('.overlay_box1');
+  const containerBox1 = document.querySelector('.container_box_1');
+  const containerBox11 = document.querySelector('.container_box_11');
+  const closeButtonBox1 = document.querySelector('.close-button_box1');
+  const closeRewardButton = document.querySelector('.close-reward-button');
+  const upgradeButtonBox1 = document.querySelector('.upgrade-button_box1');
+  const rewardImage = document.getElementById('rewardImage');
 
-  // Загрузка разблокированных персонажей из localStorage
-  let unlockedHeroes = JSON.parse(localStorage.getItem('unlockedHeroes')) || ["cot"]; // По умолчанию открыт первый герой
+  // Список героев с ID
+  const heroes = [
+    { id: "1", img: "/static/images/croco.png", name: "Character 1" },
+    { id: "2", img: "/static/images/cot.png", name: "Character 2" },
+    { id: "3", img: "/static/images/groot.png", name: "Character 3" },
+    { id: "4", img: "/static/images/golem.png", name: "Character 4" },
+    { id: "5", img: "/static/images/fire.png", name: "Character 5" },
+    { id: "6", img: "/static/images/water.png", name: "Character 6" },
+    { id: "7", img: "/static/images/tor.png", name: "Character 7" },
+    { id: "8", img: "/static/images/witch.png", name: "Character 8" },
+    { id: "9", img: "/static/images/pumpkin.png", name: "Character 9" },
+    { id: "10", img: "/static/images/ananas.png", name: "Character 10" },
+    { id: "11", img: "/static/images/frog.png", name: "Character 11" },
+    { id: "12", img: "/static/images/leon.png", name: "Character 12" }
+  ];
 
-  // Обновление доступности персонажей
-  function updateCharacterAvailability() {
-    characters.forEach((character) => {
-      const characterId = character.getAttribute('data-id');
+  // Функция для блокировки персонажей
+  function lockSpecificCharacters() {
+    // Массив персонажей, которых нужно заблокировать
+    const charactersToLock = [
+      { id: "2", img: "/static/images/cot.png", name: "Character 2" },
+      { id: "3", img: "/static/images/groot.png", name: "Character 3" },
+      { id: "4", img: "/static/images/golem.png", name: "Character 4" },
+      { id: "5", img: "/static/images/fire.png", name: "Character 5" },
+      { id: "6", img: "/static/images/water.png", name: "Character 6" },
+      { id: "7", img: "/static/images/tor.png", name: "Character 7" },
+      { id: "8", img: "/static/images/witch.png", name: "Character 8" },
+      { id: "9", img: "/static/images/pumpkin.png", name: "Character 9" },
+      { id: "10", img: "/static/images/ananas.png", name: "Character 10" },
+      { id: "11", img: "/static/images/frog.png", name: "Character 11" },
+      { id: "12", img: "/static/images/leon.png", name: "Character 12" }
+    ];
 
-      if (unlockedHeroes.includes(characterId)) {
-        character.classList.remove('locked');  // Разблокируем персонажа
-        character.removeAttribute('data-locked');
-      } else {
-        character.classList.add('locked');  // Блокируем персонажа
-        character.setAttribute('data-locked', 'true');
+    // Проходим по каждому из персонажей в массиве и блокируем их
+    charactersToLock.forEach(hero => {
+      const character = document.querySelector(`.character[data-id="${hero.id}"]`);
+      if (character) {
+        character.classList.add('locked'); // Добавляем класс 'locked'
+        character.setAttribute('data-locked', 'true'); // Добавляем атрибут блокировки
       }
     });
   }
 
-  // Инициализация доступности персонажей при загрузке страницы
-  updateCharacterAvailability();
-
-  // Загружаем сохраненного персонажа, если он есть
-  const savedCharacterId = localStorage.getItem('selectedCharacter');
-  const savedCharacterImg = localStorage.getItem('selectedCharacterImg');
-  const savedCharacterName = localStorage.getItem('selectedCharacterName');
-  const savedCharacterDescription = localStorage.getItem('selectedCharacterDescription');
-
-  if (savedCharacterId && savedCharacterImg && savedCharacterName && savedCharacterDescription) {
-    previewImg.src = savedCharacterImg;
-    previewName.textContent = savedCharacterName;
-    characterDescription.textContent = savedCharacterDescription;
-
-    const savedCharacterElement = document.querySelector(`.character[data-id="${savedCharacterId}"]`);
-    if (savedCharacterElement) {
-      savedCharacterElement.classList.add('selected');
-      selectedCharacter = savedCharacterElement;
+  // Функция для разблокировки персонажа
+  function unlockCharacter(characterId) {
+    const character = document.querySelector(`.character[data-id="${characterId}"]`);
+    if (character) {
+      character.classList.remove('locked'); // Убираем класс 'locked'
+      character.removeAttribute('data-locked'); // Убираем атрибут блокировки
     }
   }
 
-  // Переключение персонажей для предпросмотра (разрешаем смотреть любых)
+  // Блокируем персонажей при загрузке
+  lockSpecificCharacters();
+
+  // Открытие окна сундука
+  shopBox.addEventListener('click', () => {
+    overlayBox1.style.display = 'block';
+    containerBox1.style.display = 'block';
+  });
+
+  // Закрытие окна при нажатии на кнопку закрытия
+  closeButtonBox1.addEventListener('click', () => {
+    overlayBox1.style.display = 'none';
+    containerBox1.style.display = 'none';
+  });
+
+  // Закрытие окна при клике на слой затемнения
+  overlayBox1.addEventListener('click', () => {
+    overlayBox1.style.display = 'none';
+    containerBox1.style.display = 'none';
+  });
+
+  // Открытие сундука
+  upgradeButtonBox1.addEventListener('click', () => {
+    containerBox1.style.display = 'none';
+
+    // Выбираем случайного персонажа
+    const randomHero = heroes[Math.floor(Math.random() * heroes.length)];
+
+    // Показываем окно с выпавшим героем
+    containerBox11.style.display = 'block';
+    rewardImage.src = randomHero.img;
+    rewardImage.alt = 'Выпавший герой';
+
+    // Разблокировка персонажа после выпадения
+    unlockCharacter(randomHero.id);  // Разблокируем персонажа
+  });
+
+  // Закрытие окна с выпавшим героем
+  closeRewardButton.addEventListener('click', () => {
+    overlayBox1.style.display = 'none';
+    containerBox11.style.display = 'none';
+  });
+
+  let currentPreviewCharacter = null;
+  let selectedCharacter = null;
+
   characters.forEach(character => {
     character.addEventListener('click', () => {
       const imgSrc = character.getAttribute('data-img');
       const name = character.getAttribute('data-name');
       const description = character.getAttribute('data-description');
 
-      // Обновляем предпросмотр
       previewImg.src = imgSrc;
       previewName.textContent = name;
       characterDescription.textContent = description;
 
-      // Снимаем выделение с предыдущего предпросматриваемого персонажа
       if (currentPreviewCharacter) {
         currentPreviewCharacter.classList.remove('selected-preview');
       }
 
-      // Выделяем текущего персонажа в предпросмотре
       character.classList.add('selected-preview');
       currentPreviewCharacter = character;
     });
   });
 
-  // Логика выбора персонажа
   selectButton.addEventListener('click', () => {
     if (!currentPreviewCharacter) {
       alert('Выберите персонажа!');
       return;
     }
 
-    // Если выбранный персонаж заблокирован, не даем его выбрать
-    if (currentPreviewCharacter.getAttribute('data-locked') === 'true') {
-      alert('Этот персонаж пока недоступен! Разблокируйте его, чтобы выбрать.');
+    if (currentPreviewCharacter.classList.contains('locked')) {
+      alert('Этот персонаж заблокирован. Откройте его через сундук!');
       return;
     }
 
@@ -89,23 +148,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const description = currentPreviewCharacter.getAttribute('data-description');
     const characterId = currentPreviewCharacter.getAttribute('data-id');
 
-    // Сохраняем выбранного персонажа
     localStorage.setItem('selectedCharacter', characterId);
     localStorage.setItem('selectedCharacterImg', imgSrc);
     localStorage.setItem('selectedCharacterName', name);
     localStorage.setItem('selectedCharacterDescription', description);
 
-    // Снимаем выделение с предыдущего выбранного персонажа
     if (selectedCharacter) {
       selectedCharacter.classList.remove('selected');
     }
 
-    // Устанавливаем текущего как выбранного
     currentPreviewCharacter.classList.remove('selected-preview');
     currentPreviewCharacter.classList.add('selected');
     selectedCharacter = currentPreviewCharacter;
 
-    // Обновляем изображение кнопки клика в основном скрипте
     if (window.updateClickButtonImage) {
       window.updateClickButtonImage(imgSrc);
     }
