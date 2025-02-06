@@ -1,83 +1,144 @@
-const boss = document.getElementById('boss');
-const healthBarInner = document.getElementById('health-bar-inner');
-const timerElement = document.getElementById('timer');
-const gameOverElement = document.getElementById('game-over');
-const startButton = document.getElementById('start-button');
+        const boss = document.getElementById('boss');
+        const healthBarInner = document.getElementById('health-bar-inner');
+        const timerElement = document.getElementById('timer');
+        const startButton = document.getElementById('start-button');
+        const nextLevelButton = document.getElementById('next-level-button');
+        const levelText = document.getElementById('level-text');
+        const finalMessage = document.getElementById('final-message');
 
-let maxHealth = 100;
-let currentHealth = maxHealth;
-let timeLeft = 20; // В секундах
-let timerInterval;
-let gameStarted = false; // Флаг, что игра не началась
+        let maxHealth = 100;
+        let currentHealth = maxHealth;
+        let totalTime = 10;
+        let timeLeft = totalTime;
+        let timerInterval;
+        let gameStarted = false;
 
-// Начать игру
-function startGame() {
-    // Сброс состояния
-    currentHealth = maxHealth;
-    timeLeft = 20;
-    healthBarInner.style.width = '100%';
-    timerElement.textContent = `Time Left: ${timeLeft}s`;
-    gameOverElement.textContent = '';
-    startButton.style.display = 'none';  // Скрыть кнопку старт
+        const bosses = [
+            { health: 100, image: '/static/images/boss1.png', bgColor: '/static/images/theme_7.png', level: 1 },
+            { health: 200, image: '/static/images/spider.png', bgColor: '/static/images/theme_8.png', level: 2 },
+            { health: 300, image: '/static/images/pumpkin.png', bgColor: '/static/images/theme_9.png', level: 3 },
+            { health: 400, image: '/static/images/boss4.png', bgColor: '#000', level: 4 },
+            { health: 500, image: '/static/images/boss5.png', bgColor: '#000', level: 5 },
+            { health: 600, image: '/static/images/boss6.png', bgColor: '#000', level: 6 },
+            { health: 700, image: '/static/images/boss7.png', bgColor: '#000', level: 7 },
+            { health: 800, image: '/static/images/boss8.png', bgColor: '#000', level: 8 },
+            { health: 900, image: '/static/images/boss9.png', bgColor: '#000', level: 9 },
+            { health: 1000, image: '/static/images/boss10.png', bgColor: '#000', level: 10 },
+        ];
 
-    // Показать таймер
-    timerElement.style.display = 'block';
+        let currentBossIndex = 0;
 
-    // Таймер
-    timerInterval = setInterval(() => {
-        timeLeft--;
-        timerElement.textContent = `Time Left: ${timeLeft}s`;
-
-        if (timeLeft <= 0) {
-            clearInterval(timerInterval);
-            endGame(false);
+        function startGame() {
+            boss.style.pointerEvents = 'auto'; // Включаем клики для босса
+            startButton.style.display = 'none';  // Скрываем кнопку старта
+            nextLevelButton.style.display = 'none'; // Скрываем кнопку следующего уровня
+            gameStarted = true;
+            timeLeft = totalTime;
+            loadBoss();
+            startTimer();
         }
-    }, 1000);
 
-    // Игра началась
-    gameStarted = true;
+        function loadBoss() {
+            const bossData = bosses[currentBossIndex];
+            maxHealth = bossData.health;
+            currentHealth = maxHealth;
+            healthBarInner.style.width = '100%';
+            healthBarInner.style.backgroundColor = 'orange'; /* Белый цвет здоровья */
+            boss.src = bossData.image;
 
-    // Включить возможность кликов по боссу
-    boss.style.pointerEvents = 'auto';
-    boss.classList.remove('grow-shrink');  // Убираем анимацию до начала игры
-}
+            // Проверяем, является ли фон изображением или цветом
+            if (bossData.bgColor.includes('.png') || bossData.bgColor.includes('.jpg')) {
+                document.body.style.background = `url(${bossData.bgColor})`;
+                document.body.style.backgroundSize = "cover";
+                document.body.style.backgroundPosition = "center";
+            } else {
+                document.body.style.background = bossData.bgColor; // Если это просто цвет
+            }
 
-// Нажатие на босса
+            levelText.textContent = `Уровень ${bossData.level}`;
+        }
+
+        function startTimer() {
+            timerElement.style.display = 'block';
+            timerElement.textContent = `Time Left: ${timeLeft}s`;
+
+            clearInterval(timerInterval); // Очищаем предыдущий таймер
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                timerElement.textContent = `Time Left: ${timeLeft}s`;
+
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    endGame(false);
+                }
+            }, 1000);
+        }
+
 boss.addEventListener('click', () => {
     if (gameStarted && timeLeft > 0 && currentHealth > 0) {
-        currentHealth -= 10;
+        currentHealth -= 20;
+
         if (currentHealth < 0) currentHealth = 0;
 
         const healthPercentage = (currentHealth / maxHealth) * 100;
         healthBarInner.style.width = `${healthPercentage}%`;
 
-        // Анимация при попадании (увеличение и уменьшение)
-        boss.classList.add('grow-shrink');
+        // Добавляем эффект удара
+        boss.classList.add('boss-hit');
         setTimeout(() => {
-            boss.classList.remove('grow-shrink');
-        }, 300);
+            boss.classList.remove('boss-hit');
+        }, 150); // Уменьшаем длительность до 0.15 секунды
 
         if (currentHealth === 0) {
             clearInterval(timerInterval);
-            endGame(true);
+            currentBossIndex++;
+            if (currentBossIndex >= bosses.length) {
+                endGame(true);
+            } else {
+                // Загружаем следующего босса и показываем кнопку
+                loadBoss();
+                nextLevelButton.style.display = 'block';
+                gameStarted = false;
+            }
         }
     }
 });
 
-// Завершение игры
-function endGame(won) {
-    boss.style.pointerEvents = 'none'; // Отключить клики
-    if (won) {
-        gameOverElement.textContent = 'You Win!';
-        gameOverElement.style.color = 'lime';
-    } else {
-        gameOverElement.textContent = 'Game Over!';
-        gameOverElement.style.color = 'red';
-    }
 
-    startButton.style.display = 'inline-block';  // Показать кнопку старт
-    gameStarted = false; // Игра закончена
-}
 
-// Кнопка старт
-startButton.addEventListener('click', startGame);
+        function endGame(won) {
+            if (won) {
+                // Если победа над всеми боссами
+                if (currentBossIndex >= bosses.length) {
+                    hideGameElements();
+                    finalMessage.style.display = 'block';
+                }
+            } else {
+                startButton.style.display = 'block';
+                startButton.textContent = "Готов отыграться?";
+            }
+            gameStarted = false;
+        }
+
+        function hideGameElements() {
+            timerElement.style.display = 'none';
+            healthBarInner.style.display = 'none';
+            boss.style.display = 'none';
+            levelText.style.display = 'none';
+            startButton.style.display = 'none';
+            nextLevelButton.style.display = 'none';
+        }
+
+        startButton.addEventListener('click', () => {
+            if (!gameStarted) {
+                startGame();
+            } else {
+                timeLeft = totalTime; // Сброс таймера для нового босса
+                startGame();
+            }
+        });
+
+        nextLevelButton.addEventListener('click', () => {
+            startGame();
+        });
+

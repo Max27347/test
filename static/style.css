@@ -45,38 +45,32 @@ body {
     bottom: 95px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 18px;
     font-weight: bold;
-    color: orange; /* Сделаем текст более контрастным */
-    background-color: #2e2e3a;
     padding: 5px 10px; /* Отступы для удобства */
     border-radius: 5px; /* Сглаживание углов */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    z-index: 1000; /* Поверх других элементов */
+    color: orange; /* Белый текст */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Легкая тень */
+    font-family: 'Pusia-bold', sans-serif; /* Шрифт */
+    font-size: 20px; /* Размер шрифта */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
+
 }
 
-.energy-container {
-    position: fixed;
+#energyDisplay {
+   position: fixed;
     bottom: 160px;    /* Контейнер будет располагаться снизу */
     right: 60px;      /* Контейнер будет располагаться слева */
     width: 25px;     /* Фиксированная ширина контейнера */
     height: 100px;   /* Высота контейнера */
-    color: white;
     display: flex;
     flex-direction: column-reverse; /* Элементы будут располагаться снизу вверх */
+    color: orange; /* Белый текст */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Легкая тень */
+    font-family: 'Pusia-bold', sans-serif; /* Шрифт */
+    font-size: 20px; /* Размер шрифта */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 }
-
-#energyDisplay {
-  background-color: #2e2e3a;
-  color: orange; /* Белый текст */
-  padding: 10px; /* Отступы */
-  border-radius: 5px; /* Скругленные углы */
-  font-size: 16px; /* Размер текста */
-  width: fit-content; /* Подгонка ширины по содержимому */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Легкая тень */
-}
-
-
 
 .navigation {
     position: fixed;
@@ -1761,7 +1755,7 @@ body.up_page {
 /* Босс */
 .boss {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 30%;
     transform: translate(-50%, -50%);
     width: 250px;
@@ -1775,7 +1769,7 @@ body.up_page {
 /* Анимация для увеличения и уменьшения босса */
 @keyframes growShrinkAnimation {
     0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+    50% { transform: scale(1.05); }
     100% { transform: scale(1); }
 }
 
@@ -1797,7 +1791,7 @@ body.up_page {
 .health-bar-inner {
     width: 100%;
     height: 100%;
-    background-color: #fff; /* Белый цвет здоровья */
+    background-color: orange; /* Белый цвет здоровья */
     transition: width 0.2s, background-color 0.3s;
 }
 
@@ -1807,7 +1801,7 @@ body.up_page {
     left: 50%;
     transform: translateX(-50%);
     font-size: 2rem;
-    color: #fff; /* Белый текст */
+    color: orange;
     background: rgba(0, 0, 0, 0.8); /* Полупрозрачный черный фон */
     padding: 10px 20px;
     border-radius: 8px;
@@ -1826,7 +1820,10 @@ body.up_page {
     left: 50%;
     transform: translateX(-50%);
     font-size: 1.5rem;
-    color: #fff; /* Белый текст */
+    color: orange; /* Белый текст */
+    font-family: 'Pusia-bold', sans-serif; /* Шрифт */
+    font-size: 22px; /* Размер шрифта */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 }
 
 .final-message {
@@ -1849,7 +1846,7 @@ body.up_page {
     padding: 15px 30px;
     cursor: pointer;
     color: #000; /* Черный текст */
-    background: #fff; /* Белый фон */
+    background: orange; /* Белый фон */
     border: 2px solid #000; /* Черная граница */
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); /* Белая тень */
@@ -1861,6 +1858,18 @@ body.up_page {
     transform: translateX(-50%) scale(1.1);
     box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3); /* Белая тень */
 }
+
+@keyframes bossDamage {
+    0% { transform: translate(0, 0); filter: brightness(1); }
+    30% { transform: translate(-2px, 2px); filter: brightness(0.8); }
+    60% { transform: translate(2px, -2px); filter: brightness(0.9); }
+    100% { transform: translate(0, 0); filter: brightness(1); }
+}
+
+.boss-hit {
+    animation: bossDamage 0.15s ease-in-out;
+}
+
 
 
 
