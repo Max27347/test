@@ -201,7 +201,7 @@ window.updateClickButtonImage = (imgSrc) => {
         backgroundImage = '/static/images/plat.png'; // Укажите путь к фону Алмазной лиги
         break;
       default:
-        progressLabel.innerText = 'Мистическая деревня';
+        progressLabel.innerText = 'Деревня';
         leagueLevel = 0;
         clicksPerLevel = 5;
         backgroundImage = '/static/images/hogwarts.png'; // Укажите путь к начальному фону
