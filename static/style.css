@@ -17,22 +17,22 @@ body {
   /* Стили для полос */
 .progress-container {
     position: fixed;
-    bottom: 120px;
+    bottom: 480px;
     left: 50%;
     transform: translateX(-50%);
     width: 280px; /* Фиксированная ширина */
     height: 20px;
-    background-color: #ddd;
+    background-color: white;
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 10px;
-    border: 2px solid orange; /* Обводка контейнера */
+    border: 2px solid #ffd700; /* Обводка контейнера */
 }
 
 .progress-bar {
     height: 100%;
     width: 0;
-    background-color: #f4c01c;
+    background-color: #ffd700;
     transition: width 0.3s;
 }
 
@@ -42,33 +42,35 @@ body {
 }
 .progress-label {
     position: fixed; /* Меняем на fixed для независимости от родителя */
-    bottom: 95px;
+    bottom: 515px;
     left: 50%;
     transform: translateX(-50%);
     font-weight: bold;
     padding: 5px 10px; /* Отступы для удобства */
     border-radius: 5px; /* Сглаживание углов */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    color: orange; /* Белый текст */
+    background-color: rgba(0, 0, 0, 0.1); /* Темный полупрозрачный фон */
+    color: white; /* Белый текст */
     font-family: 'Pusia-bold', sans-serif; /* Шрифт */
     font-size: 20px; /* Размер шрифта */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
-
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Легкая тень для выделения */
 }
 
 #energyDisplay {
    position: fixed;
-    bottom: 160px;    /* Контейнер будет располагаться снизу */
-    right: 60px;      /* Контейнер будет располагаться слева */
-    width: 25px;     /* Фиксированная ширина контейнера */
-    height: 100px;   /* Высота контейнера */
-    display: flex;
-    flex-direction: column-reverse; /* Элементы будут располагаться снизу вверх */
-    color: orange; /* Белый текст */
-    font-family: 'Pusia-bold', sans-serif; /* Шрифт */
-    font-size: 20px; /* Размер шрифта */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
+   bottom: 491px;    /* Контейнер будет располагаться снизу */
+   left: 42%;        /* Размещаем контейнер по центру */
+   transform: translateX(-50%); /* Смещаем контейнер, чтобы он был по центру */
+   width: 25px;      /* Фиксированная ширина контейнера */
+   height: 100px;    /* Высота контейнера */
+   display: flex;
+   flex-direction: column-reverse; /* Элементы будут располагаться снизу вверх */
+   color: white;     /* Белый текст */
+   font-family: 'Pusia-bold', sans-serif; /* Шрифт */
+   font-size: 20px;  /* Размер шрифта */
+   text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 }
+
 
 .navigation {
     position: fixed;
@@ -78,12 +80,13 @@ body {
     background-color: #2e2e3a;
     display: flex; /* Flexbox для размещения элементов */
     justify-content: space-around; /* Равномерное распределение пунктов меню */
-    padding: 10px 0; /* Внутренние отступы сверху и снизу */
+    padding: 0 0 10px 0; /* Отступ снизу (10px) */
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Тень над меню */
     z-index: 1000; /* Поверх остальных элементов */
     font-family: 'Pusia-bold', sans-serif; /* Шрифт */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 }
+
 
 /* Стили для кнопок меню */
 .nav-button {
@@ -110,8 +113,9 @@ body {
 }
 
 .nav-button img {
-    width: 45px; /* Размер иконки */
-    height: 45px;
+    width: 55px; /* Размер иконки */
+    height: 55px;
+    object-fit: contain; /* Сохраняем пропорции изображения */
     transition: transform 0.3s ease; /* Анимация увеличения при наведении */
 }
 
@@ -119,6 +123,7 @@ body {
 .nav-button figcaption {
     font-size: 14px; /* Размер шрифта подписи */
     font-weight: 500;
+    margin-top: -5px; /* Поднимаем подпись чуть выше */
 }
 
 .nav-button:hover figcaption {
@@ -132,6 +137,7 @@ body {
     transform: translateX(-50%);
     transition: transform 0.5s ease;
     width: 270px;
+    z-index: 1000;
 }
 
 #clickButton:active {
@@ -176,21 +182,11 @@ body {
     font-weight: normal;
     font-style: normal;
 }
-#score {
-    position: absolute;
-    top: 0px;
-    left: 200px;
-    width: 50px;
-    height: 50px;
-    font-family: 'Pusia-bold', sans-serif; /* Шрифт */
-    font-size: 22px; /* Размер шрифта */
-    color: white; /* Цвет текста */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
-}
+
 .score {
     position: absolute;
-    top: 0px;
-    left: 200px;
+    top: 122px;
+    left: 150px;
     width: 50px;
     height: 50px;
     font-family: 'Pusia-bold', sans-serif; /* Шрифт */
@@ -200,32 +196,27 @@ body {
 }
 .coin img {
     position: absolute;
-    top: 15px;
-    left: 140px;
-    width: 50px;
-    height: 50px;
-
+    top: 138px;
+    left: 105px;
+    width: 45px;
+    height: 45px;
 }
 
-#nick {
-    position: absolute;
-    top: 55px;
-    left: 10px;
-    font-size: 20px;
-    color: white;
-    font-weight: bold;
-    font-family: 'Pusia-bold', sans-serif;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
+.shadow {
+    position: fixed;
+    bottom: 130px;        /* Отступ от нижнего края экрана */
+    left: 50%;            /* Размещение по центру */
+    transform: translateX(-50%); /* Смещение для точного центра */
+    width: 10px;          /* Еще меньшая ширина */
+    height: 10px;         /* Еще меньшая высота */
+    display: flex;        /* Для использования flexbox */
+    justify-content: center; /* Центрирование содержимого по горизонтали */
+    align-items: center;  /* Центрирование содержимого по вертикали */
+    opacity: 0.5;         /* 50% прозрачности */
 }
 
-.icon-container {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    width: 40px;
-    height: 40px;
 
-}
+
 
 .modal {
     display: none; /* Скрыто по умолчанию */
@@ -318,150 +309,21 @@ body {
         }
 
 
-/* Друзья */
 
-.up_text {
-font-size: 30px; /* Размер шрифта для заголовка (больше, чем основной текст) */
-padding-top: 400px; /* Сместить содержимое вниз на 20 пикселей */
-text-align: center; /* Центрирование изображения */
-color: white;
-font-family: 'Pusia-bold', sans-serif; /* Шрифт */
-text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
-}
-.up_text_top {
-font-size: 30px; /* Размер шрифта для заголовка (больше, чем основной текст) */
-padding-top: 50px; /* Сместить содержимое вниз на 20 пикселей */
-text-align: center; /* Центрирование изображения */
-color: white;
-font-family: 'Pusia-bold', sans-serif; /* Шрифт */
-text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
-}
-.invite-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #2e2e3a;
-  border-radius: 12px;
-  padding: 10px 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  border: 1px solid #3d5afe;
-  width: 320px;
-  height: 80px;
-  border: 2px solid #d1a34a; /* Обводка контейнера */
-  /* Центрирование с отступом */
-  position: absolute; /* Используем absolute для позиционирования */
-  top: 300px; /* Отступ сверху */
-  left: 50%; /* Центрируем по горизонтали */
-  transform: translateX(-50%); /* Сдвигаем на половину ширины контейнера для центрирования */
-}
-
-    .coin-stack img.coins {
-        width: 60px;
-        height: auto;
-    }
-
-    .invite-text {
-        flex-grow: 1;
-        margin-left: 15px;
-        color: #ffcc66;
-        font-family: Arial, sans-serif;
-    }
-
-    .invite-text .title {
-        font-size: 20px;
-        font-weight: bold;
-    }
-
-    .invite-text .reward {
-        display: flex;
-        align-items: center;
-        margin-top: 8px;
-        font-size: 18px;
-        font-weight: bold;
-    }
-
-    .invite-text .reward img.coin-icon {
-        width: 24px;
-        height: auto;
-        margin-right: 5px;
-    }
-
-    .invite-text .reward .reward-amount {
-        color: #FFD700; /* Золотой цвет для награды */
-    }
-
-.friend-list {
-      margin: 0px auto;
-      width: 300px; /* Ограничиваем ширину контейнера */
-    }
-
-    .friend-card {
-      display: flex;
-      align-items: center;
-      background-color: #2e2e3a;
-      border-radius: 10px;
-      padding: 10px;
-      margin-bottom: 25px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-      width: 100%; /* Карточка адаптируется под контейнер */
-      margin-left: auto;
-      margin-right: auto; /* Центрирование карточки */
-      border: 2px solid #d1a34a; /* Обводка контейнера */
-    }
-
-    .friend-card img {
-      width: 30px; /* Увеличиваем размер изображения */
-      height: 30px;
-      border-radius: 10px;
-      margin-right: 20px;
-    }
-
-    .friend-info {
-      font-size: 20px; /* Делаем текст больше */
-      font-weight: bold;
-      color: #ffcc66;
-      text-align: left;
-      font-family: 'Pusia-bold', sans-serif; /* Шрифт */
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
-    }
-
+/* Блок приглашения */
 .invitation-container {
-    background-color: #2e2e3a;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    width: 320px;
-    text-align: center;
-    border: 2px solid #d1a34a; /* Обводка контейнера */
-
-    /* Позиция контейнера */
-    position: absolute; /* Или fixed, если нужно фиксированное положение */
-    top: 100px; /* Отступ сверху */
-    left: 50%; /* Центрирование по горизонтали */
-    transform: translateX(-50%); /* Сдвиг на половину ширины контейнера для центрирования */
-
-    margin-bottom: 0; /* Отступ снизу */
-    overflow: hidden; /* Убедимся, что контент не выходит за границы */
+  background-color: #2e2e3a;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  width: 320px;
+  text-align: center;
+  border: 2px solid #d1a34a;
+  margin: 0 auto;
+  margin-top: 100px; /* Отступ сверху */
 }
 
-
-.header h1 {
-  font-size: 24px;
-  margin: 0;
-  color: white;
-}
-.referral-text {
-  font-size: 14px;
-  margin-top: 10px;
-  color: white;
-}
-
-.friends-count {
-  font-size: 36px;
-  color: #FFD700;
-  margin: 10px 0;
-}
-
+/* Кнопка внутри блока приглашения */
 .how-it-works {
   background-color: #ffcc66;
   border: none;
@@ -470,20 +332,112 @@ text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
   border-radius: 5px;
   cursor: pointer;
   color: #543820;
+  margin-top: 15px;
+  display: block;
+  width: 100%;
 }
 
 .how-it-works:hover {
   background-color: #ffb84d;
 }
 
+/* Блок с бонусом */
+.invite-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #2e2e3a;
+  border-radius: 12px;
+  padding: 10px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border: 2px solid #d1a34a;
+  width: 320px;
+  height: 80px;
+  margin: 0 auto;
+  margin-top: 20px; /* Отступ сверху */
+}
 
-/* Стили для изображения в верхнем правом углу */
-.icon img {
-  position: absolute; /* Позиционируем изображение внутри контейнера */
-  top: 10px; /* Расстояние от верхнего края */
-  right: -35px; /* Расстояние от правого края */
-  width: 120px;
-  height: 120px;
+.coin-stack img {
+  width: 60px;
+  height: auto;
+}
+
+.invite-text {
+  flex-grow: 1;
+  margin-left: 15px;
+  color: #ffcc66;
+  font-family: Arial, sans-serif;
+}
+
+.invite-text .title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.invite-text .reward {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.invite-text .reward img {
+  width: 24px;
+  height: auto;
+  margin-right: 5px;
+}
+
+.invite-text .reward .reward-amount {
+  color: #FFD700;
+}
+
+/* Заголовок */
+.up_text {
+  font-size: 30px;
+  text-align: center;
+  color: white;
+  font-family: 'Pusia-bold', sans-serif;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5);
+  margin-top: 30px;
+}
+
+/* Список друзей */
+.friend-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  width: 320px;
+  margin-top: 30px;
+    margin: 0 auto;
+}
+
+/* Карточка друга */
+.friend-card {
+  display: flex;
+  align-items: center;
+  background-color: #2e2e3a;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  border: 2px solid #d1a34a;
+}
+
+.friend-card img {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  margin-right: 15px;
+}
+
+.friend-info {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffcc66;
+  font-family: 'Pusia-bold', sans-serif;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5);
 }
 
 
@@ -930,11 +884,7 @@ position: center
 }
 
 
-/* Страница герои */
-body.heroes-page {
-    min-height: 200vh; /* Минимальная высота равная высоте окна браузера */
-}
-
+/* Страница Герои */
  .menu_char {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -999,7 +949,7 @@ body.heroes-page {
 #character-description {
   position: absolute; /* Используем абсолютное позиционирование */
   top: 20px; /* Отступ сверху */
-  left: 1000px; /* Отступ слева */
+  left: 10px; /* Отступ слева */
   font-size: 14px;
   color: #555;
   background: #f9f9f9;
@@ -1041,10 +991,9 @@ body.heroes-page {
     background-color: #45a049; /* Более темный зеленый при наведении на кнопку */
 }
 
-
 #select-button {
-  position: absolute;
-  top: 280px;
+  position: relative;
+  top: 80px;
   right: 50px;
   padding: 10px 20px;
   background-color: #2e2e3a; /* Зеленый цвет */
