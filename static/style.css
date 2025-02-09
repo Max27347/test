@@ -13,7 +13,6 @@ body {
   display: none;
 }
 
-
   /* Стили для полос */
 .progress-container {
     position: fixed;
@@ -22,7 +21,7 @@ body {
     transform: translateX(-50%);
     width: 280px; /* Фиксированная ширина */
     height: 20px;
-    background-color: white;
+    background-color: #fffce6;
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 10px;
@@ -42,13 +41,13 @@ body {
 }
 .progress-label {
     position: fixed; /* Меняем на fixed для независимости от родителя */
-    bottom: 515px;
+    top: 25px;
     left: 50%;
     transform: translateX(-50%);
     font-weight: bold;
     padding: 5px 10px; /* Отступы для удобства */
     border-radius: 5px; /* Сглаживание углов */
-    background-color: rgba(0, 0, 0, 0.1); /* Темный полупрозрачный фон */
+    background-color: orange; /* Голубой фон */
     color: white; /* Белый текст */
     font-family: 'Pusia-bold', sans-serif; /* Шрифт */
     font-size: 20px; /* Размер шрифта */
@@ -59,10 +58,8 @@ body {
 #energyDisplay {
    position: fixed;
    bottom: 491px;    /* Контейнер будет располагаться снизу */
-   left: 42%;        /* Размещаем контейнер по центру */
+   left: 50%;        /* Размещаем контейнер по центру */
    transform: translateX(-50%); /* Смещаем контейнер, чтобы он был по центру */
-   width: 25px;      /* Фиксированная ширина контейнера */
-   height: 100px;    /* Высота контейнера */
    display: flex;
    flex-direction: column-reverse; /* Элементы будут располагаться снизу вверх */
    color: white;     /* Белый текст */
@@ -175,7 +172,6 @@ body {
   }
 }
 
-
 @font-face {
     font-family: 'Pusia-bold';
     src: url('/static/fonts/pusia-bold.ttf') format('truetype');
@@ -183,23 +179,32 @@ body {
     font-style: normal;
 }
 
-.score {
+.score-container {
     position: absolute;
-    top: 122px;
-    left: 150px;
-    width: 50px;
-    height: 50px;
+    top: 25%; /* Центрируем по вертикали */
+    left: 45%; /* Центрируем по горизонтали */
+    transform: translate(-50%, -50%); /* Сдвигаем элемент на половину его ширины и высоты */
+    display: flex; /* Используем flexbox для удобного выравнивания */
+    align-items: center; /* Выравнивание по вертикали по центру */
+}
+
+.score {
     font-family: 'Pusia-bold', sans-serif; /* Шрифт */
     font-size: 22px; /* Размер шрифта */
     color: #ffd700; /* Цвет текста */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
+    margin: 0; /* Убираем стандартные отступы paragraph, так как они могут мешать выравниванию */
+    white-space: nowrap; /* Предотвращаем перенос текста на новую строку */
 }
+
+.coin {
+    margin-left: 10px; /* Добавляем отступ между счетом и монеткой */
+}
+
 .coin img {
-    position: absolute;
-    top: 138px;
-    left: 105px;
     width: 45px;
     height: 45px;
+    vertical-align: middle; /* Выравниваем изображение по вертикали относительно текста */
 }
 
 .shadow {
@@ -212,32 +217,7 @@ body {
     display: flex;        /* Для использования flexbox */
     justify-content: center; /* Центрирование содержимого по горизонтали */
     align-items: center;  /* Центрирование содержимого по вертикали */
-    opacity: 0.5;         /* 50% прозрачности */
-}
-
-
-
-
-.modal {
-    display: none; /* Скрыто по умолчанию */
-    position: fixed; /* Остается на месте */
-    z-index: 1000; /* На переднем плане */
-    left: 0;
-    top: 0;
-    width: 100%; /* Полная ширина */
-    height: 100%; /* Полная высота */
-    overflow: auto; /* Включает прокрутку, если необходимо */
-    background-color: rgba(0, 0, 0, 0.7); /* Черный фон с прозрачностью */
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% сверху и центрирование */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Ширина окна */
-    max-width: 500px; /* Максимальная ширина окна */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень для эффекта поднятости */
+    opacity: 0.7;         /* 50% прозрачности */
 }
 
 .close-button {
@@ -253,7 +233,6 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
-
 
 .image-container img {
     width: 50px; /* Ширина картинки */
@@ -308,19 +287,18 @@ body {
             display: flex; /* Показываем меню */
         }
 
-
-
+/* Друзья */
 /* Блок приглашения */
 .invitation-container {
   background-color: #2e2e3a;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 20px;
-  width: 320px;
+  width: 250px;
   text-align: center;
   border: 2px solid #d1a34a;
   margin: 0 auto;
-  margin-top: 100px; /* Отступ сверху */
+  margin-top: 30px; /* Отступ сверху */
 }
 
 /* Кнопка внутри блока приглашения */
@@ -351,8 +329,8 @@ body {
   padding: 10px 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   border: 2px solid #d1a34a;
-  width: 320px;
-  height: 80px;
+  width: 250px;
+  height: 85px;
   margin: 0 auto;
   margin-top: 20px; /* Отступ сверху */
 }
@@ -394,7 +372,7 @@ body {
 
 /* Заголовок */
 .up_text {
-  font-size: 30px;
+  font-size: 26px;
   text-align: center;
   color: white;
   font-family: 'Pusia-bold', sans-serif;
@@ -408,7 +386,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 15px;
-  width: 320px;
+  width: 250px;
   margin-top: 30px;
     margin: 0 auto;
 }
@@ -442,25 +420,14 @@ body {
 
 
 /* Страница Магазин */
-body.shop-page {
-    min-height: 150vh; /* Минимальная высота равная высоте окна браузера */
-}
-.content-section {
-  display: none; /* Все секции скрыты по умолчанию */
-}
-
-#contentContainer > .content-section:first-child {
-  display: block; /* Показываем первую секцию по умолчанию */
-}
-
 .shop_menu {
-    width: 60%; /* Уменьшенная ширина меню */
+    width: 75%; /* Уменьшенная ширина меню */
     margin: 60px auto; /* Отступ сверху и центрирование по горизонтали */
     background-color: #2e2e3a; /* Фон меню */
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     padding: 10px 20px;
-      border: 2px solid #d1a34a; /* Обводка контейнера */
+    border: 2px solid #d1a34a; /* Обводка контейнера */
 }
 
 /* Список меню */
@@ -520,7 +487,7 @@ body.shop-page {
 
 .shop_box, .shop_box_2, .shop_box_3,
 .shop_box_4, .shop_box_5, .shop_box_6 {
-    width: 180px;
+    width: 150px;
     height: 180px;
     background-color: #2e2e3a;
     border: 2px solid #d1a34a;
@@ -1840,3 +1807,20 @@ html, body {
     margin: 0; /* Убираем внешние отступы */
     padding: 0; /* Убираем внутренние отступы */
 }
+
+
+.modal-earn-fortune-manage{
+    display:none;
+    position:absolute;
+    left:50%;
+    bottom:5%;
+    transform:translate(-50%,-50%);
+    width:86%;
+    height:250rem;
+    background-size:contain;
+    background-repeat:no-repeat;
+    background-position:center;
+    background-color:transparent;
+    border:none
+}
+

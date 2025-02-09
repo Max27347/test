@@ -235,3 +235,12 @@ window.updateClickButtonImage = (imgSrc) => {
     });
   };
 });
+
+
+clickButton.addEventListener('click', () => {
+    clickButton.classList.add('active'); // Добавляем класс 'active'
+
+    setTimeout(() => {
+        clickButton.classList.remove('active'); // Удаляем класс 'active' через 300ms
+    }, 300);
+});
