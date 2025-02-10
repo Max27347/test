@@ -172,9 +172,13 @@
     <!-- Магазин -->
     <div class="page" id="shop" style="display:none;height: 1000px;">
 
-        <p class="score"><span class="currentScore">0</span></p>
-        <div class="coin">
-            <img src="/static/images/coin.png" alt="Монеты" width="80">
+        <div style="display: flex; justify-content: center; align-items: center; height: 100px;">
+            <div class="coin" style="margin-left: 10px;">
+                <img src="/static/images/coin.png" alt="Монеты" width="80">
+            </div>
+            <p class="score" style="margin: 0; font-size: 20px;">
+                <span class="currentScore">0</span>
+            </p>
         </div>
 
 
@@ -265,18 +269,15 @@
 
         <!-- Магазин герои -->
         <div id="heroes" class="content-section" style="display:none;">
-            <p class="score"><span class="currentScore">0</span></p>
-            <div class="coin">
-                <img src="/static/images/coin.png" alt="Монеты" width="80">
-            </div>
+
 
             <div class="character-preview">
                 <div class="preview" id="preview">
                     <img src="/static/images/croco.png" alt="Preview">
-                    <p id="preview-name">Character 1</p>
-                    <p id="character-description">Description of Character 1</p>
-                </div>
 
+                    <p id="character-description" style="display: none;">Description of Character 1</p>
+                </div>
+                <button id="select-button">Выбрать</button>
                 <div class="menu_char">
                     <div class="character" data-id="1" data-name="Character 1" data-img="/static/images/croco.png"
                          data-description="Каждый приглашенный друг дает +1000 монет">
@@ -347,14 +348,10 @@
                     </div>
                 </div>
             </div>
-            <button id="select-button">Выбрать</button>
         </div>
+
         <!-- Магазин улучшения -->
         <div id="upgrades" class="content-section" style="display:none;">
-            <p class="score"><span class="currentScore">0</span></p>
-            <div class="coin">
-                <img src="/static/images/coin.png" alt="Монеты" width="80">
-            </div>
 
             <div class="container_up">
                 <div class="item_up1">

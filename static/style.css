@@ -209,7 +209,7 @@ body {
 
 .shadow {
     position: fixed;
-    bottom: 130px;        /* Отступ от нижнего края экрана */
+    bottom: 160px;        /* Отступ от нижнего края экрана */
     left: 50%;            /* Размещение по центру */
     transform: translateX(-50%); /* Смещение для точного центра */
     width: 10px;          /* Еще меньшая ширина */
@@ -422,7 +422,7 @@ body {
 /* Страница Магазин */
 .shop_menu {
     width: 75%; /* Уменьшенная ширина меню */
-    margin: 60px auto; /* Отступ сверху и центрирование по горизонтали */
+    margin: 0px auto; /* Отступ сверху и центрирование по горизонтали */
     background-color: #2e2e3a; /* Фон меню */
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -811,10 +811,6 @@ font-family: 'Pusia-bold', sans-serif; /* Шрифт */
 text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
 }
 
-
-/* Страница топ */
-
-
 /* Заголовок страницы */
 .leaderboard-title {
 position: center
@@ -940,30 +936,14 @@ position: center
   border-radius: 8px;
 }
 
-
-.menu-button {
-    background-color: #4CAF50; /* Цвет фона кнопок */
-    color: white; /* Цвет текста кнопок */
-    border: none; /* Убираем рамку */
-    padding: 10px 15px; /* Отступы внутри кнопок */
-    text-align: center; /* Центрируем текст внутри кнопок */
-    text-decoration: none; /* Убираем подчеркивание текста */
-    margin: 0 5px; /* Отступы между кнопками */
-    border-radius: 5px; /* Скругление углов кнопок */
-    cursor: pointer; /* Курсор при наведении */
-    transition: background-color 0.3s ease; /* Плавный переход цвета фона при наведении */
-}
-
-.menu-button:hover {
-    background-color: #45a049; /* Более темный зеленый при наведении на кнопку */
-}
-
 #select-button {
-  position: relative;
-  top: 80px;
-  right: 50px;
+  display: block;
+  position: relative; /* Изменено с absolute на relative */
+  top: 28px; /* Уменьшено значение top */
+  left: 50%;
+  transform: translateX(-50%);
   padding: 10px 20px;
-  background-color: #2e2e3a; /* Зеленый цвет */
+  background-color: #2e2e3a;
   color: white;
   border: none;
   border-radius: 5px;
@@ -973,70 +953,11 @@ position: center
   transition: background-color 0.3s ease;
 }
 
+
 #select-button:hover {
   background-color: #45a049; /* Более темный зеленый при наведении */
 }
 
-/* Фоны*/
-body.upgrade-page {
-    min-height: 150vh; /* Минимальная высота равная высоте окна браузера */
-}
-
-.menu_3 {
-    display: flex; /* Используем flexbox для горизонтального расположения */
-    justify-content: center; /* Центрирование по горизонтали */
-    position: absolute; /* Позволяет позиционировать меню */
-    bottom: 800px; /* Отступ от нижней части экрана */
-    width: 100%; /* Ширина меню на весь экран */
-}
-.menu-item_3 {
-    background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный фон для элементов меню */
-    border-radius: 5px; /* Скругление углов */
-    padding: 10px 20px; /* Отступы внутри элементов меню */
-    margin: 0 15px; /* Увеличенные отступы между элементами меню */
-    text-align: center; /* Центрирование текста */
-    cursor: pointer; /* Указатель мыши при наведении */
-    transition: background-color 0.3s; /* Плавный переход фона при наведении */
-}
-
-.menu-icon_3 {
-    display: block; /* Отображение изображения как блочного элемента */
-    margin: 0 auto 5px; /* Центрирование изображения и отступ снизу */
-    width: 40px; /* Ширина изображения */
-    height: auto; /* Автоматическая высота для сохранения пропорций */
-}
-
-.menu-item_3:hover {
-    background-color: rgba(255, 255, 0, 0.8); /* Изменение фона при наведении */
-}
-
-.menu_4 {
-    display: flex; /* Используем flexbox для горизонтального расположения */
-    justify-content: center; /* Центрирование по горизонтали */
-    position: absolute; /* Позволяет позиционировать меню */
-    bottom: 600px; /* Отступ от нижней части экрана */
-    width: 100%; /* Ширина меню на весь экран */
-}
-.menu-item_4 {
-    background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный фон для элементов меню */
-    border-radius: 5px; /* Скругление углов */
-    padding: 10px 20px; /* Отступы внутри элементов меню */
-    margin: 0 15px; /* Увеличенные отступы между элементами меню */
-    text-align: center; /* Центрирование текста */
-    cursor: pointer; /* Указатель мыши при наведении */
-    transition: background-color 0.3s; /* Плавный переход фона при наведении */
-}
-
-.menu-icon_4 {
-    display: block; /* Отображение изображения как блочного элемента */
-    margin: 0 auto 5px; /* Центрирование изображения и отступ снизу */
-    width: 40px; /* Ширина изображения */
-    height: auto; /* Автоматическая высота для сохранения пропорций */
-}
-
-.menu-item_4:hover {
-    background-color: rgba(255, 255, 0, 0.8); /* Изменение фона при наведении */
-}
 
 /* Контейнер для всех элементов */
 .background-container {
@@ -1080,68 +1001,6 @@ body.upgrade-page {
 }
 
 /* Кнопка выбора фона */
-.background-option {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  text-align: center;
-  cursor: pointer;
-  background-color: #ffffff;
-  transition: all 0.3s ease;
-  box-sizing: border-box;
-}
-
-.background-option img {
-  width: 100%; /* Изображение растягивается на всю кнопку */
-  height: auto;
-  border-radius: 5px;
-}
-
-.background-option:hover {
-  background-color: #e0e0e0;
-}
-
-.background-option.selected {
-  border-color: #4CAF50;
-  background-color: #e0ffe0;
-}
-
-/* Кнопки выбора и сброса */
-.background-buttons {
-  text-align: center;
-  margin-top: 20px;
-}
-
-#background-select-button,
-#background-reset-button {
-  margin: 0 10px;
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-#background-select-button {
-  background-color: #4CAF50;
-  color: white;
-}
-
-#background-select-button:hover {
-  background-color: #45a049;
-}
-
-#background-reset-button {
-  background-color: #f44336;
-  color: white;
-}
-
-#background-reset-button:hover {
-  background-color: #d32f2f;
-}
-
-
 .button-container {
     position: relative; /* Устанавливаем относительное позиционирование для контейнера кнопок */
     height: 100vh; /* Высота контейнера равна высоте вьюпорта */
@@ -1153,52 +1012,10 @@ body.upgrade-page {
     cursor: pointer; /* Курсор при наведении */
 }
 
-/* Миры */
-/* Расположение кнопок */
-.top {
-    position: absolute;
-    top: 10px; /* Отступ от верхней части */
-    left: 50%;
-    transform: translateX(-50%); /* Центрируем по горизонтали */
-}
-
-.left {
-    position: absolute;
-    top: 50%;
-    left: 10px; /* Отступ от левой стороны */
-    transform: translateY(-50%); /* Центрируем по вертикали */
-}
-
-.right {
-    position: absolute;
-    top: 50%;
-    right: 10px; /* Отступ от правой стороны */
-    transform: translateY(-50%); /* Центрируем по вертикали */
-}
-
-.bottom {
-    position: absolute;
-    bottom: 50px; /* Отступ от нижней части */
-    left: 50%;
-    transform: translateX(-50%); /* Центрируем по горизонтали */
-}
-
-.center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Центрируем по обеим осям */
-}
 /* Улучшения*/
-body.up_page {
-    min-height: 150vh; /* Минимальная высота равная высоте окна браузера */
-    font-family: Arial, sans-serif;
-    color: #fff;
-}
-
 .container_up {
-  width: 100%;
-  max-width: 400px;
+  max-width: 300px;
+  max-height: 400px;
   margin: 0 auto;
   padding: 0; /* Убираем внутренний отступ */
   border-radius: 10px; /* Округление только для общего контейнера */
@@ -1214,7 +1031,7 @@ body.up_page {
 .item_up4 {
   position: relative; /* Для использования псевдоэлементов */
   padding: 15px 25px; /* Пространство внутри */
-  background-color: #3e3e4a; /* Фон элемента */
+  background-color: #2e2e3a; /* Фон элемента */
   margin: 10px 0; /* Отступ между элементами */
   display: flex;
   align-items: center;
@@ -1247,9 +1064,9 @@ body.up_page {
 }
 
 .item-title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
-  margin: 0;
+  margin: 5;
   color: white;
 }
 

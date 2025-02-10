@@ -2,7 +2,6 @@ window.addEventListener('DOMContentLoaded', () => {
   const characters = document.querySelectorAll('.character');
   const preview = document.getElementById('preview');
   const previewImg = preview.querySelector('img');
-  const previewName = document.getElementById('preview-name');
   const characterDescription = document.getElementById('character-description');
   const selectButton = document.getElementById('select-button');
 
@@ -116,11 +115,9 @@ window.addEventListener('DOMContentLoaded', () => {
   characters.forEach(character => {
     character.addEventListener('click', () => {
       const imgSrc = character.getAttribute('data-img');
-      const name = character.getAttribute('data-name');
       const description = character.getAttribute('data-description');
 
       previewImg.src = imgSrc;
-      previewName.textContent = name;
       characterDescription.textContent = description;
 
       if (currentPreviewCharacter) {
@@ -144,13 +141,13 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     const imgSrc = currentPreviewCharacter.getAttribute('data-img');
-    const name = currentPreviewCharacter.getAttribute('data-name');
+    const name = currentPreviewCharacter.getAttribute('data-name'); // Эта переменная не используется
     const description = currentPreviewCharacter.getAttribute('data-description');
     const characterId = currentPreviewCharacter.getAttribute('data-id');
 
     localStorage.setItem('selectedCharacter', characterId);
     localStorage.setItem('selectedCharacterImg', imgSrc);
-    localStorage.setItem('selectedCharacterName', name);
+    localStorage.setItem('selectedCharacterName', name); // И эта тоже
     localStorage.setItem('selectedCharacterDescription', description);
 
     if (selectedCharacter) {
