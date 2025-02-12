@@ -15,10 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.energy = parseInt(localStorage.getItem('currentEnergy'), 10) || 100;
   window.maxEnergy = parseInt(localStorage.getItem('maxEnergy'), 10) || 100;
   const energyCost = 10;
-
-  // Инициализация глобальной переменной для скорости восстановления энергии
   window.energyRecoveryRate = parseInt(localStorage.getItem('energyRecoveryRate'), 10) || 5;
-
   window.coinsPerClick = 1;  // Глобальная переменная для монет за клик
 
   // Загрузка сохраненных данных
@@ -112,7 +109,16 @@ window.updateClickButtonImage = (imgSrc) => {
           window.energy = Math.max(window.energy - energyCost, 0);
           energyDisplay.textContent = `${Math.round(window.energy)}/${window.maxEnergy}`; // Обновляем отображение энергии
 
-          spawnCoinDrop(event);
+        const selectedCharacter = localStorage.getItem('selectedCharacter');
+
+        if (selectedCharacter === "1") {
+          createFlashEffect(event); // ⚡ Вспышка у первого персонажа
+        } else if (selectedCharacter === "2") {
+          spawnCoinDrop(event); // 💰 Монеты у второго персонажа
+         } else if (selectedCharacter === "3") {
+          createFireEffect(event); // 🔥 Огонь у третьего персонажа
+        }
+
 
           if (progress === maxProgress) {
             updateLeague();
@@ -217,30 +223,59 @@ window.updateClickButtonImage = (imgSrc) => {
     localStorage.setItem('backgroundImage', backgroundImage);
   };
 
-  // Функция создания монеты
-  const spawnCoinDrop = (event) => {
+// ⚡ Функция создания эффекта молнии в точке клика
+function createFlashEffect(event) {
+  const flash = document.createElement('div');
+  flash.classList.add('flash-effect');
+
+  // Получаем координаты клика относительно страницы
+  const x = event.clientX;
+  const y = event.clientY;
+
+  // Устанавливаем абсолютное позиционирование по всей странице
+  flash.style.left = `${x - 25}px`;
+  flash.style.top = `${y - 25}px`;
+
+  // Добавляем эффект в body, чтобы он появлялся поверх всего
+  document.body.appendChild(flash);
+
+  // Удаляем элемент после анимации
+  setTimeout(() => {
+    flash.remove();
+  }, 300);
+}
+
+   // Создание монеты
+  function spawnCoinDrop(event) {
     const coin = document.createElement('div');
     coin.classList.add('coin_drop');
 
-    const startX = event.clientX - 20;
-    const startY = event.clientY - 20;
-
-    coin.style.left = `${startX}px`;
-    coin.style.top = `${startY}px`;
+    coin.style.left = `${event.clientX - 20}px`;
+    coin.style.top = `${event.clientY - 20}px`;
 
     coinContainer.appendChild(coin);
+    coin.addEventListener('animationend', () => coin.remove());
+  }
 
-    coin.addEventListener('animationend', () => {
-      coin.remove();
-    });
-  };
+  clickButton.addEventListener('click', () => {
+    clickButton.classList.add('active');
+    setTimeout(() => clickButton.classList.remove('active'), 300);
+  });
 });
 
+function createFireEffect(event) {
+  const fire = document.createElement('div');
+  fire.classList.add('fire-effect');
 
-clickButton.addEventListener('click', () => {
-    clickButton.classList.add('active'); // Добавляем класс 'active'
+  const x = event.clientX;
+  const y = event.clientY;
 
-    setTimeout(() => {
-        clickButton.classList.remove('active'); // Удаляем класс 'active' через 300ms
-    }, 300);
-});
+  fire.style.left = `${x - 25}px`;
+  fire.style.top = `${y - 25}px`;
+
+  document.body.appendChild(fire);
+
+  setTimeout(() => {
+    fire.remove();
+  }, 1000); // Время действия огня - 1 секунда
+}

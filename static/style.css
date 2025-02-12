@@ -8,6 +8,26 @@ body {
     background-repeat: no-repeat; /* Запрет на повторение изображения */
 }
 
+#play {
+
+}
+
+#friends {
+
+}
+
+#shop {
+
+}
+
+#quests {
+height: 155vh;
+}
+
+#top {
+
+}
+
 /* Скрываем все страницы по умолчанию */
 .page {
   display: none;
@@ -658,6 +678,7 @@ h2 {
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    border: 2px solid #d1a34a;
     transition: transform 0.2s ease-in-out;
     cursor: pointer;
 }
@@ -1507,18 +1528,54 @@ html, body {
 }
 
 
-.modal-earn-fortune-manage{
-    display:none;
-    position:absolute;
-    left:50%;
-    bottom:5%;
-    transform:translate(-50%,-50%);
-    width:86%;
-    height:250rem;
-    background-size:contain;
-    background-repeat:no-repeat;
-    background-position:center;
-    background-color:transparent;
-    border:none
+.flash-effect {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(rgba(255, 255, 255, 0.8), transparent);
+  box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: flashAnimation 0.3s ease-out forwards;
+  z-index: 1000; /* Чтобы было поверх всего */
 }
 
+@keyframes flashAnimation {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.fire-effect {
+  position: absolute;
+  width: 50px; /* Ширина эффекта */
+  height: 50px; /* Высота эффекта */
+  background: url('/static/images/fire_effect.png') no-repeat center center;
+  background-size: contain; /* Сжимаем картинку, чтобы она не выходила за пределы */
+  pointer-events: none;
+  animation: fireAnimation 1s ease-out forwards;
+  z-index: 1000;
+}
+
+@keyframes fireAnimation {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
