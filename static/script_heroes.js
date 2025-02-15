@@ -27,7 +27,10 @@ window.addEventListener('DOMContentLoaded', () => {
     { id: "9", img: "/static/images/angel.png", name: "Character 9" },
     { id: "10", img: "/static/images/ananas.png", name: "Character 10" },
     { id: "11", img: "/static/images/frog.png", name: "Character 11" },
-    { id: "12", img: "/static/images/leon.png", name: "Character 12" }
+    { id: "12", img: "/static/images/leon.png", name: "Character 12" },
+    { id: "13", img: "/static/images/syth.png", name: "Character 13" },
+    { id: "14", img: "/static/images/cat.png", name: "Character 14" },
+    { id: "15", img: "/static/images/minion.png", name: "Character 15" },
   ];
 
   // Функция для блокировки персонажей

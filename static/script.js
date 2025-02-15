@@ -115,10 +115,13 @@ window.updateClickButtonImage = (imgSrc) => {
           createFlashEffect(event); // ⚡ Вспышка у первого персонажа
         } else if (selectedCharacter === "2") {
           spawnCoinDrop(event); // 💰 Монеты у второго персонажа
-         } else if (selectedCharacter === "3") {
+         } else if (selectedCharacter === "5") {
           createFireEffect(event); // 🔥 Огонь у третьего персонажа
+        } else if (selectedCharacter === "3") {
+          createLeafEffect(event); //  Листья
+        } else if (selectedCharacter === "4") {
+          createRedEffect(event); //  Red
         }
-
 
           if (progress === maxProgress) {
             updateLeague();
@@ -279,3 +282,96 @@ function createFireEffect(event) {
     fire.remove();
   }, 1000); // Время действия огня - 1 секунда
 }
+
+function createFireEffect(event) {
+  const fire = document.createElement('div');
+  fire.classList.add('fire-effect');
+
+  const x = event.clientX;
+  const y = event.clientY;
+
+  fire.style.left = `${x - 25}px`;
+  fire.style.top = `${y - 25}px`;
+
+  document.body.appendChild(fire);
+
+  setTimeout(() => {
+    fire.remove();
+  }, 1000); // Время действия огня - 1 секунда
+}
+
+function createLeafEffect(event) {
+  const leaf = document.createElement('div');
+  leaf.classList.add('leaf-effect');
+
+  const x = event.clientX;
+  const y = event.clientY;
+
+  leaf.style.left = `${x - 25}px`;
+  leaf.style.top = `${y - 25}px`;
+
+  document.body.appendChild(leaf);
+
+  setTimeout(() => {
+    leaf.remove();
+  }, 1000); // Время действия огня - 1 секунда
+}
+
+function createRedEffect(event) {
+  const red = document.createElement('div');
+  red.classList.add('red-effect');
+
+  const x = event.clientX;
+  const y = event.clientY;
+
+  red.style.left = `${x - 25}px`;
+  red.style.top = `${y - 25}px`;
+
+  document.body.appendChild(red);
+
+  setTimeout(() => {
+    red.remove();
+  }, 1000); // Время действия огня - 1 секунда
+}
+
+function createSpark() {
+    // Получаем текущий фон страницы
+    const currentBackground = document.body.style.backgroundImage;
+
+    // Проверяем, установлен ли нужный фон
+    if (currentBackground !== 'url("/static/images/ad.png")') {
+        return; // Прерываем выполнение функции, если фон не совпадает
+    }
+
+    let spark = document.createElement("div");
+    spark.classList.add("spark");
+    document.body.appendChild(spark);
+
+    // Размер случайный (12px - 20px)
+    let size = Math.random() * 2 + 6;
+    spark.style.width = size + "px";
+    spark.style.height = size + "px";
+
+    // Огненные цвета
+    let colors = ["#FFD700"];
+    let glowColor = colors[Math.floor(Math.random() * colors.length)];
+    spark.style.background = `radial-gradient(circle, ${glowColor} 10%, rgba(255, 0, 0, 1) 80%)`;
+    spark.style.boxShadow = `0px 0px 50px ${glowColor}, 0px 0px 100px ${glowColor}`;
+
+    // Стартовая позиция
+    spark.style.left = Math.random() * window.innerWidth + "px";
+    spark.style.top = window.innerHeight + "px";
+
+    // Разная длительность анимации (1.5 - 3 сек, чтобы было быстро)
+    let duration = Math.random() * 1.5 + 1.5;
+    spark.style.animationDuration = duration + "s";
+
+    // Удаление после анимации
+    setTimeout(() => spark.remove(), duration * 1000);
+}
+
+// Уменьшаем частоту искр — создаём их каждые 500 мс
+setInterval(createSpark, 500);
+
+
+

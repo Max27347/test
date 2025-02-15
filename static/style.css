@@ -6,6 +6,10 @@ body {
     background-size: cover; /* Растянуть изображение на весь контейнер */
     background-position: center; /* Центровка изображения */
     background-repeat: no-repeat; /* Запрет на повторение изображения */
+    overflow: hidden; /* Убираем прокрутку */
+}
+html, body {
+    overflow: hidden; /* Убираем прокрутку */
 }
 
 #play {
@@ -1527,7 +1531,7 @@ html, body {
     padding: 0; /* Убираем внутренние отступы */
 }
 
-
+/* Эффекты клика */
 .flash-effect {
   position: absolute;
   width: 50px;
@@ -1579,3 +1583,80 @@ html, body {
     opacity: 0;
   }
 }
+
+.leaf-effect {
+  position: absolute;
+  width: 50px; /* Ширина эффекта */
+  height: 50px; /* Высота эффекта */
+  background: url('/static/images/leaf.png') no-repeat center center;
+  background-size: contain; /* Сжимаем картинку, чтобы она не выходила за пределы */
+  pointer-events: none;
+  animation: fireAnimation 1s ease-out forwards;
+  z-index: 1000;
+}
+
+@keyframes leafAnimation {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.red-effect {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+ background: radial-gradient(circle, rgba(255, 0, 0, 0.8), rgba(255, 99, 71, 0.4)); /* Яркий красный цвет */
+  box-shadow:
+    0 0 20px 5px rgba(255, 0, 0, 0.7), /* Яркий красный цвет для тени */
+    0 0 30px 10px rgba(255, 99, 71, 0.6); /* Более светлый красный цвет для второй тени */
+  border-radius: 50%;
+  pointer-events: none;
+  animation: redAnimation 1s ease-out forwards;
+  z-index: 1000;
+}
+
+@keyframes redAnimation {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Эффекты фона */
+.spark {
+    position: absolute;
+    width: 12px; /* Больше начальный размер */
+    height: 12px;
+    background: radial-gradient(circle, rgba(255, 100, 0, 1) 10%, rgba(255, 0, 0, 1) 80%);
+    border-radius: 50%;
+    opacity: 1;
+    filter: blur(0px);
+    box-shadow: 0px 0px 50px rgba(255, 50, 0, 1), 0px 0px 100px rgba(255, 0, 0, 1);
+    animation: riseUp 3s linear forwards;
+}
+
+@keyframes riseUp {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-150px) scale(1.5); opacity: 0.8; }
+}
+
+
+
+
