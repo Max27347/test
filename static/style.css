@@ -6,14 +6,12 @@ body {
     background-size: cover; /* Растянуть изображение на весь контейнер */
     background-position: center; /* Центровка изображения */
     background-repeat: no-repeat; /* Запрет на повторение изображения */
+}
+html {
     overflow: hidden; /* Убираем прокрутку */
 }
-html, body {
-    overflow: hidden; /* Убираем прокрутку */
-}
-
 #play {
-
+    overflow: hidden; /* Убираем прокрутку */
 }
 
 #friends {
@@ -1531,45 +1529,18 @@ html, body {
     padding: 0; /* Убираем внутренние отступы */
 }
 
-/* Эффекты клика */
-.flash-effect {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  background: radial-gradient(rgba(255, 255, 255, 0.8), transparent);
-  box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.9);
-  border-radius: 50%;
-  pointer-events: none;
-  animation: flashAnimation 0.3s ease-out forwards;
-  z-index: 1000; /* Чтобы было поверх всего */
-}
-
-@keyframes flashAnimation {
-  0% {
-    transform: scale(0);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.5);
-  }
-  100% {
-    transform: scale(2);
-    opacity: 0;
-  }
-}
-
-.fire-effect {
+.ghost-effect {
   position: absolute;
   width: 50px; /* Ширина эффекта */
   height: 50px; /* Высота эффекта */
-  background: url('/static/images/fire_effect.png') no-repeat center center;
+  background: url('/static/images/ghost_effect.png') no-repeat center center;
   background-size: contain; /* Сжимаем картинку, чтобы она не выходила за пределы */
   pointer-events: none;
-  animation: fireAnimation 1s ease-out forwards;
+  animation: ghostAnimation 1s ease-out forwards;
   z-index: 1000;
 }
 
-@keyframes fireAnimation {
+@keyframes ghostAnimation {
   0% {
     transform: scale(0);
     opacity: 1;
@@ -1609,7 +1580,233 @@ html, body {
     opacity: 0;
   }
 }
+.stone-effect {
+  position: absolute;
+  width: 50px; /* Ширина эффекта */
+  height: 50px; /* Высота эффекта */
+  background: url('/static/images/stone_effect.png') no-repeat center center;
+  background-size: contain; /* Сжимаем картинку, чтобы она не выходила за пределы */
+  pointer-events: none;
+  animation: stoneAnimation 1s ease-out forwards;
+  z-index: 1000;
+}
 
+@keyframes stoneAnimation {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+.fire-effect {
+  position: absolute;
+  width: 50px; /* Ширина эффекта */
+  height: 50px; /* Высота эффекта */
+  background: url('/static/images/fire_effect.png') no-repeat center center;
+  background-size: contain; /* Сжимаем картинку, чтобы она не выходила за пределы */
+  pointer-events: none;
+  animation: fireAnimation 1s ease-out forwards;
+  z-index: 1000;
+}
+
+@keyframes fireAnimation {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+.water-effect {
+  position: absolute;
+  width: 50px; /* Ширина эффекта */
+  height: 50px; /* Высота эффекта */
+  background: url('/static/images/water_effect.png') no-repeat center center;
+  background-size: contain; /* Сжимаем картинку, чтобы она не выходила за пределы */
+  pointer-events: none;
+  animation: waterAnimation 1s ease-out forwards;
+  z-index: 1000;
+}
+
+@keyframes waterAnimation {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+.god-effect {
+  position: absolute;
+  width: 50px; /* Ширина эффекта */
+  height: 50px; /* Высота эффекта */
+  background: url('/static/images/god_effect.png') no-repeat center center;
+  background-size: contain; /* Сжимаем картинку, чтобы она не выходила за пределы */
+  pointer-events: none;
+  animation: godAnimation 1s ease-out forwards;
+  z-index: 1000;
+}
+
+@keyframes godAnimation {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+.magic-effect {
+  position: absolute;
+  width: 50px; /* Ширина эффекта */
+  height: 50px; /* Высота эффекта */
+  background: url('/static/images/magic_effect.png') no-repeat center center;
+  background-size: contain; /* Сжимаем картинку, чтобы она не выходила за пределы */
+  pointer-events: none;
+  animation: magicAnimation 1s ease-out forwards;
+  z-index: 1000;
+}
+
+@keyframes magicAnimation {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+
+}.heart-effect {
+  position: absolute;
+  width: 50px; /* Ширина эффекта */
+  height: 50px; /* Высота эффекта */
+  background: url('/static/images/heart_effect.png') no-repeat center center;
+  background-size: contain; /* Сжимаем картинку, чтобы она не выходила за пределы */
+  pointer-events: none;
+  animation: heartAnimation 1s ease-out forwards;
+  z-index: 1000;
+}
+
+@keyframes heartAnimation {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+.ananas-effect {
+  position: absolute;
+  width: 50px; /* Ширина эффекта */
+  height: 50px; /* Высота эффекта */
+  background: url('/static/images/ananas_effect.png') no-repeat center center;
+  background-size: contain; /* Сжимаем картинку, чтобы она не выходила за пределы */
+  pointer-events: none;
+  animation: ananasAnimation 1s ease-out forwards;
+  z-index: 1000;
+}
+
+@keyframes ananasAnimation {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.frog-effect {
+  position: absolute;
+  width: 50px; /* Ширина эффекта */
+  height: 50px; /* Высота эффекта */
+  background: url('/static/images/frog_effect.png') no-repeat center center;
+  background-size: contain; /* Сжимаем картинку, чтобы она не выходила за пределы */
+  pointer-events: none;
+  animation: frogAnimation 1s ease-out forwards;
+  z-index: 1000;
+}
+
+@keyframes frogAnimation {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.dark-effect {
+  position: absolute;
+  width: 50px; /* Ширина эффекта */
+  height: 50px; /* Высота эффекта */
+  background: url('/static/images/dark_effect.png') no-repeat center center;
+  background-size: contain; /* Сжимаем картинку, чтобы она не выходила за пределы */
+  pointer-events: none;
+  animation: darkAnimation 1s ease-out forwards;
+  z-index: 1000;
+}
+
+@keyframes darkAnimation {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
 .red-effect {
   position: absolute;
   width: 50px;
@@ -1638,7 +1835,56 @@ html, body {
     opacity: 0;
   }
 }
+.fish-effect {
+  position: absolute;
+  width: 50px; /* Ширина эффекта */
+  height: 50px; /* Высота эффекта */
+  background: url('/static/images/fish_effect.png') no-repeat center center;
+  background-size: contain; /* Сжимаем картинку, чтобы она не выходила за пределы */
+  pointer-events: none;
+  animation: fishAnimation 1s ease-out forwards;
+  z-index: 1000;
+}
 
+@keyframes fishAnimation {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+.minion-effect {
+  position: absolute;
+  width: 50px; /* Ширина эффекта */
+  height: 50px; /* Высота эффекта */
+  background: url('/static/images/star_effect.png') no-repeat center center;
+  background-size: contain; /* Сжимаем картинку, чтобы она не выходила за пределы */
+  pointer-events: none;
+  animation: minionAnimation 1s ease-out forwards;
+  z-index: 1000;
+}
+
+@keyframes minionAnimation {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
 /* Эффекты фона */
 .spark {
     position: absolute;

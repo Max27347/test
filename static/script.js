@@ -112,15 +112,35 @@ window.updateClickButtonImage = (imgSrc) => {
         const selectedCharacter = localStorage.getItem('selectedCharacter');
 
         if (selectedCharacter === "1") {
-          createFlashEffect(event); // ⚡ Вспышка у первого персонажа
+          spawnCoinDrop(event); // ⚡ Монеты у первого персонажа
         } else if (selectedCharacter === "2") {
-          spawnCoinDrop(event); // 💰 Монеты у второго персонажа
-         } else if (selectedCharacter === "5") {
-          createFireEffect(event); // 🔥 Огонь у третьего персонажа
+          createGhostEffect(event); // Призраки у второго персонажа
         } else if (selectedCharacter === "3") {
           createLeafEffect(event); //  Листья
         } else if (selectedCharacter === "4") {
-          createRedEffect(event); //  Red
+          createStoneEffect(event); //  Red
+        } else if (selectedCharacter === "5") {
+          createFireEffect(event); // Огонь у третьего персонажа
+        } else if (selectedCharacter === "6") {
+          createWaterEffect(event); //
+        } else if (selectedCharacter === "7") {
+          createGodEffect(event); //
+        } else if (selectedCharacter === "8") {
+          createMagicEffect(event); //
+        } else if (selectedCharacter === "9") {
+          createHeartEffect(event); // 🔥 Огонь у третьего персонажа
+        } else if (selectedCharacter === "10") {
+          createAnanasEffect(event); // 🔥 Огонь у третьего персонажа
+        } else if (selectedCharacter === "11") {
+          createFrogEffect(event); // 🔥 Огонь у третьего персонажа
+        } else if (selectedCharacter === "12") {
+          createRedEffect(event); // 🔥 Огонь у третьего персонажа
+        } else if (selectedCharacter === "13") {
+          createDarkEffect(event); // 🔥 Огонь у третьего персонажа
+        } else if (selectedCharacter === "14") {
+          createFishEffect(event); // 🔥 Огонь у третьего персонажа
+        } else if (selectedCharacter === "15") {
+          createMinionEffect(event); // 🔥 Огонь у третьего персонажа
         }
 
           if (progress === maxProgress) {
@@ -226,28 +246,6 @@ window.updateClickButtonImage = (imgSrc) => {
     localStorage.setItem('backgroundImage', backgroundImage);
   };
 
-// ⚡ Функция создания эффекта молнии в точке клика
-function createFlashEffect(event) {
-  const flash = document.createElement('div');
-  flash.classList.add('flash-effect');
-
-  // Получаем координаты клика относительно страницы
-  const x = event.clientX;
-  const y = event.clientY;
-
-  // Устанавливаем абсолютное позиционирование по всей странице
-  flash.style.left = `${x - 25}px`;
-  flash.style.top = `${y - 25}px`;
-
-  // Добавляем эффект в body, чтобы он появлялся поверх всего
-  document.body.appendChild(flash);
-
-  // Удаляем элемент после анимации
-  setTimeout(() => {
-    flash.remove();
-  }, 300);
-}
-
    // Создание монеты
   function spawnCoinDrop(event) {
     const coin = document.createElement('div');
@@ -266,37 +264,20 @@ function createFlashEffect(event) {
   });
 });
 
-function createFireEffect(event) {
-  const fire = document.createElement('div');
-  fire.classList.add('fire-effect');
+function createGhostEffect(event) {
+  const ghost = document.createElement('div');
+  ghost.classList.add('ghost-effect');
 
   const x = event.clientX;
   const y = event.clientY;
 
-  fire.style.left = `${x - 25}px`;
-  fire.style.top = `${y - 25}px`;
+  ghost.style.left = `${x - 25}px`;
+  ghost.style.top = `${y - 25}px`;
 
-  document.body.appendChild(fire);
-
-  setTimeout(() => {
-    fire.remove();
-  }, 1000); // Время действия огня - 1 секунда
-}
-
-function createFireEffect(event) {
-  const fire = document.createElement('div');
-  fire.classList.add('fire-effect');
-
-  const x = event.clientX;
-  const y = event.clientY;
-
-  fire.style.left = `${x - 25}px`;
-  fire.style.top = `${y - 25}px`;
-
-  document.body.appendChild(fire);
+  document.body.appendChild(ghost);
 
   setTimeout(() => {
-    fire.remove();
+    ghost.remove();
   }, 1000); // Время действия огня - 1 секунда
 }
 
@@ -317,6 +298,142 @@ function createLeafEffect(event) {
   }, 1000); // Время действия огня - 1 секунда
 }
 
+function createStoneEffect(event) {
+  const stone = document.createElement('div');
+  stone.classList.add('stone-effect');
+
+  const x = event.clientX;
+  const y = event.clientY;
+
+  stone.style.left = `${x - 25}px`;
+  stone.style.top = `${y - 25}px`;
+
+  document.body.appendChild(stone);
+
+  setTimeout(() => {
+    stone.remove();
+  }, 1000); // Время действия огня - 1 секунда
+}
+
+function createFireEffect(event) {
+  const fire = document.createElement('div');
+  fire.classList.add('fire-effect');
+
+  const x = event.clientX;
+  const y = event.clientY;
+
+  fire.style.left = `${x - 25}px`;
+  fire.style.top = `${y - 25}px`;
+
+  document.body.appendChild(fire);
+
+  setTimeout(() => {
+    fire.remove();
+  }, 1000); // Время действия огня - 1 секунда
+}
+
+function createWaterEffect(event) {
+  const water = document.createElement('div');
+  water.classList.add('water-effect');
+
+  const x = event.clientX;
+  const y = event.clientY;
+
+  water.style.left = `${x - 25}px`;
+  water.style.top = `${y - 25}px`;
+
+  document.body.appendChild(water);
+
+  setTimeout(() => {
+    water.remove();
+  }, 1000); // Время действия огня - 1 секунда
+}
+
+function createGodEffect(event) {
+  const god = document.createElement('div');
+  god.classList.add('god-effect');
+
+  const x = event.clientX;
+  const y = event.clientY;
+
+  god.style.left = `${x - 25}px`;
+  god.style.top = `${y - 25}px`;
+
+  document.body.appendChild(god);
+
+  setTimeout(() => {
+    god.remove();
+  }, 1000); // Время действия огня - 1 секунда
+}
+
+function createMagicEffect(event) {
+  const magic = document.createElement('div');
+  magic.classList.add('magic-effect');
+
+  const x = event.clientX;
+  const y = event.clientY;
+
+  magic.style.left = `${x - 25}px`;
+  magic.style.top = `${y - 25}px`;
+
+  document.body.appendChild(magic);
+
+  setTimeout(() => {
+    magic.remove();
+  }, 1000); // Время действия огня - 1 секунда
+}
+
+function createHeartEffect(event) {
+  const heart = document.createElement('div');
+  heart.classList.add('heart-effect');
+
+  const x = event.clientX;
+  const y = event.clientY;
+
+  heart.style.left = `${x - 25}px`;
+  heart.style.top = `${y - 25}px`;
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 1000); // Время действия огня - 1 секунда
+}
+
+function createAnanasEffect(event) {
+  const ananas = document.createElement('div');
+  ananas.classList.add('ananas-effect');
+
+  const x = event.clientX;
+  const y = event.clientY;
+
+  ananas.style.left = `${x - 25}px`;
+  ananas.style.top = `${y - 25}px`;
+
+  document.body.appendChild(ananas);
+
+  setTimeout(() => {
+    ananas.remove();
+  }, 1000); // Время действия огня - 1 секунда
+}
+
+function createFrogEffect(event) {
+  const frog = document.createElement('div');
+  frog.classList.add('frog-effect');
+
+  const x = event.clientX;
+  const y = event.clientY;
+
+  frog.style.left = `${x - 25}px`;
+  frog.style.top = `${y - 25}px`;
+
+  document.body.appendChild(frog);
+
+  setTimeout(() => {
+    frog.remove();
+  }, 1000); // Время действия огня - 1 секунда
+}
+
 function createRedEffect(event) {
   const red = document.createElement('div');
   red.classList.add('red-effect');
@@ -331,6 +448,57 @@ function createRedEffect(event) {
 
   setTimeout(() => {
     red.remove();
+  }, 1000); // Время действия огня - 1 секунда
+}
+
+function createDarkEffect(event) {
+  const dark = document.createElement('div');
+  dark.classList.add('dark-effect');
+
+  const x = event.clientX;
+  const y = event.clientY;
+
+  dark.style.left = `${x - 25}px`;
+  dark.style.top = `${y - 25}px`;
+
+  document.body.appendChild(dark);
+
+  setTimeout(() => {
+    dark.remove();
+  }, 1000); // Время действия огня - 1 секунда
+}
+
+function createFishEffect(event) {
+  const fish = document.createElement('div');
+  fish.classList.add('fish-effect');
+
+  const x = event.clientX;
+  const y = event.clientY;
+
+  fish.style.left = `${x - 25}px`;
+  fish.style.top = `${y - 25}px`;
+
+  document.body.appendChild(fish);
+
+  setTimeout(() => {
+    fish.remove();
+  }, 1000); // Время действия огня - 1 секунда
+}
+
+function createMinionEffect(event) {
+  const minion = document.createElement('div');
+  minion.classList.add('minion-effect');
+
+  const x = event.clientX;
+  const y = event.clientY;
+
+  minion.style.left = `${x - 25}px`;
+  minion.style.top = `${y - 25}px`;
+
+  document.body.appendChild(minion);
+
+  setTimeout(() => {
+    minion.remove();
   }, 1000); // Время действия огня - 1 секунда
 }
 

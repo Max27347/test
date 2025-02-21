@@ -37,17 +37,7 @@ window.addEventListener('DOMContentLoaded', () => {
   function lockSpecificCharacters() {
     // Массив персонажей, которых нужно заблокировать
     const charactersToLock = [
-      { id: "2", img: "/static/images/cot.png", name: "Character 2" },
-      { id: "3", img: "/static/images/groot.png", name: "Character 3" },
-      { id: "4", img: "/static/images/golem.png", name: "Character 4" },
-      { id: "5", img: "/static/images/fire.png", name: "Character 5" },
-      { id: "6", img: "/static/images/water.png", name: "Character 6" },
-      { id: "7", img: "/static/images/tor.png", name: "Character 7" },
-      { id: "8", img: "/static/images/witch.png", name: "Character 8" },
-      { id: "9", img: "/static/images/angel.png", name: "Character 9" },
-      { id: "10", img: "/static/images/ananas.png", name: "Character 10" },
-      { id: "11", img: "/static/images/frog.png", name: "Character 11" },
-      { id: "12", img: "/static/images/leon.png", name: "Character 12" }
+
     ];
 
     // Проходим по каждому из персонажей в массиве и блокируем их
