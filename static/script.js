@@ -542,4 +542,136 @@ function createSpark() {
 setInterval(createSpark, 500);
 
 
+// Функция для создания бабочки
+function createButterfly() {
+    const body = document.body;
+    const currentBackground = getComputedStyle(body).backgroundImage; // Получаем текущий фон
+
+    // Проверяем, установлен ли нужный фон
+    if (!currentBackground.includes('/static/images/hogwarts.png')) {
+        return; // Прерываем выполнение функции, если фон не совпадает
+    }
+
+    const butterfly = document.createElement("div");
+    butterfly.classList.add("butterfly");
+
+    // Случайная позиция по оси X (по горизонтали)
+    butterfly.style.left = Math.random() * window.innerWidth + "px";
+
+    // Случайная длительность анимации
+    let animationDuration = Math.random() * 3 + 7; // от 7 до 10 секунд
+    butterfly.style.animationDuration = animationDuration + "s";
+
+    // Добавляем бабочку в контейнер
+    document.getElementById("butterfly-container").appendChild(butterfly);
+
+    // Удаляем бабочку по завершении анимации
+    setTimeout(() => butterfly.remove(), animationDuration * 1000);
+}
+
+// Генерируем бабочек каждую секунду, если фон соответствует нужному
+setInterval(createButterfly, 1000);
+
+// Функция для создания снега
+const canvas = document.getElementById("snowCanvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const snowflakes = [];
+const numFlakes = 100;
+let animationFrameId = null; // Для управления анимацией
+
+class Snowflake {
+    constructor() {
+        this.reset();
+    }
+
+    reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.radius = Math.random() * 3 + 1;
+        this.speed = Math.random() * 1 + 0.2;
+        this.wind = Math.random() * 0.5 - 0.25;
+    }
+
+    update() {
+        this.y += this.speed;
+        this.x += this.wind;
+
+        if (this.y > canvas.height) {
+            this.y = -this.radius;
+            this.x = Math.random() * canvas.width;
+        }
+    }
+
+    draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = "white";
+        ctx.fill();
+        ctx.closePath();
+    }
+}
+
+// Создаем снежинки
+for (let i = 0; i < numFlakes; i++) {
+    snowflakes.push(new Snowflake());
+}
+
+// Функция анимации
+function animateSnow() {
+    if (!isSnowEnabled()) {
+        cancelAnimationFrame(animationFrameId);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        return;
+    }
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    snowflakes.forEach(flake => {
+        flake.update();
+        flake.draw();
+    });
+
+    animationFrameId = requestAnimationFrame(animateSnow);
+}
+
+// Проверка, должен ли идти снег
+function isSnowEnabled() {
+    return getComputedStyle(document.body).backgroundImage.includes('/static/images/ice.png');
+}
+
+// Следим за изменением фона
+const observer = new MutationObserver(() => {
+    if (isSnowEnabled()) {
+        if (!animationFrameId) {
+            animateSnow();
+        }
+    } else {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+});
+
+// Наблюдаем за изменением стилей body
+observer.observe(document.body, { attributes: true, attributeFilter: ['style'] });
+
+// Запуск при загрузке страницы
+if (isSnowEnabled()) {
+    animateSnow();
+}
+
+// Подстраиваем размер canvas при изменении окна
+window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    snowflakes.forEach(flake => flake.reset());
+});
+
+
+
+
 
