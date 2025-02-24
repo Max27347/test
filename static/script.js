@@ -241,7 +241,10 @@ window.updateClickButtonImage = (imgSrc) => {
   body.style.backgroundImage = `url("${backgroundImage}")`; // Используем правильный синтаксис
   body.style.backgroundSize = 'cover'; // Растягиваем фон на весь экран
   body.style.backgroundAttachment = 'fixed'; // Фиксируем фон при прокрутке (опционально)
-
+  // Устанавливаем фон для .progress-label
+    progressLabel.style.backgroundImage = `url("${backgroundImage}")`; // Применяем выбранный фон
+    progressLabel.style.backgroundSize = 'cover'; // Растягиваем фон
+    progressLabel.style.backgroundPosition = 'center'; // Центрируем фон
   // Смещаем фон только если выбран фон Hogwarts или Ice
   if (backgroundImage === '/static/images/hogwarts.png' || backgroundImage === '/static/images/ice.png') {
     body.style.backgroundPosition = 'center calc(50% - 12vh)'; // Смещаем вниз на 12vh
@@ -249,9 +252,7 @@ window.updateClickButtonImage = (imgSrc) => {
     body.style.backgroundPosition = 'center'; // Центрируем фон для других изображений
   }
 // Обновляем фон на .progress-label с тем же изображением
-  progressLabel.style.backgroundImage = `url("${labelBackground}")`;
-  progressLabel.style.backgroundSize = 'cover'; // Фон должен растягиваться по размеру
-  progressLabel.style.backgroundPosition = 'center'; // Центрируем изображение
+
   // Сохраняем фон в localStorage
   localStorage.setItem('backgroundImage', backgroundImage);
 }

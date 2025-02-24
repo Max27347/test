@@ -61,7 +61,7 @@ height: 155vh;
 .energy-status span {
   margin-bottom: 5px; /* Отступ между строками */
 }
-.progress-label {
+ .progress-label {
     position: fixed; /* Меняем на fixed для независимости от родителя */
     top: 25px;
     left: 50%;
@@ -77,8 +77,8 @@ height: 155vh;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Легкая тень для выделения */
     background-size: cover; /* Обеспечиваем правильное отображение фона */
     background-position: center; /* Центрируем фон */
+    opacity: 100%;
 }
-
 
 #energyDisplay {
    position: fixed;
