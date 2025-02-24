@@ -47,12 +47,16 @@
     <!-- Играть -->
     <div class="page" id="play" style="display:block;">
         <!-- Элементы для первой секции -->
-        <div class="score-container">
-            <div class="coin">
-                <img src="/static/images/coin.png" alt="Монеты">
-            </div>
-            <p class="score"><span class="currentScore">0</span></p>
-        </div>
+<div class="score-container">
+    <div class="coin">
+        <img src="/static/images/coin.png" alt="Монеты">
+    </div>
+    <div class="score">
+        <span class="score-background">
+            <span class="currentScore">0</span>
+        </span>
+    </div>
+</div>
 
         <div id="coinContainer"></div> <!-- Контейнер для монет с анимацией -->
 
@@ -86,8 +90,13 @@
         </div>
     </div>
 
-<div id="butterfly-container"></div>
  <canvas id="snowCanvas"></canvas>
+     <div class="bubble bubble-1"></div>
+  <div class="bubble bubble-2"></div>
+  <div class="bubble bubble-3"></div>
+  <div class="bubble bubble-4"></div>
+  <div class="bubble bubble-5"></div>
+
     <!-- Друзья -->
     <div class="page" id="friends" style="display:none;height: 1000px;">
         <div class="invitation-container">

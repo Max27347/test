@@ -69,13 +69,16 @@ height: 155vh;
     font-weight: bold;
     padding: 5px 10px; /* Отступы для удобства */
     border-radius: 5px; /* Сглаживание углов */
-    background-color: orange; /* Голубой фон */
+    background-color: rgba(255, 165, 0, 0.7); /* Полупрозрачный фон, чтобы фон мира был виден */
     color: white; /* Белый текст */
     font-family: 'Pusia-bold', sans-serif; /* Шрифт */
     font-size: 20px; /* Размер шрифта */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Легкая тень для выделения */
+    background-size: cover; /* Обеспечиваем правильное отображение фона */
+    background-position: center; /* Центрируем фон */
 }
+
 
 #energyDisplay {
    position: fixed;
@@ -151,7 +154,7 @@ height: 155vh;
 
 #clickButton {
     position: absolute;
-    bottom: 160px;
+    bottom: 140px;
     left: 50%;
     transform: translateX(-50%);
     transition: transform 0.5s ease;
@@ -175,12 +178,12 @@ height: 155vh;
 
 .coin_drop {
   position: absolute;
-  width: 60px; /* Размер монеты */
-  height: 60px; /* Размер монеты */
+  width: 40px; /* Размер монеты */
+  height: 40px; /* Размер монеты */
   background-image: url('/static/images/coin.png'); /* Путь к картинке монеты */
   background-size: contain;
   background-repeat: no-repeat;
-  animation: flyUp 1s ease-out forwards; /* Анимация движения монеты */
+  animation: flyUp 2s ease-out forwards; /* Анимация движения монеты */
 }
 
 @keyframes flyUp {
@@ -204,10 +207,10 @@ height: 155vh;
 .score-container {
     position: absolute;
     top: 25%; /* Центрируем по вертикали */
-    left: 45%; /* Центрируем по горизонтали */
-    transform: translate(-50%, -50%); /* Сдвигаем элемент на половину его ширины и высоты */
+    left: 50%; /* Центрируем по горизонтали */
+    transform: translateX(-50%) translateY(-50%); /* Центрируем по обеим осям */
     display: flex; /* Используем flexbox для удобного выравнивания */
-    align-items: center; /* Выравнивание по вертикали по центру */
+    align-items: center; /* Выравнивание по вертикали */
 }
 
 .score {
@@ -215,23 +218,34 @@ height: 155vh;
     font-size: 22px; /* Размер шрифта */
     color: #ffd700; /* Цвет текста */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5); /* Тень текста */
-    margin: 0; /* Убираем стандартные отступы paragraph, так как они могут мешать выравниванию */
-    white-space: nowrap; /* Предотвращаем перенос текста на новую строку */
+    margin: 0; /* Убираем стандартные отступы */
+    white-space: nowrap; /* Предотвращаем перенос текста */
+}
+
+.score-background {
+    display: inline-block; /* Оборачиваем счёт в блок, чтобы фон подстраивался */
+    padding: 0px 10px; /* Отступы вокруг текста */
+    padding-left: 20px; /* Увеличиваем отступ слева для фона */
+    background-color: black; /* Черный непрозрачный фон */
+    border-radius: 5px; /* Сглаживаем углы */
+    margin-left: 0px; /* Оставляем фон на месте */
 }
 
 .coin {
-    margin-left: 10px; /* Добавляем отступ между счетом и монеткой */
+    margin-left: 0; /* Убираем отступы между монеткой и числом */
+    z-index: 1000; /* Поверх остальных элементов */
 }
 
 .coin img {
     width: 45px;
     height: 45px;
-    vertical-align: middle; /* Выравниваем изображение по вертикали относительно текста */
+    vertical-align: middle; /* Выравниваем изображение по вертикали */
+    margin-right: -20px; /* Небольшой отступ от монетки к числу */
 }
 
 .shadow {
     position: fixed;
-    bottom: 160px;        /* Отступ от нижнего края экрана */
+    bottom: 150px;        /* Отступ от нижнего края экрана */
     left: 50%;            /* Размещение по центру */
     transform: translateX(-50%); /* Смещение для точного центра */
     width: 10px;          /* Еще меньшая ширина */
@@ -1028,7 +1042,7 @@ position: center
     max-height: 500px;
     width: 90%;
     position: fixed;
-    bottom: 60px; /* Поднял выше */
+    bottom: 75px; /* Поднял выше */
     left: 50%;
     transform: translateX(-50%);
     z-index: 999;
@@ -1043,7 +1057,7 @@ position: center
     max-height: 500px;
     width: 90%;
     position: fixed;
-    bottom: 60px; /* Поднял выше */
+    bottom: 75px; /* Поднял выше */
     left: 50%;
     transform: translateX(-50%);
     z-index: 999;
@@ -1058,7 +1072,7 @@ position: center
     max-height: 500px;
     width: 90%;
     position: fixed;
-    bottom: 60px; /* Поднял выше */
+    bottom: 75px; /* Поднял выше */
     left: 50%;
     transform: translateX(-50%);
     z-index: 999;
@@ -1073,7 +1087,7 @@ position: center
     max-height: 500px;
     width: 90%;
     position: fixed;
-    bottom: 60px; /* Поднял выше */
+    bottom: 75px; /* Поднял выше */
     left: 50%;
     transform: translateX(-50%);
     z-index: 999;
@@ -1531,8 +1545,8 @@ html, body {
 
 .ghost-effect {
   position: absolute;
-  width: 50px; /* Ширина эффекта */
-  height: 50px; /* Высота эффекта */
+  width: 30px; /* Ширина эффекта */
+  height: 30px; /* Высота эффекта */
   background: url('/static/images/ghost_effect.png') no-repeat center center;
   background-size: contain; /* Сжимаем картинку, чтобы она не выходила за пределы */
   pointer-events: none;
@@ -1557,8 +1571,8 @@ html, body {
 
 .leaf-effect {
   position: absolute;
-  width: 50px; /* Ширина эффекта */
-  height: 50px; /* Высота эффекта */
+  width: 30px; /* Ширина эффекта */
+  height: 30px; /* Высота эффекта */
   background: url('/static/images/leaf.png') no-repeat center center;
   background-size: contain; /* Сжимаем картинку, чтобы она не выходила за пределы */
   pointer-events: none;
@@ -1582,8 +1596,8 @@ html, body {
 }
 .stone-effect {
   position: absolute;
-  width: 50px; /* Ширина эффекта */
-  height: 50px; /* Высота эффекта */
+  width: 30px; /* Ширина эффекта */
+  height: 30px; /* Высота эффекта */
   background: url('/static/images/stone_effect.png') no-repeat center center;
   background-size: contain; /* Сжимаем картинку, чтобы она не выходила за пределы */
   pointer-events: none;
@@ -1607,8 +1621,8 @@ html, body {
 }
 .fire-effect {
   position: absolute;
-  width: 50px; /* Ширина эффекта */
-  height: 50px; /* Высота эффекта */
+  width: 30px; /* Ширина эффекта */
+  height: 30px; /* Высота эффекта */
   background: url('/static/images/fire_effect.png') no-repeat center center;
   background-size: contain; /* Сжимаем картинку, чтобы она не выходила за пределы */
   pointer-events: none;
@@ -1632,8 +1646,8 @@ html, body {
 }
 .water-effect {
   position: absolute;
-  width: 50px; /* Ширина эффекта */
-  height: 50px; /* Высота эффекта */
+  width: 30px; /* Ширина эффекта */
+  height: 30px; /* Высота эффекта */
   background: url('/static/images/water_effect.png') no-repeat center center;
   background-size: contain; /* Сжимаем картинку, чтобы она не выходила за пределы */
   pointer-events: none;
@@ -1657,8 +1671,8 @@ html, body {
 }
 .god-effect {
   position: absolute;
-  width: 50px; /* Ширина эффекта */
-  height: 50px; /* Высота эффекта */
+  width: 30px; /* Ширина эффекта */
+  height: 30px; /* Высота эффекта */
   background: url('/static/images/god_effect.png') no-repeat center center;
   background-size: contain; /* Сжимаем картинку, чтобы она не выходила за пределы */
   pointer-events: none;
@@ -1682,8 +1696,8 @@ html, body {
 }
 .magic-effect {
   position: absolute;
-  width: 50px; /* Ширина эффекта */
-  height: 50px; /* Высота эффекта */
+  width: 30px; /* Ширина эффекта */
+  height: 30px; /* Высота эффекта */
   background: url('/static/images/magic_effect.png') no-repeat center center;
   background-size: contain; /* Сжимаем картинку, чтобы она не выходила за пределы */
   pointer-events: none;
@@ -1707,8 +1721,8 @@ html, body {
 
 }.heart-effect {
   position: absolute;
-  width: 50px; /* Ширина эффекта */
-  height: 50px; /* Высота эффекта */
+  width: 30px; /* Ширина эффекта */
+  height: 30px; /* Высота эффекта */
   background: url('/static/images/heart_effect.png') no-repeat center center;
   background-size: contain; /* Сжимаем картинку, чтобы она не выходила за пределы */
   pointer-events: none;
@@ -1732,8 +1746,8 @@ html, body {
 }
 .ananas-effect {
   position: absolute;
-  width: 50px; /* Ширина эффекта */
-  height: 50px; /* Высота эффекта */
+  width: 30px; /* Ширина эффекта */
+  height: 30px; /* Высота эффекта */
   background: url('/static/images/ananas_effect.png') no-repeat center center;
   background-size: contain; /* Сжимаем картинку, чтобы она не выходила за пределы */
   pointer-events: none;
@@ -1744,7 +1758,7 @@ html, body {
 @keyframes ananasAnimation {
   0% {
     transform: scale(0);
-    opacity: 1;
+    opacity: 0.9;
   }
   50% {
     transform: scale(1.5);
@@ -1758,8 +1772,8 @@ html, body {
 
 .frog-effect {
   position: absolute;
-  width: 50px; /* Ширина эффекта */
-  height: 50px; /* Высота эффекта */
+  width: 30px; /* Ширина эффекта */
+  height: 30px; /* Высота эффекта */
   background: url('/static/images/frog_effect.png') no-repeat center center;
   background-size: contain; /* Сжимаем картинку, чтобы она не выходила за пределы */
   pointer-events: none;
@@ -1809,8 +1823,8 @@ html, body {
 }
 .red-effect {
   position: absolute;
-  width: 50px;
-  height: 50px;
+  width: 25px;
+  height: 25px;
  background: radial-gradient(circle, rgba(255, 0, 0, 0.8), rgba(255, 99, 71, 0.4)); /* Яркий красный цвет */
   box-shadow:
     0 0 20px 5px rgba(255, 0, 0, 0.7), /* Яркий красный цвет для тени */
@@ -1837,8 +1851,8 @@ html, body {
 }
 .fish-effect {
   position: absolute;
-  width: 50px; /* Ширина эффекта */
-  height: 50px; /* Высота эффекта */
+  width: 30px; /* Ширина эффекта */
+  height: 30px; /* Высота эффекта */
   background: url('/static/images/fish_effect.png') no-repeat center center;
   background-size: contain; /* Сжимаем картинку, чтобы она не выходила за пределы */
   pointer-events: none;
@@ -1862,8 +1876,8 @@ html, body {
 }
 .minion-effect {
   position: absolute;
-  width: 50px; /* Ширина эффекта */
-  height: 50px; /* Высота эффекта */
+  width: 30px; /* Ширина эффекта */
+  height: 30px; /* Высота эффекта */
   background: url('/static/images/star_effect.png') no-repeat center center;
   background-size: contain; /* Сжимаем картинку, чтобы она не выходила за пределы */
   pointer-events: none;
@@ -1956,6 +1970,7 @@ canvas {
         height: 100%;
         pointer-events: none;
     }
+
 
 
 

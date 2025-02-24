@@ -233,18 +233,28 @@ window.updateClickButtonImage = (imgSrc) => {
         progressLabel.innerText = 'Деревня';
         leagueLevel = 0;
         clicksPerLevel = 5;
-        backgroundImage = '/static/images/hogwarts.png'; // Укажите путь к начальному фону
+        backgroundImage = '/static/images/hogwarts.png';
+        labelBackground = '/static/images/hogwarts.png'; // Путь для фона прогресса
     }
 
-    // Устанавливаем фон с нужным размером
-    body.style.backgroundImage = `url("${backgroundImage}")`; // Используем правильный синтаксис
-    body.style.backgroundSize = 'cover'; // Растягиваем фон на весь экран
-    body.style.backgroundPosition = 'center'; // Центрируем фон
-    body.style.backgroundAttachment = 'fixed'; // Фиксируем фон при прокрутке (опционально)
+  // Устанавливаем фон с нужным размером
+  body.style.backgroundImage = `url("${backgroundImage}")`; // Используем правильный синтаксис
+  body.style.backgroundSize = 'cover'; // Растягиваем фон на весь экран
+  body.style.backgroundAttachment = 'fixed'; // Фиксируем фон при прокрутке (опционально)
 
-    // Сохраняем фон в localStorage
-    localStorage.setItem('backgroundImage', backgroundImage);
-  };
+  // Смещаем фон только если выбран фон Hogwarts или Ice
+  if (backgroundImage === '/static/images/hogwarts.png' || backgroundImage === '/static/images/ice.png') {
+    body.style.backgroundPosition = 'center calc(50% - 12vh)'; // Смещаем вниз на 12vh
+  } else {
+    body.style.backgroundPosition = 'center'; // Центрируем фон для других изображений
+  }
+// Обновляем фон на .progress-label с тем же изображением
+  progressLabel.style.backgroundImage = `url("${labelBackground}")`;
+  progressLabel.style.backgroundSize = 'cover'; // Фон должен растягиваться по размеру
+  progressLabel.style.backgroundPosition = 'center'; // Центрируем изображение
+  // Сохраняем фон в localStorage
+  localStorage.setItem('backgroundImage', backgroundImage);
+}
 
    // Создание монеты
   function spawnCoinDrop(event) {
@@ -542,36 +552,6 @@ function createSpark() {
 setInterval(createSpark, 500);
 
 
-// Функция для создания бабочки
-function createButterfly() {
-    const body = document.body;
-    const currentBackground = getComputedStyle(body).backgroundImage; // Получаем текущий фон
-
-    // Проверяем, установлен ли нужный фон
-    if (!currentBackground.includes('/static/images/hogwarts.png')) {
-        return; // Прерываем выполнение функции, если фон не совпадает
-    }
-
-    const butterfly = document.createElement("div");
-    butterfly.classList.add("butterfly");
-
-    // Случайная позиция по оси X (по горизонтали)
-    butterfly.style.left = Math.random() * window.innerWidth + "px";
-
-    // Случайная длительность анимации
-    let animationDuration = Math.random() * 3 + 7; // от 7 до 10 секунд
-    butterfly.style.animationDuration = animationDuration + "s";
-
-    // Добавляем бабочку в контейнер
-    document.getElementById("butterfly-container").appendChild(butterfly);
-
-    // Удаляем бабочку по завершении анимации
-    setTimeout(() => butterfly.remove(), animationDuration * 1000);
-}
-
-// Генерируем бабочек каждую секунду, если фон соответствует нужному
-setInterval(createButterfly, 1000);
-
 // Функция для создания снега
 const canvas = document.getElementById("snowCanvas");
 const ctx = canvas.getContext("2d");
@@ -670,7 +650,6 @@ window.addEventListener("resize", () => {
     canvas.height = window.innerHeight;
     snowflakes.forEach(flake => flake.reset());
 });
-
 
 
 
