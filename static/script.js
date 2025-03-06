@@ -220,7 +220,7 @@ window.updateClickButtonImage = (imgSrc) => {
         backgroundImage = '/static/images/cosmos.png'; // Укажите путь к фону Алмазной лиги
         break;
       case 9:
-        progressLabel.innerText = 'Темнота';
+        progressLabel.innerText = 'Преисподняя';
         clicksPerLevel = 13;
         backgroundImage = '/static/images/dark_2.png'; // Укажите путь к фону Алмазной лиги
         break;
@@ -237,24 +237,33 @@ window.updateClickButtonImage = (imgSrc) => {
         labelBackground = '/static/images/hogwarts.png'; // Путь для фона прогресса
     }
 
-  // Устанавливаем фон с нужным размером
-  body.style.backgroundImage = `url("${backgroundImage}")`; // Используем правильный синтаксис
-  body.style.backgroundSize = 'cover'; // Растягиваем фон на весь экран
-  body.style.backgroundAttachment = 'fixed'; // Фиксируем фон при прокрутке (опционально)
-  // Устанавливаем фон для .progress-label
-    progressLabel.style.backgroundImage = `url("${backgroundImage}")`; // Применяем выбранный фон
-    progressLabel.style.backgroundSize = 'cover'; // Растягиваем фон
-    progressLabel.style.backgroundPosition = 'center'; // Центрируем фон
-  // Смещаем фон только если выбран фон Hogwarts или Ice
-  if (backgroundImage === '/static/images/hogwarts.png' || backgroundImage === '/static/images/ice.png') {
-    body.style.backgroundPosition = 'center calc(50% - 12vh)'; // Смещаем вниз на 12vh
-  } else {
-    body.style.backgroundPosition = 'center'; // Центрируем фон для других изображений
-  }
-// Обновляем фон на .progress-label с тем же изображением
+// Устанавливаем фон с нужным размером
+body.style.backgroundImage = `url("${backgroundImage}")`; // Используем правильный синтаксис
+body.style.backgroundSize = 'cover'; // Растягиваем фон на весь экран
+body.style.backgroundAttachment = 'fixed'; // Фиксируем фон при прокрутке (опционально)
 
-  // Сохраняем фон в localStorage
-  localStorage.setItem('backgroundImage', backgroundImage);
+// Устанавливаем фон для .progress-label
+progressLabel.style.backgroundImage = `url("${backgroundImage}")`; // Применяем выбранный фон
+progressLabel.style.backgroundSize = 'cover'; // Растягиваем фон
+progressLabel.style.backgroundPosition = 'center'; // Центрируем фон
+
+// Смещаем фон отдельно для каждого изображения
+if (backgroundImage === '/static/images/hogwarts.png') {
+    body.style.backgroundPosition = 'center calc(50% - 12vh)'; // Смещаем вниз на 8vh для Hogwarts
+} else if (backgroundImage === '/static/images/ice.png') {
+    body.style.backgroundPosition = 'center calc(50% - 10vh)'; // Смещаем вниз на 10vh для Ice
+} else if (backgroundImage === '/static/images/dark_2.png') {
+    body.style.backgroundPosition = 'center calc(50% - 8vh)'; // Смещаем вниз на 12vh для Dark
+} else if (backgroundImage === '/static/images/mystical.png') {
+    body.style.backgroundPosition = 'center calc(50% - 8vh)'; // Смещаем вниз на 12vh для Dark
+} else if (backgroundImage === '/static/images/dark.png') {
+    body.style.backgroundPosition = 'center calc(50% - 6vh)'; // Смещаем вниз на 12vh для Dark
+} else {
+    body.style.backgroundPosition = 'center'; // Центрируем фон для других изображений
+}
+
+// Сохраняем фон в localStorage
+localStorage.setItem('backgroundImage', backgroundImage);
 }
 
    // Создание монеты

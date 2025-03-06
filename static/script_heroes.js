@@ -119,6 +119,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
       character.classList.add('selected-preview');
       currentPreviewCharacter = character;
+
     });
   });
 

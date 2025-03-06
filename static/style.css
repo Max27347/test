@@ -154,7 +154,7 @@ height: 155vh;
 
 #clickButton {
     position: absolute;
-    bottom: 140px;
+    bottom: 135px;
     left: 50%;
     transform: translateX(-50%);
     transition: transform 0.5s ease;
@@ -242,7 +242,17 @@ height: 155vh;
     vertical-align: middle; /* Выравниваем изображение по вертикали */
     margin-right: -20px; /* Небольшой отступ от монетки к числу */
 }
+.coin2 {
+    margin-left: 0; /* Убираем отступы между монеткой и числом */
+    z-index: 1000; /* Поверх остальных элементов */
+}
 
+.coin2 img {
+    width: 45px;
+    height: 45px;
+    vertical-align: middle; /* Выравниваем изображение по вертикали */
+    margin-right: 0px; /* Небольшой отступ от монетки к числу */
+}
 .shadow {
     position: fixed;
     bottom: 150px;        /* Отступ от нижнего края экрана */
@@ -521,7 +531,7 @@ height: 155vh;
     margin: 20px auto; /* Центрируем контейнер по горизонтали */
 }
 
-/* Настройки для коробок */
+/* Настройки для ящиков */
 .shop_box, .shop_box_2, .shop_box_3,
 .shop_box_4, .shop_box_5, .shop_box_6 {
     width: 130px; /* Фиксированная ширина */
@@ -796,12 +806,17 @@ position: center
 
     .character {
       background: white;
+      border-radius: 10px;
+      padding: 8px;
+      text-align: center;
+    }
+    .character2 {
+      background: purple;
       border: 1px solid #ddd;
       border-radius: 10px;
       padding: 8px;
       text-align: center;
     }
-
     .character img {
       width: 80px;
       height: 80px;
@@ -809,7 +824,13 @@ position: center
       object-fit: cover;
       margin-bottom: -10px;
     }
-
+    .character2 img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: -10px;
+    }
     .character button {
       background-color: #4CAF50;
       color: white;
@@ -819,7 +840,15 @@ position: center
       cursor: pointer;
       font-size: 14px;
     }
-
+    .character2 button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
     .character button:hover {
       background-color: #45a049;
     }
@@ -827,7 +856,15 @@ position: center
     .selected {
       border: 2px solid #4CAF50;
     }
-
+.char-1 {
+    background-color: #7FC7FF;
+}
+.char-6 {
+    background-color: #FF77FF;
+}
+.char-12 {
+    background-color: #ffd700;
+}
     .preview {
       position: relative;
       top: 30px;
@@ -1100,13 +1137,14 @@ position: center
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
     max-width: 400px;
     width: 90%;
-    height: 500px; /* Измените высоту здесь */
+    height: 300px; /* Измените высоту здесь */
     position: absolute;
-    bottom: 120px;
+    bottom: 75px; /* Регулируй значение для опускания вниз */
     left: 50%;
     transform: translateX(-50%);
     z-index: 999;
 }
+
 .container_box_11 {
     text-align: center;
     background-color: #2e2e3a;
