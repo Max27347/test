@@ -1161,6 +1161,7 @@ position: center
     z-index: 999;
 }
 /* Слой затемнения */
+
 .overlay {
     position: fixed;
     top: 0;
